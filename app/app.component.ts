@@ -1,24 +1,14 @@
-import { Component, OnInit } from '@angular/core';
-import { User } from './user';
+import { Component } from '@angular/core';
 import { UserService } from './user.service';
+import { UsersComponent} from './users.component';
 
 @Component({
 	selector: 'app',
 	templateUrl: 'app/templates/app.component.html',
-	providers: [UserService],
+	directives: [UsersComponent],
+	providers: [UserService]
 })
 
-export class AppComponent implements OnInit {
-       title = 'Fábrica de Trámites';
-       users: User[];
-
-       constructor( private userService: UserService) {}
-
-       getUsers() {
-           this.userService.getUsers().then(users => this.users = users);
-       }
-
-       ngOnInit() {
-           this.getUsers();
-       }
-};
+export class AppComponent {
+       title = 'Fábrica de trámites';
+}
