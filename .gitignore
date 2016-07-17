@@ -1,4 +1,6 @@
-*.~
+*~
 node_modules
 typings
 npm-debug.log
+app/*.js
+app/*.js.map
