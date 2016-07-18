@@ -9,6 +9,7 @@ import { UserFormComponent } from './user-form.component';
 	templateUrl: 'app/templates/app.component.html',
 	directives: [UsersComponent, UserFormComponent, ROUTER_DIRECTIVES],
 	providers: [UserService]
+	//precompile: [UsersComponent, UserFormComponent]
 })
 
 export class AppComponent {

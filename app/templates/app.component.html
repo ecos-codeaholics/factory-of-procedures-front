@@ -1,4 +1,26 @@
-<h1>{{title}}</h1>
-<a [routerLink]="['/users']">Usuarios</a>
-<a [routerLink]="['/signup']">Registro</a>
+<div class="content">
+  <div class="pure-g">
+    <div class="pure-u-6-24">
+      <div class="main-logo"></div>
+    </div>
+    <div class="pure-u-12-24">
+      <div class="title">
+	<h1>{{title}}</h1>
+      </div>
+    </div>
+    <div class="pure-u-6-24">
+      <div class="least-logo"></div>
+    </div>
+    <div class="pure-menu pure-menu-horizontal">
+      <ul class="pure-menu-list">
+	<li class="pure-menu-item">
+	  <a [routerLink]="['/users']" class="pure-menu-link">Usuarios</a>
+	</li>
+	<li class="pure-menu-item">
+	  <a [routerLink]="['/signup']" class="pure-menu-link">Registro</a>
+	</li>
+      </ul>
+    </div>
+  </div>
+</div>
 <router-outlet></router-outlet>
