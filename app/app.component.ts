@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { ROUTER_DIRECTIVES } from '@angular/router';
-import { UserService } from './user.service';
-import { UsersComponent} from './users.component';
-import { UserFormComponent } from './user-form.component';
+import { UserService } from './user/user.service';
+import { UsersComponent} from './user/users.component';
+import { UserFormComponent } from './user/user-form.component';
 
 @Component({
 	selector: 'app',
