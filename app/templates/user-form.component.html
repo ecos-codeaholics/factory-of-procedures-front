@@ -1,19 +1,23 @@
 <h1>{{title}}</h1>
-<form class="pure-form pure-form-stacked">
+{{diagnostic}}
+<form class="pure-form pure-form-stacked" #userForm="ngForm" (ngSubmit)="newUser()">
   <fieldset>
     <legend>Por favor ingrese sus datos</legend>
     
     <label for="name">Nombre</label>
-    <input type="text" required>
+    <input [(ngModel)]="user.name" type="text" name="name" required>
     
     <label for="surname">Apellido</label>
-    <input type="text">
-
+    <input [(ngModel)]="user.lastname1" type="text" name="lastname1" required>
+    <label for="email">Correo electrónico</label>
+    <input [(ngModel)]="user.email" type="email" name="email" required>
+    <label for="password">Contraseña</label>
+    <input [(ngModel)]="user.password" type="text" name="password">
     <label for="rol">Rol</label>
-    <select>
-      <option *ngFor="let rol of roles" [value]="rol">{{rol}}</option>
+    <select [(ngModel)]="role" name="role">
+      <option *ngFor="let rol of roles" (value)="rol">{{rol}}</option>
     </select>
     
-    <button type="submit" class="pure-button pure-button-primary">Enviar</button>
+    <button type="submit" class="pure-button pure-button-primary" [disabled]="!userForm.form.valid" (click)="newUser()">Enviar</button>
   </fieldset>
 </form>

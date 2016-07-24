@@ -1,20 +1,40 @@
-import { Component } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { Component, Input, OnInit } from '@angular/core';
+import { NgForm, FormBuilder, Validators } from '@angular/forms';
+import { UserService } from './user.service';
+
 import { User } from './user';
 
 @Component({
-	selector: 'user-form',
-	templateUrl: 'app/templates/user-form.component.html'
+    selector: 'user-form',
+    templateUrl: 'app/templates/user-form.component.html'
 })
 
 export class UserFormComponent {
-       title = 'Registro de usuario';
 
-       roles = ['Administrador', 'Funcionario', 'Ciudadano'];
+    //@Input() user: User;
 
-       submitted = false;
+    title = 'Registro de usuario';
 
-       onSubmit() { this.submitted = true; }
+    roles = ['Administrador', 'Funcionario', 'Ciudadano'];
 
-       //get diagnostic() { return JSON.stringify(this.model); }
+    user = new User(1, 'foo', 'bar', 'foo@bar', '123456', 'rol');
+
+    error: any;
+
+    constructor(private userService: UserService) { }
+
+    submitted = false;
+
+    newUser(user: User) {
+        this.userService
+            .newUser(this.user)
+            .then(user => {
+                this.user = user;
+            })
+            .catch(error => this.error = error);
+    }
+
+    get diagnostic() { return JSON.stringify(this.user); }
+
 }
+

@@ -1,3 +1,7 @@
+body {
+    padding: 1em 2em;
+}
+
 /* Overrides */
 .pure-g { letter-spacing: normal; }
 .pure-menu-item { height: auto; }
