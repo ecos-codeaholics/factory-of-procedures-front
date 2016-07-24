@@ -4,3 +4,5 @@ typings
 npm-debug.log
 app/*.js
 app/*.js.map
+app/*/*.js
+app/*/*.js.map
