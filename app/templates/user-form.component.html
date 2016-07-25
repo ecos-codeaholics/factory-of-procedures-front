@@ -1,6 +1,6 @@
 <h1>{{title}}</h1>
 {{diagnostic}}
-<form class="pure-form pure-form-stacked" #userForm="ngForm">
+<form class="pure-form pure-form-stacked" #userForm="ngForm" (ngSubmit)="newUser()">
   <fieldset>
     <legend>Por favor ingrese sus datos</legend>
     
@@ -18,6 +18,6 @@
       <option *ngFor="let rol of roles" (value)="rol">{{rol}}</option>
     </select>
     
-    <button type="submit" class="pure-button pure-button-primary" [disabled]="!userForm.form.valid" (click)="newUser()">Enviar</button>
+    <button type="submit" class="pure-button pure-button-primary" [disabled]="!userForm.form.valid">Enviar</button>
   </fieldset>
 </form>
