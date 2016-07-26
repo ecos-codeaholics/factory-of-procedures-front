@@ -1,7 +1,7 @@
 import { provideRouter, RouterConfig } from '@angular/router';
 import { UsersComponent } from './user/users.component';
 import { UserFormComponent } from './user/user-form.component';
-import { UserLoginComponent } from './user/user-login.component';
+import { LoginComponent } from './user/login.component';
 
 const routes: RouterConfig = [
     {
@@ -10,7 +10,7 @@ const routes: RouterConfig = [
     },
     {
         path: 'login',
-        component: UserLoginComponent
+        component: LoginComponent
     },
     {
         path: 'users',
