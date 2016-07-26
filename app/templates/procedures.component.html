@@ -1,0 +1,14 @@
+<h2>{{title}}</h2>
+<div class="pure-menu pure-menu-horizontal">
+  <ul class="pure-menu-list">
+    <li class="pure-menu-item">
+      <a [routerLink] = "'/procedures'">Lista</a>
+    </li>
+    <li class="pure-menu-item">
+      <a [routerLink] = "'/procedures/new'">Nuevo</a>
+    </li>
+  </ul>
+</div>
+<div class="inner-content">
+  <router-outlet></router-outlet>
+</div>
