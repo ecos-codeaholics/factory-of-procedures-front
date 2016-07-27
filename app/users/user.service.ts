@@ -12,7 +12,7 @@ export class UserService {
 
     constructor(private http: Http) { }
     private createUserUrl = 'http://127.0.0.1:4567/citizen/create';
-    private listUserUrl = 'http://127.0.0.1:4567/citizen/create';
+    private listUserUrl = 'http://127.0.0.1:4567/citizen/citizenList';
 
     private handleError(error: any) {
 
@@ -41,10 +41,10 @@ export class UserService {
 
     getUsers() {
 
-        return Promise.resolve(USERS);
-        //return this.http.get(this.listUserUrl)
-        //    .toPromise()
-        //    .then(response => response.json().data as User[])
-        //    .catch(this.handleError);
+        //return Promise.resolve(USERS);
+        return this.http.get(this.listUserUrl)
+            .toPromise()
+            .then(response => response.json().data as User[])
+            .catch(this.handleError);
     }
 }
