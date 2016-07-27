@@ -13,7 +13,7 @@ import { ProceduresComponent } from './procedures/procedures.component';
     templateUrl: 'app/templates/app.component.html',
     directives: [UsersComponent, UserFormComponent, LoginComponent, ROUTER_DIRECTIVES],
     providers: [UserService, LoginService],
-    precompile: [UserFormComponent, UsersComponent, LoginComponent]
+    precompile: [UserFormComponent, UsersComponent, LoginComponent, ProceduresComponent]
 })
 
 export class AppComponent {

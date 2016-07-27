@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { ProcedureAttachment } from './procedure-attachment';
 
 @Component({
     selector: 'procedures-new',
@@ -8,4 +10,6 @@ import { Component } from '@angular/core';
 export class ProceduresNewComponent {
 
     title = 'Nuevo Trámite';
+
+    file = new ProcedureAttachment('');
 }

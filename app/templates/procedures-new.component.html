@@ -1,2 +1,10 @@
-<h3>{{title}}</h3>
-<p>Creando trámite</p>
+<form class="pure-form pure-form-stacked" #fileUploadForm="ngForm" (ngSubmit)="submit()">
+  <fieldset>
+    <legend>{{title}}</legend>
+    
+    <label for="name">Adjuntar archivo</label>
+    <input [(ngModel)]="file.name" type="file" name="name" >
+    <button type="submit" class="pure-button pure-button-primary">Ingresar</button>
+  </fieldset>
+  
+
