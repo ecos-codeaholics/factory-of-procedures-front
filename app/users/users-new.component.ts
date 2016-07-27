@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { NgForm, FormBuilder, Validators } from '@angular/forms';
 import { UserService } from './user.service';
 
@@ -6,10 +6,10 @@ import { User } from './user';
 
 @Component({
     selector: 'user-form',
-    templateUrl: 'app/templates/user-form.component.html'
+    templateUrl: 'app/templates/users-new.component.html'
 })
 
-export class UserFormComponent {
+export class UsersNewComponent {
 
     //@Input() user: User;
 

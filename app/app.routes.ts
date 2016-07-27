@@ -5,13 +5,14 @@ import { ProceduresListComponent } from './procedures/procedures-list.component'
 import { ProceduresNewComponent } from './procedures/procedures-new.component';
 
 import { UsersComponent } from './users/users.component';
-import { UserFormComponent } from './users/user-form.component';
+import { UsersNewComponent } from './users/users-new.component';
+import { UsersListComponent } from './users/users-list.component';
 import { LoginComponent } from './users/login.component';
 
 const routes: RouterConfig = [
     {
         path: 'signup',
-        component: UserFormComponent
+        component: UsersNewComponent
     },
     {
         path: 'login',
@@ -27,7 +28,11 @@ const routes: RouterConfig = [
     },
     {
         path: 'users',
-        component: UsersComponent
+        component: UsersComponent,
+        children: [
+            { path: '', component: UsersListComponent },
+            { path: 'new', component: UsersNewComponent },
+        ]
     }
 ]
 

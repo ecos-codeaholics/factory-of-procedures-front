@@ -1,8 +1,14 @@
 <h2>{{title}}</h2>
-<ul class="users">
-  <li *ngFor="let user of users">
-    <h3>
-      <span>{{user.id}}</span> {{user.name}}</h3>
-    <h4>{{user.role}}</h4>
-  </li>
-</ul>
+<div class="pure-menu pure-menu-horizontal">
+  <ul class="pure-menu-list">
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" [routerLink] = "'/users'">Lista</a>
+    </li>
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" [routerLink] = "'/users/new'">Nuevo</a>
+    </li>
+  </ul>
+</div>
+<div class="inner-content">
+  <router-outlet></router-outlet>
+</div>

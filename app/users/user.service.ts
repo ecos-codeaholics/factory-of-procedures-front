@@ -29,7 +29,6 @@ export class UserService {
 
     newUser(user: User): Promise<User> {
 
-
         let body = JSON.stringify(user);
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers });

@@ -1,23 +1,16 @@
-import { Component, OnInit } from '@angular/core';
-import { User } from './user';
-import { UserService } from './user.service';
+import { Component } from '@angular/core';
+import { ROUTER_DIRECTIVES } from '@angular/router';
+import { UsersListComponent } from './users-list.component';
+import { UsersNewComponent } from './users-new.component';
 
 @Component({
-	selector: 'users',
-	templateUrl: 'app/templates/users.component.html'
+    selector: 'users',
+    templateUrl: 'app/templates/users.component.html',
+    directives: [ROUTER_DIRECTIVES],
+    precompile: [UsersListComponent, UsersNewComponent]
 })
 
-export class UsersComponent implements OnInit {
-       title = 'Lista de usuarios';
-       users: User[];
+export class UsersComponent {
 
-       constructor( private userService: UserService) {}
-
-       getUsers() {
-           this.userService.getUsers().then(users => this.users = users);
-       }
-
-       ngOnInit() {
-           this.getUsers();
-       }
+    title = 'Usuarios';
 };
