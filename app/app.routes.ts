@@ -4,9 +4,9 @@ import { ProceduresComponent } from './procedures/procedures.component';
 import { ProceduresListComponent } from './procedures/procedures-list.component';
 import { ProceduresNewComponent } from './procedures/procedures-new.component';
 
-import { UsersComponent } from './user/users.component';
-import { UserFormComponent } from './user/user-form.component';
-import { LoginComponent } from './user/login.component';
+import { UsersComponent } from './users/users.component';
+import { UserFormComponent } from './users/user-form.component';
+import { LoginComponent } from './users/login.component';
 
 const routes: RouterConfig = [
     {

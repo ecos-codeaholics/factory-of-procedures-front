@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { ROUTER_DIRECTIVES } from '@angular/router';
-import { UserService } from './user/user.service';
-import { LoginService } from './user/login.service';
-import { UsersComponent } from './user/users.component';
-import { UserFormComponent } from './user/user-form.component';
-import { LoginComponent } from './user/login.component';
+import { UserService } from './users/user.service';
+import { LoginService } from './users/login.service';
+import { UsersComponent } from './users/users.component';
+import { UserFormComponent } from './users/user-form.component';
+import { LoginComponent } from './users/login.component';
+import { ProceduresComponent } from './procedures/procedures.component';
 //import './rxjs-extensions';
 
 @Component({
