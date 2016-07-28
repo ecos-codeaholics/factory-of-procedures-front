@@ -7,6 +7,7 @@ import { ProceduresNewComponent } from './procedures/procedures-new.component';
 import { UsersComponent } from './users/users.component';
 import { UsersNewComponent } from './users/users-new.component';
 import { UsersListComponent } from './users/users-list.component';
+import { UsersDetailComponent } from './users/users-detail.component';
 import { LoginComponent } from './users/login.component';
 
 const routes: RouterConfig = [
@@ -32,6 +33,7 @@ const routes: RouterConfig = [
         children: [
             { path: '', component: UsersListComponent },
             { path: 'new', component: UsersNewComponent },
+            { path: 'detail/:id', component: UsersDetailComponent }
         ]
     }
 ]

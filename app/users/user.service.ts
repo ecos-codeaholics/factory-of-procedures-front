@@ -42,6 +42,12 @@ export class UserService {
             .catch(this.handleError);
     }
 
+    getUser(id: number) {
+        return this.getUsers()
+            .toPromise()
+            .then(users => users.find(user => user.id === id));
+    }
+
     getUsers() {
 
         //return Promise.resolve(USERS);

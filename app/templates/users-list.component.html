@@ -1,20 +1,36 @@
-<h2>{{title}}</h2>
-<table class="pure-table">
-  <thead>
-    <tr>
-      <th></th>
-      <th>Nombre</th>
-      <th>Apellido</th>
-      <th>Correo Electrónico</th>
-      <th>Identificación</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let user of users">
-      <td></td>
-      <td>{{user.name}}</td>
-      <td>{{user.lastName1}}</td>
-      <td>{{user.email}}</td>
-      <td>{{user.identification}}</td>
-    </tr>
-  </tbody>
+<div class="pure-g">
+  <div class="pure-u">
+    <h2>{{title}}</h2>
+  </div>
+</div>
+<div class="pure-g">
+  <div class="pure-u-1-2">
+    <table class="pure-table">
+      <thead>
+	<tr>
+	  <th></th>
+	  <th>Nombre</th>
+	  <th>Apellido</th>
+	  <th>Correo Electrónico</th>
+	  <th>Identificación</th>
+	</tr>
+      </thead>
+      <tbody>
+	<tr *ngFor="let user of users" (click)="onSelect(user)" [class.selected]="user === selectedUser">
+	  <td></td>
+	  <td>{{user.name}}</td>
+	  <td>{{user.lastName1}}</td>
+	  <td>{{user.email}}</td>
+	  <td>{{user.identification}}</td>
+	</tr>
+      </tbody>
+    </table>
+    <div *ngIf="selectedUser">
+      <h3>Ha seleccionado a: {{selectedUser.name}}</h3>
+      <button (click)="viewDetail()">Ver detalles</button>
+    </div>
+  </div>
+  <div class="pure-u-1-2">
+    <user-detail></user-detail>
+  </div>
+</div>
