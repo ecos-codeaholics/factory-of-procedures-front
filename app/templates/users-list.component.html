@@ -1,8 +1,20 @@
 <h2>{{title}}</h2>
-
-<ul class="users">
-  <li *ngFor="let user of users">
-    <h3>
-      <span>{{user.identification}}</span> {{user.name}}</h3>
-  </li>
-</ul>
+<table class="pure-table">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Nombre</th>
+      <th>Apellido</th>
+      <th>Correo Electrónico</th>
+      <th>Identificación</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of users">
+      <td></td>
+      <td>{{user.name}}</td>
+      <td>{{user.lastName1}}</td>
+      <td>{{user.email}}</td>
+      <td>{{user.identification}}</td>
+    </tr>
+  </tbody>

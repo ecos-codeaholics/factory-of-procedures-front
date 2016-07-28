@@ -52,7 +52,5 @@ export class UserService {
 
         return this.http.request(req)
             .map(res => res.json());
-
-
     }
 }
