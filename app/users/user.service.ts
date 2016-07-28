@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
-import { Headers, Http, RequestOptions, Response } from '@angular/http';
+import { Headers, Http, RequestOptions, Request, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/toPromise';
+//import 'rxjs/add/operator/toPromise';
+//import 'rxjs/add/operator/catch';
+import 'rxjs/Rx';
 
 import { User } from './user';
 import { USERS } from './mock-users';
@@ -11,6 +13,7 @@ import { USERS } from './mock-users';
 export class UserService {
 
     constructor(private http: Http) { }
+
     private createUserUrl = 'http://127.0.0.1:4567/citizen/create';
     private listUserUrl = 'http://127.0.0.1:4567/citizen/citizenList';
 
@@ -35,16 +38,21 @@ export class UserService {
 
         return this.http.post(this.createUserUrl, body, options)
             .toPromise()
-            .then(res => res.json().data)
+            .then(response => response.json().data as User)
             .catch(this.handleError);
     }
 
     getUsers() {
 
         //return Promise.resolve(USERS);
-        return this.http.get(this.listUserUrl)
-            .toPromise()
-            .then(response => response.json().data as User[])
-            .catch(this.handleError);
+        let req = new Request({
+            method: "GET",
+            url: this.listUserUrl
+        });
+
+        return this.http.request(req)
+            .map(res => res.json());
+
+
     }
 }

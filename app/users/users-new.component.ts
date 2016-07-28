@@ -17,7 +17,7 @@ export class UsersNewComponent {
 
     roles = ['Administrador', 'Funcionario', 'Ciudadano'];
 
-    user = new User(1, 'foo', 'bar', 'foo@bar', '123456');
+    user = new User('', 1, 'foo', 'bar', 'foo@bar', '123456');
 
     error: any;
 
