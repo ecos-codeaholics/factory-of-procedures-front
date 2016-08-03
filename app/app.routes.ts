@@ -10,7 +10,7 @@ import { UsersComponent } from './users/users.component';
 import { UsersNewComponent } from './users/users-new.component';
 import { UsersListComponent } from './users/users-list.component';
 import { UsersDetailComponent } from './users/users-detail.component';
-import { LoginComponent } from './users/login.component';
+import { LoginComponent } from './auth/login.component';
 
 const routes: RouterConfig = [
     {

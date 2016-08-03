@@ -6,7 +6,7 @@ import 'rxjs/add/operator/toPromise';
 import { Login } from './login';
 
 @Injectable()
-export class LoginService {
+export class AuthService {
 
     constructor(private http: Http) { }
     private loginUrl = "http://127.0.0.1:4567/citizen/login";

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
-import { LoginService } from './login.service';
+import { AuthService } from './auth.service';
 import { Login } from './login';
 
 @Component({
@@ -17,10 +17,10 @@ export class LoginComponent {
 
     error: any;
 
-    constructor(private loginService: LoginService) { }
+    constructor(private authService: AuthService) { }
 
     doLogin(user: Login) {
-        this.loginService
+        this.authService
             .doLogin(this.user)
             .then(user => {
                 this.user = user;
