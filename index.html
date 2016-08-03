@@ -4,7 +4,7 @@
     <title>Fábrica de Trámites</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="node_modules/purecss/build/pure.css">
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
 
     <link rel="stylesheet" href="assets/css/styles.css">
 
@@ -17,10 +17,15 @@
     <script>
       System.import('app').catch(function(err) { console.log(err); });
     </script>
+
+    <script src="node_modules/jquery/jquery.min.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
   </head>
 
   <body>
-    <app>Cargando... </app>
+    <div class="container">
+      <app>Cargando... </app>
+    </div>
   </body>
 </html>
     
