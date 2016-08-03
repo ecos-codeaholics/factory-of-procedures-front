@@ -1,6 +1,6 @@
-import { User } from './user';
+import { Citizen } from './citizen';
 
-export const USERS: User[] = [
+export const CITIZENS: Citizen[] = [
     {
         _id: '\{"algo"\}',
         identification: 1,

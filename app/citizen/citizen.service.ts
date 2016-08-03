@@ -5,17 +5,17 @@ import { Observable } from 'rxjs/Observable';
 //import 'rxjs/add/operator/catch';
 import 'rxjs/Rx';
 
-import { User } from './user';
-import { USERS } from './mock-users';
+import { Citizen } from './citizen';
+import { CITIZENS } from './mock-citizen';
 
 
 @Injectable()
-export class UserService {
+export class CitizenService {
 
     constructor(private http: Http) { }
 
-    private createUserUrl = 'http://127.0.0.1:4567/citizen/create';
-    private listUserUrl = 'http://127.0.0.1:4567/citizen/citizenList';
+    private createCitizenUrl = 'http://127.0.0.1:4567/citizen/create';
+    private listCitizenUrl = 'http://127.0.0.1:4567/citizen/citizenList';
 
     private handleError(error: any) {
 
@@ -30,30 +30,30 @@ export class UserService {
         return body.data || {};
     }
 
-    newUser(user: User): Promise<User> {
+    newCitizen(citizen: Citizen): Promise<Citizen> {
 
-        let body = JSON.stringify(user);
+        let body = JSON.stringify(citizen);
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers });
 
-        return this.http.post(this.createUserUrl, body, options)
+        return this.http.post(this.createCitizenUrl, body, options)
             .toPromise()
-            .then(response => response.json().data as User)
+            .then(response => response.json().data as Citizen)
             .catch(this.handleError);
     }
 
-    getUser(id: number) {
-        return this.getUsers()
+    getCitizen(id: number) {
+        return this.getCitizens()
             .toPromise()
-            .then(users => users.find(user => user.id === id));
+            .then(citizens => citizens.find(citizen => citizen.id === id));
     }
 
-    getUsers() {
+    getCitizens() {
 
-        //return Promise.resolve(USERS);
+        //return Promise.resolve(CITIZENS);
         let req = new Request({
             method: "GET",
-            url: this.listUserUrl
+            url: this.listCitizenUrl
         });
 
         return this.http.request(req)

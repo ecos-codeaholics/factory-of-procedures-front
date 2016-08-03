@@ -6,10 +6,10 @@ import { ProceduresComponent } from './procedures/procedures.component';
 import { ProceduresListComponent } from './procedures/procedures-list.component';
 import { ProceduresNewComponent } from './procedures/procedures-new.component';
 
-import { UsersComponent } from './users/users.component';
-import { UsersNewComponent } from './users/users-new.component';
-import { UsersListComponent } from './users/users-list.component';
-import { UsersDetailComponent } from './users/users-detail.component';
+import { CitizenHomeComponent } from './citizen/citizen-home.component';
+import { CitizenFormComponent } from './citizen/citizen-form.component';
+import { CitizenListComponent } from './citizen/citizen-list.component';
+import { CitizenDetailComponent } from './citizen/citizen-detail.component';
 import { LoginComponent } from './auth/login.component';
 
 const routes: RouterConfig = [
@@ -19,7 +19,7 @@ const routes: RouterConfig = [
     },
     {
         path: 'signup',
-        component: UsersNewComponent
+        component: CitizenFormComponent
     },
     {
         path: 'login',
@@ -34,12 +34,12 @@ const routes: RouterConfig = [
         ]
     },
     {
-        path: 'users',
-        component: UsersComponent,
+        path: 'citizens',
+        component: CitizenHomeComponent,
         children: [
-            { path: '', component: UsersListComponent },
-            { path: 'new', component: UsersNewComponent },
-            { path: 'detail/:id', component: UsersDetailComponent }
+            { path: '', component: CitizenListComponent },
+            { path: 'edit', component: CitizenFormComponent },
+            { path: 'detail/:id', component: CitizenDetailComponent }
         ]
     }
 ]

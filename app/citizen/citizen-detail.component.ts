@@ -1,22 +1,22 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { User } from './user';
-import { UserService } from './user.service';
+import { Citizen } from './citizen';
+import { CitizenService } from './citizen.service';
 
 @Component({
-    selector: 'user-detail',
-    templateUrl: 'app/templates/users-detail.component.html'
+    selector: 'citizen-detail',
+    templateUrl: 'app/citizen/templates/citizen-detail.component.html'
 })
 
-export class UsersDetailComponent implements OnInit {
+export class CitizenDetailComponent implements OnInit {
 
     sub: any;
     navigated = false;
-    user: User;
+    citizen: Citizen;
 
     constructor(
-        private userService: UserService,
+        private citizenService: CitizenService,
         private route: ActivatedRoute
     ) { }
 
@@ -26,11 +26,11 @@ export class UsersDetailComponent implements OnInit {
                 console.log(params['id']);
                 let id = +params['id'];
                 this.navigated = true;
-                this.userService.getUser(id)
+                this.citizenService.getCitizen(id)
                     //.subscribe(
-                    //user => this.user = user
+                    //citizen => this.citizen = citizen
                     //);
-                    .then(user => this.user = user);
+                    .then(citizen => this.citizen = citizen);
             } else {
                 this.navigated = false;
             }

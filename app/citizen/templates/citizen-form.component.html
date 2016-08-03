@@ -1,0 +1,27 @@
+{{diagnostic}}
+<div class="row">
+  <div class="col-lg-6">
+    <form #citizenForm="ngForm" (ngSubmit)="newCitizen()">
+      <fieldset>
+	<legend>{{title}}</legend>
+	<div class="form-group">
+	  <label for="name">Nombre</label>
+	  <input class="form-control" [(ngModel)]="citizen.name" type="text" name="name" required>
+	</div>
+	<div class="form-group">
+	  <label for="surname">Apellido</label>
+	  <input class="form-control" [(ngModel)]="citizen.lastName1" type="text" name="lastName1" required>
+	</div>
+	<div class="form-group">
+	  <label for="email">Correo electrónico</label>
+	  <input class="form-control" [(ngModel)]="citizen.email" type="email" name="email" required>
+	</div>
+	<div class="form-group">
+	  <label for="password">Contraseña</label>
+	  <input class="form-control" [(ngModel)]="citizen.password" type="password" name="password">
+	</div>
+	<button type="submit" class="btn btn-default" [disabled]="!citizenForm.form.valid">Enviar</button>
+      </fieldset>
+    </form>
+  </div>
+</div>

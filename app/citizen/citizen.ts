@@ -1,4 +1,4 @@
-export class User {
+export class Citizen {
 
     constructor(
         public _id: string,

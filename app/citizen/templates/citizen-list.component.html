@@ -16,21 +16,21 @@
 	</tr>
       </thead>
       <tbody>
-	<tr *ngFor="let user of users" (click)="onSelect(user)" [class.selected]="user === selectedUser">
+	<tr *ngFor="let citizen of citizens" (click)="onSelect(citizen)" [class.selected]="citizen === selectedCitizen">
 	  <td></td>
-	  <td>{{user.name}}</td>
-	  <td>{{user.lastName1}}</td>
-	  <td>{{user.email}}</td>
-	  <td>{{user.identification}}</td>
+	  <td>{{citizen.name}}</td>
+	  <td>{{citizen.lastName1}}</td>
+	  <td>{{citizen.email}}</td>
+	  <td>{{citizen.identification}}</td>
 	</tr>
       </tbody>
     </table>
-    <div *ngIf="selectedUser">
-      <h3>Ha seleccionado a: {{selectedUser.name}}</h3>
+    <div *ngIf="selectedCitizen">
+      <h3>Ha seleccionado a: {{selectedCitizen.name}}</h3>
       <button (click)="viewDetail()">Ver detalles</button>
     </div>
   </div>
   <div class="col-lg-6">
-    <user-detail></user-detail>
+    <citizen-detail></citizen-detail>
   </div>
 </div>
