@@ -1,4 +1,6 @@
 import { provideRouter, RouterConfig } from '@angular/router';
+
+import { HomeComponent } from './home.component';
 // TODO: Procedures should be packaged in system.config file
 import { ProceduresComponent } from './procedures/procedures.component';
 import { ProceduresListComponent } from './procedures/procedures-list.component';
@@ -11,6 +13,10 @@ import { UsersDetailComponent } from './users/users-detail.component';
 import { LoginComponent } from './users/login.component';
 
 const routes: RouterConfig = [
+    {
+        path: '',
+        component: HomeComponent
+    },
     {
         path: 'signup',
         component: UsersNewComponent
