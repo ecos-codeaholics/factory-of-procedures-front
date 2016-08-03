@@ -1,16 +1,23 @@
 {{diagnostic}}
-<form class="pure-form pure-form-stacked" #loginForm="ngForm" (ngSubmit)="doLogin()">
-  <fieldset>
-    <legend>{{title}}</legend>
-    
-    <label for="email">Correo electrónico</label>
-    <input [(ngModel)]="user.email" type="text" name="email" required>
-    
-    <label for="password">Contraseña</label>
-    <input [(ngModel)]="user.password" type="password" name="password">
-    <button type="submit" class="pure-button pure-button-primary" [disabled]="!loginForm.form.valid">Ingresar</button>
-  </fieldset>
-  <hr />
-  <div>Olvidó su contraseña?, <span><a href="#">recuperela</a></span></div>
-  <div>Si no tiene cuenta, <span><a href="#">regístrese</a></span></div>
-</form>
+<div class="row">
+  <div class="col-lg-6">
+    <form #loginForm="ngForm" (ngSubmit)="doLogin()">
+      <fieldset>
+	<legend>{{title}}</legend>
+	<div class="form-group">
+	  <label for="email">Correo electrónico</label>
+	  <input class="form-control" [(ngModel)]="user.email" type="text" name="email" required>
+	</div>
+	<div class="form-group">
+	  <label for="password">Contraseña</label>
+	  <input class="form-control" [(ngModel)]="user.password" type="password" name="password">
+	</div>
+	
+	<button type="submit" class="btn btn-default" [disabled]="!loginForm.form.valid">Ingresar</button>
+      </fieldset>
+      <hr />
+      <div>Olvidó su contraseña?, <span><a href="#">recuperela</a></span></div>
+      <div>Si no tiene cuenta, <span><a href="#">regístrese</a></span></div>
+    </form>
+  </div>
+</div>
