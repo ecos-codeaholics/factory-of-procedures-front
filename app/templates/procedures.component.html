@@ -1,14 +1,13 @@
 <h2>{{title}}</h2>
-<div class="pure-menu pure-menu-horizontal">
-  <ul class="pure-menu-list">
-    <li class="pure-menu-item">
-      <a class="pure-menu-link" [routerLink] = "'/procedures'">Lista</a>
-    </li>
-    <li class="pure-menu-item">
-      <a class="pure-menu-link" [routerLink] = "'/procedures/new'">Nuevo</a>
-    </li>
-  </ul>
-</div>
-<div class="inner-content">
+<ul class="nav nav-tabs">
+  <li role="presentation">
+    <a [routerLink] = "'/procedures'" #spy>Lista</a>
+  </li>
+  <li role="presentation">
+    <a class="pure-menu-link" [routerLink] = "'/procedures/new'">Nuevo</a>
+  </li>
+</ul>
+{{spy}}
+<div class="row">
   <router-outlet></router-outlet>
 </div>
