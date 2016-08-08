@@ -6,9 +6,7 @@
 	<div class="form-group">
 	  <label for="state">Departamento</label>
 	  <select class="form-control" name="departamento" required>
-	    <option>Cundinamarca</option>
-	    <option>Boyacá</option>
-	    <option>Lorem ipum</option>
+	    <option *ngFor="let state of states">{{state.name}}</option>
 	  </select>
 	</div>
 	<div class="form-group">
