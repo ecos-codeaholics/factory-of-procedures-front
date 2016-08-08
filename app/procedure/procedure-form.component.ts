@@ -3,11 +3,11 @@ import { NgForm } from '@angular/forms';
 import { ProcedureAttachment } from './procedure-attachment';
 
 @Component({
-    selector: 'procedures-new',
-    templateUrl: 'app/templates/procedures-new.component.html'
+    selector: 'procedure-form',
+    templateUrl: 'app/procedure/templates/procedure-form.component.html'
 })
 
-export class ProceduresNewComponent {
+export class ProcedureFormComponent {
 
     title = 'Nuevo Trámite';
 
