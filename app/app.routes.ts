@@ -15,6 +15,8 @@ import { CitizenListComponent } from './citizen/citizen-list.component';
 import { CitizenDetailComponent } from './citizen/citizen-detail.component';
 import { LoginComponent } from './auth/login.component';
 
+import { AuthGuard } from './auth/auth.guard';
+
 const routes: RouterConfig = [
     {
         path: '',
