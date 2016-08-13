@@ -20,7 +20,7 @@ import { AuthGuard } from './auth/auth.guard';
 const routes: RouterConfig = [
     {
         path: '',
-        component: HomeComponent
+        component: HomeComponent, canActivate: [AuthGuard]
     },
     {
         path: 'signup',
