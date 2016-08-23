@@ -2,10 +2,13 @@ import { provideRouter, RouterConfig } from '@angular/router';
 
 import { HomeComponent } from './home.component';
 // TODO: Procedures should be packaged in system.config file
-import { ProceduresComponent } from './procedures/procedures.component';
-import { ProceduresListComponent } from './procedures/procedures-list.component';
-import { ProceduresNewComponent } from './procedures/procedures-new.component';
 
+// Procedure Feature
+import { ProcedureHomeComponent } from './procedure/procedure-home.component';
+import { ProcedureListComponent } from './procedure/procedure-list.component';
+import { ProcedureFormComponent } from './procedure/procedure-form.component';
+
+// Citizen Feature
 
 import { CitizenHomeComponent } from './citizen/citizen-home.component';
 import { CitizenFormComponent } from './citizen/citizen-form.component';
@@ -16,10 +19,12 @@ import { CitizenInProgressProceduresComponent } from './citizen/citizen-inprogre
 
 import { LoginComponent } from './auth/login.component';
 
+import { AuthGuard } from './auth/auth.guard';
+
 const routes: RouterConfig = [
     {
         path: '',
-        component: HomeComponent
+        component: HomeComponent, canActivate: [AuthGuard]
     },
     {
         path: 'signup',
@@ -31,10 +36,10 @@ const routes: RouterConfig = [
     },
     {
         path: 'procedures',
-        component: ProceduresComponent,
+        component: ProcedureHomeComponent,
         children: [
-            { path: '', component: ProceduresListComponent },
-            { path: 'new', component: ProceduresNewComponent }
+            { path: '', component: ProcedureListComponent },
+            { path: 'edit', component: ProcedureFormComponent }
         ]
     },
     {

@@ -20,13 +20,21 @@ export class LoginComponent {
     constructor(private authService: AuthService) { }
 
     doLogin(user: Login) {
+
         this.authService
             .doLogin(this.user)
-            .then(user => {
-                this.user = user;
-            })
-            .catch(error => this.error = error);
+            .subscribe(
+            (res) => {
+                localStorage.setItem('id_token', res.json().id_token);
+                console.log(res.json().id_token);
+
+            },
+            error => {
+                console.log("ERROR:", error.text());
+            });
     }
 
+
     get diagnostic() { return JSON.stringify(this.user); }
+
 }

@@ -7,7 +7,7 @@ import { CitizenService } from './citizen/citizen.service';
 import { CitizenFormComponent } from './citizen/citizen-form.component';
 import { LoginComponent } from './auth/login.component';
 import { AuthService } from './auth/auth.service';
-import { ProceduresComponent } from './procedures/procedures.component';
+import { ProcedureHomeComponent } from './procedure/procedure-home.component';
 //import './rxjs-extensions';
 
 @Component({
@@ -15,7 +15,7 @@ import { ProceduresComponent } from './procedures/procedures.component';
     templateUrl: 'app/templates/app.component.html',
     directives: [CitizenHomeComponent, CitizenFormComponent, LoginComponent, ROUTER_DIRECTIVES],
     providers: [CitizenService, AuthService],
-    precompile: [HomeComponent, CitizenHomeComponent, CitizenFormComponent, LoginComponent, ProceduresComponent]
+    precompile: [HomeComponent, CitizenHomeComponent, CitizenFormComponent, LoginComponent, ProcedureHomeComponent]
 })
 
 export class AppComponent {
