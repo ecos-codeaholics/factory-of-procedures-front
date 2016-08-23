@@ -6,3 +6,7 @@ app/*.js
 app/*.js.map
 app/*/*.js
 app/*/*.js.map
+npm-debug.log*
+.project
+.settings/
+package.json
