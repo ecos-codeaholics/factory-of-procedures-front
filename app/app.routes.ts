@@ -1,4 +1,4 @@
-import { provideRouter, RouterConfig } from '@angular/router';
+import { Routes, RouterModule } from '@angular/router';
 
 import { HomeComponent } from './home.component';
 // TODO: Procedures should be packaged in system.config file
@@ -17,7 +17,7 @@ import { LoginComponent } from './auth/login.component';
 
 import { AuthGuard } from './auth/auth.guard';
 
-const routes: RouterConfig = [
+const routes: Routes = [
     {
         path: '',
         component: HomeComponent, canActivate: [AuthGuard]
@@ -49,6 +49,8 @@ const routes: RouterConfig = [
     }
 ]
 
-export const appRouterProviders = [
-    provideRouter(routes)
-]
+export const appRoutingProviders: any[] = [
+
+];
+
+export const routing = RouterModule.forRoot(routes);
