@@ -1,38 +1,41 @@
-<p>TRAMITES HISTORICOS </p>
-
 <div class="row">
-  <div class="col-lg-12">
-    <h3>{{title}}</h3>
-  </div>
+	<div class="col-lg-12">
+		<h3>{{title}}</h3>
+	</div>
 </div>
 <div class="row">
-  <div class="col-lg-6">
-    <table class="table">
-      <thead>
-	<tr>
-	  <th></th>
-	  <th>Nombre</th>
-	  <th>Apellido</th>
-	  <th>Correo Electrónico</th>
-	  <th>Identificación</th>
-	</tr>
-      </thead>
-      <tbody>
-	<tr *ngFor="let citizen of citizens" (click)="onSelect(citizen)" [class.selected]="citizen === selectedCitizen">
-	  <td></td>
-	  <td>{{citizen.name}}</td>
-	  <td>{{citizen.lastName1}}</td>
-	  <td>{{citizen.email}}</td>
-	  <td>{{citizen.identification}}</td>
-	</tr>
-      </tbody>
-    </table>
-    <div *ngIf="selectedCitizen">
-      <h3>Ha seleccionado a: {{selectedCitizen.name}}</h3>
-      <button (click)="viewDetail()">Ver detalles</button>
-    </div>
-  </div>
-  <div class="col-lg-6">
-    <citizen-detail></citizen-detail>
-  </div>
+	<div class="col-lg-6">
+
+		<table class="table">
+			<thead>
+				<tr>
+					<th></th>
+					<th>Id</th>
+					<th>Nombre</th>
+					<th>Municipio</th>
+					<th>Estado</th>
+					<th>Ver</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr *ngFor="let citizen of citizens" (click)="onSelect(citizen)"
+					[class.selected]="citizen === selectedCitizen">
+					<td></td>
+					<td>1</td>
+					<td>{{citizen.name}}</td>
+					<td>{{citizen.lastName1}}</td>
+					<td>{{citizen.email}}</td>
+					<td>{{citizen.identification}}</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<div *ngIf="selectedCitizen">
+			<h3>Ha seleccionado a: {{selectedCitizen.name}}</h3>
+			<button (click)="viewDetail()">Ver detalles</button>
+		</div>
+	</div>
+	<div class="col-lg-6">
+		<citizen-detail></citizen-detail>
+	</div>
 </div>
