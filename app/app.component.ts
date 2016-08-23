@@ -14,8 +14,7 @@ import { ProcedureHomeComponent } from './procedure/procedure-home.component';
     selector: 'app',
     templateUrl: 'app/templates/app.component.html',
     directives: [CitizenHomeComponent, CitizenFormComponent, LoginComponent, ROUTER_DIRECTIVES],
-    providers: [CitizenService, AuthService],
-    precompile: [HomeComponent, CitizenHomeComponent, CitizenFormComponent, LoginComponent, ProcedureHomeComponent]
+    providers: [CitizenService, AuthService]
 })
 
 export class AppComponent {

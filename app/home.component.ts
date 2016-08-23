@@ -8,7 +8,6 @@ import { JwtHelperService } from './common/jwt-helper.service';
     selector: 'app-home',
     templateUrl: 'app/templates/home.component.html',
     directives: [ROUTER_DIRECTIVES, CitizenSelectProcedureComponent],
-    precompile: [CitizenSelectProcedureComponent],
     providers: [JwtHelperService]
 })
 

@@ -7,7 +7,6 @@ import { ProcedureFormComponent } from './procedure-form.component';
     selector: 'procedure-section',
     templateUrl: 'app/procedure/templates/procedure-home.component.html',
     directives: [ROUTER_DIRECTIVES],
-    precompile: [ProcedureListComponent, ProcedureFormComponent]
 })
 
 export class ProcedureHomeComponent {

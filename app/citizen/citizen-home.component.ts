@@ -9,7 +9,6 @@ import { CitizenDetailComponent } from './citizen-detail.component';
     selector: 'citizens',
     templateUrl: 'app/citizen/templates/citizen-home.component.html',
     directives: [ROUTER_DIRECTIVES],
-    precompile: [CitizenListComponent, CitizenFormComponent, CitizenDetailComponent]
 })
 
 export class CitizenHomeComponent {
