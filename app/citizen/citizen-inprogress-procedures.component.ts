@@ -15,7 +15,7 @@ import { ProcedureService } from '../procedure/procedure.service';
     //directives: [CitizenDetailComponent]
 })
 
-export class CitizenInProgressProceduresComponent {
+export class CitizenInProgressProceduresComponent implements OnInit {
 
     title = "Tramites en curso";
 
@@ -23,6 +23,8 @@ export class CitizenInProgressProceduresComponent {
     citizens: Citizen[];
     selectedCitizen: Citizen;
 
+     mode = 'Observable'
+    
     error: any;
 
     errorMessage: string;
@@ -41,11 +43,17 @@ export class CitizenInProgressProceduresComponent {
         this.router.navigate(['/citizens/detail', this.selectedCitizen.identification])
     }
 */
+    
     getInProgrssProcedures() {
+        
         this.procedureService.getProcedures().subscribe(
             procedures => this.procedures=procedures,
-            error => this.errorMessage = "Ocurrio un error en getInProgrssProcedures."
-            )
+           error =>  this.errorMessage = <any>error
+            );
+        /*this.procedureService.getHistProcedures().subscribe(
+            procedures => this.procedures=procedures,
+           error =>  this.errorMessage = <any>error
+            );*/
     }
     
 

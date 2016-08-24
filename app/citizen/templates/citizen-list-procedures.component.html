@@ -18,14 +18,13 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr *ngFor="let citizen of citizens" (click)="onSelect(citizen)"
-					[class.selected]="citizen === selectedCitizen">
+				<tr *ngFor="let procedure of procedures">
 					<td></td>
 					<td>1</td>
-					<td>{{citizen.name}}</td>
-					<td>{{citizen.lastName1}}</td>
-					<td>{{citizen.email}}</td>
-					<td>{{citizen.identification}}</td>
+					<td>{{procedure.id}}</td>
+					<td>{{procedure.name}}</td>
+					<td>{{procedure.department}}</td>
+					<td>{{procedure.state}}</td>
 				</tr>
 			</tbody>
 		</table>

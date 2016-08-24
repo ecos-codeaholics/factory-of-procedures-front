@@ -32,16 +32,8 @@ export class CitizenListProceduresComponent {
     viewDetail() {
         this.router.navigate(['/citizens/detail', this.selectedCitizen.identification])
     }
-
-    getCitizens() {
-        this.citizenService
-            .getCitizens()
-            .subscribe(
-            citizens => this.citizens = JSON.parse(citizens)
-            );
-    }
+*/
 
     ngOnInit() {
-        this.getCitizens();
-    }*/
+    }
 }
