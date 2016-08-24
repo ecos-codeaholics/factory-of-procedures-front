@@ -1,14 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 
-import { State } from '../state/state';
 import { StateService } from '../state/state.service';
+import { State } from '../state/state';
 
 
 @Component({
     selector: 'select-procedure',
-    templateUrl: 'app/citizen/templates/citizen-select-procedure.html',
-    providers: [StateService]
-
+    templateUrl: 'app/citizen/templates/citizen-select-procedure.html'
 })
 
 export class CitizenSelectProcedureComponent implements OnInit {

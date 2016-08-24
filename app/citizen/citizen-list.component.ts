@@ -1,14 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 
-import { CitizenDetailComponent } from './citizen-detail.component';
-import { Citizen } from './citizen';
 import { CitizenService } from './citizen.service';
+import { Citizen } from './citizen';
 
 @Component({
     selector: 'citizen-list',
-    templateUrl: 'app/citizen/templates/citizen-list.component.html',
-    directives: [CitizenDetailComponent]
+    templateUrl: 'app/citizen/templates/citizen-list.component.html'
 })
 
 export class CitizenListComponent implements OnInit {
@@ -21,17 +18,17 @@ export class CitizenListComponent implements OnInit {
     error: any;
 
     constructor(
-        private citizenService: CitizenService,
-        private router: Router
+        private citizenService: CitizenService
+        //private router: routing?
     ) { }
 
     onSelect(citizen: Citizen) {
         this.selectedCitizen = citizen;
     }
 
-    viewDetail() {
-        this.router.navigate(['/citizens/detail', this.selectedCitizen.identification])
-    }
+    //viewDetail() {
+    //    this.router.navigate(['/citizens/detail', this.selectedCitizen.identification])
+    //}
 
     getCitizens() {
         this.citizenService

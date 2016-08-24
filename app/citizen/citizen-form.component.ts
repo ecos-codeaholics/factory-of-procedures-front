@@ -1,7 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { NgForm, FormBuilder, Validators } from '@angular/forms';
 import { CitizenService } from './citizen.service';
-
 import { Citizen } from './citizen';
 
 @Component({
@@ -13,7 +12,7 @@ export class CitizenFormComponent {
 
     //@Input() user: User;
 
-    title = 'Registro de Ciudadano';
+    title = 'Perfil del ciudadan';
 
     citizen = new Citizen('', 1, '', '', '', '');
 
@@ -23,16 +22,6 @@ export class CitizenFormComponent {
 
     submitted = false;
 
-    newCitizen(citizen: Citizen) {
-        this.citizenService
-            .newCitizen(this.citizen)
-            .then(citizen => {
-                this.citizen = citizen;
-            })
-            .catch(error => this.error = error);
-    }
-
     get diagnostic() { return JSON.stringify(this.citizen); }
 
 }
-

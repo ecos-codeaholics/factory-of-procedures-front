@@ -1,14 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
 
 import { AuthService } from './auth.service';
 import { Login } from './login';
-import { ROUTER_DIRECTIVES } from '@angular/router';
 
 @Component({
     selector: 'user-login',
     templateUrl: 'app/templates/login.component.html',
-    directives: [ROUTER_DIRECTIVES]
 })
 
 export class LoginComponent {

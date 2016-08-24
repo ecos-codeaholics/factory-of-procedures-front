@@ -5,6 +5,8 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/toPromise';
 
 import { Login } from './login';
+import { Citizen } from '../citizen/citizen';
+
 
 @Injectable()
 export class AuthService {
@@ -15,6 +17,8 @@ export class AuthService {
     // Uncomment this to match factory server model
     //private loginUrl = "http://127.0.0.1:4567/citizenLogin";
     private loginUrl = "http://localhost:3001/sessions/create";
+    private createCitizenUrl = 'http://127.0.0.1:4567/citizen/create';
+
 
     // TODO: Make this reusable in separate Utilitie
     private handleError(error: any) {
@@ -41,5 +45,17 @@ export class AuthService {
             .map((res) => {
                 return res;
             });
+    }
+
+    newCitizen(citizen: Citizen): Promise<Citizen> {
+
+        let body = JSON.stringify(citizen);
+        let headers = new Headers({ 'Content-Type': 'application/json' });
+        let options = new RequestOptions({ headers: headers });
+
+        return this.http.post(this.createCitizenUrl, body, options)
+            .toPromise()
+            .then(response => response.json().data as Citizen)
+            .catch(this.handleError);
     }
 }
