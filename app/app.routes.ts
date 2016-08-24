@@ -11,6 +11,7 @@ import { ProcedureFormComponent } from './procedure/procedure-form.component';
 // Citizen Feature
 import { CitizenHomeComponent } from './citizen/citizen-home.component';
 import { CitizenFormComponent } from './citizen/citizen-form.component';
+import { CitizenRecoverComponent } from './citizen/citizen-recover.component';
 import { CitizenListComponent } from './citizen/citizen-list.component';
 import { CitizenDetailComponent } from './citizen/citizen-detail.component';
 import { LoginComponent } from './auth/login.component';
@@ -25,6 +26,10 @@ const routes: RouterConfig = [
     {
         path: 'signup',
         component: CitizenFormComponent
+    },
+    {
+        path: 'recover',
+        component: CitizenRecoverComponent
     },
     {
         path: 'login',

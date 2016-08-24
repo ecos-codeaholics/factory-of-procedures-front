@@ -5,6 +5,7 @@ import { HomeComponent } from './home.component';
 import { CitizenHomeComponent } from './citizen/citizen-home.component';
 import { CitizenService } from './citizen/citizen.service';
 import { CitizenFormComponent } from './citizen/citizen-form.component';
+import { CitizenRecoverComponent } from './citizen/citizen-recover.component';
 import { LoginComponent } from './auth/login.component';
 import { AuthService } from './auth/auth.service';
 import { ProcedureHomeComponent } from './procedure/procedure-home.component';
@@ -13,12 +14,12 @@ import { ProcedureHomeComponent } from './procedure/procedure-home.component';
 @Component({
     selector: 'app',
     templateUrl: 'app/templates/app.component.html',
-    directives: [CitizenHomeComponent, CitizenFormComponent, LoginComponent, ROUTER_DIRECTIVES],
+    directives: [CitizenHomeComponent, CitizenFormComponent, CitizenRecoverComponent, LoginComponent, ROUTER_DIRECTIVES],
     providers: [CitizenService, AuthService],
-    precompile: [HomeComponent, CitizenHomeComponent, CitizenFormComponent, LoginComponent, ProcedureHomeComponent]
+    precompile: [HomeComponent, CitizenHomeComponent, CitizenFormComponent , CitizenRecoverComponent, LoginComponent, ProcedureHomeComponent]
 })
 
 export class AppComponent {
-    title = 'Fábrica de trámites';
+    title = 'Fábrica de Trámites';
 }
 
