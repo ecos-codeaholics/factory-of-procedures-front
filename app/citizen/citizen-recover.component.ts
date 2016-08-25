@@ -15,24 +15,14 @@ export class CitizenRecoverComponent {
 
     title = 'Recuperar Constraseña';
 
-    citizen = new Citizen('', 1, '', '', '', '');
-
     error: any;
 
     constructor(private citizenService: CitizenService) { }
 
     submitted = false;
 
-    newCitizen(citizen: Citizen) {
-        this.citizenService
-            .newCitizen(this.citizen)
-            .then(citizen => {
-                this.citizen = citizen;
-            })
-            .catch(error => this.error = error);
-    }
 
-    get diagnostic() { return JSON.stringify(this.citizen); }
+    //get diagnostic() { return JSON.stringify(this.citizen); }
 
 }
 
