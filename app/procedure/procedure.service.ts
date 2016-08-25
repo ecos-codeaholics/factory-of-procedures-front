@@ -1,12 +1,23 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Rx';
+import { Http, Response } from '@angular/http';
+
+
 import { ProcedureAttachment } from './procedure-attachment';
+import { Procedure }   from './procedure';
+
+import {HttpClient} from '../HttpClient';
+
+import { Observable } from 'rxjs/Rx';
 
 @Injectable()
 export class ProcedureService {
+        
+    constructor(private http:Http){}
 
-    private fileUploadUrl = '127.0.0.1/procedures/documents/upload';
+    private fileUploadUrl = 'app/procedure/procedures.json';
 
+    private proceduresUrl = 'app/procedure/procedures.json';
+    
     uploadFile(file: File): Promise<ProcedureAttachment> {
         return new Promise((resolve, reject) => {
 
@@ -30,6 +41,25 @@ export class ProcedureService {
             xhr.send(formData);
         })
     }
-
-
+    /*
+    getHistProcedures(): Observable<Procedure[]>{
+        return HttpClient.getJson(this.proceduresUrl);   
+    }*/
+    
+    getProcedures(): Observable<Procedure[]>{
+        return this.http.get(this.proceduresUrl).map(this.extractData).catch(this.handleError);
+    }
+    
+    private extractData(res: Response){
+        let body= res.json();
+        return body.data || {};    
+    }
+    private handleError (error:any){
+        let errMsg = (error.message) ? error.message :
+            error.status ?`${error.status} - ${error.statusText}`:'Server error'; 
+            console.error("Esto es un error:  "+errMsg);
+            alert("Necesito capturar este error en otro lugar "+ errMsg);
+            return Observable.throw(errMsg);
+    }
+    
 }

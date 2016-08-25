@@ -50,13 +50,14 @@ export class CitizenService {
 
     getCitizens() {
 
-        //return Promise.resolve(CITIZENS);
+       // return Promise.resolve(CITIZENS);
         let req = new Request({
             method: "GET",
             url: this.listCitizenUrl
         });
-
         return this.http.request(req)
             .map(res => res.json());
     }
+    getInProgrssProcedures(){
+        }
 }

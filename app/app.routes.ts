@@ -9,11 +9,15 @@ import { ProcedureListComponent } from './procedure/procedure-list.component';
 import { ProcedureFormComponent } from './procedure/procedure-form.component';
 
 // Citizen Feature
+
 import { CitizenHomeComponent } from './citizen/citizen-home.component';
 import { CitizenFormComponent } from './citizen/citizen-form.component';
 import { CitizenRecoverComponent } from './citizen/citizen-recover.component';
 import { CitizenListComponent } from './citizen/citizen-list.component';
 import { CitizenDetailComponent } from './citizen/citizen-detail.component';
+import { CitizenListProceduresComponent } from './citizen/citizen-list-procedures.component';
+import { CitizenInProgressProceduresComponent } from './citizen/citizen-inprogress-procedures.component';
+
 import { LoginComponent } from './auth/login.component';
 
 import { AuthGuard } from './auth/auth.guard';
@@ -49,7 +53,9 @@ const routes: RouterConfig = [
         children: [
             { path: '', component: CitizenListComponent },
             { path: 'edit', component: CitizenFormComponent },
-            { path: 'detail/:id', component: CitizenDetailComponent }
+            { path: 'detail/:id', component: CitizenDetailComponent },
+            { path: 'hist', component: CitizenListProceduresComponent }
+            ,{ path: 'inprogress', component: CitizenInProgressProceduresComponent }
         ]
     }
 ]
