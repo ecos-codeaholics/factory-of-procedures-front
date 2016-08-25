@@ -14,8 +14,7 @@ export class CitizenService {
 
     constructor(private http: Http) { }
 
-    private createCitizenUrl = 'http://127.0.0.1:4567/citizen/create';
-    private listCitizenUrl = 'http://127.0.0.1:4567/citizen/citizenList';
+    private citizensUrl = 'http://localhost:4567/citizens/';
 
     private handleError(error: any) {
 
@@ -36,7 +35,7 @@ export class CitizenService {
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers });
 
-        return this.http.post(this.createCitizenUrl, body, options)
+        return this.http.post(this.citizensUrl, body, options)
             .toPromise()
             .then(response => response.json().data as Citizen)
             .catch(this.handleError);
@@ -53,7 +52,7 @@ export class CitizenService {
        // return Promise.resolve(CITIZENS);
         let req = new Request({
             method: "GET",
-            url: this.listCitizenUrl
+            url: this.citizensUrl
         });
         return this.http.request(req)
             .map(res => res.json());
