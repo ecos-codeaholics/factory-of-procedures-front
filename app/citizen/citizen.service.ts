@@ -14,7 +14,7 @@ export class CitizenService {
 
     constructor(private http: Http) { }
 
-    private listCitizenUrl = 'http://127.0.0.1:4567/citizen/citizenList';
+    private citizensUrl = 'http://localhost:4567/citizens/';
 
     private handleError(error: any) {
 
@@ -29,7 +29,6 @@ export class CitizenService {
         return body.data || {};
     }
 
-
     getCitizen(id: number) {
         return this.getCitizens()
             .toPromise()
@@ -41,7 +40,7 @@ export class CitizenService {
         //return Promise.resolve(CITIZENS);
         let req = new Request({
             method: "GET",
-            url: this.listCitizenUrl
+            url: this.citizensUrl
         });
 
         return this.http.request(req)

@@ -9,8 +9,20 @@
 	  <input class="form-control" [(ngModel)]="citizen.name" type="text" name="name" required>
 	</div>
 	<div class="form-group">
-	  <label for="surname">Apellido</label>
+	  <label for="surname">Primer Apellido</label>
 	  <input class="form-control" [(ngModel)]="citizen.lastName1" type="text" name="lastName1" required>
+	</div>
+	<div class="form-group">
+	  <label for="surname2">Segundo Apellido</label>
+	  <input class="form-control" [(ngModel)]="citizen.lastName2" type="text" name="lastName2" required>
+	</div>
+	<div class="form-group">
+	  <label for="identification">Identificación</label>
+	  <input class="form-control" [(ngModel)]="citizen.identification" type="text" name="identification" required>
+	</div>
+	<div class="form-group">
+      <label for="birthdate">Fecha de Nacimiento</label>
+      <input class="form-control" [(ngModel)]="citizen.birthDate" type="date" name="birthDate" required>
 	</div>
 	<div class="form-group">
 	  <label for="email">Correo electrónico</label>

@@ -23,7 +23,7 @@
 	<button type="submit" class="btn btn-default" [disabled]="!loginForm.form.valid">Ingresar</button>
       </fieldset>
       <hr />
-      <div>Olvidó su contraseña?, <span><a href="#">recuperela</a></span></div>
+      <div>Olvidó su contraseña?, <span><a [routerLink]="['/recover']">recuperela</a></span></div>
       <div>Si no tiene cuenta, <span><a [routerLink]="['/signup']">regístrese</a></span></div>
     </form>
   </div>

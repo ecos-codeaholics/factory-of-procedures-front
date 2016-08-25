@@ -14,7 +14,7 @@ export class SignupFormComponent {
 
     title = 'Registro de Ciudadano';
 
-    citizen = new Citizen('', 1, '', '', '', '');
+    citizen = new Citizen('', 1, '', '', '', '', '', '');
 
     error: any;
 

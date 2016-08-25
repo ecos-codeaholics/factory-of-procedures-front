@@ -7,6 +7,10 @@ import { AuthService } from './auth.service';
 
 import { LoginComponent } from './login.component';
 import { SignupFormComponent } from './signup-form.component';
+// TODO: rc5, change component name and location to more
+// general definition
+import { CitizenRecoverComponent } from '../citizen/citizen-recover.component';
+
 
 //import { CitizenFormComponent } from '../citizen/citizen-form.component';
 
@@ -18,7 +22,8 @@ import { SignupFormComponent } from './signup-form.component';
     ],
     declarations: [
         LoginComponent,
-        SignupFormComponent
+        SignupFormComponent,
+        CitizenRecoverComponent
     ],
     providers: [
         AuthService

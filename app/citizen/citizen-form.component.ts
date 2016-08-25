@@ -14,7 +14,7 @@ export class CitizenFormComponent {
 
     title = 'Perfil del ciudadan';
 
-    citizen = new Citizen('', 1, '', '', '', '');
+    citizen = new Citizen('', 1, '', '', '', '', '', '');
 
     error: any;
 
