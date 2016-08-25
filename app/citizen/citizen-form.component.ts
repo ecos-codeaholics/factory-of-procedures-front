@@ -12,7 +12,7 @@ export class CitizenFormComponent {
 
     //@Input() user: User;
 
-    title = 'Perfil del ciudadan';
+    title = 'Perfil del ciudadano';
 
     citizen = new Citizen('', 1, '', '', '', '', '', '');
 

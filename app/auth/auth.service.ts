@@ -14,8 +14,7 @@ export class AuthService {
     constructor(
         public http: Http
     ) { }
-    // Uncomment this to match factory server model
-    //private loginUrl = "http://127.0.0.1:4567/citizenLogin";
+
     private loginUrl = "http://localhost:3001/sessions/create";
     private createCitizenUrl = 'http://127.0.0.1:4567/citizen/create';
 
@@ -47,9 +46,9 @@ export class AuthService {
             });
     }
 
-    newCitizen(citizen: Citizen): Promise<Citizen> {
+    doSignup(signup: Citizen): Promise<Citizen> {
 
-        let body = JSON.stringify(citizen);
+        let body = JSON.stringify(signup);
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers });
 

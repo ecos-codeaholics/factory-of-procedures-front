@@ -6,13 +6,8 @@ import { routing } from './auth.routing';
 import { AuthService } from './auth.service';
 
 import { LoginComponent } from './login.component';
-import { SignupFormComponent } from './signup-form.component';
-// TODO: rc5, change component name and location to more
-// general definition
-import { CitizenRecoverComponent } from '../citizen/citizen-recover.component';
-
-
-//import { CitizenFormComponent } from '../citizen/citizen-form.component';
+import { SignupComponent } from './signup.component';
+import { RecoverComponent } from './recover.component';
 
 @NgModule({
     imports: [
@@ -22,8 +17,8 @@ import { CitizenRecoverComponent } from '../citizen/citizen-recover.component';
     ],
     declarations: [
         LoginComponent,
-        SignupFormComponent,
-        CitizenRecoverComponent
+        SignupComponent,
+        RecoverComponent
     ],
     providers: [
         AuthService

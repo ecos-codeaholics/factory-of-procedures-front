@@ -5,10 +5,10 @@ import { Citizen } from '../citizen/citizen';
 
 @Component({
     selector: 'signup-form',
-    templateUrl: 'app/templates/signup-form.component.html'
+    templateUrl: 'app/auth/templates/signup.component.html'
 })
 
-export class SignupFormComponent {
+export class SignupComponent {
 
     //@Input() user: User;
 
@@ -22,9 +22,10 @@ export class SignupFormComponent {
 
     submitted = false;
 
-    newCitizen(citizen: Citizen) {
+    doSignup(citizen: Citizen) {
+
         this.authService
-            .newCitizen(this.citizen)
+            .doSignup(this.citizen)
             .then(citizen => {
                 this.citizen = citizen;
             })
