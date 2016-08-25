@@ -41,10 +41,10 @@ export class ProcedureService {
             xhr.send(formData);
         })
     }
-    /*
+    
     getHistProcedures(): Observable<Procedure[]>{
-        return HttpClient.getJson(this.proceduresUrl);   
-    }*/
+         return this.http.get(this.proceduresUrl).map(this.extractData).catch(this.handleError);  
+    }
     
     getProcedures(): Observable<Procedure[]>{
         return this.http.get(this.proceduresUrl).map(this.extractData).catch(this.handleError);
