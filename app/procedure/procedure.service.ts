@@ -47,26 +47,13 @@ export class ProcedureService {
     }
     
     getHistProcedures(): Observable<Procedure[]>{
-         return this.http.get(this.proceduresUrl).map(this.extractData).catch(this.handleError);  
+         return this.httpCli.getJson(this.proceduresUrl); 
     }
     
     getProcedures(): Observable<Procedure[]>{
-        return this.http.get(this.proceduresUrl).map(this.extractData).catch(this.handleError);
+        return this.httpCli.getJson(this.proceduresUrl); 
     }
     getInProgressProcedures():Observable<Procedure[]>{
-        return this.httpCli.getJson(this.proceduresUrl);    
+        return this.httpCli.getJson(this.proceduresUrl+"error");    
     }
-    
-    private extractData(res: Response){
-        let body= res.json();
-        return body.data || {};    
-    }
-    private handleError (error:any){
-        let errMsg = (error.message) ? error.message :
-            error.status ?`${error.status} - ${error.statusText}`:'Server error'; 
-            console.error("Esto es un error:  "+errMsg);
-            alert("Necesito capturar este error en otro lugar "+ errMsg);
-            return Observable.throw(errMsg);
-    }
-    
 }
