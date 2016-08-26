@@ -9,7 +9,6 @@ export class HttpClient {
     constructor(private http: Http) { }
 
     public getJson(url) {
-        alert("Entre");
         return this.http.get(url).map(this.extractData).catch(this.handleError);
     }
 /*
@@ -21,6 +20,9 @@ export class HttpClient {
         });
     }*/
     
+    public test1(){
+    alert("Entre a test1 de HttpClient");    
+    }
     private extractData(res: Response){
         let body= res.json();
         return body.data || {};    

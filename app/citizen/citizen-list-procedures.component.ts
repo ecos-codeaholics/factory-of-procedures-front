@@ -25,6 +25,8 @@ export class CitizenListProceduresComponent {
     selectedCitizen: Citizen;
 
     error: any;
+    
+    errorMessage: string;
 
     constructor(
         private citizenService: CitizenService,

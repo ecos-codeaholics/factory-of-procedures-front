@@ -12,12 +12,16 @@ import { Observable } from 'rxjs/Rx';
 @Injectable()
 export class ProcedureService {
         
-    constructor(private http:Http){}
-
+    private httpCli;
+    
     private fileUploadUrl = 'app/procedure/procedures.json';
 
     private proceduresUrl = 'app/procedure/procedures.json';
     
+    constructor(private http:Http){
+        this.httpCli = new HttpClient(http);    
+    }
+   
     uploadFile(file: File): Promise<ProcedureAttachment> {
         return new Promise((resolve, reject) => {
 
@@ -48,6 +52,9 @@ export class ProcedureService {
     
     getProcedures(): Observable<Procedure[]>{
         return this.http.get(this.proceduresUrl).map(this.extractData).catch(this.handleError);
+    }
+    getInProgressProcedures():Observable<Procedure[]>{
+        return this.httpCli.getJson(this.proceduresUrl);    
     }
     
     private extractData(res: Response){
