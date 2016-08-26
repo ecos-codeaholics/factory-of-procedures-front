@@ -1,5 +1,6 @@
 /**
- * auth.guard.ts its contributed by @chenkie
+ * Originally called auth.guard.ts its a service contributed 
+ * by @chenkie
  * @see https://github.com/auth0-blog/angular2-authentication-sample/blob/master/src/common/auth.guard.ts
  */
 
@@ -8,7 +9,7 @@ import { Router, CanActivate } from '@angular/router';
 import { tokenNotExpired } from 'angular2-jwt';
 
 @Injectable()
-export class AuthGuard implements CanActivate {
+export class AuthGuardService implements CanActivate {
     constructor(private router: Router) { }
 
     canActivate() {
@@ -16,7 +17,7 @@ export class AuthGuard implements CanActivate {
             return true;
         }
 
-        this.router.navigate(['/login']);
+        this.router.navigate(['login']);
         return false;
     }
 }
