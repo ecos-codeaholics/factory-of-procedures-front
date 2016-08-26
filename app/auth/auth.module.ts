@@ -22,6 +22,11 @@ import { RecoverComponent } from './recover.component';
     ],
     providers: [
         AuthService
+    ],
+    exports: [
+        LoginComponent,
+        SignupComponent,
+        RecoverComponent
     ]
 })
 

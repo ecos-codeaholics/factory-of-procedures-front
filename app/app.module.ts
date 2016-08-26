@@ -1,45 +1,39 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-
-import { AppComponent } from './app.component';
-import { FormsModule } from '@angular/forms';
 
 import { AuthModule } from './auth/auth.module';
-//import { HomeModule } from './home/home.module';
-import { HomeComponent } from './home/home.component';
+import { HttpModule, Http } from '@angular/http';
+// TODO: this two modules should be part of SharedModules
+import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
+
+import { APP_PROVIDERS } from './app.providers';
+import { AUTH_PROVIDERS, JwtHelper } from 'angular2-jwt';
+import { appRoutingProviders, routing } from './app.routes';
 import { AuthService } from './auth/auth.service';
 
-import { provide } from '@angular/core';
-import { HttpModule } from '@angular/http';
-import { AUTH_PROVIDERS, JwtHelper } from 'angular2-jwt';
-
-import { appRoutingProviders, routing } from './app.routes';
-import { AuthGuard } from './auth/auth.guard';
+import { AppComponent } from './app.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
     imports: [
         BrowserModule,
-        routing,
         FormsModule,
-        HttpModule,
         AuthModule,
-        //      HomeModule
-        //HTTP_PROVIDERS,
-        //AUTH_PROVIDERS,
-        // ¿Services can be Injected from bootstraping stage?
-        //AuthGuard,
-        //JwtHelper,
+        routing,
     ],
     declarations: [
         AppComponent,
-        HomeComponent
+        HomeComponent,
     ],
     bootstrap: [
         AppComponent,
     ],
     providers: [
-        appRoutingProviders,
-        //AuthService
+        APP_PROVIDERS,
+        AuthService,
+        JwtHelper,
+        appRoutingProviders
     ]
 })
+
 export class AppModule { }
