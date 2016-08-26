@@ -1,33 +1,39 @@
 <html>
-  <head>
-    <base href="/">
-    <title>Fábrica de Trámites</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/styles.css">
-    <link rel="icon" type="image/x-icon" href="codeaholicsicon.png">
+<head>
+<base href="/">
+<title>Fábrica de Trámites</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet"
+	href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="assets/css/styles.css">
+<link rel="icon" type="image/x-icon" href="codeaholicsicon.png">
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 
 
-    <script src="node_modules/core-js/client/shim.min.js"></script>
-    <script src="node_modules/zone.js/dist/zone.js"></script>
-    <script src="node_modules/reflect-metadata/Reflect.js"></script>
-    <script src="node_modules/systemjs/dist/system.src.js"></script>
+<script src="node_modules/core-js/client/shim.min.js"></script>
+<script src="node_modules/zone.js/dist/zone.js"></script>
+<script src="node_modules/reflect-metadata/Reflect.js"></script>
+<script src="node_modules/systemjs/dist/system.src.js"></script>
 
-    <script src="systemjs.config.js"></script>
-    <script>
+<script src="systemjs.config.js"></script>
+<script>
       System.import('app').catch(function(err) { console.log(err); });
     </script>
 
-    <script src="node_modules/jquery/jquery.min.js"></script>
-    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-  </head>
+<script src="node_modules/jquery/jquery.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
 
-  <body>
-    <div class="container">
-      <app>Cargando... </app>
-    </div>
-  </body>
+<script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+	<div class="container">
+		<app>Cargando... </app>
+	</div>
+	<div id="dialog" title="Basic dialog">
+		<div id="errMsg"></div>
+	</div>
+</body>
 </html>
-    
-    
