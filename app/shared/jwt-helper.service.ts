@@ -14,7 +14,7 @@ export class JwtHelperService {
 
         if (!this.token) {
 
-            console.log("Not authorized");
+            return "unathorized";
         } else {
 
             return this.jwtHelper.decodeToken(this.token);
