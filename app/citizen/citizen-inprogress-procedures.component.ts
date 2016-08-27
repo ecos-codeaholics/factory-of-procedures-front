@@ -46,11 +46,17 @@ export class CitizenInProgressProceduresComponent implements OnInit {
     
     getInProgrssProcedures() {
         
+        this.procedureService.getInProgressProcedures().subscribe(
+            procedures => this.procedures=procedures,
+           error =>  this.errorMessage = <any>error
+            );
+        
+        /*
         this.procedureService.getProcedures().subscribe(
             procedures => this.procedures=procedures,
            error =>  this.errorMessage = <any>error
             );
-        /*this.procedureService.getHistProcedures().subscribe(
+        this.procedureService.getHistProcedures().subscribe(
             procedures => this.procedures=procedures,
            error =>  this.errorMessage = <any>error
             );*/

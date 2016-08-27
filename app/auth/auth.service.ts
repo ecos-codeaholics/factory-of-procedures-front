@@ -6,9 +6,13 @@ import 'rxjs/add/operator/toPromise';
 
 import { Login } from './login';
 
+import { HttpClient } from '../HttpClient';
+
 @Injectable()
 export class AuthService {
-
+    
+   
+    
     constructor(
         public http: Http
     ) { }
@@ -33,7 +37,8 @@ export class AuthService {
     }
 
     doLogin(login: Login) {
-
+    
+        alert("sebas")
         let body = JSON.stringify(login);
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers });
