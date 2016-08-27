@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
 
 import { AuthService } from './auth.service';
 import { Login } from './login';
@@ -15,7 +14,7 @@ export class LoginComponent {
 
     title = 'Acceso de usuario';
 
-    user = new Login('', '');
+    user = new Login('', '','');
 
     error: any;
 

@@ -15,6 +15,7 @@ export class AuthService {
     // Uncomment this to match factory server model
     //private loginUrl = "http://127.0.0.1:4567/citizenLogin";
     private loginUrl = "http://localhost:3001/sessions/create";
+    private citizensUrl = 'http://157.253.17.148:4567/citizens/';
 
     // TODO: Make this reusable in separate Utilitie
     private handleError(error: any) {
@@ -38,6 +39,18 @@ export class AuthService {
         let options = new RequestOptions({ headers: headers });
 
         return this.http.post(this.loginUrl, body, options)
+            .map((res) => {
+                return res;
+            });
+    }
+
+    resetPassword(login: Login) {
+
+        let body = JSON.stringify(login);
+        let headers = new Headers({ 'Content-Type': 'application/json' });
+        let options = new RequestOptions({ headers: headers });
+
+        return this.http.put(this.citizensUrl, body, options)
             .map((res) => {
                 return res;
             });

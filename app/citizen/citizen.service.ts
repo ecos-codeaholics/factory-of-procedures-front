@@ -14,7 +14,7 @@ export class CitizenService {
 
     constructor(private http: Http) { }
 
-    private citizensUrl = 'http://localhost:4567/citizens/';
+    private citizensUrl = 'http://157.253.17.148:4567/citizens/';
 
     private handleError(error: any) {
 
@@ -57,6 +57,8 @@ export class CitizenService {
         return this.http.request(req)
             .map(res => res.json());
     }
+
+
     getInProgrssProcedures(){
         }
 }

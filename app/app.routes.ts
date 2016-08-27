@@ -12,7 +12,7 @@ import { ProcedureFormComponent } from './procedure/procedure-form.component';
 
 import { CitizenHomeComponent } from './citizen/citizen-home.component';
 import { CitizenFormComponent } from './citizen/citizen-form.component';
-import { CitizenRecoverComponent } from './citizen/citizen-recover.component';
+import { RecoverComponent } from './auth/recover.component';
 import { CitizenListComponent } from './citizen/citizen-list.component';
 import { CitizenDetailComponent } from './citizen/citizen-detail.component';
 import { CitizenListProceduresComponent } from './citizen/citizen-list-procedures.component';
@@ -33,7 +33,7 @@ const routes: RouterConfig = [
     },
     {
         path: 'recover',
-        component: CitizenRecoverComponent
+        component: RecoverComponent
     },
     {
         path: 'login',
