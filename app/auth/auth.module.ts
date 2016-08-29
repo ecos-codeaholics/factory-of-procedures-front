@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { SharedModule } from '../shared/shared.module';
 import { routing } from './auth.routing';
 
 import { AuthService } from './auth.service';
@@ -11,8 +10,7 @@ import { RecoverComponent } from './recover.component';
 
 @NgModule({
     imports: [
-        CommonModule,
-        FormsModule,
+        SharedModule,
         routing
     ],
     declarations: [

@@ -1,5 +1,4 @@
 import { Component, Input } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 import { AuthService } from './auth.service';
 
 import { Citizen } from '../citizen/citizen';

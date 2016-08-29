@@ -2,9 +2,9 @@ import { NgModule } from '@angular/core';
 
 import { AuthModule } from './auth/auth.module';
 import { HttpModule, Http } from '@angular/http';
-// TODO: this two modules should be part of SharedModules
+
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { SharedModule } from './shared/shared.module';
 
 import { APP_PROVIDERS } from './app.providers';
 import { AUTH_PROVIDERS, JwtHelper } from 'angular2-jwt';
@@ -19,14 +19,13 @@ import { CheckUserDirective } from './shared/check-user.directive';
 @NgModule({
     imports: [
         BrowserModule,
-        FormsModule,
         AuthModule,
+        SharedModule,
         routing,
     ],
     declarations: [
         AppComponent,
         HomeComponent,
-        CheckUserDirective,
     ],
     bootstrap: [
         AppComponent,

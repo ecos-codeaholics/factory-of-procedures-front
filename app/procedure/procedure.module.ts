@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+
+import { SharedModule } from '../shared/shared.module';
+
 import { routing } from './procedure.routing';
 
 import { ProcedureHomeComponent } from './procedure-home.component';
@@ -9,8 +10,7 @@ import { ProcedureFormComponent } from './procedure-form.component';
 
 @NgModule({
     imports: [
-        CommonModule,
-        FormsModule,
+        SharedModule,
         routing
     ],
     declarations: [

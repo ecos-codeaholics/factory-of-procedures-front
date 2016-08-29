@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 
 import { AuthService } from './auth.service';
 import { Login } from './login';
@@ -17,7 +17,11 @@ export class LoginComponent {
 
     error: any;
 
-    constructor(private authService: AuthService) { }
+    constructor(
+        private authService: AuthService,
+        private router: Router
+
+    ) { }
 
     doLogin(user: Login) {
 
@@ -27,13 +31,13 @@ export class LoginComponent {
             (res) => {
                 localStorage.setItem('id_token', res.json().id_token);
                 console.log(res.json().id_token);
+                this.router.navigate(['/']);
 
             },
             error => {
                 console.log("ERROR:", error.text());
             });
     }
-
 
     get diagnostic() { return JSON.stringify(this.user); }
 
