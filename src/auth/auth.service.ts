@@ -51,9 +51,9 @@ export class AuthService {
         let options = new RequestOptions({ headers: headers });
 
         return this.http.post(this.sessionUrl, body, options)
-            .toPromise()
-            .then(response => response.json().data as Citizen)
-            .catch(this.handleError);
+            .map((res) => {
+                return res;
+            });
     }
 
     resetPassword(login: Login) {

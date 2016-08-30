@@ -15,6 +15,7 @@ export class SignupComponent {
     title = 'Registro de Ciudadano';
 
     citizen = new Citizen('', NaN, '', '', '', '', '', '');
+    response: any;
 
     error: any;
 
@@ -26,10 +27,11 @@ export class SignupComponent {
 
         this.authService
             .doSignup(this.citizen)
-            .then(citizen => {
-                this.citizen = citizen;
+            .subscribe(
+            (res) => {
+                this.response = res.json();
+                console.log(this.response);
             })
-            .catch(error => this.error = error);
     }
 
     get diagnostic() { return JSON.stringify(this.citizen); }
