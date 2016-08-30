@@ -7,7 +7,6 @@ import 'rxjs/add/operator/toPromise';
 import { Login } from './login';
 import { Citizen } from '../citizen/citizen';
 
-
 @Injectable()
 export class AuthService {
 
@@ -15,9 +14,8 @@ export class AuthService {
         public http: Http
     ) { }
 
-    private loginUrl = "http://localhost:3001/sessions/create";
-    private createCitizenUrl = 'http://127.0.0.1:4567/citizen/create';
-
+    private loginUrl = "http://localhost:4567/sessions/";
+    private sessionUrl = "http://localhost:4567/citizens/";
 
     // TODO: Make this reusable in separate Utilitie
     private handleError(error: any) {
@@ -52,9 +50,21 @@ export class AuthService {
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers });
 
-        return this.http.post(this.createCitizenUrl, body, options)
+        return this.http.post(this.sessionUrl, body, options)
             .toPromise()
             .then(response => response.json().data as Citizen)
             .catch(this.handleError);
+    }
+
+    resetPassword(login: Login) {
+
+        let body = JSON.stringify(login);
+        let headers = new Headers({ 'Content-Type': 'application/json' });
+        let options = new RequestOptions({ headers: headers });
+
+        return this.http.put(this.sessionUrl, body, options)
+            .map((res) => {
+                return res;
+            });
     }
 }
