@@ -44,7 +44,7 @@ export class AuthService {
             });
     }
 
-    doSignup(signup: Citizen): Promise<Citizen> {
+    doSignup(signup: Citizen) {
 
         let body = JSON.stringify(signup);
         let headers = new Headers({ 'Content-Type': 'application/json' });
