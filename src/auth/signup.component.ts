@@ -14,7 +14,7 @@ export class SignupComponent {
 
     title = 'Registro de Ciudadano';
 
-    citizen = new Citizen('', 1, '', '', '', '', '', '');
+    citizen = new Citizen('', NaN, '', '', '', '', '', '');
 
     error: any;
 

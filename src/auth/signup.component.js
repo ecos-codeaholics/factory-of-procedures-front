@@ -15,7 +15,7 @@ var SignupComponent = (function () {
     function SignupComponent(authService) {
         this.authService = authService;
         this.title = 'Registro de Ciudadano';
-        this.citizen = new citizen_1.Citizen('', 1, '', '', '', '', '', '');
+        this.citizen = new citizen_1.Citizen('', NaN, '', '', '', '', '', '');
         this.submitted = false;
     }
     SignupComponent.prototype.doSignup = function (citizen) {
