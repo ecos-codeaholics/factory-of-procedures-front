@@ -1,2 +1,29 @@
-<h3>{{title}}</h3>
-<p>Listando trámites</p>
+<div class="row">
+  <div class="col-lg-12">
+    <h3>{{title}}</h3>
+  </div>
+</div>
+<div class="row">
+  <div class="col-lg-6">
+    <table class="table">
+      <thead>
+	<tr>
+	  <th>Id</th>
+	  <th>Nombre del Trámite</th>
+	  <th>Departamento</th>
+	  <th>Ciudad/Municipio</th>
+	  <th>Estado</th>
+	</tr>
+      </thead>
+      <tbody>
+	<tr *ngFor="let procedure of procedures">
+	  <td>{{procedure.id}}</td>
+	  <td>{{procedure.name}}</td>
+	  <td>{{procedure.department}}</td>
+	  <td>{{procedure.city}}</td>
+	  <td>{{procedure.status}}</td>
+	</tr>
+      </tbody>
+    </table>
+  </div>
+</div>

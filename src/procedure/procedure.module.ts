@@ -8,6 +8,8 @@ import { ProcedureHomeComponent } from './procedure-home.component';
 import { ProcedureListComponent } from './procedure-list.component';
 import { ProcedureFormComponent } from './procedure-form.component';
 
+import { ProcedureService } from './procedure.service';
+
 @NgModule({
     imports: [
         SharedModule,
@@ -17,7 +19,8 @@ import { ProcedureFormComponent } from './procedure-form.component';
         ProcedureHomeComponent,
         ProcedureListComponent,
         ProcedureFormComponent,
-    ]
+    ],
+    providers: [ProcedureService]
 })
 
 export default class ProcedureModule { }
