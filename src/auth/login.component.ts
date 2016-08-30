@@ -13,7 +13,7 @@ export class LoginComponent {
 
     title = 'Acceso de usuario';
 
-    user = new Login('', '');
+    user = new Login('', '', '');
 
     error: any;
 
