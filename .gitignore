@@ -2,10 +2,10 @@
 node_modules
 typings
 npm-debug.log
-app/*.js
-app/*.js.map
-app/*/*.js
-app/*/*.js.map
+src/*.js
+src/*.js.map
+src/*/*.js
+src/*/*.js.map
 .settings/
 .project
 npm-debug.log*
