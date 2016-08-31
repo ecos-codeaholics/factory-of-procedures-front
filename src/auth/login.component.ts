@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
+import { ErrorHandler } from '../shared/error-handler';
+
 import { AuthService } from './auth.service';
 import { Login } from './login';
 
@@ -20,7 +22,6 @@ export class LoginComponent {
     constructor(
         private authService: AuthService,
         private router: Router
-
     ) { }
 
     doLogin(user: Login) {
@@ -34,11 +35,12 @@ export class LoginComponent {
                 this.router.navigate(['/']);
 
             },
-            error => {
-                console.log("ERROR:", error.text());
+            (error) => {
+
+                this.error = error;
+                console.log(this.error);
             });
     }
 
     get diagnostic() { return JSON.stringify(this.user); }
-
 }

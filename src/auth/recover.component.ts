@@ -13,16 +13,15 @@ import { Login } from './login';
 
 export class RecoverComponent {
 
-    //@Input() user: User;
-
     title = 'Recuperar Constraseña';
 
     login = new Login("", "", NaN);
 
+    error: any;
+
     constructor(private authService: AuthService, private router: Router) { }
 
     submitted = false;
-
 
     resetPassword(login: Login) {
         this.authService
@@ -32,11 +31,12 @@ export class RecoverComponent {
                 console.log(res.json());
                 this.router.navigate(['login']);
             },
-            error => {
-                console.log("ERROR:", error.text());
+            (error) => {
+
+                this.error = error;
+                console.log(this.error);
             });
     }
 
     get diagnostic() { return JSON.stringify(this.login); }
 }
-

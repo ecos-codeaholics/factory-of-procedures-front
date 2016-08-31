@@ -5,6 +5,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/toPromise';
 
 import { contentHeaders } from '../shared/constant/content-headers';
+import { ErrorHandler } from '../shared/error-handler';
 import { API_URL } from '../shared/constant/api-url';
 
 import { Login } from './login';
@@ -14,17 +15,9 @@ import { Citizen } from '../citizen/citizen';
 export class AuthService {
 
     constructor(
+        public errorHandler: ErrorHandler,
         public http: Http
     ) { }
-
-    // TODO: Make this reusable in separate Utilitie
-    private handleError(error: any) {
-        let errMsg = (error.message) ? error.message :
-            error.status ? `${error.status} - ${error.statusText}` : 'Server error';
-        console.log(errMsg);
-
-        return Observable.throw(errMsg);
-    }
 
     private extractData(res: Response) {
         let body = res.json();
@@ -41,7 +34,9 @@ export class AuthService {
         return this.http.post(API_URL.SESSIONS, body, options)
             .map((res) => {
                 return res;
-            });
+            }).catch((res) => {
+                return Observable.throw(this.errorHandler.check(res));
+            })
     }
 
     doSignup(signup: Citizen) {
@@ -53,7 +48,9 @@ export class AuthService {
         return this.http.post(API_URL.CITIZENS, body, options)
             .map((res) => {
                 return res;
-            });
+            }).catch((res) => {
+                return Observable.throw(this.errorHandler.check(res));
+            })
     }
 
     resetPassword(login: Login) {
@@ -62,9 +59,11 @@ export class AuthService {
 
         let options = new RequestOptions({ headers: contentHeaders });
 
-        return this.http.put(API_URL.SESSIONS, body, options)
+        return this.http.put(API_URL.CITIZENS, body, options)
             .map((res) => {
                 return res;
-            });
+            }).catch((res) => {
+                return Observable.throw(this.errorHandler.check(res));
+            })
     }
 }
