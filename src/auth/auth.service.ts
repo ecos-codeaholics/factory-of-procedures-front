@@ -5,6 +5,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/toPromise';
 
 import { contentHeaders } from '../shared/constant/content-headers';
+import { API_URL } from '../shared/constant/api-url';
 
 import { Login } from './login';
 import { Citizen } from '../citizen/citizen';
@@ -15,9 +16,6 @@ export class AuthService {
     constructor(
         public http: Http
     ) { }
-
-    private loginUrl = "http://localhost:4567/sessions/";
-    private sessionUrl = "http://localhost:4567/citizens/";
 
     // TODO: Make this reusable in separate Utilitie
     private handleError(error: any) {
@@ -40,7 +38,7 @@ export class AuthService {
 
         let options = new RequestOptions({ headers: contentHeaders });
 
-        return this.http.post(this.loginUrl, body, options)
+        return this.http.post(API_URL.SESSIONS, body, options)
             .map((res) => {
                 return res;
             });
@@ -52,7 +50,7 @@ export class AuthService {
 
         let options = new RequestOptions({ headers: contentHeaders });
 
-        return this.http.post(this.sessionUrl, body, options)
+        return this.http.post(API_URL.CITIZENS, body, options)
             .map((res) => {
                 return res;
             });
@@ -64,7 +62,7 @@ export class AuthService {
 
         let options = new RequestOptions({ headers: contentHeaders });
 
-        return this.http.put(this.sessionUrl, body, options)
+        return this.http.put(API_URL.SESSIONS, body, options)
             .map((res) => {
                 return res;
             });

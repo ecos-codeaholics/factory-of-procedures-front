@@ -4,6 +4,6 @@ export class Login {
 
         public email: string,
         public password: string,
-        public identification: string
+        public identification: number
     ) { }
 }

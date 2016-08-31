@@ -17,7 +17,7 @@ export class RecoverComponent {
 
     title = 'Recuperar Constraseña';
 
-    login = new Login("", "", "");
+    login = new Login("", "", NaN);
 
     constructor(private authService: AuthService, private router: Router) { }
 
