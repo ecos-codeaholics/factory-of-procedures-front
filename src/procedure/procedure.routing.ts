@@ -7,6 +7,6 @@ import { AuthGuardService } from '../auth/auth-guard.service';
 
 
 export const routing = RouterModule.forChild([
-    { path: '', component: ProcedureListComponent, // canActivate: [AuthGuardService] },
+    { path: '', component: ProcedureListComponent, canActivate: [AuthGuardService] },
     { path: 'edit', component: ProcedureFormComponent, canActivate: [AuthGuardService] }
 ]);
