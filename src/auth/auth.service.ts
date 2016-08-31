@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
-import { Headers, Http, RequestOptions, Response } from '@angular/http';
+import { Http, RequestOptions, Response } from '@angular/http';
 import { AuthHttp } from 'angular2-jwt';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/toPromise';
+
+import { contentHeaders } from '../shared/constant/content-headers';
 
 import { Login } from './login';
 import { Citizen } from '../citizen/citizen';
@@ -35,8 +37,8 @@ export class AuthService {
     doLogin(login: Login) {
 
         let body = JSON.stringify(login);
-        let headers = new Headers({ 'Content-Type': 'application/json' });
-        let options = new RequestOptions({ headers: headers });
+
+        let options = new RequestOptions({ headers: contentHeaders });
 
         return this.http.post(this.loginUrl, body, options)
             .map((res) => {
@@ -47,8 +49,8 @@ export class AuthService {
     doSignup(signup: Citizen) {
 
         let body = JSON.stringify(signup);
-        let headers = new Headers({ 'Content-Type': 'application/json' });
-        let options = new RequestOptions({ headers: headers });
+
+        let options = new RequestOptions({ headers: contentHeaders });
 
         return this.http.post(this.sessionUrl, body, options)
             .map((res) => {
@@ -59,8 +61,8 @@ export class AuthService {
     resetPassword(login: Login) {
 
         let body = JSON.stringify(login);
-        let headers = new Headers({ 'Content-Type': 'application/json' });
-        let options = new RequestOptions({ headers: headers });
+
+        let options = new RequestOptions({ headers: contentHeaders });
 
         return this.http.put(this.sessionUrl, body, options)
             .map((res) => {
