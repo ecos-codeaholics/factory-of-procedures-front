@@ -41,9 +41,8 @@ export class LoginComponent {
                 this.router.navigate(['/']);
             },
             error => {
-                jQuery('.modal-body').html("UPS, Creo que hay un problema" + error.text());
-                jQuery('.modal').modal('show');
-                console.log("ERROR:", error.text());
+            
+            //    console.log("ERROR: en  login.component |"+ error+"!");
             });
     }
 

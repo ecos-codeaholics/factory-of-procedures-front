@@ -33,8 +33,12 @@ export class AuthService {
 
         return this.http.post(API_URL.SESSIONS, body, options)
             .map((res) => {
+               if (res["_body"] == "null") {
+                    Observable.throw(this.errorHandler.check(res));
+                }
                 return res;
             }).catch((res) => {
+                console.log("ERROR: en  auth.service");
                 return Observable.throw(this.errorHandler.check(res));
             })
     }
@@ -47,8 +51,10 @@ export class AuthService {
 
         return this.http.post(API_URL.CITIZENS, body, options)
             .map((res) => {
+
                 return res;
             }).catch((res) => {
+
                 return Observable.throw(this.errorHandler.check(res));
             })
     }
