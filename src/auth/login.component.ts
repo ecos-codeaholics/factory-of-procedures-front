@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { AuthService } from './auth.service';
 import { Login } from './login';
 
+ declare var jQuery:any;
+
 @Component({
     selector: 'login-form',
     templateUrl: 'src/auth/templates/login.component.html',
@@ -17,6 +19,8 @@ export class LoginComponent {
 
     error: any;
 
+   
+    
     constructor(
         private authService: AuthService,
         private router: Router
@@ -24,6 +28,8 @@ export class LoginComponent {
     ) { }
 
     doLogin(user: Login) {
+        
+        
 
         this.authService
             .doLogin(this.user)
@@ -35,6 +41,8 @@ export class LoginComponent {
 
             },
             error => {
+                jQuery('.modal-body').html("UPS, Creo que hay un problema" + error.text());
+                jQuery('.modal').modal('show');
                 console.log("ERROR:", error.text());
             });
     }
