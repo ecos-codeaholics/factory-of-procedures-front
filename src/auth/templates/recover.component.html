@@ -1,18 +1,18 @@
 {{diagnostic}}
 <div class="row">
   <div class="col-lg-6">
-    <form #citizenForm="ngForm" (ngSubmit)="doRecover()">
+    <form #loginForm="ngForm" (ngSubmit)="resetPassword()">
       <fieldset>
 	<legend>{{title}}</legend>
 	<div class="form-group">
 	  <label for="email">Correo electrónico</label>
-	  <input class="form-control" [(ngModel)]="user.email" type="email" name="email" required>
+	  <input id="email" class="form-control" [(ngModel)]="login.email" type="email" name="email" required>
 	</div>
 	<div class="form-group">
 	  <label for="identification">Identificación</label>
-	  <input class="form-control" [(ngModel)]="user.identification" type="text" name="identification" required>
+	  <input id="identification" class="form-control" [(ngModel)]="login.identification" type="number" name="identification" required>
 	</div>
-	<button type="submit" class="btn btn-default" [disabled]="!citizenForm.form.valid">Enviar</button>
+	<button type="submit" class="btn btn-default" [disabled]="!loginForm.form.valid">Enviar</button>
       </fieldset>
     </form>
   </div>

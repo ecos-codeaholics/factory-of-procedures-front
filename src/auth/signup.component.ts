@@ -1,4 +1,6 @@
 import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
+
 import { AuthService } from './auth.service';
 
 import { Citizen } from '../citizen/citizen';
@@ -14,11 +16,15 @@ export class SignupComponent {
 
     title = 'Registro de Ciudadano';
 
-    citizen = new Citizen('', 1, '', '', '', '', '', '');
+    citizen = new Citizen('', NaN, '', '', '', '', '', '');
+    response: any;
 
     error: any;
 
-    constructor(private authService: AuthService) { }
+    constructor(
+        private authService: AuthService,
+        private router: Router
+    ) { }
 
     submitted = false;
 
@@ -26,12 +32,20 @@ export class SignupComponent {
 
         this.authService
             .doSignup(this.citizen)
-            .then(citizen => {
-                this.citizen = citizen;
-            })
-            .catch(error => this.error = error);
+            .subscribe(
+            (res) => {
+
+                this.response = res.json();
+                console.log(this.response);
+                this.router.navigate(['/login']);
+
+            },
+            (error) => {
+
+                this.error = error;
+                console.log(this.error);
+            });
     }
 
     get diagnostic() { return JSON.stringify(this.citizen); }
-
 }

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
+import { ErrorHandler } from '../shared/error-handler';
+
 import { AuthService } from './auth.service';
 import { Login } from './login';
 
@@ -15,7 +17,7 @@ export class LoginComponent {
 
     title = 'Acceso de usuario';
 
-    user = new Login('', '');
+    user = new Login('', '', NaN);
 
     error: any;
 
@@ -24,7 +26,6 @@ export class LoginComponent {
     constructor(
         private authService: AuthService,
         private router: Router
-
     ) { }
 
     doLogin(user: Login) {
@@ -38,7 +39,6 @@ export class LoginComponent {
                 localStorage.setItem('id_token', res.json().id_token);
                 console.log(res.json().id_token);
                 this.router.navigate(['/']);
-
             },
             error => {
                 jQuery('.modal-body').html("UPS, Creo que hay un problema" + error.text());
@@ -48,5 +48,4 @@ export class LoginComponent {
     }
 
     get diagnostic() { return JSON.stringify(this.user); }
-
 }

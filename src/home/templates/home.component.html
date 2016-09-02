@@ -1,9 +1,15 @@
-<div class="jumbotron">
-  <h2>{{title}}</h2>
-  <p>La fábrica de trámites es lorem ipsum dolor sit amet conectutor</p>
-  <p>
-    <a class="btn btn-lg btn-primary" routerLink="/signup" role="button">Registrarme</a>
-  </p>
+<div class="row">
+  <div class="col-md-6">
+    <div class="jumbotron">
+      <h2>{{title}}</h2>
+      <p>La fábrica de trámites es lorem ipsum dolor sit amet conectutor</p>
+      <p>
+	<a class="btn btn-lg btn-primary" routerLink="/signup" role="button">Registrarme</a>
+      </p>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <!-- TODO: authorized user should be validated here -->
+    <select-procedure></select-procedure>
+  </div>
 </div>
-<!-- TODO: authorized user should be validated here -->
-<select-procedure></select-procedure>

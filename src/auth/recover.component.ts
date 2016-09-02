@@ -1,7 +1,10 @@
 import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
+
 import { AuthService } from './auth.service';
 
 import { Citizen } from '../citizen/citizen';
+import { Login } from './login';
 
 @Component({
     selector: 'recover-form',
@@ -10,21 +13,30 @@ import { Citizen } from '../citizen/citizen';
 
 export class RecoverComponent {
 
-    //@Input() user: User;
-
     title = 'Recuperar Constraseña';
 
-    // FIXME: ¿Should signup compontent has its own signup model
-    // to match the specific signature which is consumed by the
-    // form?
-    user = new Citizen('', 1, '', '', '', '', '', '');
+    login = new Login("", "", NaN);
 
     error: any;
 
-    constructor(private authService: AuthService) { }
+    constructor(private authService: AuthService, private router: Router) { }
 
     submitted = false;
 
-    //get diagnostic() { return JSON.stringify(this.citizen); }
-}
+    resetPassword(login: Login) {
+        this.authService
+            .resetPassword(this.login)
+            .subscribe(
+            (res) => {
+                console.log(res.json());
+                this.router.navigate(['login']);
+            },
+            (error) => {
 
+                this.error = error;
+                console.log(this.error);
+            });
+    }
+
+    get diagnostic() { return JSON.stringify(this.login); }
+}

@@ -6,10 +6,10 @@ import { State } from '../state/state';
 
 @Component({
     selector: 'select-procedure',
-    templateUrl: 'src/citizen/templates/citizen-select-procedure.html'
+    templateUrl: 'src/procedure/templates/procedure-select.component.html'
 })
 
-export class CitizenSelectProcedureComponent implements OnInit {
+export class ProcedureSelectComponent implements OnInit {
     title = 'Seleccione el trámite que desea realizar';
 
     states: State[];

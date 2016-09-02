@@ -1,32 +1,23 @@
 import { Injectable } from '@angular/core';
-import { Headers, Http, RequestOptions, Response } from '@angular/http';
+import { Http, RequestOptions, Response } from '@angular/http';
 import { AuthHttp } from 'angular2-jwt';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/toPromise';
 
+import { contentHeaders } from '../shared/constant/content-headers';
+import { ErrorHandler } from '../shared/error-handler';
+import { API_URL } from '../shared/constant/api-url';
+
 import { Login } from './login';
 import { Citizen } from '../citizen/citizen';
-
 
 @Injectable()
 export class AuthService {
 
     constructor(
+        public errorHandler: ErrorHandler,
         public http: Http
     ) { }
-
-    private loginUrl = "http://localhost:4567/sessions/";
-    private sessionUrl = "http://localhost:4567/citizens/";
-
-
-    // TODO: Make this reusable in separate Utilitie
-    private handleError(error: any) {
-        let errMsg = (error.message) ? error.message :
-            error.status ? `${error.status} - ${error.statusText}` : 'Server error';
-        console.log(errMsg);
-
-        return Observable.throw(errMsg);
-    }
 
     private extractData(res: Response) {
         let body = res.json();
@@ -37,24 +28,42 @@ export class AuthService {
     doLogin(login: Login) {
 
         let body = JSON.stringify(login);
-        let headers = new Headers({ 'Content-Type': 'application/json' });
-        let options = new RequestOptions({ headers: headers });
 
-        return this.http.post(this.loginUrl, body, options)
+        let options = new RequestOptions({ headers: contentHeaders });
+
+        return this.http.post(API_URL.SESSIONS, body, options)
             .map((res) => {
                 return res;
-            });
+            }).catch((res) => {
+                return Observable.throw(this.errorHandler.check(res));
+            })
     }
 
-    doSignup(signup: Citizen): Promise<Citizen> {
+    doSignup(signup: Citizen) {
 
         let body = JSON.stringify(signup);
-        let headers = new Headers({ 'Content-Type': 'application/json' });
-        let options = new RequestOptions({ headers: headers });
 
-        return this.http.post(this.sessionUrl, body, options)
-            .toPromise()
-            .then(response => response.json().data as Citizen)
-            .catch(this.handleError);
+        let options = new RequestOptions({ headers: contentHeaders });
+
+        return this.http.post(API_URL.CITIZENS, body, options)
+            .map((res) => {
+                return res;
+            }).catch((res) => {
+                return Observable.throw(this.errorHandler.check(res));
+            })
+    }
+
+    resetPassword(login: Login) {
+
+        let body = JSON.stringify(login);
+
+        let options = new RequestOptions({ headers: contentHeaders });
+
+        return this.http.put(API_URL.CITIZENS, body, options)
+            .map((res) => {
+                return res;
+            }).catch((res) => {
+                return Observable.throw(this.errorHandler.check(res));
+            })
     }
 }

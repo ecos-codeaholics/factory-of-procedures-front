@@ -2,6 +2,9 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Rx';
 import { ProcedureAttachment } from './procedure-attachment';
 
+import { Procedure } from './procedure';
+import { PROCEDURES } from './mock-procedure';
+
 @Injectable()
 export class ProcedureService {
 
@@ -31,5 +34,13 @@ export class ProcedureService {
         })
     }
 
+    getProcedures(): Procedure[] {
 
+        return PROCEDURES;
+
+        // Uncomment this to enable request to remote api
+        //return this.http.get(this.proceduresUrl)
+        //    .map(this.extractData)
+        //    .catch(this.handleError);
+    }
 }
