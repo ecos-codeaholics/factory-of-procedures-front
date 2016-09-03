@@ -4,6 +4,16 @@
     <form #citizenForm="ngForm" (ngSubmit)="doSignup()">
       <fieldset>
 	<legend>{{title}}</legend>
+
+	<div class="form-group">
+		<input type="file"
+			   [ng-file-select]="options"
+			   (onUpload)="handleUpload($event)">
+
+		<div>
+			Response: {{ uploadFile | json }}
+		</div>
+	</div>
 	<div class="form-group">
 	  <label for="name">Nombre</label>
 	  <input id="name" class="form-control" [(ngModel)]="citizen.name" type="text" name="name" placeholder="Introduce tu nombre" required>

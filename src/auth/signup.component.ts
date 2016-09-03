@@ -1,15 +1,15 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
-
 import { AuthService } from './auth.service';
-
 import { Citizen } from '../citizen/citizen';
+import {UPLOAD_DIRECTIVES} from 'ng2-uploader/ng2-uploader';
 
 declare var jQuery: any;
 
 @Component({
     selector: 'signup-form',
-    templateUrl: 'src/auth/templates/signup.component.html'
+    templateUrl: 'src/auth/templates/signup.component.html',
+    directives: [UPLOAD_DIRECTIVES],
 })
 
 export class SignupComponent {
@@ -22,6 +22,11 @@ export class SignupComponent {
     response: any;
 
     error: any;
+
+    uploadFile: any;
+    options: Object = {
+        url: 'http://localhost:4567/citizens/upload'
+    };
 
     constructor(
         private authService: AuthService,
@@ -49,6 +54,13 @@ export class SignupComponent {
                 this.error = error;
                 console.log(this.error);
             });
+    }
+
+    handleUpload(data): void {
+        if (data && data.response) {
+            data = JSON.parse(data.response);
+            this.uploadFile = data;
+        }
     }
 
     get diagnostic() { return JSON.stringify(this.citizen); }
