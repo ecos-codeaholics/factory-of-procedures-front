@@ -5,6 +5,8 @@ import { AuthService } from './auth.service';
 
 import { Citizen } from '../citizen/citizen';
 
+declare var jQuery: any;
+
 @Component({
     selector: 'signup-form',
     templateUrl: 'src/auth/templates/signup.component.html'
@@ -34,7 +36,9 @@ export class SignupComponent {
             .doSignup(this.citizen)
             .subscribe(
             (res) => {
-
+                jQuery('.modal-title').html("Bienvenido");
+                jQuery('.modal-body').html("Bienvenido a nuestro sistema, su registro fue exitoso.");
+                jQuery('.modal').modal('show');
                 this.response = res.json();
                 console.log(this.response);
                 this.router.navigate(['/login']);

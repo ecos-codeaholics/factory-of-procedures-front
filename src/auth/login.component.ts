@@ -40,10 +40,7 @@ export class LoginComponent {
                 console.log(res.json().id_token);
                 this.router.navigate(['/']);
             },
-            error => {
-            
-            //    console.log("ERROR: en  login.component |"+ error+"!");
-            });
+            error => {});
     }
 
     get diagnostic() { return JSON.stringify(this.user); }
