@@ -41,6 +41,7 @@ export class ErrorHandler {
             }
             if (modal) {
                 jQuery('.modal-title').html("Bienvenido");
+                
                 jQuery('.modal').modal('show');
 
             }

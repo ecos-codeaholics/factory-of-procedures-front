@@ -28,6 +28,9 @@ export class RecoverComponent {
             .resetPassword(this.login)
             .subscribe(
             (res) => {
+                  jQuery('.modal-title').html("Recuperar Contraseña");
+                jQuery('.modal-body').html("Una nueva contraseña ha sido enviada a su e-mail registrado.");
+                jQuery('.modal').modal('show');
                 console.log(res.json());
                 this.router.navigate(['login']);
             },
