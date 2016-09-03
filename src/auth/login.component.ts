@@ -21,29 +21,26 @@ export class LoginComponent {
 
     error: any;
 
-   
-    
+
+
     constructor(
         private authService: AuthService,
         private router: Router
     ) { }
 
     doLogin(user: Login) {
-        
-        
 
         this.authService
             .doLogin(this.user)
             .subscribe(
             (res) => {
-                localStorage.setItem('id_token', res.json().id_token);
-                console.log(res.json().id_token);
+                console.log(res);
+
                 this.router.navigate(['/']);
             },
             error => {
-                jQuery('.modal-body').html("UPS, Creo que hay un problema" + error.text());
+                jQuery('.modal-body').html("UPS, Creo que hay un problema");
                 jQuery('.modal').modal('show');
-                console.log("ERROR:", error.text());
             });
     }
 

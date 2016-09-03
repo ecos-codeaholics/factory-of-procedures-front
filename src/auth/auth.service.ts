@@ -14,6 +14,8 @@ import { Citizen } from '../citizen/citizen';
 @Injectable()
 export class AuthService {
 
+    token: string;
+
     constructor(
         public errorHandler: ErrorHandler,
         public http: Http
@@ -33,8 +35,25 @@ export class AuthService {
 
         return this.http.post(API_URL.SESSIONS, body, options)
             .map((res) => {
+
+                console.log(res);
+
+                // Fixme: Change this ugly thing
+                this.token = res.headers.values()[0][0];
+
+                if (this.token) {
+                    console.log("Valida Token");
+
+                    localStorage.setItem('id_token', this.token);
+                    console.log(localStorage.getItem('id_token'));
+
+                }
+
+
+
                 return res;
-            }).catch((res) => {
+            })
+            .catch((res) => {
                 return Observable.throw(this.errorHandler.check(res));
             })
     }
