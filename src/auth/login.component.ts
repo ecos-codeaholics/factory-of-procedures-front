@@ -6,7 +6,7 @@ import { ErrorHandler } from '../shared/error-handler';
 import { AuthService } from './auth.service';
 import { Login } from './login';
 
- declare var jQuery:any;
+declare var jQuery: any;
 
 @Component({
     selector: 'login-form',
@@ -39,8 +39,8 @@ export class LoginComponent {
                 this.router.navigate(['/']);
             },
             error => {
-                jQuery('.modal-body').html("UPS, Creo que hay un problema");
-                jQuery('.modal').modal('show');
+
+                //    console.log("ERROR: en  login.component |"+ error+"!");
             });
     }
 

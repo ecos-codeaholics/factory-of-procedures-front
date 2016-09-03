@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core';
 
+
+declare var jQuery: any;
+
 /**
  * Note: The aim of this class is to provide full error
  * handling operations like mentioned in this issue:
@@ -13,11 +16,34 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class ErrorHandler {
-
     check(error: any) {
-        // Handle error heavy lifting here
-        // Response sould have defined error code
+        console.log("Se detecto un error en el error-handle... |");
+        console.log(error);
+        var defaulMSG = "UPS, Tenemos un error, por favor intentelo mas tarde.";
+        try {
+            var modal = true;
 
+            switch (error.status) {
+                case 0:
+                    jQuery('.modal-body').html(defaulMSG);
+                    break;
+                case 200:
+                case 401:
+                    if (error["_body"] != "null") {
+                        var body = JSON.parse(error["_body"]);
+                        jQuery('.modal-body').html(body.responseMsg);
+                    } else {
+                        jQuery('.modal-body').html(defaulMSG);
+                    }
+                    break;
+                default:
+                    jQuery('.modal-body').html(defaulMSG);
+            }
+            if (modal) jQuery('.modal').modal('show');
+        } catch (err) {
+            jQuery('.modal-body').html(defaulMSG);
+            jQuery('.modal').modal('show');
+        }
         return error;
     }
 }
