@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, NgZone} from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from './auth.service';
 import { Citizen } from '../citizen/citizen';
@@ -17,13 +17,13 @@ export class SignupComponent {
     //@Input() user: User;
 
     title = 'Registro de Ciudadano';
-
     citizen = new Citizen('', NaN, '', '', '', '', '', '');
     response: any;
-
     error: any;
-
     uploadFile: any;
+    uploadProgress: number;
+    uploadResponse: Object;
+    zone: NgZone;
     options: Object = {
         url: 'http://localhost:4567/citizens/upload'
     };
@@ -31,7 +31,11 @@ export class SignupComponent {
     constructor(
         private authService: AuthService,
         private router: Router
-    ) { }
+    ) {
+        this.uploadProgress = 0;
+        this.uploadResponse = {};
+        this.zone = new NgZone({ enableLongStackTrace: false });
+    }
 
     submitted = false;
 
@@ -57,9 +61,14 @@ export class SignupComponent {
     }
 
     handleUpload(data): void {
-        if (data && data.response) {
-            data = JSON.parse(data.response);
-            this.uploadFile = data;
+        this.uploadFile = data;
+        this.zone.run(() => {
+            this.uploadProgress = data.progress.percent;
+        });
+        let resp = data.response;
+        if (resp) {
+            resp = JSON.parse(resp);
+            this.uploadResponse = resp;
         }
     }
 

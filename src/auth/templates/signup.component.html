@@ -6,15 +6,6 @@
 	<legend>{{title}}</legend>
 
 	<div class="form-group">
-		<input type="file"
-			   [ng-file-select]="options"
-			   (onUpload)="handleUpload($event)">
-
-		<div>
-			Response: {{ uploadFile | json }}
-		</div>
-	</div>
-	<div class="form-group">
 	  <label for="name">Nombre</label>
 	  <input id="name" class="form-control" [(ngModel)]="citizen.name" type="text" name="name" placeholder="Introduce tu nombre" required>
 	</div>
@@ -41,6 +32,20 @@
 	<div class="form-group">
 	  <label for="password">Contraseña</label>
 	  <input id="password" class="form-control" [(ngModel)]="citizen.password" type="password" name="password" placeholder="Introduce una contraseña" minlength="8" title="tu contraseña es demasiado corta" required>
+	</div>
+	<div class="form-group">
+		<div>
+			<label for="file">Archivo Cedula</label>
+			<input type="file" id="file" class="form-control" [ng-file-select]="options" (onUpload)="handleUpload($event)" required>
+		</div>
+		<div *ngIf="uploadFile">
+			Progreso: {{ uploadProgress }}%
+		</div>
+		<div *ngIf="uploadFile">
+			<div class="ui indicating olive progress">
+				<div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': uploadProgress + '%' }"></div>
+			</div>
+		</div>
 	</div>
 	<button type="submit" class="btn btn-default" [disabled]="!citizenForm.form.valid">Enviar</button>
       </fieldset>
