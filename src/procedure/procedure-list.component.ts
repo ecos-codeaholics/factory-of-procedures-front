@@ -6,6 +6,7 @@ import { Procedure } from './procedure';
 
 @Component({
     selector: 'procedure-list',
+    //inputs: ['status'],
     templateUrl: 'src/procedure/templates/procedure-list.component.html'
 })
 

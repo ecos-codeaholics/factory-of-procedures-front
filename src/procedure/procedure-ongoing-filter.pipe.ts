@@ -5,6 +5,6 @@ import { Procedure } from './procedure';
 @Pipe({ name: 'ongoingFilter' })
 export class ProcedureOngoingFilterPipe implements PipeTransform {
     transform(value, [status]) {
-        return value.filter((item) => item.status === "ongoing");
+        return value.filter((item) => item.status === status);
     }
 }

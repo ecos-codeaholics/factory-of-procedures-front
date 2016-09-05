@@ -8,10 +8,10 @@ import { Component, Output, EventEmitter, OnInit } from '@angular/core/';
 export class StatusSelectorComponent implements OnInit {
     @Output() select = new EventEmitter();
 
-    console.log(select);
     statuses = ['ongoing', 'all'];
 
     ngOnInit() {
+
         this.select.emit(this.statuses[1]);
     }
 }

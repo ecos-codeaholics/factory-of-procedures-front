@@ -16,7 +16,7 @@
 	</tr>
       </thead>
       <tbody>
-	<tr *ngFor="let procedure of procedures | ongoingFilter: status">
+	<tr *ngFor="let procedure of procedures | ongoingFilter: [status]">
 	  <td>{{procedure.id}}</td>
 	  <td>{{procedure.name}}</td>
 	  <td>{{procedure.department}}</td>
