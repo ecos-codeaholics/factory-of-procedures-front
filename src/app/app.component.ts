@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+
 import { AuthGuardService } from '../auth/auth-guard.service';
 import { AuthService } from '../auth/auth.service';
-
 
 //import './rxjs-extensions';
 
@@ -15,8 +15,9 @@ export class AppComponent {
 
     title = 'Fábrica de Trámites';
 
-    private isAuth: boolean;
-    private user: string;
+    public isAuth: boolean;
+    public user: string;
+    public profile: string;
 
     constructor(
         private authGuardService: AuthGuardService,
@@ -25,13 +26,10 @@ export class AppComponent {
     ) {
         this.isAuth = authGuardService.isAuth();
 
-        console.log("is auth");
-        console.log(this.isAuth);
-
         if (this.isAuth) {
+
+            this.profile = authGuardService.getProfile();
             this.user = authGuardService.getUser();
-            console.log("user");
-            console.log(this.user);
         }
     }
 

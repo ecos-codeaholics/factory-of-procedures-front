@@ -17,12 +17,9 @@ export class CheckUserDirective {
         private viewContainer: ViewContainerRef
     ) { }
 
-    @Input() set checkUser(role: string) {
-
-        console.log(role);
-
-        //if (role == "citizen") {
-        if (role == "gonto") {
+    @Input() set checkUser(profile: string) {
+        console.log(profile);
+        if (profile == "citizen") {
             this.viewContainer.createEmbeddedView(this.templateRef);
         } else {
             this.viewContainer.clear();

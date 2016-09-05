@@ -13,15 +13,16 @@ import { JwtHelperService } from '../shared/jwt-helper.service';
 export class AuthGuardService implements CanActivate {
 
     private token: string;
-    //private user: string;
+    private profile: string;
+    private user: string;
 
     constructor(
         private router: Router,
         private jwtHelperService: JwtHelperService
     ) {
         this.token = localStorage.getItem('id_token');
-        //this.user = this.jwtHelperService.tokenDecode()['jti'];
-        //console.log(user);
+        this.profile = this.jwtHelperService.tokenDecode()['aud'];
+        this.user = this.jwtHelperService.tokenDecode()['jti'];
     }
 
     canActivate() {
@@ -39,8 +40,13 @@ export class AuthGuardService implements CanActivate {
     }
 
     // Temporary here, should be on auth service
+    getProfile() {
+
+        return this.profile;
+    }
+
     getUser() {
 
-        return "foo bar baz"
+        return this.user;
     }
 }
