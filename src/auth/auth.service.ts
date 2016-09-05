@@ -14,7 +14,8 @@ import { Citizen } from '../citizen/citizen';
 @Injectable()
 export class AuthService {
 
-    token: string;
+    public token: string;
+    public userEmail: string;
 
     constructor(
         public errorHandler: ErrorHandler,
@@ -34,19 +35,21 @@ export class AuthService {
         let options = new RequestOptions({ headers: contentHeaders });
 
         return this.http.post(API_URL.SESSIONS, body, options)
+
             .map((res) => {
+
                 if (res["_body"] == "null") {
                     Observable.throw(this.errorHandler.check(res));
                 } else {
 
                 }
 
-
-                // console.log(res);
                 // Fixme: Change this ugly thing
-                this.token = res.headers.values()[0][0];
+                let token = res.headers.values()[0][0];
 
-                if (this.token) {
+                if (token) {
+
+                    this.token = token;
 
                     localStorage.setItem('id_token', this.token);
                     console.log(localStorage.getItem('id_token'));
@@ -57,6 +60,12 @@ export class AuthService {
                 console.log("ERROR: en  auth.service");
                 return Observable.throw(this.errorHandler.check(res));
             })
+    }
+
+    doLogout(): void {
+
+        this.token = null;
+        localStorage.removeItem('id_token');
     }
 
     doSignup(signup: Citizen) {
