@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
 
-import { JwtHelper } from 'angular2-jwt';
-import { JwtHelperService } from '../jwt-helper.service';
+import { AuthGuardService } from '../../auth/auth-guard.service';
+import { AuthService } from '../../auth/auth.service';
 
 @Component({
     selector: 'main-menu',
@@ -13,18 +13,20 @@ import { JwtHelperService } from '../jwt-helper.service';
 
 export class MainMenuComponent {
 
-    decodedJwt: any;
-    currentUser: string;
+    public isAuth: boolean;
+    public user: string;
+    public profile: string;
 
     constructor(
-        public router: Router,
-        public jwtHelperService: JwtHelperService,
-        private location: Location
+        private authGuardService: AuthGuardService,
+        private authService: AuthService,
+        private router: Router
     ) {
-        this.decodedJwt = jwtHelperService.tokenDecode();
+        this.isAuth = authGuardService.isAuth();
 
-        if (!(this.decodedJwt === "unauthorized")) {
-            this.currentUser = this.decodedJwt.username;
+        if (this.isAuth) {
+
+            this.profile = authGuardService.getProfile();
         }
     }
 

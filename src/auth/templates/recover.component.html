@@ -6,11 +6,11 @@
 	<legend>{{title}}</legend>
 	<div class="form-group">
 	  <label for="email">Correo electrónico</label>
-	  <input id="email" class="form-control" [(ngModel)]="login.email" type="email" name="email" required>
+	  <input id="email" class="form-control" [(ngModel)]="login.email" type="email" name="email" placeholder="Correo Electrónico" required>
 	</div>
 	<div class="form-group">
 	  <label for="identification">Identificación</label>
-	  <input id="identification" class="form-control" [(ngModel)]="login.identification" type="number" name="identification" required>
+	  <input id="identification" class="form-control" [(ngModel)]="login.identification" type="number" name="identification" placeholder="Número de identificación" required>
 	</div>
 	<button type="submit" class="btn btn-default" [disabled]="!loginForm.form.valid">Enviar</button>
       </fieldset>

@@ -7,7 +7,8 @@ import { routing } from './procedure.routing';
 import { ProcedureHomeComponent } from './procedure-home.component';
 import { ProcedureListComponent } from './procedure-list.component';
 import { ProcedureFormComponent } from './procedure-form.component';
-import { ProcedureSelectComponent } from './procedure-select.component';
+
+import { ProcedureOngoingFilterPipe } from './procedure-ongoing-filter.pipe';
 
 import { ProcedureService } from './procedure.service';
 
@@ -20,12 +21,9 @@ import { ProcedureService } from './procedure.service';
         ProcedureHomeComponent,
         ProcedureListComponent,
         ProcedureFormComponent,
-        ProcedureSelectComponent,
+        ProcedureOngoingFilterPipe,
     ],
     providers: [ProcedureService],
-    exports: [
-        ProcedureSelectComponent
-    ]
 })
 
-export class ProcedureModule { }
+export default class ProcedureModule { }

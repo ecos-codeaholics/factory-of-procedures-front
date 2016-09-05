@@ -1,0 +1,5 @@
+<select (change)="select.emit($event.target.value)">
+  <option *ngFor="let status of statuses">
+    {{status}}
+  </option>
+</select>

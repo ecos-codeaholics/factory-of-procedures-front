@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ProcedureModule } from '../procedure/procedure.module';
 
 import { HomeComponent } from './home.component';
 import { ProcedureSelectComponent } from '../procedure/procedure-select.component';
@@ -8,20 +7,14 @@ import { ProcedureSelectComponent } from '../procedure/procedure-select.componen
 // Should import notifications component and needed services
 
 @NgModule({
-    imports:
-    [
-        //ProcedureModule
-    ],
+    imports: [],
     declarations: [
         HomeComponent,
-        ProcedureSelectComponent,
     ],
     exports: [
         HomeComponent
     ],
-    providers: [
-        //JwtHelperService
-    ]
+    providers: []
 })
 
 export class HomeModule { }

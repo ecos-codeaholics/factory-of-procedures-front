@@ -14,8 +14,6 @@ import { AuthService } from '../auth/auth.service';
 import { AppComponent } from './app.component';
 import { HomeComponent } from '../home/home.component';
 
-import { CheckUserDirective } from '../shared/check-user.directive';
-
 @NgModule({
     imports: [
         BrowserModule,

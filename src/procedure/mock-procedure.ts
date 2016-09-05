@@ -6,13 +6,20 @@ export const PROCEDURES: Procedure[] = [
         name: "Tramite Lipsum",
         department: "Caldas",
         city: "Palestina",
-        status: "En curso"
+        status: "ongoing"
     },
     {
         id: 2,
         name: "Trámite Lorem",
         department: "Cundinamarca",
         city: "Bogotá",
-        status: "En espera"
+        status: "all"
+    },
+    {
+        id: 3,
+        name: "Trámite Lorem",
+        department: "Boyaca",
+        city: "Combita",
+        status: "ongoing"
     }
 ]
