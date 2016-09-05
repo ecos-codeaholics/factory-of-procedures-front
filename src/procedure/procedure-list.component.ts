@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 import { ProcedureService } from './procedure.service';
 
@@ -11,9 +11,9 @@ import { Procedure } from './procedure';
 
 export class ProcedureListComponent implements OnInit {
 
-    title = 'Filtrando por ...';
-
     procedures: Procedure[];
+
+    @Input() status;
 
     constructor(
         private procedureService: ProcedureService
@@ -27,6 +27,26 @@ export class ProcedureListComponent implements OnInit {
         // observable
         this.procedures = this.procedureService
             .getProcedures();
+    }
+
+    filterHistoric(event) {
+        event.preventDefault();
+        console.log("Getting historic procedures");
+        console.log(this.procedures);
+    }
+
+    filterOngoing(event) {
+        event.preventDefault();
+
+	/**
+        this.procedures.find((e) => {
+            console.log(e);
+            return e.status == "En curso";
+
+        });
+        console.log("Getting ongoing procedures");
+	*/
+
     }
 
     ngOnInit() {

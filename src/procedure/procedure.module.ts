@@ -8,6 +8,8 @@ import { ProcedureHomeComponent } from './procedure-home.component';
 import { ProcedureListComponent } from './procedure-list.component';
 import { ProcedureFormComponent } from './procedure-form.component';
 
+import { ProcedureOngoingFilterPipe } from './procedure-ongoing-filter.pipe';
+
 import { ProcedureService } from './procedure.service';
 
 @NgModule({
@@ -19,6 +21,7 @@ import { ProcedureService } from './procedure.service';
         ProcedureHomeComponent,
         ProcedureListComponent,
         ProcedureFormComponent,
+        ProcedureOngoingFilterPipe,
     ],
     providers: [ProcedureService],
 })

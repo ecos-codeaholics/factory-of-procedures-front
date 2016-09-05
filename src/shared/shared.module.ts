@@ -4,6 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 import { MainMenuComponent } from './main-menu/main-menu.component';
+import { StatusSelectorComponent } from './status-selector/status-selector.component';
+
 
 import { CheckUserDirective } from './check-user.directive';
 
@@ -11,11 +13,13 @@ import { CheckUserDirective } from './check-user.directive';
     imports: [CommonModule, RouterModule],
     declarations: [
         MainMenuComponent,
-        CheckUserDirective
+        CheckUserDirective,
+        StatusSelectorComponent,
     ],
     exports: [
         MainMenuComponent,
         CheckUserDirective,
+        StatusSelectorComponent,
         CommonModule, FormsModule
     ]
 })
