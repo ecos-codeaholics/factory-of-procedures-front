@@ -31,10 +31,18 @@ export class CitizenListComponent implements OnInit {
     //}
 
     getCitizens() {
+
+        //this.citizens = this.citizenService
+        //    .getCitizens();
+
+
         this.citizenService
             .getCitizens()
             .subscribe(
-            citizens => this.citizens = JSON.parse(citizens)
+            (citizens) => {
+                this.citizens = citizens;
+                console.log(citizens);
+            }
             );
     }
 

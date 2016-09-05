@@ -5,6 +5,8 @@ import { Observable } from 'rxjs/Observable';
 //import 'rxjs/add/operator/catch';
 import 'rxjs/Rx';
 
+import { API_URL } from '../shared/constant/api-url';
+
 import { Citizen } from './citizen';
 import { CITIZENS } from './mock-citizen';
 
@@ -37,10 +39,9 @@ export class CitizenService {
 
     getCitizens() {
 
-        //return Promise.resolve(CITIZENS);
         let req = new Request({
             method: "GET",
-            url: this.citizensUrl
+            url: API_URL.CITIZENS
         });
 
         return this.http.request(req)
