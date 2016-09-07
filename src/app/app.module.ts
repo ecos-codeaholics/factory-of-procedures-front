@@ -11,6 +11,7 @@ import { AUTH_PROVIDERS, JwtHelper } from 'angular2-jwt';
 import { appRoutingProviders, routing } from './app.routes';
 import { AuthService } from '../auth/auth.service';
 
+
 import { AppComponent } from './app.component';
 import { HomeComponent } from '../home/home.component';
 
@@ -23,7 +24,7 @@ import { HomeComponent } from '../home/home.component';
     ],
     declarations: [
         AppComponent,
-        HomeComponent,
+        HomeComponent
     ],
     bootstrap: [
         AppComponent,

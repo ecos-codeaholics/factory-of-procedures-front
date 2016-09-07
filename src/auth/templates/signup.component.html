@@ -36,7 +36,7 @@
 	<div class="form-group">
 		<div>
 			<label for="file">Archivo Cedula</label>
-			<input type="file" id="file" class="form-control" [ng-file-select]="options" (onUpload)="handleUpload($event)" required>
+			<input type="file" id="file" class="form-control" [ng-file-select]="basicOptions" (onUpload)="handleUpload($event)" required>
 		</div>
 		<div *ngIf="uploadFile">
 			Progreso: {{ uploadProgress }}%
@@ -47,6 +47,7 @@
 			</div>
 		</div>
 	</div>
+
 	<button type="submit" class="btn btn-default" [disabled]="!citizenForm.form.valid">Enviar</button>
       </fieldset>
     </form>
