@@ -40,7 +40,7 @@ export class ErrorHandler {
                     jQuery('.modal-body').html(defaulMSG);
             }
             if (modal) {
-                jQuery('.modal-title').html("Bienvenido");
+                jQuery('.modal-title').html("Algo anda mal.");
                 jQuery('.modal').modal('show');
 
             }
