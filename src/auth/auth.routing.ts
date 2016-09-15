@@ -3,6 +3,7 @@ import { RouterModule } from '@angular/router';
 import { LoginComponent } from './login.component';
 import { SignupComponent } from './signup.component';
 import { RecoverComponent } from './recover.component';
+import { FunctionaryLoginComponent } from './functionaryLogin.component';
 
 export const routing = RouterModule.forChild([
     {
@@ -16,5 +17,9 @@ export const routing = RouterModule.forChild([
     {
         path: 'recover',
         component: RecoverComponent
+    },
+    {
+      path: 'functionary',
+      component: FunctionaryLoginComponent
     }
 ]);
