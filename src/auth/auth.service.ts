@@ -11,6 +11,7 @@ import { API_URL } from '../shared/constant/api-url';
 import { Login } from './login';
 import { Citizen } from '../citizen/citizen';
 
+
 @Injectable()
 export class AuthService {
 
@@ -61,6 +62,40 @@ export class AuthService {
                 return Observable.throw(this.errorHandler.check(res));
             })
     }
+
+  doFunctionaryLogin(login: Login) {
+
+    let body = JSON.stringify(login);
+
+    let options = new RequestOptions({ headers: contentHeaders });
+
+    return this.http.post(API_URL.FUNCTIONARIES, body, options)
+
+      .map((res) => {
+
+        if (res["_body"] == "null") {
+          Observable.throw(this.errorHandler.check(res));
+        } else {
+
+        }
+
+        // Fixme: Change this ugly thing
+        let token = res.headers.values()[0][0];
+
+        if (token) {
+
+          this.token = token;
+
+          localStorage.setItem('id_token', this.token);
+          console.log(localStorage.getItem('id_token'));
+        }
+
+        return res;
+      }).catch((res) => {
+        console.log("ERROR: en  auth.service");
+        return Observable.throw(this.errorHandler.check(res));
+      })
+  }
 
     doLogout(): void {
 

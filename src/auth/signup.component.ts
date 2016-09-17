@@ -1,18 +1,16 @@
-import { Component, Input, NgZone} from '@angular/core';
+import { Component, Input, OnInit, NgZone } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from './auth.service';
 import { Citizen } from '../citizen/citizen';
-import {UPLOAD_DIRECTIVES} from 'ng2-uploader/ng2-uploader';
 
 declare var jQuery: any;
 
 @Component({
     selector: 'signup-form',
     templateUrl: 'src/auth/templates/signup.component.html',
-    directives: [UPLOAD_DIRECTIVES],
 })
 
-export class SignupComponent {
+export class SignupComponent implements OnInit {
 
     //@Input() user: User;
 
@@ -20,22 +18,16 @@ export class SignupComponent {
     citizen = new Citizen('', NaN, '', '', '', '', '', '');
     response: any;
     error: any;
-    uploadFile: any;
-    uploadProgress: number;
-    uploadResponse: Object;
-    zone: NgZone;
-    options: Object = {
-        url: 'http://localhost:4567/citizens/upload'
-    };
+    private uploadFile: any;
+    private uploadProgress: number = 0;
+    private uploadResponse: any = {};
+    private zone: NgZone;
+    private basicOptions: Object;
 
     constructor(
         private authService: AuthService,
         private router: Router
-    ) {
-        this.uploadProgress = 0;
-        this.uploadResponse = {};
-        this.zone = new NgZone({ enableLongStackTrace: false });
-    }
+    ) { }
 
     submitted = false;
 
@@ -60,7 +52,18 @@ export class SignupComponent {
             });
     }
 
-    handleUpload(data): void {
+    ngOnInit() {
+        this.zone = new NgZone({ enableLongStackTrace: false });
+        this.basicOptions = {
+            url: 'http://127.0.0.1:4567/citizens/upload',
+            calculateSpeed: false,
+            filterExtensions: true,
+            allowedExtensions: ['image/png', 'image/jpg'],
+            autoUpload: true
+        };
+    }
+
+    handleUpload(data: any): void {
         this.uploadFile = data;
         this.zone.run(() => {
             this.uploadProgress = data.progress.percent;

@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { SharedModule } from '../shared/shared.module';
 import { routing } from './auth.routing';
-
 import { AuthService } from './auth.service';
 import { ErrorHandler } from '../shared/error-handler';
-
+import { UPLOAD_DIRECTIVES } from 'ng2-uploader';
 import { LoginComponent } from './login.component';
 import { SignupComponent } from './signup.component';
 import { RecoverComponent } from './recover.component';
+import { FunctionaryLoginComponent } from './functionaryLogin.component';
 
 @NgModule({
     imports: [
@@ -17,7 +17,9 @@ import { RecoverComponent } from './recover.component';
     declarations: [
         LoginComponent,
         SignupComponent,
-        RecoverComponent
+        RecoverComponent,
+        FunctionaryLoginComponent,
+        UPLOAD_DIRECTIVES
     ],
     providers: [
         AuthService,
@@ -26,7 +28,9 @@ import { RecoverComponent } from './recover.component';
     exports: [
         LoginComponent,
         SignupComponent,
-        RecoverComponent
+        RecoverComponent,
+        FunctionaryLoginComponent,
+        UPLOAD_DIRECTIVES
     ]
 })
 

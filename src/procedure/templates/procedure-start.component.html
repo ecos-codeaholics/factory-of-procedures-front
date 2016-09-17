@@ -1,0 +1,32 @@
+{{diagnostic}}
+<table>
+
+</table>
+<div class="row">
+  <div class="col-lg-6">
+    <form #citizenForm="ngForm" (ngSubmit)="doSignup()">
+      <fieldset>
+        <legend>{{title}}</legend>
+
+        <tr>
+          <th>
+            <div class="form-group">
+              <label for="name">Nombre</label>
+              <input id="name" class="form-control" [(ngModel)]="citizen.name" type="text" name="name" placeholder="Nombre" required>
+            </div>
+          </th>
+          <th>
+            <div class="form-group">
+              <label for="surname">Primer Apellido</label>
+              <input id="surname" class="form-control" [(ngModel)]="citizen.lastName1" type="text" name="lastName1" placeholder="Primer apellido" required>
+            </div>
+          </th>
+        </tr>
+
+        <button type="submit" class="btn btn-default" [disabled]="!citizenForm.form.valid">Enviar</button>
+      </fieldset>
+    </form>
+  </div>
+</div>
+  
+
