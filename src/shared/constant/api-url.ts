@@ -1,23 +1,14 @@
 
 export class API_URL {
-    var server: "http://157.253.221.90";
-    var port : "4567";
 
-    //Andres
-    //public static get SESSIONS(): string { return 'http://157.253.221.90:4567/sessions/'; }
-    //public static get CITIZENS(): string { return 'http://157.253.221.90:4567/citizens/'; }
+    //Servidor Uniandes
+    //public  static serverPort:string = 'http://172.24.99.149:8082/';
     
-    //Jeison
- //   public static get SESSIONS(): string { return 'http://157.253.17.148:4567/sessions/'; }
- //   public static get CITIZENS(): string { return 'http://157.253.17.148:4567/citizens/'; }
+    // LOCAL
+     public  static serverPort:string = 'http://127.0.0.1:4567/';
 
-
-//    public static get SESSIONS(): string { return 'http://127.0.0.1:4567/sessions/'; }
-//    public static get CITIZENS(): string { return 'http://127.0.0.1:4567/citizens/'; }
-
-
-    public static get FUNCTIONARIES(): string { return 'http://127.0.0.1:4567/funcionarios/'; }
-    public static get SESSIONS(): string { return 'http://127.0.0.1:4567/sessions/'; }
-    public static get CITIZENS(): string { return 'http://127.0.0.1:4567/citizens/'; }
+    public static get FUNCTIONARIES(): string { return API_URL.serverPort + 'funcionarios/'; }
+    public static get SESSIONS(): string { return API_URL.serverPort + 'sessions/'; }
+    public static get CITIZENS(): string { return API_URL.serverPort + 'citizens/'; }
 
 }
