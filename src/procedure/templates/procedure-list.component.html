@@ -1,8 +1,12 @@
+{{procedures}}
+<!-- 
 <div class="row">
   <div class="col-lg-12">
     <status-selector (select)="status = $event"></status-selector>
   </div>
 </div>
+ -->
+
 <div class="row">
   <div class="col-lg-6">
     <table class="table">
@@ -16,7 +20,10 @@
 	</tr>
       </thead>
       <tbody>
-	<tr *ngFor="let procedure of procedures | ongoingFilter: [status]">
+<!-- 	  <tr *ngFor="let procedure of procedures | ongoingFilter: [status]">  -->
+	<tr>
+
+	 
 	  <td>{{procedure.id}}</td>
 	  <td>{{procedure.name}}</td>
 	  <td>{{procedure.department}}</td>

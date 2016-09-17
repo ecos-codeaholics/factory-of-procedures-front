@@ -21,7 +21,7 @@ import { ProcedureService } from './procedure.service';
         ProcedureHomeComponent,
         ProcedureListComponent,
         ProcedureFormComponent,
-        ProcedureOngoingFilterPipe,
+        //ProcedureOngoingFilterPipe,
     ],
     providers: [ProcedureService],
 })

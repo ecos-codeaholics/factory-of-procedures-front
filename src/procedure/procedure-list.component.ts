@@ -14,7 +14,7 @@ export class ProcedureListComponent implements OnInit {
 
     procedures: Procedure[];
 
-    @Input() status;
+ //   @Input() status;
 
     constructor(
         private procedureService: ProcedureService
@@ -23,11 +23,18 @@ export class ProcedureListComponent implements OnInit {
     // TODO: Should implement pipe transformation to
     // filter procedures as historic or ongoing
     getProcedures() {
-
-        // TODO: Don't forget to subscribe this to an
-        // observable
-        this.procedures = this.procedureService
-            .getProcedures();
+        this.procedureService.getProcedures().subscribe(
+        procedures => this.procedures=procedures,
+           error =>  this.errorMessage = <any>error
+            );
+            /*(res) => {
+                
+                this.procedures = res.data;
+                console.log("Estoy en procedure-list");
+                console.log(this.procedures[0].id);
+                */
+            
+        
     }
 
     filterHistoric(event) {

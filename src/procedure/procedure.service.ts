@@ -1,46 +1,53 @@
 import { Injectable } from '@angular/core';
+import { Http, RequestOptions, Response } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 import { ProcedureAttachment } from './procedure-attachment';
 
 import { Procedure } from './procedure';
 import { PROCEDURES } from './mock-procedure';
 
+import { API_URL } from '../shared/constant/api-url';
+import { ErrorHandler } from '../shared/error-handler';
+
 @Injectable()
 export class ProcedureService {
 
     private fileUploadUrl = '127.0.0.1/procedures/documents/upload';
 
-    uploadFile(file: File): Promise<ProcedureAttachment> {
-        return new Promise((resolve, reject) => {
+    constructor(
+        public errorHandler: ErrorHandler,
+        public http: Http
+    ) { }
 
-            let xhr: XMLHttpRequest = new XMLHttpRequest();
+    getProcedures(): Observable<Procedure[]> {
+        //  return PROCEDURES;
 
-            xhr.onreadystatechange = () => {
-                if (xhr.readyState === 4) {
-                    if (xhr.status == 200) {
-                        resolve(<ProcedureAttachment>JSON.parse(xhr.response));
-                    } else {
-                        reject(xhr.response);
-                    }
-                }
-            };
+        return this.http.get(API_URL.PROCEDURES)
+            .map((r: Response) => r.json().data as Procedure[]);
+          /* .catch((res) => {
+                console.log("ERROR: en  auth.service");
+                Observable.throw(this.errorHandler.check(res));
+            })*/
+ 
+          
 
-            xhr.open('POST', this.fileUploadUrl, true);
-
-            let formData = new FormData();
-            formData.append("file", file, file.name);
-
-            xhr.send(formData);
-        })
+       // return this.http.request(API_URL.PROCEDURES)
+     //       .map(res => res.json());
     }
+    
+    private handleError(error: any) {
+        let errMsg = (error.message) ? error.message :
+            error.status ? `${error.status} - ${error.statusText}` : 'Server error';
+        console.error("Esto es un error:  " + errMsg);
 
-    getProcedures(): Procedure[] {
-
-        return PROCEDURES;
-
-        // Uncomment this to enable request to remote api
-        //return this.http.get(this.proceduresUrl)
-        //    .map(this.extractData)
-        //    .catch(this.handleError);
+        return Observable.throw(errMsg);
     }
+    
+    /*{
+    "data":[
+        {   "id": 1, name: "sebas", department: "Caldas"        ,   city: "Palestina"   , status: "ongoing"},
+        {   "id": 2, name: "Jeison",    department: "Cundinamarca"  ,   city: "Palestina"   , status: "all"}
+    ]
+}*/
+
 }
