@@ -17,7 +17,7 @@ export class LoginComponent {
 
     title = 'Acceso de usuario';
 
-    user = new Login('', '', NaN);
+    user = new Login('', '', NaN, 'citizen');
 
     error: any;
 

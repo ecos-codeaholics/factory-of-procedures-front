@@ -9,15 +9,15 @@ import { Login } from './login';
 declare var jQuery: any;
 
 @Component({
-    selector: 'recover-form',
-    templateUrl: 'src/auth/templates/recover.component.html',
+    selector: 'functionary-recover-form',
+    templateUrl: 'src/auth/templates/functionaryRecover.component.html',
 })
 
-export class RecoverComponent {
+export class FunctionaryRecoverComponent {
 
     title = 'Recuperar Constraseña';
 
-    login = new Login("", "", NaN, 'citizen');
+    login = new Login("", "", NaN, 'functionary');
 
     error: any;
 
@@ -30,7 +30,7 @@ export class RecoverComponent {
             .resetPassword(this.login)
             .subscribe(
             (res) => {
-                  jQuery('.modal-title').html("Recuperar Contraseña");
+                jQuery('.modal-title').html("Recuperar Contraseña");
                 jQuery('.modal-body').html("Una nueva contraseña ha sido enviada a su e-mail registrado.");
                 jQuery('.modal').modal('show');
                 console.log(res.json());

@@ -7,6 +7,7 @@ import { UPLOAD_DIRECTIVES } from 'ng2-uploader';
 import { LoginComponent } from './login.component';
 import { SignupComponent } from './signup.component';
 import { RecoverComponent } from './recover.component';
+import { FunctionaryRecoverComponent } from './functionaryRecover.component';
 import { FunctionaryLoginComponent } from './functionaryLogin.component';
 
 @NgModule({
@@ -19,6 +20,7 @@ import { FunctionaryLoginComponent } from './functionaryLogin.component';
         SignupComponent,
         RecoverComponent,
         FunctionaryLoginComponent,
+        FunctionaryRecoverComponent,
         UPLOAD_DIRECTIVES
     ],
     providers: [
@@ -30,6 +32,7 @@ import { FunctionaryLoginComponent } from './functionaryLogin.component';
         SignupComponent,
         RecoverComponent,
         FunctionaryLoginComponent,
+        FunctionaryRecoverComponent,
         UPLOAD_DIRECTIVES
     ]
 })

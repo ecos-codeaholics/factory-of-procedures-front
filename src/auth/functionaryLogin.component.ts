@@ -17,7 +17,7 @@ export class FunctionaryLoginComponent {
 
   title = 'Acceso de Funcionario';
 
-  user = new Login('', '', NaN);
+  user = new Login('', '', NaN, 'functionary');
 
   error: any;
 
@@ -31,7 +31,7 @@ export class FunctionaryLoginComponent {
   doFunctionaryLogin(user: Login) {
 
     this.authService
-      .doLogin(this.user)
+      .doFunctionaryLogin(this.user)
       .subscribe(
         (res) => {
           console.log(res);
