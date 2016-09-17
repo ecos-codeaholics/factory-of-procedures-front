@@ -35,7 +35,7 @@ export class AuthService {
 
         let options = new RequestOptions({ headers: contentHeaders });
 
-        return this.http.post(API_URL.SESSIONS, body, options)
+        return this.http.post(API_URL.AUTH + '/login', body, options)
 
             .map((res) => {
 
@@ -109,7 +109,7 @@ export class AuthService {
 
         let options = new RequestOptions({ headers: contentHeaders });
 
-        return this.http.post(API_URL.CITIZENS, body, options)
+        return this.http.post(API_URL.AUTH, body, options)
             .map((res) => {
 
                 return res;
@@ -125,7 +125,7 @@ export class AuthService {
 
         let options = new RequestOptions({ headers: contentHeaders });
 
-        return this.http.put(API_URL.CITIZENS, body, options)
+        return this.http.put(API_URL.AUTH, body, options)
             .map((res) => {
                 return res;
             }).catch((res) => {

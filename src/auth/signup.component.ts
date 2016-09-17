@@ -55,7 +55,7 @@ export class SignupComponent implements OnInit {
     ngOnInit() {
         this.zone = new NgZone({ enableLongStackTrace: false });
         this.basicOptions = {
-            url: 'http://127.0.0.1:4567/citizens/upload',
+            url: 'http://157.253.221.157:4567/upload',
             calculateSpeed: false,
             filterExtensions: true,
             allowedExtensions: ['image/png', 'image/jpg'],
