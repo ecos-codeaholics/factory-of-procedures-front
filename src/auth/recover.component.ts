@@ -6,6 +6,8 @@ import { AuthService } from './auth.service';
 import { Citizen } from '../citizen/citizen';
 import { Login } from './login';
 
+declare var jQuery: any;
+
 @Component({
     selector: 'recover-form',
     templateUrl: 'src/auth/templates/recover.component.html',
