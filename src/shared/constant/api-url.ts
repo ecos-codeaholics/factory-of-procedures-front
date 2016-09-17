@@ -1,6 +1,7 @@
 
 export class API_URL {
-
+    var server: "http://157.253.221.90";
+    var port : "4567";
 
     //Andres
     //public static get SESSIONS(): string { return 'http://157.253.221.90:4567/sessions/'; }
