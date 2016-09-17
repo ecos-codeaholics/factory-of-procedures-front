@@ -19,7 +19,7 @@ export const routing = RouterModule.forChild([
         component: RecoverComponent
     },
     {
-      path: 'functionary',
+      path: 'funcionarios',
       component: FunctionaryLoginComponent
     }
 ]);
