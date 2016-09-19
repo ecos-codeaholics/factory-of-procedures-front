@@ -5,7 +5,7 @@ export class API_URL {
     //public  static serverPort:string = 'http://172.24.99.149:8082/';
 
     // LOCAL
-     public  static serverPort:string = 'http://157.253.221.157:4567/';
+     public  static serverPort:string = 'http://127.0.0.1:4567/';
 
 
 //    public static get SESSIONS(): string { return 'http://127.0.0.1:4567/sessions/'; }
