@@ -1,6 +1,26 @@
+import { ConfigService } from '../../config/config.service';
+import { Injectable } from '@angular/core';
 
+@Injectable()
 export class API_URL {
-    public static get FUNCTIONARIES(): string { return 'http://127.0.0.1:4567/funcionarios/'; }
-    public static get SESSIONS(): string { return 'http://127.0.0.1:4567/sessions/'; }
-    public static get CITIZENS(): string { return 'http://127.0.0.1:4567/citizens/'; }
+
+    public baseUrl: string;
+    public port: string;
+
+    constructor(config: ConfigService) {
+        this.baseUrl = config.get('baseUrl');
+        this.port = config.get('port');
+    }
+
+    FUNCTIONARIES() {
+        return this.baseUrl + ':' + this.port + '/funcionarios/';
+    }
+
+    SESSIONS() {
+        return this.baseUrl + ':' + this.port + '/sessions/';
+    }
+
+    CITIZENS() {
+        return this.baseUrl + ':' + this.port + '/citizens/';
+    }
 }

@@ -14,7 +14,10 @@ import { CITIZENS } from './mock-citizen';
 @Injectable()
 export class CitizenService {
 
-    constructor(private http: Http) { }
+    constructor(
+        private http: Http,
+        private apiUrl: API_URL
+    ) { }
 
     private citizensUrl = 'http://localhost:4567/citizens/';
 
@@ -41,7 +44,7 @@ export class CitizenService {
 
         let req = new Request({
             method: "GET",
-            url: API_URL.CITIZENS
+            url: this.apiUrl.CITIZENS()
         });
 
         return this.http.request(req)

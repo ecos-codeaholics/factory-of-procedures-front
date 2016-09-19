@@ -7,7 +7,7 @@ import { AuthService } from '../auth/auth.service';
 //import './rxjs-extensions';
 
 //enable production mode
-import {enableProdMode} from '@angular/core';
+import { enableProdMode } from '@angular/core';
 enableProdMode();
 
 @Component({

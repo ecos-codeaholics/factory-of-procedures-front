@@ -20,7 +20,8 @@ export class AuthService {
 
     constructor(
         public errorHandler: ErrorHandler,
-        public http: Http
+        public http: Http,
+        public apiUrl: API_URL
     ) { }
 
     private extractData(res: Response) {
@@ -35,7 +36,40 @@ export class AuthService {
 
         let options = new RequestOptions({ headers: contentHeaders });
 
-        return this.http.post(API_URL.SESSIONS, body, options)
+        return this.http.post(this.apiUrl.SESSIONS(), body, options)
+
+            .map((res) => {
+                if (res["_body"] == "null") {
+                    Observable.throw(this.errorHandler.check(res));
+                } else {
+
+                }
+
+                // Fixme: Change this ugly thing
+                let token = res.headers.values()[0][0];
+
+                if (token) {
+
+                    this.token = token;
+
+                    localStorage.setItem('id_token', this.token);
+                    console.log(localStorage.getItem('id_token'));
+                }
+
+                return res;
+            }).catch((res) => {
+                console.log("ERROR: en  auth.service");
+                return Observable.throw(this.errorHandler.check(res));
+            })
+    }
+
+    doFunctionaryLogin(login: Login) {
+
+        let body = JSON.stringify(login);
+
+        let options = new RequestOptions({ headers: contentHeaders });
+
+        return this.http.post(this.apiUrl.FUNCTIONARIES(), body, options)
 
             .map((res) => {
 
@@ -63,40 +97,6 @@ export class AuthService {
             })
     }
 
-  doFunctionaryLogin(login: Login) {
-
-    let body = JSON.stringify(login);
-
-    let options = new RequestOptions({ headers: contentHeaders });
-
-    return this.http.post(API_URL.FUNCTIONARIES, body, options)
-
-      .map((res) => {
-
-        if (res["_body"] == "null") {
-          Observable.throw(this.errorHandler.check(res));
-        } else {
-
-        }
-
-        // Fixme: Change this ugly thing
-        let token = res.headers.values()[0][0];
-
-        if (token) {
-
-          this.token = token;
-
-          localStorage.setItem('id_token', this.token);
-          console.log(localStorage.getItem('id_token'));
-        }
-
-        return res;
-      }).catch((res) => {
-        console.log("ERROR: en  auth.service");
-        return Observable.throw(this.errorHandler.check(res));
-      })
-  }
-
     doLogout(): void {
 
         this.token = null;
@@ -109,7 +109,7 @@ export class AuthService {
 
         let options = new RequestOptions({ headers: contentHeaders });
 
-        return this.http.post(API_URL.CITIZENS, body, options)
+        return this.http.post(this.apiUrl.CITIZENS(), body, options)
             .map((res) => {
 
                 return res;
@@ -125,7 +125,7 @@ export class AuthService {
 
         let options = new RequestOptions({ headers: contentHeaders });
 
-        return this.http.put(API_URL.CITIZENS, body, options)
+        return this.http.put(this.apiUrl.CITIZENS(), body, options)
             .map((res) => {
                 return res;
             }).catch((res) => {
