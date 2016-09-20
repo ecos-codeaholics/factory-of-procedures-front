@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http, RequestOptions, Response } from '@angular/http';
+import { Router } from '@angular/router';
 import { AuthHttp } from 'angular2-jwt';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/toPromise';
@@ -21,7 +22,8 @@ export class AuthService {
     constructor(
         public errorHandler: ErrorHandler,
         public http: Http,
-        public apiUrl: API_URL
+        public apiUrl: API_URL,
+        public router: Router
     ) { }
 
     private extractData(res: Response) {

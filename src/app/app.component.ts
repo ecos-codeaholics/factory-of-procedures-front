@@ -43,7 +43,7 @@ export class AppComponent {
         this.authService.doLogout();
         this.isAuth = false;
         this.user = null;
-        this.router.navigate(['login']);
+        this.router.navigate(['acceder']);
 
     }
 }
