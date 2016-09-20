@@ -33,18 +33,14 @@ export class AuthService {
     doLogin(login: Login) {
 
         let body = JSON.stringify(login);
-
         let options = new RequestOptions({ headers: contentHeaders });
 
-        return this.http.post(this.apiUrl.SESSIONS(), body, options)
-
+        return this.http.post(this.apiUrl.LOGIN(), body, options)
             .map((res) => {
                 if (res["_body"] == "null") {
                     Observable.throw(this.errorHandler.check(res));
                 } else {
-
                 }
-
                 // Fixme: Change this ugly thing
                 let token = res.headers.values()[0][0];
 
@@ -69,8 +65,7 @@ export class AuthService {
 
         let options = new RequestOptions({ headers: contentHeaders });
 
-        return this.http.post(this.apiUrl.FUNCTIONARIES(), body, options)
-
+        return this.http.post(this.apiUrl.LOGIN(), body, options)
             .map((res) => {
 
                 if (res["_body"] == "null") {
@@ -85,6 +80,7 @@ export class AuthService {
                 if (token) {
 
                     this.token = token;
+                    console.log(this.token);
 
                     localStorage.setItem('id_token', this.token);
                     console.log(localStorage.getItem('id_token'));
@@ -109,7 +105,7 @@ export class AuthService {
 
         let options = new RequestOptions({ headers: contentHeaders });
 
-        return this.http.post(this.apiUrl.CITIZENS(), body, options)
+        return this.http.post(this.apiUrl.AUTH(), body, options)
             .map((res) => {
 
                 return res;
@@ -125,7 +121,9 @@ export class AuthService {
 
         let options = new RequestOptions({ headers: contentHeaders });
 
-        return this.http.put(this.apiUrl.CITIZENS(), body, options)
+
+        return this.http.put(this.apiUrl.AUTH(), body, options)
+
             .map((res) => {
                 return res;
             }).catch((res) => {

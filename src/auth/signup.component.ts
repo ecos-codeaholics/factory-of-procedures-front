@@ -2,6 +2,7 @@ import { Component, Input, OnInit, NgZone } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from './auth.service';
 import { Citizen } from '../citizen/citizen';
+import { API_URL } from '../shared/constant/api-url';
 
 declare var jQuery: any;
 
@@ -26,7 +27,8 @@ export class SignupComponent implements OnInit {
 
     constructor(
         private authService: AuthService,
-        private router: Router
+        private router: Router,
+        private apiUrl: API_URL
     ) { }
 
     submitted = false;
@@ -42,7 +44,7 @@ export class SignupComponent implements OnInit {
                 jQuery('.modal').modal('show');
                 this.response = res.json();
                 console.log(this.response);
-                this.router.navigate(['/login']);
+                this.router.navigate(['acceder']);
 
             },
             (error) => {
@@ -55,7 +57,7 @@ export class SignupComponent implements OnInit {
     ngOnInit() {
         this.zone = new NgZone({ enableLongStackTrace: false });
         this.basicOptions = {
-            url: 'http://127.0.0.1:4567/citizens/upload',
+            url: this.apiUrl.DOCUMENT(),
             calculateSpeed: false,
             filterExtensions: true,
             allowedExtensions: ['image/png', 'image/jpg'],

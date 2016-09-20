@@ -31,7 +31,7 @@ export class ErrorHandler {
                     if (error["_body"] != "null") {
                         var body = JSON.parse(error["_body"]);
                         jQuery('.modal-body').html(body.responseMsg);
-                        jQuery("#alertMsg").html('<div class="alert alert-danger" role="alert">' + body.responseMsg + '</div>');
+                        //jQuery("#alertMsg").html('<div class="alert alert-danger" role="alert">' + body.responseMsg + '</div>');
                     } else {
                         jQuery('.modal-body').html(defaulMSG);
                     }
@@ -40,7 +40,8 @@ export class ErrorHandler {
                     jQuery('.modal-body').html(defaulMSG);
             }
             if (modal) {
-                jQuery('.modal-title').html("Bienvenido");
+                jQuery('.modal-title').html("Algo anda mal.");
+
                 jQuery('.modal').modal('show');
 
             }

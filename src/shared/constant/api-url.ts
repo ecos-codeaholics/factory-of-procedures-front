@@ -8,16 +8,27 @@ export class API_URL {
     public port: string;
 
     constructor(config: ConfigService) {
+        console.log(config.get('baseUrl'));
+        console.log(config.get('port'));
+
         this.baseUrl = config.get('baseUrl');
         this.port = config.get('port');
     }
 
     FUNCTIONARIES() {
-        return this.baseUrl + ':' + this.port + '/funcionarios/';
+        return this.baseUrl + ':' + this.port + '/functionaries/';
     }
 
-    SESSIONS() {
-        return this.baseUrl + ':' + this.port + '/sessions/';
+    AUTH() {
+        return this.baseUrl + ':' + this.port + '/auth/';
+    }
+
+    LOGIN() {
+        return this.baseUrl + ':' + this.port + '/auth/login/';
+    }
+
+    DOCUMENT() {
+        return this.baseUrl + ':' + this.port + '/auth/upload/';
     }
 
     CITIZENS() {
