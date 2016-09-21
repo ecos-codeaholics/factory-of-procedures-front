@@ -1,0 +1,9 @@
+/**
+* Change this to your production server info
+*
+*/
+{
+    "baseUrl": "http://127.0.0.1",
+    "port": "4567",
+    "debugging": "true"
+}

@@ -6,7 +6,6 @@ import { RouterModule } from '@angular/router';
 import { MainMenuComponent } from './main-menu/main-menu.component';
 import { StatusSelectorComponent } from './status-selector/status-selector.component';
 
-
 import { CheckUserDirective } from './check-user.directive';
 
 @NgModule({

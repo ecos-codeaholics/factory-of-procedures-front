@@ -7,15 +7,21 @@ import { Procedure } from './procedure';
 @Component({
     selector: 'procedure-list',
     //inputs: ['status'],
-    templateUrl: 'src/procedure/templates/procedure-list.component.html'
+    templateUrl: 'src/procedure/templates/procedure-list.component.html',
+    providers: [ProcedureService]
 })
 
 export class ProcedureListComponent implements OnInit {
 
     procedures: Procedure[];
 
- //   @Input() status;
+    //   @Input() status;
 
+    mode = 'Observable'
+
+    error: any;
+
+    errorMessage: string;
     constructor(
         private procedureService: ProcedureService
     ) { }
@@ -24,17 +30,9 @@ export class ProcedureListComponent implements OnInit {
     // filter procedures as historic or ongoing
     getProcedures() {
         this.procedureService.getProcedures().subscribe(
-        procedures => this.procedures=procedures,
-           error =>  this.errorMessage = <any>error
-            );
-            /*(res) => {
-                
-                this.procedures = res.data;
-                console.log("Estoy en procedure-list");
-                console.log(this.procedures[0].id);
-                */
-            
-        
+            procedures => this.procedures = procedures,
+            error => this.errorMessage = <any>error
+        );
     }
 
     filterHistoric(event) {
@@ -45,16 +43,6 @@ export class ProcedureListComponent implements OnInit {
 
     filterOngoing(event) {
         event.preventDefault();
-
-	/**
-        this.procedures.find((e) => {
-            console.log(e);
-            return e.status == "En curso";
-
-        });
-        console.log("Getting ongoing procedures");
-	*/
-
     }
 
     ngOnInit() {
