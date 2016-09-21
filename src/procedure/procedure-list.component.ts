@@ -15,7 +15,7 @@ export class ProcedureListComponent implements OnInit {
 
     procedures: Procedure[];
 
-    //   @Input() status;
+       @Input() status;
 
     mode = 'Observable'
 
