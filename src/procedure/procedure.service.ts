@@ -10,10 +10,7 @@ import { ErrorHandler } from '../shared/error-handler';
 
 @Injectable()
 export class ProcedureService {
-
-    private fileUploadUrl = '127.0.0.1/procedures/documents/upload';
-    private proceduresUrl = 'src/procedure/procedures.json';
-
+        
     constructor(
         public errorHandler: ErrorHandler,
         public http: Http,

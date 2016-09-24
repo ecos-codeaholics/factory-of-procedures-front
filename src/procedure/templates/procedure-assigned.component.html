@@ -1,0 +1,33 @@
+Funcionarios
+
+
+<div class="row">
+	<div class="col-lg-6">
+		<table class="table">
+			<thead>
+				<tr>
+					<th><input type="checkbox" /></th>
+					<th>Fecha</th>
+					<th>Hora</th>
+					<th>Radicado No</th>
+					<th>Codigo</th>
+					<th>Nombre</th>
+					<th>Estado</th>
+					<th>Adjuntos</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr *ngFor="let procedure of procedures">
+					<td> <input type="checkbox" /> </td>
+					<td>{{procedure.name}}</td>
+					<td>{{procedure.name}}</td>
+					<td>{{procedure.id}}</td>
+					<td>{{procedure.id}}</td>
+					<td>{{procedure.name}}</td>
+					<td>{{procedure.status}}</td>
+					<td>{{procedure.id}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
