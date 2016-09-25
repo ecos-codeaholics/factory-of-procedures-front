@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { AuthHttp } from 'angular2-jwt';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/toPromise';
+import { Subject } from 'rxjs/Subject';
 
 import { contentHeaders } from '../shared/constant/content-headers';
 import { ErrorHandler } from '../shared/error-handler';
@@ -19,6 +20,9 @@ export class AuthService {
     public token: string;
     public userEmail: string;
 
+    private status: boolean;
+    private authStatus: Subject<boolean> = new Subject<boolean>();
+
     constructor(
         public errorHandler: ErrorHandler,
         public http: Http,
@@ -26,10 +30,13 @@ export class AuthService {
         public router: Router
     ) { }
 
-    private extractData(res: Response) {
-        let body = res.json();
+    setAuthStatus(status: boolean): void {
+        this.status = status;
+        this.authStatus.next(status);
+    }
 
-        return body.data || {};
+    getAuthStatus(): Observable<boolean> {
+        return this.authStatus.asObservable();
     }
 
     doLogin(login: Login) {
@@ -98,6 +105,7 @@ export class AuthService {
     doLogout(): void {
 
         this.token = null;
+        this.status = false;
         localStorage.removeItem('id_token');
     }
 

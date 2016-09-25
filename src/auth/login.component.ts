@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { ErrorHandler } from '../shared/error-handler';
@@ -21,12 +21,16 @@ export class LoginComponent {
 
     error: any;
 
-
+    status: boolean;
 
     constructor(
         private authService: AuthService,
         private router: Router
     ) { }
+
+    setAuthStatus(status: boolean) {
+        this.authService.setAuthStatus(status)
+    }
 
     doLogin(user: Login) {
 
@@ -34,11 +38,12 @@ export class LoginComponent {
             .doLogin(this.user)
             .subscribe(
             (res) => {
-                console.log(res);
-
-                this.router.navigate(['/']);
+                this.setAuthStatus(true);
             },
-            error => {});
+            error => { },
+            () => {
+                this.router.navigate(['/']);
+            });
     }
 
     get diagnostic() { return JSON.stringify(this.user); }
