@@ -29,7 +29,7 @@ export class ProcedureAssignedComponent implements OnInit {
     // TODO: Should implement pipe transformation to
     // filter procedures as historic or ongoing
     getProcedures() {
-        this.procedureService.getProcedures().subscribe(
+        this.procedureService.getAssignedProcedures().subscribe(
             procedures => this.procedures = procedures,
             error => this.errorMessage = <any>error
         );
