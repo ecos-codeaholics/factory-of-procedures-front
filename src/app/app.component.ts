@@ -1,4 +1,4 @@
-import { Component, OnInit, DoCheck, Input } from '@angular/core';
+import { Component, OnInit, AfterContentChecked, Input } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { AuthGuardService } from '../auth/auth-guard.service';
@@ -16,7 +16,7 @@ enableProdMode();
     templateUrl: 'src/app/templates/app.component.html',
 })
 
-export class AppComponent implements DoCheck {
+export class AppComponent implements AfterContentChecked {
 
     title = 'Fábrica de Trámites';
 
@@ -60,8 +60,7 @@ export class AppComponent implements DoCheck {
 
     }
 
-    ngDoCheck() {
-
+    ngAfterContentChecked() {
         this.isAuth = this.getAuthStatus();
     }
 }
