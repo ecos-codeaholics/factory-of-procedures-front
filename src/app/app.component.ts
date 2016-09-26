@@ -5,8 +5,6 @@ import { AuthGuardService } from '../auth/auth-guard.service';
 import { AuthService } from '../auth/auth.service';
 import { Subscription } from 'rxjs/Subscription';
 
-//import './rxjs-extensions';
-
 //enable production mode
 import { enableProdMode } from '@angular/core';
 enableProdMode();
@@ -23,44 +21,45 @@ export class AppComponent implements AfterContentChecked {
     public isAuth: boolean;
     public user: string;
     public profile: string;
-
-    status: boolean;
+    public status: boolean;
 
     constructor(
-        private authGuardService: AuthGuardService,
+
         private authService: AuthService,
         private router: Router
     ) {
-        this.isAuth = authGuardService.isAuth();
+
+        this.isAuth = authService.isAuth();
 
         if (this.isAuth) {
-            this.profile = authGuardService.getProfile();
-            this.user = authGuardService.getUser();
+            this.profile = authService.getProfile();
+            this.user = authService.getUser();
         }
     }
 
     getAuthStatus() {
+
         this.authService.getAuthStatus().subscribe(
             (status: boolean) => {
-                this.status = status;
+                this.isAuth = status;
             }
         );
-
-        return this.status;
+        return this.isAuth;
     }
 
     doLogout(event) {
 
         event.preventDefault();
         this.isAuth = false;
-        this.user = null;
         this.authService.setAuthStatus(false);
         this.authService.doLogout();
         this.router.navigate(['acceder']);
-
     }
 
     ngAfterContentChecked() {
-        this.isAuth = this.getAuthStatus();
+
+        this.status = this.getAuthStatus();
+        this.profile = this.authService.getProfile();
+        this.user = this.authService.getUser();
     }
 }
