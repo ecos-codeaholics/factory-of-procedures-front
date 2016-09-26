@@ -1,10 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, AfterContentChecked, Input } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { AuthGuardService } from '../auth/auth-guard.service';
 import { AuthService } from '../auth/auth.service';
-
-//import './rxjs-extensions';
+import { Subscription } from 'rxjs/Subscription';
 
 //enable production mode
 import { enableProdMode } from '@angular/core';
@@ -15,35 +14,52 @@ enableProdMode();
     templateUrl: 'src/app/templates/app.component.html',
 })
 
-export class AppComponent {
+export class AppComponent implements AfterContentChecked {
 
     title = 'Fábrica de Trámites';
 
     public isAuth: boolean;
     public user: string;
     public profile: string;
+    public status: boolean;
 
     constructor(
-        private authGuardService: AuthGuardService,
+
         private authService: AuthService,
         private router: Router
     ) {
-        this.isAuth = authGuardService.isAuth();
+
+        this.isAuth = authService.isAuth();
 
         if (this.isAuth) {
-
-            this.profile = authGuardService.getProfile();
-            this.user = authGuardService.getUser();
+            this.profile = authService.getProfile();
+            this.user = authService.getUser();
         }
+    }
+
+    getAuthStatus() {
+
+        this.authService.getAuthStatus().subscribe(
+            (status: boolean) => {
+                this.isAuth = status;
+            }
+        );
+        return this.isAuth;
     }
 
     doLogout(event) {
 
         event.preventDefault();
-        this.authService.doLogout();
         this.isAuth = false;
-        this.user = null;
+        this.authService.setAuthStatus(false);
+        this.authService.doLogout();
         this.router.navigate(['acceder']);
+    }
 
+    ngAfterContentChecked() {
+
+        this.status = this.getAuthStatus();
+        this.profile = this.authService.getProfile();
+        this.user = this.authService.getUser();
     }
 }

@@ -4,32 +4,35 @@ import { JwtHelper } from 'angular2-jwt';
 @Injectable()
 export class JwtHelperService {
 
-    token = localStorage.getItem('id_token');
-
     constructor(
+
         public jwtHelper: JwtHelper
     ) { }
 
     tokenDecode() {
 
-        if (!this.token) {
+        let token = localStorage.getItem('id_token');
+
+        if (!token) {
 
             return "unathorized";
         } else {
 
-            return this.jwtHelper.decodeToken(this.token);
+            return this.jwtHelper.decodeToken(token);
         }
     }
 
     tokenExpirationDate() {
 
-        return this.jwtHelper.getTokenExpirationDate(this.token);
+        let token = localStorage.getItem('id_token');
+
+        return this.jwtHelper.getTokenExpirationDate(token);
     }
 
     tokenExpired() {
 
-        return this.jwtHelper.isTokenExpired(this.token);
+        let token = localStorage.getItem('id_token');
+
+        return this.jwtHelper.isTokenExpired(token);
     }
-
-
 }
