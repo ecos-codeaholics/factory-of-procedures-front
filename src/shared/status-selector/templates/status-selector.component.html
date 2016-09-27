@@ -1,4 +1,4 @@
-<select (change)="select.emit($event.target.value)">
+<select (change)="select.emit($event.target.value)" class="btn btn-primary dropdown-toggle">
   <option *ngFor="let status of statuses">
     {{status}}
   </option>
