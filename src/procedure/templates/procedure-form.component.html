@@ -15,16 +15,7 @@
 	</div>
 
 	<div id="documentos" class="tab-pane fade">
-		<form class="pure-form pure-form-stacked" #fileUploadForm="ngForm"
-			(ngSubmit)="submit()">
-			<fieldset>
-				<legend>{{title}}</legend>
-
-				<label for="name">Adjuntar archivo</label> <input
-					[(ngModel)]="file.name" type="file" name="name">
-				<button type="submit" class="pure-button pure-button-primary">Ingresar</button>
-			</fieldset>
-			</form>
+		<upload-file [legend]="SubirArchivo" [multiple]=false [url]="URL"></upload-file>
 	</div>
 	<div id="flujo" class="tab-pane fade">
 	<h3>Aqui poner el flujo</h3>
