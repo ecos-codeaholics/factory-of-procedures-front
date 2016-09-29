@@ -1,5 +1,14 @@
+<!--
+
 <select (change)="select.emit($event.target.value)" class="btn btn-primary dropdown-toggle">
   <option *ngFor="let status of statuses">
     {{status}}
   </option>
 </select>
+-->
+
+<ul class="nav nav-tabs">
+  <li *ngFor="let status of statuses"><a data-toggle="tab" (click)="filterHistoric($event.target.text)">{{status}}</a></li>
+</ul>
+
+<br />
