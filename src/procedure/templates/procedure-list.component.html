@@ -20,7 +20,6 @@
             <thead>
             <tr>
                 <th>Radicado</th>
-                <th>Estado</th>
                 <th>Nombre del Trámite</th>
                 <th>Departamento</th>
                 <th>Ciudad/Municipio</th>
@@ -30,11 +29,10 @@
             <tbody>
             <tr *ngFor="let procedure of procedures | ongoingFilter: [status]">
                 <td>{{procedure.id}}</td>
-                <td>{{procedure.status}}</td>
                 <td>{{procedure.name}}</td>
                 <td>{{procedure.department}}</td>
                 <td>{{procedure.city}}</td>
-                <td><a href="/">Detalle</a></td>
+                <td><a routerLink="/procedures/edit">Detalle</a></td>
             </tr>
             </tbody>
         </table>

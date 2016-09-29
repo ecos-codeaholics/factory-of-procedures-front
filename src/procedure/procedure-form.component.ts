@@ -9,7 +9,7 @@ import { ProcedureAttachment } from './procedure-attachment';
 
 export class ProcedureFormComponent {
 
-    title = 'Nuevo Trámite';
+    title = 'Detalle De Trámite';
 
     file = new ProcedureAttachment('');
 }
