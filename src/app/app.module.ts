@@ -21,6 +21,7 @@ import { HomeComponent } from '../home/home.component';
         AuthModule,
         SharedModule,
         routing,
+
     ],
     declarations: [
         AppComponent,
