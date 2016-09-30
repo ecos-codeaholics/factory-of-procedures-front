@@ -1,3 +1,9 @@
+/**
+ * Documentacion para desarrollar el modulo, fue tomada de http://ng2-uploader.com/docs
+ * 
+ * multiple: Debe ser implementado para determinar si muestra la opcion multiple o simple
+ */
+
 import { Component, Output, NgZone, OnInit, Input } from '@angular/core/';
 import { API_URL } from '../constant/api-url';
 
