@@ -1,10 +1,25 @@
-<form class="pure-form pure-form-stacked" #fileUploadForm="ngForm" (ngSubmit)="submit()">
-  <fieldset>
-    <legend>{{title}}</legend>
-    
-    <label for="name">Adjuntar archivo</label>
-    <input [(ngModel)]="file.name" type="file" name="name" >
-    <button type="submit" class="pure-button pure-button-primary">Ingresar</button>
-  </fieldset>
-  
+<h3>{{title}}</h3>
 
+<BR />
+
+<ul class="nav nav-tabs">
+	<li class="active"><a data-toggle="tab" href="#cuestionario">Cuestionario</a></li>
+	<li><a data-toggle="tab" href="#documentos">Documentos</a></li>
+	<li><a data-toggle="tab" href="#flujo">Flujo</a></li>
+</ul>
+
+<div class="tab-content">
+
+	<div id="cuestionario" class="tab-pane fade in active">
+		<h3>Aqui poner el cuestionario</h3>
+		<h1>Radicado: {{id}}</h1>
+	</div>
+
+	<div id="documentos" class="tab-pane fade">
+		<upload-file [legend]="SubirArchivo" [multiple]=false [url]="URL"></upload-file>
+	</div>
+	<div id="flujo" class="tab-pane fade">
+	<h3>Aqui poner el flujo</h3>
+
+	</div>
+</div>

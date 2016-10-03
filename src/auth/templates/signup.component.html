@@ -33,21 +33,8 @@
 	  <label for="password">Contraseña</label>
 	  <input id="password" class="form-control" [(ngModel)]="citizen.password" type="password" name="password" placeholder="Contraseña" minlength="8" title="Contraseña es demasiado corta" required>
 	</div>
-	<div class="form-group">
-		<div>
-			<label for="file">Archivo Cedula</label>
-			<input type="file" id="file" class="form-control" [ng-file-select]="basicOptions" (onUpload)="handleUpload($event)" required>
-		</div>
-		<div *ngIf="uploadFile">
-			Progreso: {{ uploadProgress }}%
-		</div>
-		<div *ngIf="uploadFile">
-			<div class="ui indicating olive progress">
-				<div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': uploadProgress + '%' }"></div>
-			</div>
-		</div>
-	</div>
-
+	
+	<upload-file [legend]="ArchivoCedula" [multiple]=false [url]="URL"></upload-file>
 	<button type="submit" class="btn btn-default" [disabled]="!citizenForm.form.valid">Enviar</button>
       </fieldset>
     </form>

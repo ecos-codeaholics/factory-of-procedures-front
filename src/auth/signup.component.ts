@@ -12,9 +12,6 @@ declare var jQuery: any;
 })
 
 export class SignupComponent implements OnInit {
-
-    //@Input() user: User;
-
     title = 'Registro de Ciudadano';
     citizen = new Citizen('', NaN, '', '', '', '', '', '');
     response: any;
@@ -54,28 +51,7 @@ export class SignupComponent implements OnInit {
             });
     }
 
-    ngOnInit() {
-        this.zone = new NgZone({ enableLongStackTrace: false });
-        this.basicOptions = {
-            url: this.apiUrl.DOCUMENT(),
-            calculateSpeed: false,
-            filterExtensions: true,
-            allowedExtensions: ['image/png', 'image/jpg'],
-            autoUpload: true
-        };
-    }
-
-    handleUpload(data: any): void {
-        this.uploadFile = data;
-        this.zone.run(() => {
-            this.uploadProgress = data.progress.percent;
-        });
-        let resp = data.response;
-        if (resp) {
-            resp = JSON.parse(resp);
-            this.uploadResponse = resp;
-        }
-    }
+    ngOnInit() {}
 
     get diagnostic() { return JSON.stringify(this.citizen); }
 }

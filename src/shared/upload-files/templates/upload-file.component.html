@@ -1,0 +1,29 @@
+
+<div *ngIf="!multiple">
+	<div class="form-group">
+		<div>
+			<label for="file">{{ legend }}</label> <input type="file" id="file"
+				class="form-control" [ng-file-select]="basicOptions"
+				(onUpload)="handleUpload($event)" required>
+		</div>
+		<div *ngIf="uploadFile">Progreso: {{ uploadProgress }}%</div>
+		<div *ngIf="uploadFile">
+			<div class="ui indicating olive progress">
+				<div class="progress-bar" role="progressbar"
+					[ngStyle]="{ 'width': uploadProgress + '%' }"></div>
+			</div>
+		</div>
+	</div>
+
+</div>
+<!-- 
+<div *ngIf="multiple">
+	<input type="file" multiple="true" ngFileSelect [options]="options"
+		(onUpload)="handleMultipleUpload($event)">
+
+	<p *ngIf="response.length">
+		<span>Progress{{ progress }}%</span> <span>{{ response }}</span>
+	</p>
+</div>
+
+ -->

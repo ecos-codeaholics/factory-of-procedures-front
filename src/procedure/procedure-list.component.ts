@@ -6,13 +6,14 @@ import { Procedure } from './procedure';
 
 @Component({
     selector: 'procedure-list',
-    //inputs: ['status'],
     templateUrl: 'src/procedure/templates/procedure-list.component.html',
     providers: [ProcedureService]
 })
 
 export class ProcedureListComponent implements OnInit {
 
+     title = 'Mis Trámites';
+    
     procedures: Procedure[];
 
        @Input() status;
@@ -42,6 +43,7 @@ export class ProcedureListComponent implements OnInit {
     }
 
     filterOngoing(event) {
+        console.log("Getting Ongoing procedures");
         event.preventDefault();
     }
 
