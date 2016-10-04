@@ -6,6 +6,7 @@
     <div class="form-group">
       <label for="state">Departamento</label>
       <select id="state" class="form-control" [(ngModel)]="state" name="state" (ngModelChange)="getCities()" required>
+          <option value="" disabled="disabled" selected="selected">Seleccione un departamento</option>
           <option *ngFor="let state of states" [ngValue]="state.id">
             {{state.name}}
           </option>
@@ -13,8 +14,9 @@
     </div>
 
     <div *ngIf="mayoralties" class="form-group">
-      <label id="mayoralty" for="mayoralty">Municipio</label>
+      <label id="mayoralty" for="mayoralty">Alcaldia</label>
       <select class="form-control" [(ngModel)]="mayoralty" name="mayoralty" (ngModelChange)="getProcedures2()" required>
+          <option value="" disabled="disabled" selected="selected">Seleccione una alcaldia</option>
           <option *ngFor="let mayoralty of mayoralties" [ngValue]="mayoralty">
             {{mayoralty.name}}
           </option>
@@ -24,6 +26,7 @@
     <div *ngIf="procedures" class="form-group">
       <label id="procedure" for="procedure">Trámite</label>
       <select class="form-control" [(ngModel)]="procedure" name="procedure" required>
+          <option value="" disabled="disabled" selected="selected">Seleccione un trámite</option>
           <option *ngFor="let procedure of procedures" [ngValue]="procedure">
             {{procedure.name}}
           </option>
