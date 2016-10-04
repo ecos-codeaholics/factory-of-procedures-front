@@ -2,24 +2,34 @@
 <form>
   <fieldset>
     <legend>{{title}}</legend>
+
     <div class="form-group">
       <label for="state">Departamento</label>
       <select id="state" class="form-control" [(ngModel)]="state" name="state" (ngModelChange)="getCities()" required>
-          <option *ngFor="let state of states" [ngValue]="state.id">{{state.name}}</option>
+          <option *ngFor="let state of states" [ngValue]="state.id">
+            {{state.name}}
+          </option>
       </select>
     </div>
+
     <div *ngIf="mayoralties" class="form-group">
       <label id="mayoralty" for="mayoralty">Municipio</label>
       <select class="form-control" [(ngModel)]="mayoralty" name="mayoralty" (ngModelChange)="getProcedures2()" required>
-          <option *ngFor="let mayoralty of mayoralties" [ngValue]="mayoralty">{{mayoralty.name}}</option>
+          <option *ngFor="let mayoralty of mayoralties" [ngValue]="mayoralty">
+            {{mayoralty.name}}
+          </option>
       </select>
     </div>
+
     <div *ngIf="procedures" class="form-group">
       <label id="procedure" for="procedure">Trámite</label>
       <select class="form-control" [(ngModel)]="procedure" name="procedure" required>
-          <option *ngFor="let procedure of procedures" [ngValue]="procedure">{{procedure.name}}</option>
+          <option *ngFor="let procedure of procedures" [ngValue]="procedure">
+            {{procedure.name}}
+          </option>
       </select>
     </div>
+
     <button class="btn btn-default" type="submit">Iniciar</button>
   </fieldset>
 </form>
