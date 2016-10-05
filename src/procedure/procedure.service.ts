@@ -42,7 +42,7 @@ export class ProcedureService {
             });
     }
 
-    getMayoralties(): Observable<Procedure[]> {
+    getMayoralties(): Observable<Mayoralty[]> {
 
         return this.http.get(this.apiUrl.CITIZENS() + "mayoralties/?email=" + this.authService.getUser())
             .map((r: Response) => r.json() as Mayoralty[])
