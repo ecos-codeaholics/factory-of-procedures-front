@@ -4,7 +4,7 @@
       {{diagnostic}}
       <form #loginForm="ngForm" (ngSubmit)="doFunctionaryLogin()">
 	<fieldset>
-          <legend class="header">{{title}}</legend>
+        <h1 class="header">{{title}}</h1>
           <div class="form-group">
             <label id="email" for="email">Correo electrónico</label>
             <input class="form-control" [(ngModel)]="user.email" type="email" name="email" placeholder="correo@ejemplo.com" required>
@@ -14,10 +14,10 @@
             <input id="password" class="form-control" [(ngModel)]="user.password" type="password" name="password" placeholder="Secreto" required>
           </div>
 	  
-          <button type="submit" class="btn btn-primary btn-lg" [disabled]="!loginForm.form.valid">Ingresar</button>
+          <button type="submit" class="btn btn-raised btn-primary" [disabled]="!loginForm.form.valid">Ingresar</button>
 	</fieldset>
 	<hr />
-	<div>Olvidó su contraseña?, <span><a routerLink="/recuperar">recuperela</a></span></div>
+	<div>Olvidó su contraseña?, <span><a routerLink="/recuperar" class="btn btn-link">recuperela</a></span></div>
       </form>
     </div>
   </div>

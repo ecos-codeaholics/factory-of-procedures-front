@@ -4,7 +4,7 @@
       {{diagnostic}}
       <form #loginForm="ngForm" (ngSubmit)="resetPassword()">
 	<fieldset>
-	  <legend>{{title}}</legend>
+	  <h1 class="header">{{title}}</h1>
 	  <div class="form-group">
 	    <label for="email">Correo electrónico</label>
 	    <input id="email" class="form-control" [(ngModel)]="login.email" type="email" name="email" placeholder="correo@ejemplo.com" required>
@@ -13,7 +13,7 @@
 	    <label for="identification">Identificación</label>
 	    <input id="identification" class="form-control" [(ngModel)]="login.identification" type="number" name="identification" placeholder="No debe contener puntos ni espacios" required>
 	  </div>
-	  <button type="submit" class="btn btn-primary btn-lg" [disabled]="!loginForm.form.valid">Enviar</button>
+	  <button type="submit" class="btn btn-raised btn-primary" [disabled]="!loginForm.form.valid">Enviar</button>
 	</fieldset>
       </form>
     </div>
