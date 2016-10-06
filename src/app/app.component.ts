@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterContentChecked, Input } from '@angular/core';
+import { Component, OnInit, AfterContentChecked, Input, HostListener } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { AuthGuardService } from '../auth/auth-guard.service';
@@ -61,5 +61,10 @@ export class AppComponent implements AfterContentChecked {
         this.status = this.getAuthStatus();
         this.profile = this.authService.getProfile();
         this.user = this.authService.getUser();
+    }
+
+    @HostListener('window:unload', ['$event'])
+    unloadHandler(event) {
+        localStorage.removeItem('id_token');
     }
 }

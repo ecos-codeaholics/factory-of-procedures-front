@@ -25,6 +25,7 @@
     "angular2-in-memory-web-api": "0.0.17",
     "angular2-jwt": "0.1.19",
     "bootstrap": "^3.3.6",
+    "bootstrap-material-design": "0.5.10",
     "core-js": "^2.4.0",
     "jquery": "3.1.0",
     "ng2-bootstrap": "^1.1.1",
@@ -44,5 +45,8 @@
     "lite-server": "^2.2.0",
     "typescript": "^1.8.10",
     "typings": "^1.0.4"
+  },
+  "ambientDependencies": {
+    "es6-shim": "registry:dt/es6-shim#0.31.2+20160215162030"
   }
 }

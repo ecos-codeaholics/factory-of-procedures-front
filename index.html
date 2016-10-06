@@ -8,27 +8,34 @@
     <link rel="stylesheet" href="assets/css/styles.css">
     <link rel="icon" type="image/x-icon" href="assets/image/codeaholicsicon.png">
 
+    <link rel="stylesheet" href="node_modules/bootstrap-material-design/dist/css/bootstrap-material-design.min.css">
+    <link rel="stylesheet" href="node_modules/bootstrap-material-design/dist/css/bootstrap-material-design.min.css.map">
+    <link rel="stylesheet" href="node_modules/bootstrap-material-design/dist/css/ripples.min.css">
+    <link rel="stylesheet" href="node_modules/bootstrap-material-design/dist/css/ripples.min.css.map">
+
     <script src="node_modules/systemjs/dist/system.src.js"></script>
     <script src="node_modules/core-js/client/shim.min.js"></script>
     <script src="node_modules/zone.js/dist/zone.js"></script>
     <script src="node_modules/reflect-metadata/Reflect.js"></script>
-
-
 
     <script src="systemjs.config.js"></script>
     <script>
       System.import('src').catch(function(err) { console.log(err); });
     </script>
 
-<!--    <script src="node_modules/browser-sync/lib/browser-sync.js"></script> -->
     <script src="node_modules/jquery/dist/jquery.min.js"></script>
     <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="node_modules/bootstrap-material-design/dist/js/material.min.js"></script>
+    <script src="node_modules/bootstrap-material-design/dist/js/material.min.js.map"></script>
+    <script src="node_modules/bootstrap-material-design/dist/js/ripples.min.js"></script>
+    <script src="node_modules/bootstrap-material-design/dist/js/ripples.min.js.map"></script>
   </head>
 
   <body>
     <div class="container">
       <app>Cargando... </app>
     </div>
+    <script>$.material.init();</script>
   </body>
 </html>
 

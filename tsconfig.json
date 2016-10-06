@@ -1,6 +1,6 @@
 {
     "compilerOptions": {
-	"target": "es5",
+	"target": "es6",
 	"module": "commonjs",
 	"moduleResolution": "node",
 	"sourceMap": true,
@@ -8,5 +8,12 @@
 	"experimentalDecorators": true,
 	"removeComments": true,
 	"noImplicitAny": false
-    }
+    },
+	"exclude": [
+		"typings/browser.d.ts",
+		"typings/browser",
+		"node_modules",
+		"typings/globals/es6-shim",
+		"typings"
+	]
 }
