@@ -28,12 +28,12 @@
             </thead>
             <tbody>
             <tr *ngFor="let procedure of procedures | ongoingFilter: [status]">
-                <td>{{procedure.id}}</td>
-                <td>{{procedure.name}}</td>
-                <td>{{procedure.department}}</td>
-                <td>{{procedure.city}}</td>
+                <td>{{procedure.fileNumber}}</td>
+                <td>{{procedure.class}}</td>
+                <td>Cundinamarca</td>
+                <td>{{procedure.mayoralty}}</td>
                 <!--<td><a routerLink="/procedures/edit">Detalle</a></td>-->
-                <td><a [routerLink]="['/procedures/edit', procedure.id]">Detalle</a></td>
+                <td><a [routerLink]="['/procedures/edit', procedure.fileNumber]">Detalle</a></td>
             </tr>
             <div class="inner-outlet">
                 <router-outlet></router-outlet>

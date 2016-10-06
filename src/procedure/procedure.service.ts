@@ -23,11 +23,17 @@ export class ProcedureService {
 
     getProcedures(): Observable<Procedure[]> {
         return this.http.get(this.apiUrl.CITIZENS() + "procedures/?email=" + this.authService.getUser())
-            .map((r: Response) => r.json() as Procedure[])
+            //.map((r: Response) => r.json() as Procedure[])
+            .map(this.extractData)
             .catch((res) => {
                 console.log("ERROR: en  auth.service");
                 return Observable.throw(this.errorHandler.check(res));
             });
+    }
+     private extractData(res: Response) {
+        let body = res.json();
+         console.log(body);
+        return body || {};
     }
 
     getProcedures2(): Observable<Procedure[]> {
