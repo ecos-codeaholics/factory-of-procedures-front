@@ -21,8 +21,6 @@ export class ProcedureService {
     ) { }
 
     getProcedures(): Observable<Procedure[]> {
-
-        //return this.http.get(this.apiUrl.CITIZENS() + "procedures/" + this.authService.getUser())
         return this.http.get(this.apiUrl.CITIZENS() + "procedures/?email=" + this.authService.getUser())
             .map((r: Response) => r.json() as Procedure[])
             .catch((res) => {
@@ -32,7 +30,16 @@ export class ProcedureService {
     }
 
     getAssignedProcedures(): Observable<Procedure[]> {
-
+        return this.http.get(this.apiUrl.FUNCTIONARIES() + "procedures/?email=" + this.authService.getUser())
+            .map(
+            (r: Response) => r.json() as Procedure[]
+            )
+            .catch((res) => {
+                console.log("ERROR: en  auth.service");
+                return Observable.throw(this.errorHandler.check(res));
+            });
+    }
+    getIdProcedures(): Observable<Procedure[]> {
         return this.http.get(this.apiUrl.FUNCTIONARIES() + "procedures/?email=" + this.authService.getUser())
             .map(
             (r: Response) => r.json() as Procedure[]

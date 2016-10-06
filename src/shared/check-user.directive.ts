@@ -22,7 +22,10 @@ export class CheckUserDirective {
         if (profile == "citizen") {
             this.viewContainer.createEmbeddedView(this.templateRef);
         } else {
-            this.viewContainer.clear();
+            if (profile == "functionary") {
+                this.viewContainer.createEmbeddedView(this.templateRef);
+             }
+            else {this.viewContainer.clear();}
         }
     }
 }
