@@ -1,6 +1,6 @@
 <div *ngIf="isAuth" class="row">
   <div class="col-lg-12">
-    <p class="navbar-text navbar-right">Ha iniciado sesión como: {{user}} <a href="#" (click)="doLogout($event)" class="navbar-link">Cerrar sesión</a></p>
+    <p class="navbar-text navbar-right">Ha iniciado sesión como: <strong>{{user}}</strong> <a href="#" (click)="doLogout($event)" class="alert-link">Cerrar Sesión</a></p>
     </div>
 </div>
 <div class="row page-header">
@@ -22,7 +22,7 @@
 <router-outlet></router-outlet>
 
 <!-- Tags de mensajes que se les mostrara al usr y pantallas modales -->
-<div class="modal fade" tabindex="-1" role="dialog">
+<div class="modal" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
