@@ -13,6 +13,8 @@ import { Mayoralty } from './mayoralty';
 @Injectable()
 export class ProcedureService {
 
+    proceduresRequest:any;
+    
     constructor(
 
         public errorHandler: ErrorHandler,
@@ -32,6 +34,7 @@ export class ProcedureService {
     }
      private extractData(res: Response) {
         let body = res.json();
+         this.proceduresRequest = body;
          console.log(body);
         return body || {};
     }
