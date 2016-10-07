@@ -7,7 +7,7 @@ import { Procedure } from './procedure';
 @Component({
     selector: 'procedure-list',
     templateUrl: 'src/procedure/templates/procedure-list.component.html',
-    providers: [ProcedureService]
+    //providers: [ProcedureService]
 })
 
 export class ProcedureListComponent implements OnInit {

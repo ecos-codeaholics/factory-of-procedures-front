@@ -13,8 +13,8 @@ import { Mayoralty } from './mayoralty';
 @Injectable()
 export class ProcedureService {
 
-    proceduresRequest:any;
-    
+    private proceduresRequest = [];
+
     constructor(
 
         public errorHandler: ErrorHandler,
@@ -32,10 +32,15 @@ export class ProcedureService {
                 return Observable.throw(this.errorHandler.check(res));
             });
     }
-     private extractData(res: Response) {
+    getdeliveryDocs() {
+        console.log("procedure request:");
+        console.log(this.proceduresRequest)
+        return this.proceduresRequest;//.deliveryDocs¡;
+    }
+    private extractData(res: Response) {
         let body = res.json();
-         this.proceduresRequest = body;
-         console.log(body);
+        this.proceduresRequest = body;
+        console.log(body);
         return body || {};
     }
 
