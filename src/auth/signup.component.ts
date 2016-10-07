@@ -1,6 +1,9 @@
 import { Component, Input, OnInit, NgZone } from '@angular/core';
 import { Router } from '@angular/router';
+
 import { AuthService } from './auth.service';
+import { ConfigService } from '../config/config.service';
+
 import { Citizen } from '../citizen/citizen';
 import { API_URL } from '../shared/constant/api-url';
 
@@ -12,10 +15,14 @@ declare var jQuery: any;
 })
 
 export class SignupComponent implements OnInit {
+
     title = 'Registro de Ciudadano';
     citizen = new Citizen('', NaN, '', '', '', '', '', '');
+
     response: any;
     error: any;
+    env: string;
+
     private uploadFile: any;
     private uploadProgress: number = 0;
     private uploadResponse: any = {};
@@ -25,8 +32,11 @@ export class SignupComponent implements OnInit {
     constructor(
         private authService: AuthService,
         private router: Router,
-        private apiUrl: API_URL
-    ) { }
+        private apiUrl: API_URL,
+        private config: ConfigService
+    ) {
+        this.env = config.getEnv();
+    }
 
     submitted = false;
 
@@ -51,7 +61,12 @@ export class SignupComponent implements OnInit {
             });
     }
 
-    ngOnInit() {}
+    ngOnInit() { }
 
-    get diagnostic() { return JSON.stringify(this.citizen); }
+    get diagnostic() {
+
+        if (this.env === 'development') {
+            return JSON.stringify(this.citizen);
+        }
+    }
 }
