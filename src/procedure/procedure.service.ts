@@ -3,6 +3,7 @@ import { Http, RequestOptions, Response } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 import { ProcedureAttachment } from './procedure-attachment';
 
+
 import { API_URL } from '../shared/constant/api-url';
 import { ErrorHandler } from '../shared/error-handler';
 import { AuthService } from '../auth/auth.service';
@@ -32,6 +33,19 @@ export class ProcedureService {
                 return Observable.throw(this.errorHandler.check(res));
             });
     }
+
+    getProceduresById(fileNumber: string): Observable<Procedure[]> {
+        //return this.http.get(this.apiUrl.CITIZENS() + "procedures/edit/"+fileNumber+"/?email=" + this.authService.getUser())
+        console.log("procedures by Id console LOG "+this.authService.getUser());
+        return this.http.get(this.apiUrl.CITIZENS() + "procedures/edit/"+fileNumber+"/?email=" + this.authService.getUser())
+        //.map((r: Response) => r.json() as Procedure[])
+            .map(this.extractData)
+            .catch((res) => {
+                console.log("ERROR: en  auth.service");
+                return Observable.throw(this.errorHandler.check(res));
+            });
+    }
+
     getdeliveryDocs() {
         console.log("procedure request:");
         console.log(this.proceduresRequest)

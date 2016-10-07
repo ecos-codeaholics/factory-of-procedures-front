@@ -1,8 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ProcedureAttachment } from './procedure-attachment';
 import { ActivatedRoute } from '@angular/router';
 import { ProcedureService } from './procedure.service';
+
+
+import {Procedure} from "./procedure";
+
+
 
 @Component({
     selector: 'procedure-form',
@@ -14,8 +19,12 @@ import { ProcedureService } from './procedure.service';
 
 export class ProcedureFormComponent {
     id: any;
-    idTramite: any;
     deliveryDocs = [];
+
+    procedure: Procedure[];
+    mode = 'Observable'
+    error: any;
+    errorMessage: string;
 
 
     constructor(
@@ -23,7 +32,29 @@ export class ProcedureFormComponent {
         private procedureService: ProcedureService
     ) {
         this.deliveryDocs = procedureService.getdeliveryDocs();
+
+        //recibe parametro a travesd e routing del temaplate
+        this.route.params.subscribe(params => this.id = +params['id']);
+        //console.log("radicado: " + this.id);
+
+        this.getProcedureByID();
     }
+
+    getProcedureByID (){
+
+        console.log("file number: "+this.id);
+        this.procedureService.getProceduresById(this.id as string).subscribe(
+    procedure => this.procedure = procedure,
+    error => this.errorMessage = <any>error
+);
+
+        //console.log("procedure: "+this.procedure);
+    }
+
+
+
+
+
 
     title = 'Detalle De Trámite';
     file = new ProcedureAttachment('');
@@ -34,18 +65,13 @@ export class ProcedureFormComponent {
     }
 
     ngOnInit() {
-        //this.idTramite = this.route.snapshot.params.;
-        this.idTramite = this.route.params.subscribe(params => this.id = +params['id']);
+        //recibe parametro a travesd e routing del temaplate
+        this.route.params.subscribe(params => this.id = +params['id']);
         console.log("radicado: " + this.id);
-        //this.getdeliveryDocs();
-
-        //        this.route.params
-        //            .map(params => params['id'])
-        //            .subscribe((id) => { this.idTramite });
     }
 
     ngOnDestroy() {
-        this.idTramite.unsubscribe();
+        //this.id.unsubscribe();
     }
 }
 
