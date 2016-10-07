@@ -15,23 +15,6 @@ export class ConfigService {
 
     load(): Promise<Object> {
 
-	/**
-        this.http.get('/src/config/env.json')
-            .map(res => res.json())
-            .subscribe((env_data) => {
-                this.env = env_data;
-
-                this.http.get('/src/config/' + env_data.env + '.json')
-                    .map(data => data.json()).toPromise()
-                    .then(data => {
-                        this.config = data;
-
-                    })
-            })
-
-        return Promise.resolve(true);
-	*/
-
         return new Promise((resolve, reject) => {
 
             this.http.get('src/config/env.json')
@@ -55,16 +38,13 @@ export class ConfigService {
         });
     }
 
-
-    getEnv(key: string): string {
-
-        return this.env[key];
+    getEnv() {
+        console.log(this.env['env']);
+        return this.env['env'];
     }
 
     get(key: string): string {
 
-        console.log("ENV");
-        console.log(this.env);
         return this.config[key];
     }
 }

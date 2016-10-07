@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { AuthService } from './auth.service';
+import { ConfigService } from '../config/config.service';
 
 import { Citizen } from '../citizen/citizen';
 import { Login } from './login';
@@ -20,8 +21,16 @@ export class RecoverComponent {
     login = new Login("", "", NaN, 'citizen');
 
     error: any;
+    env: string;
 
-    constructor(private authService: AuthService, private router: Router) { }
+    constructor(
+        private authService: AuthService,
+        private router: Router,
+        private config: ConfigService
+    ) {
+
+        this.env = config.getEnv();
+    }
 
     submitted = false;
 
@@ -43,5 +52,10 @@ export class RecoverComponent {
             });
     }
 
-    get diagnostic() { return JSON.stringify(this.login); }
+    get diagnostic() {
+
+        if (this.env === 'development') {
+            return JSON.stringify(this.login);
+        }
+    }
 }

@@ -44,10 +44,5 @@ export class FunctionaryLoginComponent {
             error => { });
     }
 
-    get diagnostic() {
 
-        if (this.env === 'development') {
-            return JSON.stringify(this.user);
-        }
-    }
 }

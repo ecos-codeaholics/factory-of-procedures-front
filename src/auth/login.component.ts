@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 
 import { ErrorHandler } from '../shared/error-handler';
 import { AuthService } from './auth.service';
+import { ConfigService } from '../config/config.service';
 
 import { Login } from './login';
 
@@ -21,14 +22,18 @@ export class LoginComponent {
 
     status: boolean;
     profile: string;
+    env: string;
 
     constructor(
 
         private authService: AuthService,
-        private router: Router
+        private router: Router,
+        private config: ConfigService
     ) {
 
         this.profile = authService.getProfile();
+        this.env = config.getEnv();
+
     }
 
     setAuthStatus(status: boolean) {
@@ -55,5 +60,10 @@ export class LoginComponent {
             });
     }
 
-    get diagnostic() { return JSON.stringify(this.user); }
+    get diagnostic() {
+
+        if (this.env === "development") {
+            return JSON.stringify(this.user);
+        }
+    }
 }
