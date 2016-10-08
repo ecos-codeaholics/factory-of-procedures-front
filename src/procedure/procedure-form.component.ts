@@ -1,20 +1,18 @@
-import {Component, OnInit, Input, Pipe} from '@angular/core';
-import {NgForm} from '@angular/forms';
-import {ProcedureAttachment} from './procedure-attachment';
-import {ActivatedRoute} from '@angular/router';
-import {ProcedureService} from './procedure.service';
+import { Component, OnInit, Input, Pipe } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { ProcedureAttachment } from './procedure-attachment';
+import { ActivatedRoute } from '@angular/router';
+import { ProcedureService } from './procedure.service';
 
 
-import {Procedure} from "./procedure";
-import {isEmpty} from "rxjs/operator/isEmpty";
+import { Procedure } from "./procedure";
+import { isEmpty } from "rxjs/operator/isEmpty";
 
 
 @Component({
     selector: 'procedure-form',
     templateUrl: 'src/procedure/templates/procedure-form.component.html',
-    //providers: [ProcedureService]
 })
-
 
 export class ProcedureFormComponent {
     id: any;
@@ -28,7 +26,7 @@ export class ProcedureFormComponent {
 
 
     constructor(private route: ActivatedRoute,
-                private procedureService: ProcedureService) {
+        private procedureService: ProcedureService) {
 
     }
 
@@ -38,8 +36,6 @@ export class ProcedureFormComponent {
             procedures => this.procedures = procedures,
             error => this.errorMessage = <any>error
         );
-
-
         console.log("procedure: " + this.procedures);
     }
 
@@ -71,7 +67,5 @@ export class ProcedureFormComponent {
         //return key and values of the object
         return Object.keys(object);
     }
-
-
 }
 

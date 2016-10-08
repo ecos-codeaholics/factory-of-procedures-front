@@ -2,7 +2,7 @@
 
 <BR/>
 
-<ul class="nav nav-tabs">
+<ul class="nav nav-pills">
     <li class="active"><a data-toggle="tab" href="#formulario">Formulario</a></li>
     <li><a data-toggle="tab" href="#documentos">Documentos</a></li>
     <li><a data-toggle="tab" href="#flujo">Flujo</a></li>
@@ -16,11 +16,11 @@
         <!-- <h6>Radicado: {{id}}</h6> <br> -->
 
         <div *ngFor="let i of keys(procedures[0])">
-            <div *ngIf="i === 'class' || i === 'fileNumber' || i === 'citizen' || i === 'mayoralty' || i === 'procedureData' || i === 'status'">
+            <div *ngIf="i === 'className' || i === 'fileNumber' || i === 'citizen.name' || i === 'mayoralty' || i === 'procedureData.identificacion' || i === 'status'">
                 {{i + ' : ' + procedures[0][i]}}
 
 
-                <div *ngIf="i === 'citizen'">
+                <div *ngIf="i === 'citizen.name'">
                     <div *ngFor="let i of keys(procedures[0]?.citizen)">
                         <p style='text-indent: 1em'>{{i + ' : ' + procedures[0]?.citizen[i]}}</p>
                     </div>

@@ -6,34 +6,17 @@ export class Procedure {
 
     constructor(
         public id: number,
-        public name: string,
-        public department: string,
-        public city: string,
+        public className: string,
+        public fileNumber: number,
+        public citizen: Citizen,
+        public mayoralty: string,
+        public procedureData: ProcedureData,
+        //public deliveryDocs: DeliveryDoc,
+        //public deliveryDocs: Array<string>,
+        public deliveryDocs: Object,
+        public steps: Step,
+        public startDate: string,
+        public finishDate: string,
         public status: string
     ) { }
-}
-
-
-}
-
-export class citizen {
-    constructor(public identification: number,
-                public name: string,
-                public lastName1: string,
-                public lastName2: string,
-                public email: string) {
-    }
-
-}
-
-export class procedureData {
-    constructor(public cartadesolicitud: string,
-                public barrio: string,
-                public direccion: string,
-                public telefono: number,
-                public email: string) {
-    }
-
-
-
 }
