@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "scripts": {
     "start": "tsc && concurrently 'npm run tsc:w' 'npm run lite'",
-    "start-prod": "tsc && concurrently 'npm run tsc' 'npm run lite'",
     "startJheison": "concurrent \"npm run tsc:w\" \"npm run lite\" ",
     "lite": "lite-server",
     "postinstall": "typings install",
@@ -46,8 +45,5 @@
     "lite-server": "^2.2.0",
     "typescript": "^1.8.10",
     "typings": "^1.0.4"
-  },
-  "ambientDependencies": {
-    "es6-shim": "registry:dt/es6-shim#0.31.2+20160215162030"
   }
 }

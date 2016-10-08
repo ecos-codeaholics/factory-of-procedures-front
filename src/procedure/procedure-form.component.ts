@@ -1,17 +1,16 @@
-import { Component, OnInit, Input, Pipe } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import {Component, OnInit, Input, Pipe, Output} from '@angular/core';
+
 import { ProcedureAttachment } from './procedure-attachment';
 import { ActivatedRoute } from '@angular/router';
 import { ProcedureService } from './procedure.service';
 
-
 import { Procedure } from "./procedure";
-import { isEmpty } from "rxjs/operator/isEmpty";
+
 
 
 @Component({
     selector: 'procedure-form',
-    templateUrl: 'src/procedure/templates/procedure-form.component.html',
+    templateUrl: 'src/procedure/templates/procedure-form.component.html'
 })
 
 export class ProcedureFormComponent {
@@ -20,10 +19,11 @@ export class ProcedureFormComponent {
 
     procedures: Procedure[] = [];
 
+    master: string = "MasterTestlast try";
+
     mode = 'Observable'
     error: any;
     errorMessage: string;
-
 
     constructor(private route: ActivatedRoute,
         private procedureService: ProcedureService) {
@@ -31,7 +31,6 @@ export class ProcedureFormComponent {
     }
 
     getProcedureByID() {
-
         this.procedureService.getProceduresById(this.id).subscribe(
             procedures => this.procedures = procedures,
             error => this.errorMessage = <any>error

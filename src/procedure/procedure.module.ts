@@ -12,6 +12,7 @@ import { ProcedureAssignedComponent } from './procedure-assigned.component';
 import { ProcedureOngoingFilterPipe } from './procedure-ongoing-filter.pipe';
 
 import { ProcedureService } from './procedure.service';
+import {ProcedureInfoComponent} from "./procedure-info.component";
 
 @NgModule({
     imports: [
@@ -23,6 +24,7 @@ import { ProcedureService } from './procedure.service';
         ProcedureListComponent,
         ProcedureFormComponent,
         ProcedureOngoingFilterPipe,
+        ProcedureInfoComponent,
         ProcedureAssignedComponent
     ],
     providers: [ProcedureService],

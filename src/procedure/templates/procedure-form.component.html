@@ -9,11 +9,16 @@
     <li><a data-toggle="tab" href="#historial">Historia</a></li>
 </ul>
 
+
 <div class="tab-content">
 
-    <div id="formulario" class="tab-pane fade in active">
-        <h3>Formulario</h3>
-        <!-- <h6>Radicado: {{id}}</h6> <br> -->
+
+      <div id="formulario" class="tab-pane fade in active">
+        <h3>Component Procedure Info</h3>
+
+        <procedure-info1 [master]="master"></procedure-info1>
+  <!--      <h3>Formulario</h3>
+        &lt;!&ndash; <h6>Radicado: {{id}}</h6> <br> &ndash;&gt;
 
         <div *ngFor="let i of keys(procedures[0])">
             <div *ngIf="i === 'class' || i === 'fileNumber' || i === 'citizen' || i === 'mayoralty' || i === 'procedureData' || i === 'status'">
@@ -35,7 +40,7 @@
             </div>
         </div>
 
-
+-->
     </div>
 
     <!-- /*/***/*/*/*/*/*/*/*/*/***/*/*/*/*/*/*/*/*/***/*/*/*/*/*/*/*/*/***/*/*/*/*/*/*/*/*/***/*/*/*/*/*/*/*/*/***/*/*/*/*/*/*/*/*/***/*/*/*/*/*/*/* -->
