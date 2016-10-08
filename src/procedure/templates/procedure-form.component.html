@@ -16,11 +16,11 @@
         <!-- <h6>Radicado: {{id}}</h6> <br> -->
 
         <div *ngFor="let i of keys(procedures[0])">
-            <div *ngIf="i === 'className' || i === 'fileNumber' || i === 'citizen.name' || i === 'mayoralty' || i === 'procedureData.identificacion' || i === 'status'">
+            <div *ngIf="i === 'class' || i === 'fileNumber' || i === 'citizen' || i === 'mayoralty' || i === 'procedureData' || i === 'status'">
                 {{i + ' : ' + procedures[0][i]}}
 
 
-                <div *ngIf="i === 'citizen.name'">
+                <div *ngIf="i === 'citizen'">
                     <div *ngFor="let i of keys(procedures[0]?.citizen)">
                         <p style='text-indent: 1em'>{{i + ' : ' + procedures[0]?.citizen[i]}}</p>
                     </div>

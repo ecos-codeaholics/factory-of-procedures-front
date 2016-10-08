@@ -23,7 +23,7 @@
 	  </div>
 	  <div class="form-group">
 	    <label for="birthdate">Fecha de Nacimiento</label>
-	    <input id="birthdate" class="form-control" [(ngModel)]="citizen.birthDate" type="date" name="birthDate" required placeholder="AAAA/MM/DD">
+	    <input id="birthdate" class="form-control" [(ngModel)]="citizen.birthDate" type="date" name="birthDate" required placeholder="DD/MM/AAAA">
 	  </div>
 	  <div class="form-group">
 	    <label for="email">Correo electrónico</label>
@@ -40,7 +40,9 @@
 		</div>
 	  </div>
 
-	  <button type="submit" class="btn btn-raised btn-primary" [disabled]="!citizenForm.form.valid">Enviar</button>
+	  <div class="form-group">
+	    <button type="submit" class="btn btn-raised btn-primary" [disabled]="!citizenForm.form.valid">Enviar</button>
+	  </div>
 	</fieldset>
       </form>
     </div>
