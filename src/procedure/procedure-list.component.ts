@@ -34,6 +34,7 @@ export class ProcedureListComponent implements OnInit {
             procedures => this.procedures = procedures,
             error => this.errorMessage = <any>error
         );
+        console.log("list-componet "+this.procedures);
     }
 
     filterHistoric(event) {

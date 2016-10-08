@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter, OnInit } from '@angular/core/';
+import {Component, Output, EventEmitter, OnInit} from '@angular/core/';
 
 @Component({
     selector: 'status-selector',
@@ -11,11 +11,12 @@ export class StatusSelectorComponent implements OnInit {
     statuses = ['En proceso', 'Finalizado'];
 
     filterHistoric(status) {
-        let val=this.statuses.indexOf(status);
+        let val = this.statuses.indexOf(status);
         if (val != -1)
-        this.select.emit(this.statuses[val]);
+            this.select.emit(this.statuses[val]);
     }
+
     ngOnInit() {
-        this.select.emit(this.statuses[1]);
+        this.select.emit(this.statuses[0]);
     }
 }

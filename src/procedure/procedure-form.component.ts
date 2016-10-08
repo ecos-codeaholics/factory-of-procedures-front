@@ -1,12 +1,12 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { NgForm } from '@angular/forms';
-import { ProcedureAttachment } from './procedure-attachment';
-import { ActivatedRoute } from '@angular/router';
-import { ProcedureService } from './procedure.service';
+import {Component, OnInit, Input, Pipe} from '@angular/core';
+import {NgForm} from '@angular/forms';
+import {ProcedureAttachment} from './procedure-attachment';
+import {ActivatedRoute} from '@angular/router';
+import {ProcedureService} from './procedure.service';
 
 
 import {Procedure} from "./procedure";
-
+import {isEmpty} from "rxjs/operator/isEmpty";
 
 
 @Component({
@@ -16,51 +16,39 @@ import {Procedure} from "./procedure";
 })
 
 
-
 export class ProcedureFormComponent {
     id: any;
-    deliveryDocs = [];
+    deliveryDocs: string[];
 
-    procedure: Procedure[];
+    procedures: Procedure[] = [];
+
     mode = 'Observable'
     error: any;
     errorMessage: string;
 
 
-    constructor(
-        private route: ActivatedRoute,
-        private procedureService: ProcedureService
-    ) {
-        this.deliveryDocs = procedureService.getdeliveryDocs();
+    constructor(private route: ActivatedRoute,
+                private procedureService: ProcedureService) {
 
-        //recibe parametro a travesd e routing del temaplate
-        this.route.params.subscribe(params => this.id = +params['id']);
-        //console.log("radicado: " + this.id);
-
-        this.getProcedureByID();
     }
 
-    getProcedureByID (){
+    getProcedureByID() {
 
-        console.log("file number: "+this.id);
-        this.procedureService.getProceduresById(this.id as string).subscribe(
-    procedure => this.procedure = procedure,
-    error => this.errorMessage = <any>error
-);
+        this.procedureService.getProceduresById(this.id).subscribe(
+            procedures => this.procedures = procedures,
+            error => this.errorMessage = <any>error
+        );
 
-        //console.log("procedure: "+this.procedure);
+
+        console.log("procedure: " + this.procedures);
     }
-
-
-
-
 
 
     title = 'Detalle De Trámite';
     file = new ProcedureAttachment('');
 
     getdeliveryDocs() {
-       // this.deliveryDocs = this.procedureService.getdeliveryDocs(this.id);
+        // this.deliveryDocs = this.procedureService.getdeliveryDocs(this.id);
         console.log(this.deliveryDocs);
     }
 
@@ -68,10 +56,22 @@ export class ProcedureFormComponent {
         //recibe parametro a travesd e routing del temaplate
         this.route.params.subscribe(params => this.id = +params['id']);
         console.log("radicado: " + this.id);
+
+        //this.deliveryDocs = procedureService.getdeliveryDocs();
+
+        this.getProcedureByID();
+
     }
 
-    ngOnDestroy() {
-        //this.id.unsubscribe();
+    keys(object: {}) {
+        //checking undefined object from the request
+        if ((object === undefined) || (object === null)) {
+            return object;
+        }
+        //return key and values of the object
+        return Object.keys(object);
     }
+
+
 }
 
