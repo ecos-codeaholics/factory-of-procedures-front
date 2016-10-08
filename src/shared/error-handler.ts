@@ -19,7 +19,7 @@ export class ErrorHandler {
     check(error: any) {
         console.log("Se detecto un error en el error-handle... |");
         console.log(error);
-        var defaulMSG = "UPS, Tenemos un error, por favor intentelo mas tarde.";
+        var defaulMSG = "Error, por favor intentelo mas tarde";
         try {
             var modal = true;
             switch (error.status) {
@@ -40,7 +40,7 @@ export class ErrorHandler {
                     jQuery('.modal-body').html(defaulMSG);
             }
             if (modal) {
-                jQuery('.modal-title').html("Algo anda mal.");
+                jQuery('.modal-title').html("Algo anda mal");
 
                 jQuery('.modal').modal('show');
 

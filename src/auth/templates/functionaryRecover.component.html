@@ -1,21 +1,24 @@
 <div class="row">
-  <div class="col-md-6 col-md-offset-3">
-    <div class="well page">
-      {{diagnostic}}
-      <form #loginForm="ngForm" (ngSubmit)="resetPassword()">
-	<fieldset>
-	  <h2 class="header">{{title}}</h2>
-	  <div class="form-group">
-	    <label for="email">Correo electrónico</label>
-	    <input id="email" class="form-control" [(ngModel)]="login.email" type="email" name="email" placeholder="correo@ejemplo.com" required>
-	  </div>
-	  <div class="form-group">
-	    <label for="identification">Identificación</label>
-	    <input id="identification" class="form-control" [(ngModel)]="login.identification" type="number" name="identification" placeholder="No debe contener puntos ni espacios" required>
-	  </div>
-	  <button type="submit" class="btn btn-raised btn-primary" [disabled]="!loginForm.form.valid">Enviar</button>
-	</fieldset>
-      </form>
+    <div class="col-md-6 col-md-offset-3">
+        <div class="well page">
+            {{diagnostic}}
+            <form #loginForm="ngForm" (ngSubmit)="resetPassword()">
+                <fieldset>
+                    <h3 class="header">{{title}}</h3>
+                    <div class="form-group">
+                        <label for="email">Correo electrónico</label>
+                        <input id="email" class="form-control" [(ngModel)]="login.email" type="email" name="email"
+                               placeholder="correo@ejemplo.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="identification">Identificación</label>
+                        <input id="identification" class="form-control" [(ngModel)]="login.identification" type="number"
+                               name="identification" placeholder="No debe contener puntos ni espacios" required>
+                    </div>
+                    <button type="submit" class="btn btn-raised btn-primary" [disabled]="!loginForm.form.valid">Enviar
+                    </button>
+                </fieldset>
+            </form>
+        </div>
     </div>
-  </div>
 </div>

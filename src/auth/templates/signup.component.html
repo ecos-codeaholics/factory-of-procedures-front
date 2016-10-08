@@ -4,7 +4,7 @@
       {{diagnostic}}
       <form #citizenForm="ngForm" (ngSubmit)="doSignup()">
 	<fieldset>
-	  <h2 class="header">{{title}}</h2>
+	  <h3 class="header">{{title}}</h3>
 	  <div class="form-group">
 	    <label for="name">Nombre</label>
 	    <input id="name" class="form-control" [(ngModel)]="citizen.name" type="text" name="name" placeholder="Ingrese su primero y segundo nombre" required>
