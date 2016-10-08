@@ -4,7 +4,7 @@
       {{diagnostic}}
       <form #loginForm="ngForm" (ngSubmit)="resetPassword()">
 	<fieldset>
-	  <h1 class="header">{{title}}</h1>
+	  <h2 class="header">{{title}}</h2>
 	  <div class="form-group">
 	    <label for="email">Correo electrónico</label>
 	    <input id="email" class="form-control" [(ngModel)]="login.email" type="email" name="email" placeholder="correo@ejemplo.com" required>

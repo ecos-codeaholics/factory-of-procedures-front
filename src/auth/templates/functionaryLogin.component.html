@@ -4,7 +4,7 @@
       {{diagnostic}}
       <form #loginForm="ngForm" (ngSubmit)="doFunctionaryLogin()">
 	<fieldset>
-        <h1 class="header">{{title}}</h1>
+        <h2 class="header">{{title}}</h2>
           <div class="form-group">
             <label id="email" for="email">Correo electrónico</label>
             <input class="form-control" [(ngModel)]="user.email" type="email" name="email" placeholder="correo@ejemplo.com" required>
