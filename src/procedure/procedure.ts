@@ -1,20 +1,17 @@
+import { Citizen } from '../citizen/citizen';
+import { ProcedureData } from './model/procedure-data';
+import { Step } from './model/step';
+
 export class Procedure {
 
-    constructor(public id: number,
-                public name: string,
-                public department: string,
-                public city: string,
-                public status: string,
-                public classP: string,
-                public fileNumber: number,
-                public citizen: citizen,
-                public mayoralty: string,
-                public procedureData: procedureData,
-                public deliveryDocs: string[],
-                public steps: Object,
-                public startDate: string,
-                public finishDate: string) {
-    }
+    constructor(
+        public id: number,
+        public name: string,
+        public department: string,
+        public city: string,
+        public status: string
+    ) { }
+}
 
 
 }

@@ -26,10 +26,10 @@ import { ProcedureService } from './procedure.service';
         ProcedureAssignedComponent
     ],
     providers: [ProcedureService],
-     bootstrap: [
-     ProcedureListComponent,
-         ProcedureFormComponent
-         ]
+    bootstrap: [
+        ProcedureListComponent,
+        ProcedureFormComponent
+    ]
 })
 
 export default class ProcedureModule { }
