@@ -7,6 +7,7 @@ import { ProcedureAttachment } from './procedure-attachment';
 import { API_URL } from '../shared/constant/api-url';
 import { ErrorHandler } from '../shared/error-handler';
 import { AuthService } from '../auth/auth.service';
+import { PROCEDURES } from './mock-procedure';
 
 import { Procedure } from './procedure';
 import { Mayoralty } from './mayoralty';
@@ -36,9 +37,9 @@ export class ProcedureService {
 
     getProceduresById(fileNumber: string): Observable<Procedure[]> {
         //return this.http.get(this.apiUrl.CITIZENS() + "procedures/edit/"+fileNumber+"/?email=" + this.authService.getUser())
-        console.log("procedures by Id console LOG "+this.authService.getUser());
-        return this.http.get(this.apiUrl.CITIZENS() + "procedures/edit/"+fileNumber+"/?email=" + this.authService.getUser())
-        //.map((r: Response) => r.json() as Procedure[])
+        console.log("procedures by Id console LOG " + this.authService.getUser());
+        return this.http.get(this.apiUrl.CITIZENS() + "procedures/edit/" + fileNumber + "/?email=" + this.authService.getUser())
+            //.map((r: Response) => r.json() as Procedure[])
             .map(this.extractData)
             .catch((res) => {
                 console.log("ERROR: en  auth.service");
@@ -97,5 +98,11 @@ export class ProcedureService {
                 console.log("ERROR: en  auth.service");
                 return Observable.throw(this.errorHandler.check(res));
             });
+    }
+
+    getProceduresMock(): Procedure[] {
+        console.log("svc");
+        console.log(PROCEDURES);
+        return PROCEDURES;
     }
 }

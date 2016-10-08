@@ -1,0 +1,27 @@
+<h3>{{title}}</h3>
+
+<div class="row">
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Fecha</th>
+          <th>Radicado</th>
+          <th>Nombre</th>
+          <th>Archivos Adjuntos</th>
+	  <th>Estado</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let procedure of procedures">
+          <td>{{procedure.startDate}}</td>
+          <td>{{procedure.id}}</td>
+          <td>{{procedure.className}}</td>
+          <td><div *ngFor="let path of procedure.deliveryDocs">{{path}}</div></td>
+	  <td>{{procedure.status}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
