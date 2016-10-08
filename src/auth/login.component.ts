@@ -16,7 +16,7 @@ declare var jQuery: any;
 
 export class LoginComponent {
 
-    title = 'Acceso de usuario';
+    title = 'Acceso de Usuario';
     user = new Login('', '', NaN, 'citizen');
     error: any;
 
