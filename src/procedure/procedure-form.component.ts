@@ -1,12 +1,10 @@
-import {Component, OnInit, Input, Pipe, Output} from '@angular/core';
+import { Component, OnInit, Input, Pipe, Output } from '@angular/core';
 
 import { ProcedureAttachment } from './procedure-attachment';
 import { ActivatedRoute } from '@angular/router';
 import { ProcedureService } from './procedure.service';
 
 import { Procedure } from "./procedure";
-
-
 
 @Component({
     selector: 'procedure-form',

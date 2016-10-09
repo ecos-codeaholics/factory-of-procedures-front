@@ -1,73 +1,23 @@
-<script src="../procedure.module.ts"></script><h3>{{title}}</h3>
-
-<BR/>
+<h3>{{title}}</h3>
 
 <ul class="nav nav-pills">
-    <li class="active"><a data-toggle="tab" href="#formulario">Formulario</a></li>
-    <li><a data-toggle="tab" href="#documentos">Documentos</a></li>
-    <li><a data-toggle="tab" href="#flujo">Flujo</a></li>
-    <li><a data-toggle="tab" href="#historial">Historia</a></li>
+  <li class="active"><a data-toggle="tab" href="#formulario">Formulario</a></li>
+  <li><a data-toggle="tab" href="#documentos">Documentos</a></li>
+  <li><a data-toggle="tab" href="#flujo">Flujo</a></li>
+  <li><a data-toggle="tab" href="#historial">Historia</a></li>
 </ul>
 
-
 <div class="tab-content">
-
-
-      <div id="formulario" class="tab-pane fade in active">
-        <procedure-info [procedures]="procedures"></procedure-info>
-</div>
-
-    <!-- /*/***/*/*/*/*/*/*/*/*/***/*/*/*/*/*/*/*/*/***/*/*/*/*/*/*/*/*/***/*/*/*/*/*/*/*/*/***/*/*/*/*/*/*/*/*/***/*/*/*/*/*/*/*/*/***/*/*/*/*/*/*/* -->
-
-    <div id="documentos" class="tab-pane fade">
-
-      <procedure-docs [procedures]="procedures"></procedure-docs>
-
-
-      <!--        <upload-file [legend]="SubirArchivo" [multiple]=false [url]="URL"></upload-file>
-
-            <div class="row">
-                 <div class="table-responsive">
-                     <table class="table">
-                         <thead>
-                         <tr>
-                             <th></th>
-                             <th>Documento</th>
-                         </tr>
-                         </thead>
-                         <tbody>
-                         <tr *ngFor="let deliveryDoc of deliveryDocs">
-                             <td><input type="checkbox"/></td>
-                             <td>{{deliveryDoc}}</td>
-                     </table>
-                 </div>
-             </div>-->
-    </div>
-        <!-- /*/***/*/*/*/*/*/*/*/*/***/*/*/*/*/*/*/*/*/***/*/*/*/*/*/*/*/*/***/*/*/*/*/*/*/*/*/***/*/*/*/*/*/*/*/*/***/*/*/*/*/*/*/*/*/***/*/*/*/*/*/*/* -->
-
-
-    <div id="flujo" class="tab-pane fade">
-        <h3>Flujo</h3>
-
-        <div *ngFor="let i of keys(procedures[0])">
-            <div *ngIf="i === 'steps' || i === 'startDate' || i === 'finishDate' || i === 'status'">
-                {{i + ' : ' + procedures[0][i]}}
-
-                <div *ngIf="i === 'steps'">
-                    <div *ngFor="let i of keys(procedures[0]?.steps)">
-                        <p style='text-indent: 1em'>{{i + ' : ' + procedures[0]?.steps[i]}}</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </div>
-        <!-- /*/***/*/*/*/*/*/*/*/*/***/*/*/*/*/*/*/*/*/***/*/*/*/*/*/*/*/*/***/*/*/*/*/*/*/*/*/***/*/*/*/*/*/*/*/*/***/*/*/*/*/*/*/*/*/***/*/*/*/*/*/*/* -->
-
-
-
-    <div id="historial" class="tab-pane fade">
-        <h3>Aqui poner la historial y comentarios del flujo</h3>
-
-    </div>
+  <div id="formulario" class="tab-pane fade in active">
+    <procedure-info [procedures]="procedures"></procedure-info>
+  </div>
+  <div id="documentos" class="tab-pane fade">
+    <procedure-docs [procedures]="procedures"></procedure-docs>
+  </div>
+  <div id="flujo" class="tab-pane fade" >
+    <procedure-flow [procedures]="procedures"></procedure-flow>
+  </div>
+  <div id="historial" class="tab-pane fade">
+    <h3>Aqui poner la historial y comentarios del flujo</h3>
+  </div>
 </div>
