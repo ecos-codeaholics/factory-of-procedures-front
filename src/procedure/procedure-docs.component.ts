@@ -6,12 +6,12 @@ import { ProcedureService } from './procedure.service';
 import { Procedure } from "./procedure";
 
 @Component({
-  selector: 'procedure-info',
-  templateUrl:'src/procedure/templates/procedure-info.component.html',
+  selector: 'procedure-docs',
+  templateUrl:'src/procedure/templates/procedure-docs.component.html',
 
 })
 
-export class ProcedureInfoComponent implements OnInit {
+export class ProcedureDocsComponent implements OnInit {
   title: string = "Informacion del Tramites";
 
   @Input('procedures') procedures: Procedure[];

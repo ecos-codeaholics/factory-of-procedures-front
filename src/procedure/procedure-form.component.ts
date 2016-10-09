@@ -18,10 +18,8 @@ export class ProcedureFormComponent {
     deliveryDocs: string[];
 
     procedures: Procedure[] = [];
-
     master: string = "MasterTestlast try";
 
-    mode = 'Observable'
     error: any;
     errorMessage: string;
 

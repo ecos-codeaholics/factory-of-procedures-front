@@ -14,76 +14,38 @@
 
 
       <div id="formulario" class="tab-pane fade in active">
-        <h3>Component Procedure Info</h3>
-
-        <procedure-info1 [master]="master"></procedure-info1>
-  <!--      <h3>Formulario</h3>
-        &lt;!&ndash; <h6>Radicado: {{id}}</h6> <br> &ndash;&gt;
-
-        <div *ngFor="let i of keys(procedures[0])">
-            <div *ngIf="i === 'class' || i === 'fileNumber' || i === 'citizen' || i === 'mayoralty' || i === 'procedureData' || i === 'status'">
-                {{i + ' : ' + procedures[0][i]}}
-
-
-                <div *ngIf="i === 'citizen'">
-                    <div *ngFor="let i of keys(procedures[0]?.citizen)">
-                        <p style='text-indent: 1em'>{{i + ' : ' + procedures[0]?.citizen[i]}}</p>
-                    </div>
-                </div>
-
-                <div *ngIf="i === 'procedureData'">
-                    <div *ngFor="let i of keys(procedures[0]?.procedureData)">
-                        <p style='text-indent: 1em'>{{i + ' : ' + procedures[0]?.procedureData[i]}}</p>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
--->
-    </div>
+        <procedure-info [procedures]="procedures"></procedure-info>
+</div>
 
     <!-- /*/***/*/*/*/*/*/*/*/*/***/*/*/*/*/*/*/*/*/***/*/*/*/*/*/*/*/*/***/*/*/*/*/*/*/*/*/***/*/*/*/*/*/*/*/*/***/*/*/*/*/*/*/*/*/***/*/*/*/*/*/*/* -->
 
     <div id="documentos" class="tab-pane fade">
-        <h3> Documentos </h3>
 
-        <div *ngFor="let i of keys(procedures[0])">
-            <div *ngIf="i === 'deliveryDocs'">
-                {{i + ' : ' + procedures[0][i]}}
-
-                <div *ngIf="i === 'deliveryDocs'">
-                    <div *ngFor="let i of keys(procedures[0]?.deliveryDocs)">
-                        <p style='text-indent: 1em'>{{i + ' : ' + procedures[0]?.deliveryDocs[i]}}</p>
-                    </div>
-                </div>
-
-            </div>
-        </div>
+      <procedure-docs [procedures]="procedures"></procedure-docs>
 
 
-        <upload-file [legend]="SubirArchivo" [multiple]=false [url]="URL"></upload-file>
+      <!--        <upload-file [legend]="SubirArchivo" [multiple]=false [url]="URL"></upload-file>
 
-        <div class="row">
-            <div class="table-responsive">
-                <table class="table">
-                    <thead>
-                    <tr>
-                        <th></th>
-                        <th>Documento</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr *ngFor="let deliveryDoc of deliveryDocs">
-                        <td><input type="checkbox"/></td>
-                        <td>{{deliveryDoc}}</td>
-                </table>
-            </div>
-        </div>
-
+            <div class="row">
+                 <div class="table-responsive">
+                     <table class="table">
+                         <thead>
+                         <tr>
+                             <th></th>
+                             <th>Documento</th>
+                         </tr>
+                         </thead>
+                         <tbody>
+                         <tr *ngFor="let deliveryDoc of deliveryDocs">
+                             <td><input type="checkbox"/></td>
+                             <td>{{deliveryDoc}}</td>
+                     </table>
+                 </div>
+             </div>-->
+    </div>
         <!-- /*/***/*/*/*/*/*/*/*/*/***/*/*/*/*/*/*/*/*/***/*/*/*/*/*/*/*/*/***/*/*/*/*/*/*/*/*/***/*/*/*/*/*/*/*/*/***/*/*/*/*/*/*/*/*/***/*/*/*/*/*/*/* -->
 
-    </div>
+
     <div id="flujo" class="tab-pane fade">
         <h3>Flujo</h3>
 
@@ -99,11 +61,11 @@
             </div>
         </div>
 
-
+    </div>
         <!-- /*/***/*/*/*/*/*/*/*/*/***/*/*/*/*/*/*/*/*/***/*/*/*/*/*/*/*/*/***/*/*/*/*/*/*/*/*/***/*/*/*/*/*/*/*/*/***/*/*/*/*/*/*/*/*/***/*/*/*/*/*/*/* -->
 
 
-    </div>
+
     <div id="historial" class="tab-pane fade">
         <h3>Aqui poner la historial y comentarios del flujo</h3>
 

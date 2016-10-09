@@ -1,0 +1,24 @@
+<h4>Documentos del formulario</h4>
+
+<div *ngFor="let i of keys(procedures[0])">
+
+  <div  class="panel panel-default" *ngIf="i === 'deliveryDocs'">
+    <div class="panel-heading">Documentos Anexos</div>
+
+      <div *ngFor="let i of keys(procedures[0]?.deliveryDocs)">
+        <div class="panel-heading">{{i}}</div>
+        <div class="panel-body">
+          <p style='text-indent: 1em'>{{procedures[0]?.deliveryDocs[i]}}</p>
+        </div>
+
+      </div>
+
+
+
+
+  </div>
+
+
+
+  </div>
+
