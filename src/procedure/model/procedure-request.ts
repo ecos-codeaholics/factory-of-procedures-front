@@ -1,8 +1,8 @@
-import { Citizen } from '../citizen/citizen';
-import { ProcedureData } from './model/procedure-data';
-import { Step } from './model/step';
+import { Citizen } from '../../citizen/citizen';
+import { ProcedureData } from './procedure-data';
+import { Step } from './step';
 
-export class Procedure {
+export class ProcedureRequest {
 
     constructor(
         public id: number,

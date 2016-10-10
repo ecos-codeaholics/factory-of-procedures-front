@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 
 import { ProcedureService } from './procedure.service';
 
-import { Procedure } from './procedure';
+import { ProcedureRequest } from './model/procedure-request';
 
 @Component({
     selector: 'procedure-list',
@@ -13,7 +13,7 @@ export class ProcedurePendingComponent implements OnInit {
 
     title = 'Trámites pendientes';
 
-    procedures: Procedure[];
+    procedures: ProcedureRequest[];
 
     constructor(
         private procedureService: ProcedureService

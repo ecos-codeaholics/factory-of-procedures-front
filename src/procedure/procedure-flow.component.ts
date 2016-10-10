@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 
 import { ProcedureService } from './procedure.service';
 
-import { Procedure } from './procedure';
+import { Procedure } from './model/procedure';
 
 @Component({
     selector: 'procedure-flow',

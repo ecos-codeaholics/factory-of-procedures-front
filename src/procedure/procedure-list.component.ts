@@ -2,21 +2,20 @@ import { Component, OnInit, Input } from '@angular/core';
 
 import { ProcedureService } from './procedure.service';
 
-import { Procedure } from './procedure';
+import { ProcedureRequest } from './model/procedure-request';
 
 @Component({
     selector: 'procedure-list',
     templateUrl: 'src/procedure/templates/procedure-list.component.html',
-    //providers: [ProcedureService]
 })
 
 export class ProcedureListComponent implements OnInit {
 
-     title = 'Mis Trámites';
-    
-    procedures: Procedure[];
+    title = 'Mis Trámites';
 
-       @Input() status;
+    procedures: ProcedureRequest[];
+
+    @Input() status;
 
     mode = 'Observable'
 
@@ -34,7 +33,7 @@ export class ProcedureListComponent implements OnInit {
             procedures => this.procedures = procedures,
             error => this.errorMessage = <any>error
         );
-        console.log("list-componet "+this.procedures);
+        console.log("list-componet " + this.procedures);
     }
 
     filterHistoric(event) {

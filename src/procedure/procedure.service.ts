@@ -7,9 +7,9 @@ import { ProcedureAttachment } from './procedure-attachment';
 import { API_URL } from '../shared/constant/api-url';
 import { ErrorHandler } from '../shared/error-handler';
 import { AuthService } from '../auth/auth.service';
-import { PROCEDURES } from './mock-procedure';
+import { PROCEDURES_REQUEST } from './mock/mock-procedures-request';
 
-import { Procedure } from './procedure';
+import { ProcedureRequest } from './model/procedure-request';
 import { Mayoralty } from './mayoralty';
 
 @Injectable()
@@ -25,7 +25,7 @@ export class ProcedureService {
         public authService: AuthService
     ) { }
 
-    getProcedures(): Observable<Procedure[]> {
+    getProcedures(): Observable<ProcedureRequest[]> {
         return this.http.get(this.apiUrl.CITIZENS() + "procedures/?email=" + this.authService.getUser())
             //.map((r: Response) => r.json() as Procedure[])
             .map(this.extractData)
@@ -35,7 +35,7 @@ export class ProcedureService {
             });
     }
 
-    getProceduresById(fileNumber: string): Observable<Procedure[]> {
+    getProceduresById(fileNumber: string): Observable<ProcedureRequest[]> {
         //return this.http.get(this.apiUrl.CITIZENS() + "procedures/edit/"+fileNumber+"/?email=" + this.authService.getUser())
         console.log("procedures by Id console LOG " + this.authService.getUser());
         return this.http.get(this.apiUrl.CITIZENS() + "procedures/edit/" + fileNumber + "/?email=" + this.authService.getUser())
@@ -59,10 +59,10 @@ export class ProcedureService {
         return body || {};
     }
 
-    getProcedures2(): Observable<Procedure[]> {
+    getProcedures2(): Observable<ProcedureRequest[]> {
 
         return this.http.get(this.apiUrl.CITIZENS() + "procedures2/?email=" + this.authService.getUser())
-            .map((r: Response) => r.json() as Procedure[])
+            .map((r: Response) => r.json() as ProcedureRequest[])
             .catch((res) => {
                 console.log("ERROR: en  auth.service");
                 return Observable.throw(this.errorHandler.check(res));
@@ -79,20 +79,20 @@ export class ProcedureService {
             });
     }
 
-    getAssignedProcedures(): Observable<Procedure[]> {
+    getAssignedProcedures(): Observable<ProcedureRequest[]> {
         return this.http.get(this.apiUrl.FUNCTIONARIES() + "procedures/?email=" + this.authService.getUser())
             .map(
-            (r: Response) => r.json() as Procedure[]
+            (r: Response) => r.json() as ProcedureRequest[]
             )
             .catch((res) => {
                 console.log("ERROR: en  auth.service");
                 return Observable.throw(this.errorHandler.check(res));
             });
     }
-    getIdProcedures(): Observable<Procedure[]> {
+    getIdProcedures(): Observable<ProcedureRequest[]> {
         return this.http.get(this.apiUrl.FUNCTIONARIES() + "procedures/?email=" + this.authService.getUser())
             .map(
-            (r: Response) => r.json() as Procedure[]
+            (r: Response) => r.json() as ProcedureRequest[]
             )
             .catch((res) => {
                 console.log("ERROR: en  auth.service");
@@ -100,9 +100,9 @@ export class ProcedureService {
             });
     }
 
-    getProceduresMock(): Procedure[] {
+    getProceduresMock(): ProcedureRequest[] {
         console.log("svc");
-        console.log(PROCEDURES);
-        return PROCEDURES;
+        console.log(PROCEDURES_REQUEST);
+        return PROCEDURES_REQUEST;
     }
 }

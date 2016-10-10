@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { StateService } from '../state/state.service';
 import { ProcedureService } from './procedure.service';
-import { Procedure } from './procedure';
+import { ProcedureRequest } from './model/procedure-request';
 import { Mayoralty } from './mayoralty';
 import { State } from '../state/state';
 
@@ -21,7 +21,7 @@ export class ProcedureSelectComponent implements OnInit {
     mayoralty: any;
 
     mayoralties: Mayoralty[];
-    procedures: Procedure[];
+    procedures: ProcedureRequest[];
 
     //@Input() status;
 

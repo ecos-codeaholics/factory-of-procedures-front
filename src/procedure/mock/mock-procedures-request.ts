@@ -1,9 +1,9 @@
-import { Procedure } from './procedure';
-import { Citizen } from '../citizen/citizen';
-import { ProcedureData } from './model/procedure-data';
-import { Step } from './model/step';
+import { ProcedureRequest } from '../model/procedure-request';
+import { Citizen } from '../../citizen/citizen';
+import { ProcedureData } from '../model/procedure-data';
+import { Step } from '../model/step';
 
-export const PROCEDURES: Procedure[] = [
+export const PROCEDURES_REQUEST: ProcedureRequest[] = [
     {
         id: 1,
         className: "Tramite Lipsum",

@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 
 import { ProcedureService } from './procedure.service';
 
-import { Procedure } from './procedure';
+import { ProcedureRequest } from './model/procedure-request';
 
 @Component({
     selector: 'procedure-list',
@@ -13,9 +13,9 @@ import { Procedure } from './procedure';
 
 export class ProcedureAssignedComponent implements OnInit {
 
-    procedures: Procedure[];
+    procedures: ProcedureRequest[];
 
-       //@Input() status;
+    //@Input() status;
 
     mode = 'Observable'
 

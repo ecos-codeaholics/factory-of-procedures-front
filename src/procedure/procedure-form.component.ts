@@ -4,7 +4,7 @@ import { ProcedureAttachment } from './procedure-attachment';
 import { ActivatedRoute } from '@angular/router';
 import { ProcedureService } from './procedure.service';
 
-import { Procedure } from "./procedure";
+import { ProcedureRequest } from "./model/procedure-request";
 
 @Component({
     selector: 'procedure-form',
@@ -15,7 +15,7 @@ export class ProcedureFormComponent {
     id: any;
     deliveryDocs: string[];
 
-    procedures: Procedure[] = [];
+    procedures: ProcedureRequest[] = [];
     master: string = "MasterTestlast try";
 
     error: any;
