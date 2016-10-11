@@ -16,6 +16,7 @@ import { Mayoralty } from './mayoralty';
 export class ProcedureService {
 
     private proceduresRequest = [];
+    private procedures = [];
 
     constructor(
 
@@ -55,6 +56,7 @@ export class ProcedureService {
     private extractData(res: Response) {
         let body = res.json();
         this.proceduresRequest = body;
+
         console.log(body);
         return body || {};
     }
@@ -82,13 +84,16 @@ export class ProcedureService {
     getAssignedProcedures(): Observable<ProcedureRequest[]> {
         return this.http.get(this.apiUrl.FUNCTIONARIES() + "procedures/?email=" + this.authService.getUser())
             .map(
-            (r: Response) => r.json() as ProcedureRequest[]
+            (r: Response) => {
+                r.json() as ProcedureRequest[];
+            }
             )
             .catch((res) => {
                 console.log("ERROR: en  auth.service");
                 return Observable.throw(this.errorHandler.check(res));
             });
     }
+
     getIdProcedures(): Observable<ProcedureRequest[]> {
         return this.http.get(this.apiUrl.FUNCTIONARIES() + "procedures/?email=" + this.authService.getUser())
             .map(
@@ -100,9 +105,13 @@ export class ProcedureService {
             });
     }
 
+    getProcedureFlow() {
+
+        return this.proceduresRequest;
+    }
+
     getProceduresMock(): ProcedureRequest[] {
-        console.log("svc");
-        console.log(PROCEDURES_REQUEST);
+        console.log("mock svc");
         return PROCEDURES_REQUEST;
     }
 }
