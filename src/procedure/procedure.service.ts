@@ -79,6 +79,16 @@ export class ProcedureService {
             });
     }
 
+    getFunctionaryProcedures(): Observable<ProcedureRequest[]> {
+        return this.http.get(this.apiUrl.FUNCTIONARIES() + "procedures/?email=" + this.authService.getUser())
+            //.map((r: Response) => r.json() as Procedure[])
+            .map(this.extractData)
+            .catch((res) => {
+                console.log("ERROR: en  auth.service");
+                return Observable.throw(this.errorHandler.check(res));
+            });
+    }
+
     getAssignedProcedures(): Observable<ProcedureRequest[]> {
         return this.http.get(this.apiUrl.FUNCTIONARIES() + "procedures/?email=" + this.authService.getUser())
             .map(

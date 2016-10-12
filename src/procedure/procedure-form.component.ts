@@ -6,6 +6,8 @@ import { ProcedureService } from './procedure.service';
 
 import { ProcedureRequest } from "./model/procedure-request";
 
+import { AuthService } from '../auth/auth.service';
+
 @Component({
     selector: 'procedure-form',
     templateUrl: 'src/procedure/templates/procedure-form.component.html'
@@ -17,12 +19,31 @@ export class ProcedureFormComponent {
 
     procedures: ProcedureRequest[] = [];
     master: string = "MasterTestlast try";
+    
+    title = 'Detalle De Trámite';
+    file = new ProcedureAttachment('');
+
+    public isAuth: boolean;
+    public user: string;
+    public profile: string;
+    public status: boolean;
 
     error: any;
     errorMessage: string;
 
-    constructor(private route: ActivatedRoute,
+    constructor(
+        private route: ActivatedRoute,
+        private authService: AuthService,
         private procedureService: ProcedureService) {
+        
+        console.log("procedure-form> constructor");
+        this.isAuth = authService.isAuth();
+
+        if (this.isAuth) {
+
+            this.profile = authService.getProfile();
+        }
+
 
     }
 
@@ -34,13 +55,27 @@ export class ProcedureFormComponent {
         console.log("procedure: " + this.procedures);
     }
 
+    getFunctionaryProdecureByID() {
 
-    title = 'Detalle De Trámite';
-    file = new ProcedureAttachment('');
+        
+
+    }
 
     getdeliveryDocs() {
         // this.deliveryDocs = this.procedureService.getdeliveryDocs(this.id);
         console.log(this.deliveryDocs);
+    }
+
+    getAuthStatus() {
+
+        this.authService.getAuthStatus().subscribe(
+
+            (status: boolean) => {
+                this.isAuth = status;
+            }
+        );
+        console.log("procedure-list> getAuthStatus " + this.isAuth);
+        return this.isAuth;
     }
 
     ngOnInit() {
@@ -50,8 +85,11 @@ export class ProcedureFormComponent {
 
         //this.deliveryDocs = procedureService.getdeliveryDocs();
 
-        this.getProcedureByID();
-
+        if ( this.profile === "citizen") {
+            this.getProcedureByID(); 
+        } else {
+            this.getFunctionaryProdecureByID();
+        }
     }
 
     keys(object: {}) {

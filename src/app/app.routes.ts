@@ -16,7 +16,7 @@ const routes: Routes = [
         loadChildren: 'src/auth/auth.module',
     },
     {
-        path: 'procedures',
+        path: 'tramites',
         loadChildren: 'src/procedure/procedure.module',
     },
     {

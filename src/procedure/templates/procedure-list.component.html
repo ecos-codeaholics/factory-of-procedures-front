@@ -9,7 +9,7 @@
 </div>
 
 
-<div class="row">
+<div class="row" *checkCitizen="profile">
     <div class="table-responsive">
         <table class="table">
             <thead>
@@ -28,7 +28,7 @@
                 <td>Cundinamarca</td>
                 <td>{{procedure.mayoralty}}</td>
                 <!--<td><a routerLink="/procedures/edit">Detalle</a></td>-->
-                <td><a [routerLink]="['/procedures/edit', procedure.fileNumber]">Detalle</a></td>
+                <td><a [routerLink]="['/tramites/edit', procedure.fileNumber]">Detalle</a></td>
 
             </tr>
             <div class="inner-outlet">
@@ -38,3 +38,32 @@
         </table>
     </div>
 </div>
+
+
+<div class="row" *checkFunctionary="profile">
+    <div class="table-responsive">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Fecha</th>
+          <th>Radicado</th>
+          <th>Cedula</th>
+          <th>Nombre</th>
+	      <th>Estado</th>
+          <th>Detalle</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let procedure of procedures | ongoingFilter: [status]">
+          <td>{{procedure.startDate}}</td>
+          <td>{{procedure.fileNumber}}</td>
+          <td>X23212</td><!--{{procedure.citizen.identification}}</td>-->
+          <td>{{procedure.className}}</td>
+	      <td>{{procedure.status}}</td>
+          <td><a [routerLink]="['/tramites/edit', procedure.fileNumber]">Detalle</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+

@@ -4,6 +4,9 @@ import { ProcedureService } from './procedure.service';
 
 import { ProcedureRequest } from './model/procedure-request';
 
+import { AuthService } from '../auth/auth.service';
+
+
 @Component({
     selector: 'procedure-list',
     templateUrl: 'src/procedure/templates/procedure-list.component.html',
@@ -15,16 +18,30 @@ export class ProcedureListComponent implements OnInit {
 
     procedures: ProcedureRequest[];
 
-    @Input() status;
+    //@Input() status;
+    //mode = 'Observable'
 
-    mode = 'Observable'
+    public isAuth: boolean;
+    public user: string;
+    public profile: string;
+    public status: boolean;
 
     error: any;
 
     errorMessage: string;
     constructor(
+        private authService: AuthService,
         private procedureService: ProcedureService
-    ) { }
+    ) { 
+        
+        console.log("procedure-list> constructor");
+        this.isAuth = authService.isAuth();
+
+        if (this.isAuth) {
+
+            this.profile = authService.getProfile();
+        }
+    }
 
     // TODO: Should implement pipe transformation to
     // filter procedures as historic or ongoing
@@ -33,22 +50,59 @@ export class ProcedureListComponent implements OnInit {
             procedures => this.procedures = procedures,
             error => this.errorMessage = <any>error
         );
-        console.log("list-componet " + this.procedures);
+        console.log("list-component " + this.procedures);
+    }
+
+    getFunctionaryProcedures() {
+        this.procedureService.getFunctionaryProcedures().subscribe(
+            procedures => this.procedures = procedures,
+            error => this.errorMessage = <any>error
+        );
+        console.log("list-component " + this.procedures);
     }
 
     filterHistoric(event) {
         event.preventDefault();
-        console.log("Getting historic procedures");
+        console.log("procedure-list> Getting historic procedures");
         console.log(this.procedures);
     }
 
     filterOngoing(event) {
-        console.log("Getting Ongoing procedures");
+        console.log("procedure-list> Getting Ongoing procedures");
         event.preventDefault();
     }
 
-    ngOnInit() {
+    getAuthStatus() {
 
-        this.getProcedures();
+        this.authService.getAuthStatus().subscribe(
+
+            (status: boolean) => {
+                this.isAuth = status;
+            }
+        );
+        console.log("procedure-list> getAuthStatus " + this.isAuth);
+        return this.isAuth;
+    }
+
+    //ngAfterContentChecked() {
+    //
+    //    this.status = this.getAuthStatus();
+    //    this.profile = this.authService.getProfile();
+    //    this.user = this.authService.getUser();
+    //    console.log("procedure-list> ngAfterContentChecked " + this.isAuth);
+    //}
+
+    ngOnInit() {
+        console.log("procedure-list> ngOnInit " + this.isAuth);
+        this.status = this.getAuthStatus();
+        this.profile = this.authService.getProfile();
+        this.user = this.authService.getUser();
+        console.log("procedure-list> getProcedures " + this.isAuth);
+        if ( this.profile === "citizen") {
+            this.getProcedures();
+        } else {
+            console.log("procedure-list> functionary procedures");
+            this.getFunctionaryProcedures();
+     }  
     }
 }
