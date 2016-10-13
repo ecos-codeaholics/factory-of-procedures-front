@@ -54,4 +54,8 @@ export class ProcedureFlowComponent implements OnInit {
     getFunctionaryProdecureByID() {
 
     }
+
+    ngOnInit() {
+
+    }
 }
