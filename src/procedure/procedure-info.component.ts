@@ -4,6 +4,8 @@ import { ActivatedRoute } from '@angular/router';
 import { ProcedureService } from './procedure.service';
 
 import { ProcedureRequest } from "./model/procedure-request";
+import { ProcedureData } from "./model/procedure-data";
+import { Citizen } from '../citizen/citizen';
 
 @Component({
     selector: 'procedure-info',
@@ -17,7 +19,6 @@ export class ProcedureInfoComponent {
 
     @Input('procedure') procedure: ProcedureRequest;
     @Input('profile') profile: string;
-    //@Input('id') id: string;
 
     constructor() { }
 

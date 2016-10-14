@@ -17,6 +17,7 @@ export class ProcedureService {
 
     private proceduresRequest = [];
     private procedures = [];
+    private procedure;
 
     constructor(
 
@@ -35,10 +36,12 @@ export class ProcedureService {
             });
     }
 
-    getProceduresById(fileNumber: string): Observable<ProcedureRequest[]> {
+    getProcedureById(fileNumber: string): Observable<ProcedureRequest> {
         console.log("procedures by Id console LOG " + this.authService.getUser());
         return this.http.get(this.apiUrl.CITIZENS() + "procedures/edit/" + fileNumber + "/?email=" + this.authService.getUser())
-            .map(this.extractData)
+            .map((res) => {
+                return res.json()
+            })
             .catch((res) => {
                 console.log("ERROR: en  auth.service");
                 return Observable.throw(this.errorHandler.check(res));
@@ -49,8 +52,6 @@ export class ProcedureService {
 
         return this.http.get(this.apiUrl.FUNCTIONARIES() + "procedures/edit/" + fileNumber + "/?email=" + this.authService.getUser())
             .map((res) => {
-                console.log("svc")
-                console.log(res.json())
                 return res.json()
             })
             .catch((res) => {

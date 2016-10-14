@@ -46,11 +46,11 @@ export class ProcedureFormComponent {
     }
 
     getProcedureByID() {
-        this.procedureService.getProceduresById(this.id).subscribe(
-            procedures => this.procedures = procedures,
+        this.procedureService.getProcedureById(this.id).subscribe(
+            procedure => this.procedure = procedure,
             error => this.errorMessage = <any>error
         );
-        console.log("procedure: " + this.procedures);
+        console.log("procedure: " + this.procedure);
     }
 
     getFunctionaryProcedureByID() {
