@@ -31,7 +31,11 @@ export const PROCEDURES_REQUEST: ProcedureRequest[] = [
             '/ruta/al/archivo2.txt',
         ],
         steps: new Step(
-            "En proceso"
+            "En curso",
+            "Dependencia",
+            "lorem ipsum dolor",
+            "pepa pombo",
+            1
         ),
         startDate: "ISODate('2016-07-21T05:00:00Z')",
         finishDate: "ISODate('2016-07-21T05:00:00Z')",
@@ -64,7 +68,11 @@ export const PROCEDURES_REQUEST: ProcedureRequest[] = [
             '/ruta/al/archivo2.txt',
         ],
         steps: new Step(
-            "Finalizado"
+            "Finalizado",
+            "Dependencia",
+            "lorem ipsum dolor",
+            "pepa pombo",
+            1
         ),
         startDate: "ISODate('2016-07-21T05:00:00Z')",
         finishDate: "ISODate('2016-07-21T05:00:00Z')",

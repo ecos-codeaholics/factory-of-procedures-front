@@ -15,7 +15,7 @@
     <procedure-docs *ngIf="procedure" [procedure]="procedure"></procedure-docs>
   </div>
   <div id="flujo" class="tab-pane fade" >
-    <procedure-flow [procedures]="procedures"></procedure-flow>
+    <procedure-flow *ngIf="procedure" [profile]="profile" [procedure]="procedure"></procedure-flow>
   </div>
   <div id="historial" class="tab-pane fade">
     <h3>Aqui poner la historial y comentarios del flujo</h3>

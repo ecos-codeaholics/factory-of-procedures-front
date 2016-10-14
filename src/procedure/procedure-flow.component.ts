@@ -4,6 +4,7 @@ import { ProcedureService } from './procedure.service';
 
 import { Procedure } from './model/procedure';
 import { ProcedureRequest } from './model/procedure-request';
+import { Step } from './model/step';
 
 import { AuthService } from '../auth/auth.service';
 
@@ -15,46 +16,17 @@ import { AuthService } from '../auth/auth.service';
 export class ProcedureFlowComponent implements OnInit {
 
     title = 'Aca va al nombre del trámite';
+    public steps: Step;
 
-    public isAuth: boolean;
-    public user: string;
-    public profile: string;
-    public status: boolean;
+    @Input('profile') profile: string;
+    @Input('procedure') procedure: ProcedureRequest;
 
-    @Input('procedures') procedures: ProcedureRequest[];
-    procedure: Procedure;
-
-    constructor(
-        private authService: AuthService
-    ) {
-
-        console.log("procedure-flow> constructor");
-        this.isAuth = authService.isAuth();
-
-        if (this.isAuth) {
-
-            this.profile = authService.getProfile();
-        }
-
-    }
-
-    getAuthStatus() {
-
-        this.authService.getAuthStatus().subscribe(
-
-            (status: boolean) => {
-                this.isAuth = status;
-            }
-        );
-        console.log("procedure-list> getAuthStatus " + this.isAuth);
-        return this.isAuth;
-    }
-
-    getFunctionaryProdecureByID() {
-
+    getSteps() {
+        // FIXME: Steps should be really an array of documents
+        this.steps = this.procedure[0]["steps"];
     }
 
     ngOnInit() {
-
+        this.getSteps();
     }
 }
