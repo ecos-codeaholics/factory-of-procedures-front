@@ -14,7 +14,7 @@ import { ProcedureRequest } from "./model/procedure-request";
 export class ProcedureDocsComponent implements OnInit {
     title: string = "Informacion del Tramites";
 
-    @Input('procedures') procedures: ProcedureRequest[];
+    @Input('procedure') procedure: ProcedureRequest[];
 
 
     constructor() {
