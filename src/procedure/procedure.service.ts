@@ -28,7 +28,6 @@ export class ProcedureService {
 
     getProcedures(): Observable<ProcedureRequest[]> {
         return this.http.get(this.apiUrl.CITIZENS() + "procedures/?email=" + this.authService.getUser())
-            //.map((r: Response) => r.json() as Procedure[])
             .map(this.extractData)
             .catch((res) => {
                 console.log("ERROR: en  auth.service");
@@ -37,11 +36,23 @@ export class ProcedureService {
     }
 
     getProceduresById(fileNumber: string): Observable<ProcedureRequest[]> {
-        //return this.http.get(this.apiUrl.CITIZENS() + "procedures/edit/"+fileNumber+"/?email=" + this.authService.getUser())
         console.log("procedures by Id console LOG " + this.authService.getUser());
         return this.http.get(this.apiUrl.CITIZENS() + "procedures/edit/" + fileNumber + "/?email=" + this.authService.getUser())
-            //.map((r: Response) => r.json() as Procedure[])
             .map(this.extractData)
+            .catch((res) => {
+                console.log("ERROR: en  auth.service");
+                return Observable.throw(this.errorHandler.check(res));
+            });
+    }
+
+    getFunctionaryProcedureById(fileNumber: string): Observable<ProcedureRequest> {
+
+        return this.http.get(this.apiUrl.FUNCTIONARIES() + "procedures/edit/" + fileNumber + "/?email=" + this.authService.getUser())
+            .map((res) => {
+                console.log("svc")
+                console.log(res.json())
+                return res.json()
+            })
             .catch((res) => {
                 console.log("ERROR: en  auth.service");
                 return Observable.throw(this.errorHandler.check(res));
@@ -53,6 +64,7 @@ export class ProcedureService {
         console.log(this.proceduresRequest)
         return this.proceduresRequest;//.deliveryDocs¡;
     }
+
     private extractData(res: Response) {
         let body = res.json();
         this.proceduresRequest = body;
@@ -83,7 +95,6 @@ export class ProcedureService {
 
     getFunctionaryProcedures(): Observable<ProcedureRequest[]> {
         return this.http.get(this.apiUrl.FUNCTIONARIES() + "procedures/?email=" + this.authService.getUser())
-            //.map((r: Response) => r.json() as Procedure[])
             .map(this.extractData)
             .catch((res) => {
                 console.log("ERROR: en  auth.service");

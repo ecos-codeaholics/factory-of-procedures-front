@@ -36,7 +36,6 @@ export class ProcedureFlowComponent implements OnInit {
             this.profile = authService.getProfile();
         }
 
-
     }
 
     getAuthStatus() {

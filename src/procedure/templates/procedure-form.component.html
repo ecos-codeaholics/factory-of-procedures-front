@@ -9,7 +9,7 @@
 
 <div class="tab-content">
   <div id="formulario" class="tab-pane fade in active">
-    <procedure-info [procedures]="procedures"></procedure-info>
+    <procedure-info *ngIf="procedure" [profile]="profile" [procedure]="procedure"></procedure-info>
   </div>
   <div id="documentos" class="tab-pane fade">
     <procedure-docs [procedures]="procedures"></procedure-docs>

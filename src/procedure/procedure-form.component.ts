@@ -18,8 +18,8 @@ export class ProcedureFormComponent {
     deliveryDocs: string[];
 
     procedures: ProcedureRequest[] = [];
-    master: string = "MasterTestlast try";
-    
+    procedure: ProcedureRequest;
+
     title = 'Detalle De Trámite';
     file = new ProcedureAttachment('');
 
@@ -35,7 +35,7 @@ export class ProcedureFormComponent {
         private route: ActivatedRoute,
         private authService: AuthService,
         private procedureService: ProcedureService) {
-        
+
         console.log("procedure-form> constructor");
         this.isAuth = authService.isAuth();
 
@@ -43,8 +43,6 @@ export class ProcedureFormComponent {
 
             this.profile = authService.getProfile();
         }
-
-
     }
 
     getProcedureByID() {
@@ -55,10 +53,12 @@ export class ProcedureFormComponent {
         console.log("procedure: " + this.procedures);
     }
 
-    getFunctionaryProdecureByID() {
-
-        
-
+    getFunctionaryProcedureByID() {
+        this.procedureService.getFunctionaryProcedureById(this.id).subscribe(
+            (procedure) => {
+                this.procedure = procedure;
+            }
+        )
     }
 
     getdeliveryDocs() {
@@ -85,10 +85,10 @@ export class ProcedureFormComponent {
 
         //this.deliveryDocs = procedureService.getdeliveryDocs();
 
-        if ( this.profile === "citizen") {
-            this.getProcedureByID(); 
-        } else {
-            this.getFunctionaryProdecureByID();
+        if (this.profile === "citizen") {
+            this.getProcedureByID();
+        } else if (this.profile === "functionary") {
+            this.getFunctionaryProcedureByID();
         }
     }
 

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, AfterViewChecked, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { ProcedureService } from './procedure.service';
@@ -11,19 +11,15 @@ import { ProcedureRequest } from "./model/procedure-request";
 
 })
 
-export class ProcedureInfoComponent implements OnInit {
-    title: string = "Informacion del Tramites";
+export class ProcedureInfoComponent {
 
-    @Input('procedures') procedures: ProcedureRequest[];
+    title: string = "Informacion del Tramite";
 
+    @Input('procedure') procedure: ProcedureRequest;
+    @Input('profile') profile: string;
+    //@Input('id') id: string;
 
-    constructor() {
-
-    }
-
-    ngOnInit() {
-
-    }
+    constructor() { }
 
 
     keys(object: {}) {
