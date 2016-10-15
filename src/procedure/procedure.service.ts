@@ -27,9 +27,30 @@ export class ProcedureService {
         public authService: AuthService
     ) { }
 
+    
+    private extractData(res: Response) {
+        let body = res.json();
+        console.log(body);
+        this.proceduresRequest = body;
+        return body || {};
+    }
+    
+    
     getProcedures(): Observable<ProcedureRequest[]> {
         return this.http.get(this.apiUrl.CITIZENS() + "procedures/?email=" + this.authService.getUser())
             .map(this.extractData)
+            .catch((res) => {
+                console.log("ERROR: en  auth.service");
+                return Observable.throw(this.errorHandler.check(res));
+            });
+    }
+        getModelProcedure(state: string, mayoralty: string, procedure: string): Observable<ProcedureRequest[]> {
+        return this.http.get(
+            this.apiUrl.CITIZENS() + "procedure/?email=" + this.authService.getUser() +
+            "&state=" + state + "&mayoralty=" + mayoralty + "&procedure=" + procedure
+        )
+            //.map(this.extractData)
+            .map((res) => {return res.json()})
             .catch((res) => {
                 console.log("ERROR: en  auth.service");
                 return Observable.throw(this.errorHandler.check(res));
@@ -64,12 +85,6 @@ export class ProcedureService {
         console.log("procedure request:");
         console.log(this.proceduresRequest)
         return this.proceduresRequest;//.deliveryDocs¡;
-    }
-
-    private extractData(res: Response) {
-        let body = res.json();
-        this.proceduresRequest = body;
-        return body || {};
     }
 
     getProceduresByMayoralty(mayoraltyName: string): Observable<ProcedureRequest[]> {
@@ -143,4 +158,6 @@ export class ProcedureService {
         console.log("mock svc");
         return PROCEDURES_REQUEST;
     }
+
+
 }

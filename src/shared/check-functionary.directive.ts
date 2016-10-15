@@ -17,7 +17,7 @@ export class CheckFunctionaryDirective {
     }
 
     @Input() set checkFunctionary(profile: string) {
-        console.log(profile);
+        //console.log(profile);
         if (profile == "functionary") {
             this.viewContainer.createEmbeddedView(this.templateRef);
         }else {

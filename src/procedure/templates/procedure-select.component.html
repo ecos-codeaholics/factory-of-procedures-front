@@ -1,42 +1,53 @@
 {{selectedElement}}
 <form>
-    <fieldset>
-        <h3 class="header">{{title}}</h3>
+	<fieldset>
+		<h3 class="header">{{title}}</h3>
 
-        <div class="sample">
+		<div class="sample">
 
-            <div class="form-group">
-                <label for="state">Departamento</label>
-                <select id="state" class="form-control" [(ngModel)]="state" name="state" (ngModelChange)="getCities()"
-                        required>
-                    <option value="" disabled="disabled" selected="selected">Seleccione un departamento</option>
-                    <option *ngFor="let state of states" [ngValue]="state.id">
-                        {{state.name}}
-                    </option>
-                </select>
-            </div>
+			<div class="form-group">
+				<label for="state">Departamento</label> <select id="state"
+					class="form-control" [(ngModel)]="state" name="state"
+					(ngModelChange)="getCities()" required>
+					<option value="" disabled="disabled" selected="selected">Seleccione
+						un departamento</option>
+					<option *ngFor="let state of states" [ngValue]="state.name">
+						{{state.name}}</option>
+				</select>
+			</div>
 
-            <div *ngIf="mayoralties" class="form-group">
-                <label id="mayoralty" for="mayoralty">Alcaldia</label>
-                <select class="form-control" [(ngModel)]="mayoralty" name="mayoralty" (ngModelChange)="getProceduresByMayoralty()"
-                        required>
-                    <option value="" disabled="disabled" selected="selected">Seleccione una alcaldia</option>
-                    <option *ngFor="let mayoralty of mayoralties" [ngValue]="mayoralty">
-                        {{mayoralty.name}}
-                    </option>
-                </select>
-            </div>
+			<div *ngIf="mayoralties" class="form-group">
+				<label id="mayoralty" for="mayoralty">Alcaldia</label> <select
+					class="form-control" [(ngModel)]="mayoralty" name="mayoralty"
+					(ngModelChange)="getProceduresByMayoralty()" required>
+					<option value="" disabled="disabled" selected="selected">Seleccione
+						una alcaldia</option>
+					<option *ngFor="let mayoralty of mayoralties" [ngValue]="mayoralty.name">
+						{{mayoralty.name}}</option>
+				</select>
+			</div>
+			<div *ngIf="procedures" class="form-group">
+				<label id="procedure" for="procedure">Trámite</label> <select
+					class="form-control" [(ngModel)]="procedure" name="procedure"
+					required>
+					<option value="" disabled="disabled" selected="selected">Seleccione
+						un trámite</option>
+					<option *ngFor="let procedure of procedures" [ngValue]="procedure.name">
+						{{procedure.name}}</option>
+				</select>
+				<div *ngIf="procedures[0] != null" class="form-group">
+					<button class="btn btn-raised btn-primary" type="submit"
+						[routerLink]="['/tramites/start',{ state : state , procedure :procedure, mayoralty : mayoralty }]">Iniciar</button>
+				</div>
 
-            <div *ngIf="procedures" class="form-group">
-                <label id="procedure" for="procedure">Trámite</label>
-                <select class="form-control" [(ngModel)]="procedure" name="procedure" required>
-                    <option value="" disabled="disabled" selected="selected">Seleccione un trámite</option>
-                    <option *ngFor="let procedure of procedures" [ngValue]="procedure">
-                        {{procedure.name}}
-                    </option>
-                </select>
-            </div>
-        </div>
-        <button class="btn btn-raised btn-primary" type="submit">Iniciar</button>
-    </fieldset>
+
+
+				<div *ngIf="procedures[0] == null" class="form-group">
+					<button type="button" class="btn btn-lg btn-primary" disabled="disabled">Iniciar</button>
+					<p>En este momento la alcaldia no tiene tramites para iniciar.</p>
+				</div>
+
+			</div>
+		</div>
+	</fieldset>
 </form>
