@@ -75,7 +75,7 @@ export class ProcedureService {
 
     getProceduresByMayoralty(mayoraltyName: string): Observable<ProcedureRequest[]> {
 
-        return this.http.get(this.apiUrl.CITIZENS() + "procedures/"+ mayoraltyName +"/?email=" + this.authService.getUser())
+        return this.http.get(this.apiUrl.CITIZENS() + "procedures/" + mayoraltyName + "/?email=" + this.authService.getUser())
             .map((r: Response) => r.json() as ProcedureRequest[])
             .catch((res) => {
                 console.log("ERROR: en  auth.service");
@@ -143,5 +143,17 @@ export class ProcedureService {
     getProceduresMock(): ProcedureRequest[] {
         console.log("mock svc");
         return PROCEDURES_REQUEST;
+    }
+
+    getModelProcedure(state: string, mayoralty: string, procedure: string): Observable<ProcedureRequest[]> {
+        return this.http.get(
+            this.apiUrl.CITIZENS() + "procedures/?email=" + this.authService.getUser() +
+            "&state=" + state + "&mayoralty" + mayoralty + "&procedure=" + procedure
+        )
+            .map(this.extractData)
+            .catch((res) => {
+                console.log("ERROR: en  auth.service");
+                return Observable.throw(this.errorHandler.check(res));
+            });
     }
 }

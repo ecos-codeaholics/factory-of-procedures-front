@@ -37,6 +37,14 @@ export class ProcedureBuilderComponent {
             this.profile = authService.getProfile();
         }
     }
+    private getModelProcedure() {
+        this.procedureService.getModelProcedure(this.state,this.mayoralty,this.procedure).subscribe(
+            (procedure) => {
+                this.procedure = procedure;
+            }
+        )
+    }
+
     ngOnInit() {
         this.route.params.subscribe(params => {
             this.state = params['state'];
