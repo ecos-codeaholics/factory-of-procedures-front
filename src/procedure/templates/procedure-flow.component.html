@@ -14,6 +14,7 @@
 	  <th>Aprobador</th>
 	  <th>Dependencia</th>
 	  <th>Estado</th>
+	  <th>Accion</th>
 	</tr>
       </thead>
       <tbody>
@@ -23,6 +24,15 @@
 	  <td>{{steps.functionary}}</td>
 	  <td>{{steps.dependency}}</td>
 	  <td>{{steps.aprobacion}}</td>
+	  <td>
+	    <div class="togglebutton">
+	      <label>
+		<input checked="" type="checkbox" (click)="doStepApproval($event.target.checked)">
+		<span class="toggle">
+		</span>
+	      </label>
+	    </div>
+	  </td>
 	</tr>
       </tbody>
     </table>

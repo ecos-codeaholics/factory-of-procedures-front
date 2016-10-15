@@ -127,10 +127,19 @@ export class ProcedureService {
             });
     }
 
-    getProcedureFlow() {
+    doStepApproval(status: string, fileNumber: number): Observable<any> {
 
-        return this.proceduresRequest;
+        let body = JSON.stringify("{status:" + status + ", email:f@h}");
+
+        return this.http.put(this.apiUrl.FUNCTIONARIES() + "procedures/" + fileNumber + "/steps/edit/0/", body)
+            .map((res) => { res.json() })
+            .catch((res) => {
+                console.log("Error en el servicio de procedimientos");
+                return Observable.throw(this.errorHandler.check(res));
+            })
+
     }
+
 
     getProceduresMock(): ProcedureRequest[] {
         console.log("mock svc");
