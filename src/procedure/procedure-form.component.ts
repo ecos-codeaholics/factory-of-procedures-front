@@ -50,7 +50,6 @@ export class ProcedureFormComponent {
             procedure => this.procedure = procedure,
             error => this.errorMessage = <any>error
         );
-        console.log("procedure: " + this.procedure);
     }
 
     getFunctionaryProcedureByID() {
