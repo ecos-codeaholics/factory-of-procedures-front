@@ -34,7 +34,6 @@ export class ProcedureListComponent implements OnInit {
         private procedureService: ProcedureService
     ) { 
         
-        console.log("procedure-list> constructor");
         this.isAuth = authService.isAuth();
 
         if (this.isAuth) {
@@ -50,7 +49,6 @@ export class ProcedureListComponent implements OnInit {
             procedures => this.procedures = procedures,
             error => this.errorMessage = <any>error
         );
-        console.log("list-component " + this.procedures);
     }
 
     getFunctionaryProcedures() {
@@ -58,7 +56,6 @@ export class ProcedureListComponent implements OnInit {
             procedures => this.procedures = procedures,
             error => this.errorMessage = <any>error
         );
-        console.log("list-component " + this.procedures);
     }
 
     filterHistoric(event) {
@@ -93,11 +90,9 @@ export class ProcedureListComponent implements OnInit {
     //}
 
     ngOnInit() {
-        console.log("procedure-list> ngOnInit " + this.isAuth);
         this.status = this.getAuthStatus();
         this.profile = this.authService.getProfile();
         this.user = this.authService.getUser();
-        console.log("procedure-list> getProcedures " + this.isAuth);
         if ( this.profile === "citizen") {
             this.getProcedures();
         } else {
