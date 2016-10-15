@@ -68,6 +68,7 @@ export class ProcedureService {
 
     private extractData(res: Response) {
         let body = res.json();
+        console.log(body);
         this.proceduresRequest = body;
         return body || {};
     }
