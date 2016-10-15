@@ -23,7 +23,7 @@
             <tbody>
             <tr *ngFor="let procedure of procedures | ongoingFilter: [status]">
                 <td>{{procedure.fileNumber}}</td>
-                <td>{{procedure.class}}</td>
+                <td>{{procedure.className}}</td>
                 <td>{{procedure.mayoralty}}</td>
                 <td><a [routerLink]="['/tramites/edit', procedure.fileNumber]">Detalle</a></td>
             </tr>
