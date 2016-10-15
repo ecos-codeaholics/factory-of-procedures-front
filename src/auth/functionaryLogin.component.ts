@@ -23,12 +23,22 @@ export class FunctionaryLoginComponent {
     error: any;
     env: string;
 
+    status: boolean;
+    profile: string;
+
     constructor(
         private authService: AuthService,
         private router: Router,
         private config: ConfigService
     ) {
+
+        this.profile = authService.getProfile();
         this.env = config.getEnv();
+    }
+
+    setAuthStatus(status: boolean) {
+
+        this.authService.setAuthStatus(status)
     }
 
     doFunctionaryLogin(user: Login) {
@@ -37,11 +47,17 @@ export class FunctionaryLoginComponent {
             .doFunctionaryLogin(this.user)
             .subscribe(
             (res) => {
-                console.log(res);
+
+                if (!res.json().errorInd) {
+
+                    this.setAuthStatus(res.json());
+                }
+            },
+            error => { },
+            () => {
 
                 this.router.navigate(['/']);
-            },
-            error => { });
+            });
     }
 
     get diagnostic() {
