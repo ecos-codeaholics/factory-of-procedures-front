@@ -18,7 +18,7 @@
 
             <div *ngIf="mayoralties" class="form-group">
                 <label id="mayoralty" for="mayoralty">Alcaldia</label>
-                <select class="form-control" [(ngModel)]="mayoralty" name="mayoralty" (ngModelChange)="getProcedures2()"
+                <select class="form-control" [(ngModel)]="mayoralty" name="mayoralty" (ngModelChange)="getProceduresByMayoralty()"
                         required>
                     <option value="" disabled="disabled" selected="selected">Seleccione una alcaldia</option>
                     <option *ngFor="let mayoralty of mayoralties" [ngValue]="mayoralty">

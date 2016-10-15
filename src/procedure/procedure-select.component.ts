@@ -50,8 +50,8 @@ export class ProcedureSelectComponent implements OnInit {
         );
     }
 
-    getProcedures2() {
-        this.procedureService.getProcedures2().subscribe(
+    getProceduresByMayoralty() {
+        this.procedureService.getProceduresByMayoralty(this.mayoralty.name).subscribe(
             procedures => this.procedures = procedures,
             error => this.errorMessage = <any>error
         );

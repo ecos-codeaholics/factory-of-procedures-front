@@ -74,9 +74,9 @@ export class ProcedureService {
         return body || {};
     }
 
-    getProcedures2(): Observable<ProcedureRequest[]> {
+    getProceduresByMayoralty(mayoraltyName: string): Observable<ProcedureRequest[]> {
 
-        return this.http.get(this.apiUrl.CITIZENS() + "procedures2/?email=" + this.authService.getUser())
+        return this.http.get(this.apiUrl.CITIZENS() + "procedures/"+ mayoraltyName +"/?email=" + this.authService.getUser())
             .map((r: Response) => r.json() as ProcedureRequest[])
             .catch((res) => {
                 console.log("ERROR: en  auth.service");
