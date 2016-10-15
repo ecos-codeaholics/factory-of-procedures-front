@@ -18,6 +18,7 @@ export class ProcedureFlowComponent implements OnInit {
     title = 'Aca va al nombre del trámite';
     public steps: Step;
     public fileNumber: number;
+    public msg: string;
 
     @Input('profile') profile: string;
     @Input('procedure') procedure: ProcedureRequest;
@@ -33,12 +34,14 @@ export class ProcedureFlowComponent implements OnInit {
 
     doStepApproval(check) {
         status = status ? "Finalizado" : "En curso";
-        console.log(status);
+
         this.procedureService.doStepApproval(status, this.fileNumber)
             .subscribe(
             (res) => {
-                console.log("verificado");
-                console.log(res)
+                this.steps.aprobacion = res.responseMsg;
+            },
+            () => {
+                this.msg = "El registro ha sido actualizado";
             })
     }
 

@@ -74,7 +74,7 @@ export class ProcedureService {
 
     getProceduresByMayoralty(mayoraltyName: string): Observable<ProcedureRequest[]> {
 
-        return this.http.get(this.apiUrl.CITIZENS() + "procedures/"+ mayoraltyName +"/?email=" + this.authService.getUser())
+        return this.http.get(this.apiUrl.CITIZENS() + "procedures/" + mayoraltyName + "/?email=" + this.authService.getUser())
             .map((r: Response) => r.json() as ProcedureRequest[])
             .catch((res) => {
                 console.log("ERROR: en  auth.service");
@@ -127,10 +127,10 @@ export class ProcedureService {
 
     doStepApproval(status: string, fileNumber: number): Observable<any> {
 
-        let body = JSON.stringify("{status:" + status + ", email:f@h}");
+        let body = JSON.stringify("{status:" + status + "}");
 
-        return this.http.put(this.apiUrl.FUNCTIONARIES() + "procedures/" + fileNumber + "/steps/edit/0/", body)
-            .map((res) => { res.json() })
+        return this.http.put(this.apiUrl.FUNCTIONARIES() + "procedures/" + fileNumber + "/steps/edit/1/?email=" + this.authService.getUser(), body)
+            .map((res) => { return res.json() })
             .catch((res) => {
                 console.log("Error en el servicio de procedimientos");
                 return Observable.throw(this.errorHandler.check(res));
