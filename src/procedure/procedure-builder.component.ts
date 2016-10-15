@@ -51,6 +51,6 @@ export class ProcedureBuilderComponent {
             this.mayoralty = params['mayoralty'];
             this.procedure = params['procedure'];
         });
-
+        this.getModelProcedure();
     }
 }
