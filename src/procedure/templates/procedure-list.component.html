@@ -16,7 +16,6 @@
             <tr>
                 <th>Radicado</th>
                 <th>Nombre del Trámite</th>
-                <th>Departamento</th>
                 <th>Ciudad/Municipio</th>
                 <th>Detalle</th>
             </tr>
@@ -24,12 +23,9 @@
             <tbody>
             <tr *ngFor="let procedure of procedures | ongoingFilter: [status]">
                 <td>{{procedure.fileNumber}}</td>
-                <td>{{procedure.class}}</td>
-                <td>Cundinamarca</td>
+                <td>{{procedure.className}}</td>
                 <td>{{procedure.mayoralty}}</td>
-                <!--<td><a routerLink="/procedures/edit">Detalle</a></td>-->
                 <td><a [routerLink]="['/tramites/edit', procedure.fileNumber]">Detalle</a></td>
-
             </tr>
             <div class="inner-outlet">
                 <router-outlet></router-outlet>

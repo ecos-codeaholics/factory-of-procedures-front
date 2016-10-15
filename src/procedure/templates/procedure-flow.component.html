@@ -14,7 +14,7 @@
 	  <th>Aprobador</th>
 	  <th>Dependencia</th>
 	  <th>Estado</th>
-	  <th>Accion</th>
+	  <th *checkFunctionary="profile">Accion</th>
 	</tr>
       </thead>
       <tbody>
@@ -24,7 +24,7 @@
 	  <td>{{steps.functionary}}</td>
 	  <td>{{steps.dependency}}</td>
 	  <td>{{steps.aprobacion}}</td>
-	  <td>
+	  <td *checkFunctionary="profile">
 	    <div class="togglebutton">
 	      <label>
 		<input checked="" type="checkbox" (click)="doStepApproval($event.target.checked)">
