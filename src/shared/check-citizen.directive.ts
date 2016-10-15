@@ -17,7 +17,7 @@ export class CheckCitizenDirective {
     }
 
     @Input() set checkCitizen(profile: string) {
-        console.log(profile);
+       // console.log(profile);
         if (profile == "citizen") {
             this.viewContainer.createEmbeddedView(this.templateRef);
         } else {
