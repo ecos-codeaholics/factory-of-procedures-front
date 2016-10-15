@@ -55,7 +55,6 @@ export class ProcedureSelectComponent implements OnInit {
             procedures => this.procedures = procedures,
             error => this.errorMessage = <any>error
         );
-        console.log(this.procedures);
     }
 
     ngOnInit() {

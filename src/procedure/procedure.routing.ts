@@ -14,5 +14,5 @@ export const routing = RouterModule.forChild([
     { path: 'funcionarioss', component: ProcedureAssignedComponent, canActivate: [AuthGuardService] },
     { path: 'pendientes', component: ProcedurePendingComponent /*, canActivate: [AuthGuardService]*/ },
     { path: 'edit/:id', component: ProcedureFormComponent, canActivate: [AuthGuardService] },
-    { path: 'start/:id', component: ProcedureBuilderComponent, canActivate: [AuthGuardService] }
+    { path: 'start', component: ProcedureBuilderComponent, canActivate: [AuthGuardService] }
 ]);

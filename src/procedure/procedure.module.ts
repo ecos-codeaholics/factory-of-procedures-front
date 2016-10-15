@@ -11,6 +11,7 @@ import { ProcedureAssignedComponent } from './procedure-assigned.component';
 import { ProcedureInfoComponent } from './procedure-info.component';
 import { ProcedureDocsComponent } from './procedure-docs.component';
 import { ProcedureFlowComponent } from './procedure-flow.component';
+import { ProcedureBuilderComponent } from './procedure-builder.component';
 
 import { ProcedureOngoingFilterPipe } from './procedure-ongoing-filter.pipe';
 
@@ -30,7 +31,8 @@ import { ProcedureService } from './procedure.service';
         ProcedureInfoComponent,
         ProcedureAssignedComponent,
         ProcedureDocsComponent,
-        ProcedureFlowComponent
+        ProcedureFlowComponent,
+        ProcedureBuilderComponent
     ],
     providers: [ProcedureService],
     bootstrap: [

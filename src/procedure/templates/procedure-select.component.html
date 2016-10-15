@@ -11,7 +11,7 @@
 					(ngModelChange)="getCities()" required>
 					<option value="" disabled="disabled" selected="selected">Seleccione
 						un departamento</option>
-					<option *ngFor="let state of states" [ngValue]="state.id">
+					<option *ngFor="let state of states" [ngValue]="state.name">
 						{{state.name}}</option>
 				</select>
 			</div>
@@ -22,7 +22,7 @@
 					(ngModelChange)="getProceduresByMayoralty()" required>
 					<option value="" disabled="disabled" selected="selected">Seleccione
 						una alcaldia</option>
-					<option *ngFor="let mayoralty of mayoralties" [ngValue]="mayoralty">
+					<option *ngFor="let mayoralty of mayoralties" [ngValue]="mayoralty.name">
 						{{mayoralty.name}}</option>
 				</select>
 			</div>
@@ -32,19 +32,18 @@
 					required>
 					<option value="" disabled="disabled" selected="selected">Seleccione
 						un trámite</option>
-					<option *ngFor="let procedure of procedures" [ngValue]="procedure">
+					<option *ngFor="let procedure of procedures" [ngValue]="procedure.name">
 						{{procedure.name}}</option>
 				</select>
 				<div *ngIf="procedures[0] != null" class="form-group">
 					<button class="btn btn-raised btn-primary" type="submit"
-						[routerLink]="['tramites', procedure]">Iniciar</button>
+						[routerLink]="['/tramites/start',{ state : state , procedure :procedure, mayoralty : mayoralty }]">Iniciar</button>
 				</div>
 
+
+
 				<div *ngIf="procedures[0] == null" class="form-group">
-
-					<button type="button" class="btn btn-lg btn-primary"
-						disabled="disabled" [routerLink]="['tramites', procedure]">Iniciar</button>
-
+					<button type="button" class="btn btn-lg btn-primary" disabled="disabled">Iniciar</button>
 					<p>En este momento la alcaldia no tiene tramites para iniciar.</p>
 				</div>
 
