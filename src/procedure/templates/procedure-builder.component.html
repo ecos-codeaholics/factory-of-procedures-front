@@ -14,10 +14,22 @@
 		<h5>{{mayoralty}}</h5>
 		<h5>{{procedure}}</h5>
 	</div>
+	
+	
+	<!--      DOCUMENTOS	 -->
 	<div id="documentos" class="tab-pane fade">
 	
-	 <procedure-docs *ngIf="procedure" [procedure]="procedure"></procedure-docs>
-	
+		<div class="form-group">
+			<label for="inputFile" class="control-label">Subir documentos requeridos</label>
+			<div>
+				<upload-file id="inputFile" [multiple]=false [url]="URL"
+					class="form-control" placeholder="Examinar..."></upload-file>
+			</div>
+		</div>
+		<p></p>
+		
 	</div>
+	
+	…
 	<div id="flujo" class="tab-pane fade"></div>
 </div>

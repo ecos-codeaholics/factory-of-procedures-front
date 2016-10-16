@@ -6,6 +6,8 @@ import { ActivatedRoute } from '@angular/router';
 
 import { ProcedureService } from './procedure.service';
 import { AuthService } from '../auth/auth.service';
+import { RequiredUpload } from './model/required-upload';
+import { Procedure } from './model/procedure';
 
 
 @Component({
@@ -20,10 +22,13 @@ export class ProcedureBuilderComponent {
 
     private state: any;
     private mayoralty: any;
-    private procedure: any;
-
+    private procedure: Procedure;
+    private procedureName: any;
+    private req:RequiredUpload
+    
     public isAuth: boolean;
     public profile: string;
+    
 
     constructor(
         private route: ActivatedRoute,
@@ -38,19 +43,24 @@ export class ProcedureBuilderComponent {
         }
     }
     private getModelProcedure() {
-        this.procedureService.getModelProcedure(this.state,this.mayoralty,this.procedure).subscribe(
+        this.procedureService.getModelProcedure(this.state,this.mayoralty,this.procedureName).subscribe(
             (procedure) => {
                 this.procedure = procedure;
             }
         )
+    }
+    private getRequiredUpload(){
+        console.log(this.procedure);
     }
 
     ngOnInit() {
         this.route.params.subscribe(params => {
             this.state = params['state'];
             this.mayoralty = params['mayoralty'];
-            this.procedure = params['procedure'];
+            this.procedureName = params['procedure'];
         });
         this.getModelProcedure();
+        this.getRequiredUpload()
+        
     }
 }

@@ -11,6 +11,7 @@ import { PROCEDURES_REQUEST } from './mock/mock-procedures-request';
 
 import { ProcedureRequest } from './model/procedure-request';
 import { Mayoralty } from './mayoralty';
+import { Procedure } from './model/procedure';
 
 @Injectable()
 export class ProcedureService {
@@ -18,6 +19,7 @@ export class ProcedureService {
     private proceduresRequest = [];
     private procedures = [];
     private procedure;
+        private procedureForm: Procedure;
 
     constructor(
 
@@ -44,7 +46,7 @@ export class ProcedureService {
                 return Observable.throw(this.errorHandler.check(res));
             });
     }
-        getModelProcedure(state: string, mayoralty: string, procedure: string): Observable<ProcedureRequest[]> {
+        getModelProcedure(state: string, mayoralty: string, procedure: string): Observable<Procedure> {
         return this.http.get(
             this.apiUrl.CITIZENS() + "procedure/?email=" + this.authService.getUser() +
             "&state=" + state + "&mayoralty=" + mayoralty + "&procedure=" + procedure
