@@ -11,6 +11,7 @@ import { PROCEDURES_REQUEST } from './mock/mock-procedures-request';
 
 import { ProcedureRequest } from './model/procedure-request';
 import { Mayoralty } from './mayoralty';
+import { Status } from './model/status';
 
 @Injectable()
 export class ProcedureService {
@@ -142,7 +143,9 @@ export class ProcedureService {
 
     doStepApproval(status: string, fileNumber: number): Observable<any> {
 
-        let body = JSON.stringify("{status:" + status + "}");
+        var newStatus = new Status(status);
+        //let body = JSON.stringify('{ status : ' + status + ' }');
+        let body = JSON.stringify(newStatus);
 
         return this.http.put(this.apiUrl.FUNCTIONARIES() + "procedures/" + fileNumber + "/steps/edit/1/?email=" + this.authService.getUser(), body)
             .map((res) => { return res.json() })
