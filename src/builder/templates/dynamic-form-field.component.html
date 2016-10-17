@@ -1,7 +1,7 @@
 <div [formGroup]="form">
     <label [attr.for]="field.name">{{field.label}}</label>
     <div [ngSwitch]="field.controlType">
-        <input *ngSwitchCase="'textbox'" [formControlName]="field.name"
+        <input *ngSwitchCase="'text'" [formControlName]="field.name"
                [id]="field.name" [type]="field.type">
     </div>
     <div class="errorMessage" *ngIf="!isValid">{{field.label}} is required</div>
