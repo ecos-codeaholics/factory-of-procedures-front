@@ -12,6 +12,8 @@ import { PROCEDURES_REQUEST } from './mock/mock-procedures-request';
 import { ProcedureRequest } from './model/procedure-request';
 import { Mayoralty } from './mayoralty';
 import { Procedure } from './model/procedure';
+import { Status } from './model/status';
+
 
 @Injectable()
 export class ProcedureService {
@@ -29,15 +31,15 @@ export class ProcedureService {
         public authService: AuthService
     ) { }
 
-    
+
     private extractData(res: Response) {
         let body = res.json();
         console.log(body);
         this.proceduresRequest = body;
         return body || {};
     }
-    
-    
+
+
     getProcedures(): Observable<ProcedureRequest[]> {
         return this.http.get(this.apiUrl.CITIZENS() + "procedures/?email=" + this.authService.getUser())
             .map(this.extractData)
@@ -52,7 +54,7 @@ export class ProcedureService {
             "&state=" + state + "&mayoralty=" + mayoralty + "&procedure=" + procedure
         )
             //.map(this.extractData)
-            .map((res) => {return res.json()})
+            .map((res) => { return res.json() })
             .catch((res) => {
                 console.log("ERROR: en  auth.service");
                 return Observable.throw(this.errorHandler.check(res));
@@ -142,19 +144,18 @@ export class ProcedureService {
             });
     }
 
-    doStepApproval(status: string, fileNumber: number): Observable<any> {
+    doStepApproval(status: string, fileNumber: number, step: number): Observable<any> {
 
-        let body = JSON.stringify("{status:" + status + ", email:f@h}");
+        var newStatus = new Status(status);
+        let body = JSON.stringify(newStatus);
 
-        return this.http.put(this.apiUrl.FUNCTIONARIES() + "procedures/" + fileNumber + "/steps/edit/0/", body)
-            .map((res) => { res.json() })
+        return this.http.put(this.apiUrl.FUNCTIONARIES() + "procedures/" + fileNumber + "/steps/edit/" + step + "/?email=" + this.authService.getUser(), body)
+            .map((res) => { return res.json() })
             .catch((res) => {
                 console.log("Error en el servicio de procedimientos");
                 return Observable.throw(this.errorHandler.check(res));
             })
-
     }
-
 
     getProceduresMock(): ProcedureRequest[] {
         console.log("mock svc");

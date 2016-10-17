@@ -4,7 +4,7 @@ import { ProcedureService } from './procedure.service';
 
 import { Procedure } from './model/procedure';
 import { ProcedureRequest } from './model/procedure-request';
-import { Step } from './model/step';
+import { Activity } from './model/activity';
 
 import { AuthService } from '../auth/auth.service';
 
@@ -16,8 +16,9 @@ import { AuthService } from '../auth/auth.service';
 export class ProcedureFlowComponent implements OnInit {
 
     title = 'Aca va al nombre del trámite';
-    public steps: Step;
+    public activities: Array<Activity>;
     public fileNumber: number;
+    public msg: string;
 
     @Input('profile') profile: string;
     @Input('procedure') procedure: ProcedureRequest;
@@ -27,18 +28,20 @@ export class ProcedureFlowComponent implements OnInit {
     ) { }
 
     getSteps() {
-        // FIXME: Steps should be really an array of documents
-        this.steps = this.procedure[0]["steps"];
+        this.activities = this.procedure[0]["activities"];
     }
 
-    doStepApproval(check) {
+    doStepApproval(check, step) {
         status = status ? "Finalizado" : "En curso";
-        console.log(status);
-        this.procedureService.doStepApproval(status, this.fileNumber)
+
+        this.procedureService.doStepApproval(status, this.fileNumber, step)
             .subscribe(
             (res) => {
-                console.log("verificado");
-                console.log(res)
+                //this.activity.aprobacion = res.responseMsg;
+                console.log(this.activities);
+            },
+            () => {
+                this.msg = "El registro ha sido actualizado";
             })
     }
 
