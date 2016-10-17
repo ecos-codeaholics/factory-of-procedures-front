@@ -6,7 +6,8 @@ import { FieldService } from "./field.service";
 @Component({
     selector: 'form-builder',
     template: `
-    <div>
+    <div class="well page">
+      <h3 class="header">Informacion Requerida</h3>
       <dynamic-form [fields]="fields"></dynamic-form>
     </div>
   `,
