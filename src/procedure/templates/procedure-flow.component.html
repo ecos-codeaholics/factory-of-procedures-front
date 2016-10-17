@@ -19,12 +19,12 @@
 	</tr>
       </thead>
       <tbody>
-	<tr>
-	  <td>{{steps.step}}</td>
-	  <td>{{steps.description}}</td>
-	  <td>{{steps.functionary}}</td>
-	  <td>{{steps.dependency}}</td>
-	  <td>{{steps.aprobacion}}</td>
+	<tr *ngFor="let activity of activities">
+	  <td>{{activity.step}}</td>
+	  <td>{{activity.description}}</td>
+	  <td>{{activity.functionary}}</td>
+	  <td>{{activity.dependency}}</td>
+	  <td>{{activity.status}}</td>
 	  <td *checkFunctionary="profile">
 	    <div class="togglebutton">
 	      <label>

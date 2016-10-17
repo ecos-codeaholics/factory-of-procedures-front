@@ -7,6 +7,7 @@ export class Activity {
         public description: string,
         public dependency: string,
         public step: number,
-        public functionary: string
+        public functionary: string,
+        public aprobacion: string
     ) { }
 }

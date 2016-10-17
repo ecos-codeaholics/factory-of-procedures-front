@@ -1,6 +1,6 @@
 import { Citizen } from '../../citizen/citizen';
 import { ProcedureData } from './procedure-data';
-import { Step } from './step';
+import { Activity } from './activity';
 
 export class ProcedureRequest {
 
@@ -14,7 +14,7 @@ export class ProcedureRequest {
         //public deliveryDocs: DeliveryDoc,
         //public deliveryDocs: Array<string>,
         public deliveryDocs: Object,
-        public steps: Step,
+        public activity: Array<Activity>,
         public startDate: string,
         public finishDate: string,
         public status: string
