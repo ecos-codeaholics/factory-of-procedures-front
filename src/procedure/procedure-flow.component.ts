@@ -17,6 +17,8 @@ export class ProcedureFlowComponent implements OnInit {
 
     title = 'Aca va al nombre del trámite';
     public activities: Array<Activity>;
+    public activity: Activity;
+    public checkedStatus: string;
     public fileNumber: number;
     public msg: string;
 
@@ -31,18 +33,29 @@ export class ProcedureFlowComponent implements OnInit {
         this.activities = this.procedure[0]["activities"];
     }
 
-    doStepApproval(check, step) {
+    doStepApproval(check, activity) {
+        this.activity = activity;
         status = status ? "Finalizado" : "En curso";
 
-        this.procedureService.doStepApproval(status, this.fileNumber, step)
+        this.procedureService.doStepApproval(status, this.fileNumber, this.activity.step)
             .subscribe(
             (res) => {
-                //this.activity.aprobacion = res.responseMsg;
-                console.log(this.activities);
+                this.activity.status = res.responseMsg;
+                this.changeCheckedStatus(this.activity.status);
             },
             () => {
                 this.msg = "El registro ha sido actualizado";
             })
+    }
+
+    // FIXME: Review this behavior
+    changeCheckedStatus(status) {
+
+        if (status === "Finalizado") {
+            this.checkedStatus === ""
+        } else if (status == "En curso") {
+            this.checkedStatus === "checked"
+        }
     }
 
     ngOnInit() {
