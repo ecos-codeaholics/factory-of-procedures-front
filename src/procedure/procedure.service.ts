@@ -1,18 +1,18 @@
-import { Injectable } from '@angular/core';
-import { Http, RequestOptions, Response } from '@angular/http';
-import { Observable } from 'rxjs/Rx';
-import { ProcedureAttachment } from './procedure-attachment';
+import {Injectable} from '@angular/core';
+import {Http, RequestOptions, Response} from '@angular/http';
+import {Observable} from 'rxjs/Rx';
+import {ProcedureAttachment} from './procedure-attachment';
 
 
-import { API_URL } from '../shared/constant/api-url';
-import { ErrorHandler } from '../shared/error-handler';
-import { AuthService } from '../auth/auth.service';
-import { PROCEDURES_REQUEST } from './mock/mock-procedures-request';
+import {API_URL} from '../shared/constant/api-url';
+import {ErrorHandler} from '../shared/error-handler';
+import {AuthService} from '../auth/auth.service';
+import {PROCEDURES_REQUEST} from './mock/mock-procedures-request';
 
-import { ProcedureRequest } from './model/procedure-request';
-import { Mayoralty } from './mayoralty';
-import { Procedure } from './model/procedure';
-import { Status } from './model/status';
+import {ProcedureRequest} from './model/procedure-request';
+import {Mayoralty} from './mayoralty';
+import {Procedure} from './model/procedure';
+import {Status} from './model/status';
 
 
 @Injectable()
@@ -21,15 +21,13 @@ export class ProcedureService {
     private proceduresRequest = [];
     private procedures = [];
     private procedure;
-        private procedureForm: Procedure;
+    private procedureForm: Procedure;
 
-    constructor(
-
-        public errorHandler: ErrorHandler,
-        public http: Http,
-        public apiUrl: API_URL,
-        public authService: AuthService
-    ) { }
+    constructor(public errorHandler: ErrorHandler,
+                public http: Http,
+                public apiUrl: API_URL,
+                public authService: AuthService) {
+    }
 
 
     private extractData(res: Response) {
@@ -48,13 +46,16 @@ export class ProcedureService {
                 return Observable.throw(this.errorHandler.check(res));
             });
     }
-        getModelProcedure(state: string, mayoralty: string, procedure: string): Observable<Procedure> {
+
+    getModelProcedure(state: string, mayoralty: string, procedure: string): Observable<Procedure> {
         return this.http.get(
             this.apiUrl.CITIZENS() + "procedure/?email=" + this.authService.getUser() +
             "&state=" + state + "&mayoralty=" + mayoralty + "&procedure=" + procedure
         )
-            //.map(this.extractData)
-            .map((res) => { return res.json() })
+        //.map(this.extractData)
+            .map((res) => {
+                return res.json()
+            })
             .catch((res) => {
                 console.log("ERROR: en  auth.service");
                 return Observable.throw(this.errorHandler.check(res));
@@ -123,9 +124,9 @@ export class ProcedureService {
     getAssignedProcedures(): Observable<ProcedureRequest[]> {
         return this.http.get(this.apiUrl.FUNCTIONARIES() + "procedures/?email=" + this.authService.getUser())
             .map(
-            (r: Response) => {
-                r.json() as ProcedureRequest[];
-            }
+                (r: Response) => {
+                    r.json() as ProcedureRequest[];
+                }
             )
             .catch((res) => {
                 console.log("ERROR: en  auth.service");
@@ -136,7 +137,7 @@ export class ProcedureService {
     getIdProcedures(): Observable<ProcedureRequest[]> {
         return this.http.get(this.apiUrl.FUNCTIONARIES() + "procedures/?email=" + this.authService.getUser())
             .map(
-            (r: Response) => r.json() as ProcedureRequest[]
+                (r: Response) => r.json() as ProcedureRequest[]
             )
             .catch((res) => {
                 console.log("ERROR: en  auth.service");
@@ -150,7 +151,9 @@ export class ProcedureService {
         let body = JSON.stringify(newStatus);
 
         return this.http.put(this.apiUrl.FUNCTIONARIES() + "procedures/" + fileNumber + "/steps/edit/" + step + "/?email=" + this.authService.getUser(), body)
-            .map((res) => { return res.json() })
+            .map((res) => {
+                return res.json()
+            })
             .catch((res) => {
                 console.log("Error en el servicio de procedimientos");
                 return Observable.throw(this.errorHandler.check(res));

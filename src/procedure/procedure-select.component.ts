@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
-import { StateService } from '../state/state.service';
-import { ProcedureService } from './procedure.service';
-import { ProcedureRequest } from './model/procedure-request';
-import { Mayoralty } from './mayoralty';
-import { State } from '../state/state';
+import {StateService} from '../state/state.service';
+import {ProcedureService} from './procedure.service';
+import {ProcedureRequest} from './model/procedure-request';
+import {Mayoralty} from './mayoralty';
+import {State} from '../state/state';
 
 
 @Component({
@@ -33,10 +33,9 @@ export class ProcedureSelectComponent implements OnInit {
 
     errorMessage: string;
 
-    constructor(
-        private stateService: StateService,
-        private procedureService: ProcedureService
-    ) { }
+    constructor(private stateService: StateService,
+                private procedureService: ProcedureService) {
+    }
 
     getStates() {
         this.stateService.getStates()
@@ -51,7 +50,7 @@ export class ProcedureSelectComponent implements OnInit {
     }
 
     getProceduresByMayoralty() {
-        this.procedureService.getProceduresByMayoralty(this.mayoralty.name).subscribe(
+        this.procedureService.getProceduresByMayoralty(this.mayoralty).subscribe(
             procedures => this.procedures = procedures,
             error => this.errorMessage = <any>error
         );
