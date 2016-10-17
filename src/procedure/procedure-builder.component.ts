@@ -43,7 +43,7 @@ export class ProcedureBuilderComponent {
         }
     }
     private getModelProcedure() {
-        this.procedureService.getModelProcedure(this.state,this.mayoralty,this.procedureName).subscribe(
+        this.procedureService.getModelProcedure().subscribe(
             (procedure) => {
                 this.procedure = procedure;
             }
@@ -55,8 +55,6 @@ export class ProcedureBuilderComponent {
 
     ngOnInit() {
         this.route.params.subscribe(params => {
-            this.state = params['state'];
-            this.mayoralty = params['mayoralty'];
             this.procedureName = params['procedure'];
         });
         this.getModelProcedure();

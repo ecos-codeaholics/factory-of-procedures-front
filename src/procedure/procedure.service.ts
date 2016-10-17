@@ -21,6 +21,7 @@ export class ProcedureService {
     private proceduresRequest = [];
     private procedures = [];
     private procedure;
+    private procedureSelected:string;
     private procedureForm: Procedure;
 
     constructor(public errorHandler: ErrorHandler,
@@ -47,10 +48,10 @@ export class ProcedureService {
             });
     }
 
-    getModelProcedure(state: string, mayoralty: string, procedure: string): Observable<Procedure> {
+    getModelProcedure(): Observable<Procedure> {
+        console.log(this.procedureSelected);
         return this.http.get(
-            this.apiUrl.CITIZENS() + "procedure/?email=" + this.authService.getUser() +
-            "&state=" + state + "&mayoralty=" + mayoralty + "&procedure=" + procedure
+            this.apiUrl.CITIZENS() + "procedure/?email=" + this.authService.getUser() + "&procedure=" + this.procedureSelected
         )
         //.map(this.extractData)
             .map((res) => {
@@ -87,8 +88,6 @@ export class ProcedureService {
     }
 
     getdeliveryDocs() {
-        console.log("procedure request:");
-        console.log(this.proceduresRequest)
         return this.proceduresRequest;//.deliveryDocs¡;
     }
 
@@ -158,6 +157,10 @@ export class ProcedureService {
                 console.log("Error en el servicio de procedimientos");
                 return Observable.throw(this.errorHandler.check(res));
             })
+    }
+
+    setProcedureSelected(selected: string) {
+        this.procedureSelected = selected;
     }
 
     getProceduresMock(): ProcedureRequest[] {
