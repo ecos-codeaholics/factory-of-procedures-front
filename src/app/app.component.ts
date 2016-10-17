@@ -1,9 +1,9 @@
-import { Component, OnInit, AfterContentChecked, Input, HostListener } from '@angular/core';
-import { Router } from '@angular/router';
+import {Component, OnInit, AfterContentChecked, Input, HostListener} from '@angular/core';
+import {Router} from '@angular/router';
 
-import { AuthGuardService } from '../auth/auth-guard.service';
-import { AuthService } from '../auth/auth.service';
-import { Subscription } from 'rxjs/Subscription';
+import {AuthGuardService} from '../auth/auth-guard.service';
+import {AuthService} from '../auth/auth.service';
+import {Subscription} from 'rxjs/Subscription';
 
 //enable production mode
 //import { enableProdMode } from '@angular/core';
@@ -23,11 +23,8 @@ export class AppComponent implements AfterContentChecked {
     public profile: string;
     public status: boolean;
 
-    constructor(
-
-        private authService: AuthService,
-        private router: Router
-    ) {
+    constructor(private authService: AuthService,
+                private router: Router) {
 
         this.isAuth = authService.isAuth();
 
@@ -53,7 +50,11 @@ export class AppComponent implements AfterContentChecked {
         this.isAuth = false;
         this.authService.setAuthStatus(false);
         this.authService.doLogout();
-        this.router.navigate(['acceder']);
+        if (this.profile == 'citizen') {
+            this.router.navigate(['acceder']);
+        } else {
+            this.router.navigate(['funcionarios']);
+        }
     }
 
     ngAfterContentChecked() {
