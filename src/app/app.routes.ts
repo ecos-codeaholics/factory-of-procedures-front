@@ -1,6 +1,7 @@
 import { Routes, RouterModule } from '@angular/router';
 
 import { HomeComponent } from '../home/home.component';
+import { DynamicFormComponent } from '../builder/dynamic-form.component';
 import { LoginComponent } from '../auth/login.component';
 import { FunctionaryLoginComponent } from '../auth/functionaryLogin.component';
 
@@ -22,6 +23,10 @@ const routes: Routes = [
     {
         path: 'citizens',
         loadChildren: 'src/citizen/citizen.module',
+    },
+    {
+        path: 'builder',
+        loadChildren: 'src/builder/builder.module',
     }
 ]
 
