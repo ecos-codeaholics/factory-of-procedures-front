@@ -141,13 +141,12 @@ export class ProcedureService {
             });
     }
 
-    doStepApproval(status: string, fileNumber: number): Observable<any> {
+    doStepApproval(status: string, fileNumber: number, step: number): Observable<any> {
 
         var newStatus = new Status(status);
-        //let body = JSON.stringify('{ status : ' + status + ' }');
         let body = JSON.stringify(newStatus);
 
-        return this.http.put(this.apiUrl.FUNCTIONARIES() + "procedures/" + fileNumber + "/steps/edit/1/?email=" + this.authService.getUser(), body)
+        return this.http.put(this.apiUrl.FUNCTIONARIES() + "procedures/" + fileNumber + "/steps/edit/" + step + "/?email=" + this.authService.getUser(), body)
             .map((res) => { return res.json() })
             .catch((res) => {
                 console.log("Error en el servicio de procedimientos");

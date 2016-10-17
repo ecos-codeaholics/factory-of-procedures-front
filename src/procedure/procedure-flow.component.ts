@@ -31,10 +31,10 @@ export class ProcedureFlowComponent implements OnInit {
         this.activities = this.procedure[0]["activities"];
     }
 
-    doStepApproval(check) {
+    doStepApproval(check, step) {
         status = status ? "Finalizado" : "En curso";
 
-        this.procedureService.doStepApproval(status, this.fileNumber)
+        this.procedureService.doStepApproval(status, this.fileNumber, step)
             .subscribe(
             (res) => {
                 //this.activity.aprobacion = res.responseMsg;
