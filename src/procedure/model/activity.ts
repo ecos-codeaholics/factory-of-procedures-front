@@ -1,3 +1,4 @@
+import { Status } from './status';
 
 export class Activity {
 
@@ -8,6 +9,7 @@ export class Activity {
         public dependency: string,
         public step: number,
         public functionary: string,
-        public aprobacion: string
+        public aprobacion: string,
+        public status: Status
     ) { }
 }

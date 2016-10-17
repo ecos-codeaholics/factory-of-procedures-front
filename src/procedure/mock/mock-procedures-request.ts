@@ -2,6 +2,7 @@ import { ProcedureRequest } from '../model/procedure-request';
 import { Citizen } from '../../citizen/citizen';
 import { ProcedureData } from '../model/procedure-data';
 import { Activity } from '../model/activity';
+import { Status } from '../model/status';
 
 export const PROCEDURES_REQUEST: ProcedureRequest[] = [
     {
@@ -38,7 +39,10 @@ export const PROCEDURES_REQUEST: ProcedureRequest[] = [
                 "Dependencia de la actividad",
                 1,
                 "jose perez",
-                "En Curso"
+                "",
+                new Status(
+                    "En Curso"
+                )
             ),
             new Activity(
                 "2",
@@ -47,7 +51,10 @@ export const PROCEDURES_REQUEST: ProcedureRequest[] = [
                 "Dependencia de la actividad",
                 1,
                 "jose perez",
-                "En Curso"
+                "",
+                new Status(
+                    "Finalizado"
+                )
             )
         ],
         startDate: "ISODate('2016-07-21T05:00:00Z')",
@@ -88,7 +95,10 @@ export const PROCEDURES_REQUEST: ProcedureRequest[] = [
                 "Dependencia de la actividad",
                 1,
                 "jose perez",
-                "En Curso"
+                "",
+                new Status(
+                    "En Curso"
+                )
             ),
             new Activity(
                 "2",
@@ -97,8 +107,10 @@ export const PROCEDURES_REQUEST: ProcedureRequest[] = [
                 "Dependencia de la actividad",
                 1,
                 "jose perez",
-                "En Curso"
-
+                "",
+                new Status(
+                    "Finalizado"
+                )
             )
         ],
         startDate: "ISODate('2016-07-21T05:00:00Z')",
