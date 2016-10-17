@@ -14,8 +14,14 @@ export class FieldService {
 
             new FieldTextBox({
                 name: 'firstName',
-                label: 'First name',
-                value: 'Bombasto',
+                label: 'Pirmer Nombre',
+                value: 'Pepito',
+                required: true,
+            }),
+            new FieldTextBox({
+                name: 'lastName',
+                label: 'Apellido',
+                value: 'Perez',
                 required: true,
             })
         ];
