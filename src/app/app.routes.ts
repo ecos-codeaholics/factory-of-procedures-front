@@ -23,10 +23,6 @@ const routes: Routes = [
     {
         path: 'citizens',
         loadChildren: 'src/citizen/citizen.module',
-    },
-    {
-        path: 'builder',
-        loadChildren: 'src/builder/builder.module',
     }
 ]
 

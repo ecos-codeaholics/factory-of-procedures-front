@@ -8,6 +8,8 @@ import { ProcedureService } from './procedure.service';
 import { AuthService } from '../auth/auth.service';
 import { RequiredUpload } from './model/required-upload';
 import { Procedure } from './model/procedure';
+import { FieldService } from "../builder/field.service";
+
 
 
 @Component({
@@ -24,16 +26,21 @@ export class ProcedureBuilderComponent {
     private mayoralty: any;
     private procedure: Procedure;
     private procedureName: any;
-    private req:RequiredUpload
-    
+    private req: RequiredUpload;
+    private fields: any[];
+
+
     public isAuth: boolean;
     public profile: string;
-    
+
 
     constructor(
         private route: ActivatedRoute,
         private authService: AuthService,
-        private procedureService: ProcedureService) {
+        private procedureService: ProcedureService,
+        private service: FieldService) {
+
+        this.fields = service.getFields();
 
         this.isAuth = authService.isAuth();
 
@@ -43,13 +50,13 @@ export class ProcedureBuilderComponent {
         }
     }
     private getModelProcedure() {
-        this.procedureService.getModelProcedure(this.state,this.mayoralty,this.procedureName).subscribe(
+        this.procedureService.getModelProcedure(this.state, this.mayoralty, this.procedureName).subscribe(
             (procedure) => {
                 this.procedure = procedure;
             }
         )
     }
-    private getRequiredUpload(){
+    private getRequiredUpload() {
         console.log(this.procedure);
     }
 
@@ -61,6 +68,6 @@ export class ProcedureBuilderComponent {
         });
         this.getModelProcedure();
         this.getRequiredUpload()
-        
+
     }
 }
