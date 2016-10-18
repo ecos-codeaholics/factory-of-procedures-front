@@ -21,9 +21,9 @@ export class ProcedureBuilderComponent implements OnInit {
 
     private state: any;
     private mayoralty: any;
-    private procedure: Procedure;
+    private procedure: Procedure[];
     private procedureName: any;
-    private req: RequiredUpload;
+    private req: RequiredUpload[];
     private fields: any[];
 
     public isAuth: boolean;
@@ -48,19 +48,20 @@ export class ProcedureBuilderComponent implements OnInit {
         this.procedureService.getModelProcedure(this.procedureName).subscribe(
             (procedure) => {
                 this.procedure = procedure;
+                this.req=procedure[0].required;
             }
         )
     }
 
     private getRequiredUpload() {
         console.log(this.procedure);
+        console.log(this.req);
     }
 
     ngOnInit() {
-        console.log(this.procedureService.getProcedureSelected());
-        
         this.route.params.subscribe(params => {
             this.procedureName = params['procedure'];
+            this.mayoralty = params['mayoralty'];
         });
         this.getModelProcedure();
         this.getRequiredUpload();

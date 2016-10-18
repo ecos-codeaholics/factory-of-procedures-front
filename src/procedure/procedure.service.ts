@@ -48,7 +48,7 @@ export class ProcedureService {
             });
     }
 
-    getModelProcedure(procedureName:string): Observable<Procedure> {
+    getModelProcedure(procedureName:string): Observable<Procedure[]> {
         console.log(this.procedureSelected);
         return this.http.get(
             this.apiUrl.CITIZENS() + "procedure/?email=" + this.authService.getUser() + "&procedure=" + procedureName

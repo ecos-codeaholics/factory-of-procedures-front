@@ -9,7 +9,7 @@ export class Procedure {
         public name: string,
         public mayoralty: string,
         public activities: Array<Activity>,
-        public requiredUpload: Array<RequiredUpload>,
+        public required: Array<RequiredUpload>,
         public fields: Array<FormField>
     ) { }
 }
