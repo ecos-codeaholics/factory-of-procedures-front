@@ -5,19 +5,16 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 
 import { SharedModule } from '../shared/shared.module';
-import { routing } from './builder.routing';
 
 import { FieldControlService } from "./field-control.service";
 
 import { DynamicFormComponent } from "./dynamic-form.component";
 import { DynamicFormFieldComponent } from "./dynamic-form-field.component";
 
-
 @NgModule({
     imports: [
         SharedModule,
         ReactiveFormsModule,
-        routing
     ],
     declarations: [
         DynamicFormComponent,
@@ -26,10 +23,10 @@ import { DynamicFormFieldComponent } from "./dynamic-form-field.component";
     providers: [
         FieldControlService
     ],
-    bootstrap: [
+    exports: [
         DynamicFormComponent,
         DynamicFormFieldComponent
     ]
 })
 
-export default class BuilderModule { }
+export class BuilderModule { }
