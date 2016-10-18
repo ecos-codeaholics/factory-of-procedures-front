@@ -19,6 +19,7 @@ export class ProcedureSelectComponent implements OnInit {
     states: State[];
     state: any;
     mayoralty: any;
+    procedure: any;
 
     mayoralties: Mayoralty[];
     procedures: ProcedureRequest[];
@@ -56,8 +57,11 @@ export class ProcedureSelectComponent implements OnInit {
         );
     }
 
+    setProcedureSelected() {
+        this.procedureService.setProcedureSelected(this.procedure)
+    }
+
     ngOnInit() {
         this.getStates();
-        //this.getProcedures2();
     }
 }

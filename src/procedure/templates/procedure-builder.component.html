@@ -13,8 +13,9 @@
 		<h5>{{state}}</h5>
 		<h5>{{mayoralty}}</h5>
 		<h5>{{procedure}}</h5>
+		 <dynamic-form [fields]="fields"></dynamic-form>
 	</div>
-	
+
 	
 	<!--      DOCUMENTOS	 -->
 	<div id="documentos" class="tab-pane fade">
@@ -30,7 +31,6 @@
 		
 	</div>
 	
-	…
 	<div id="flujo" class="tab-pane fade">
 	 <procedure-flow *ngIf="procedure" [profile]="profile" [procedure]="procedure"></procedure-flow>
 	</div>

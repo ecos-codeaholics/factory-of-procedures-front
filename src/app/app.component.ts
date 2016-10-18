@@ -55,6 +55,7 @@ export class AppComponent implements AfterContentChecked {
         } else {
             this.router.navigate(['funcionarios']);
         }
+
     }
 
     ngAfterContentChecked() {

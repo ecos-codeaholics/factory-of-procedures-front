@@ -1,6 +1,7 @@
 import { Routes, RouterModule } from '@angular/router';
 
 import { HomeComponent } from '../home/home.component';
+import { DynamicFormComponent } from '../builder/dynamic-form.component';
 import { LoginComponent } from '../auth/login.component';
 import { FunctionaryLoginComponent } from '../auth/functionaryLogin.component';
 
