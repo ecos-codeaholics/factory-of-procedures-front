@@ -48,10 +48,10 @@ export class ProcedureService {
             });
     }
 
-    getModelProcedure(): Observable<Procedure> {
+    getModelProcedure(procedureName:string): Observable<Procedure> {
         console.log(this.procedureSelected);
         return this.http.get(
-            this.apiUrl.CITIZENS() + "procedure/?email=" + this.authService.getUser() + "&procedure=" + this.procedureSelected
+            this.apiUrl.CITIZENS() + "procedure/?email=" + this.authService.getUser() + "&procedure=" + procedureName
         )
         //.map(this.extractData)
             .map((res) => {
@@ -160,7 +160,12 @@ export class ProcedureService {
     }
 
     setProcedureSelected(selected: string) {
+        console.log(selected);
         this.procedureSelected = selected;
+    }
+     getProcedureSelected() {
+      
+        return this.procedureSelected;
     }
 
     getProceduresMock(): ProcedureRequest[] {

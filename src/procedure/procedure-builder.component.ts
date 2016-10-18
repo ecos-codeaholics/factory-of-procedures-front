@@ -45,11 +45,11 @@ export class ProcedureBuilderComponent implements OnInit {
     }
 
     private getModelProcedure() {
-        //this.procedureService.getModelProcedure().subscribe(
-        //    (procedure) => {
-        //        this.procedure = procedure;
-        //    }
-        //)
+        this.procedureService.getModelProcedure(this.procedureName).subscribe(
+            (procedure) => {
+                this.procedure = procedure;
+            }
+        )
     }
 
     private getRequiredUpload() {
@@ -57,6 +57,8 @@ export class ProcedureBuilderComponent implements OnInit {
     }
 
     ngOnInit() {
+        console.log(this.procedureService.getProcedureSelected());
+        
         this.route.params.subscribe(params => {
             this.procedureName = params['procedure'];
         });
