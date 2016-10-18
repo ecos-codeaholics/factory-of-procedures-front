@@ -7,8 +7,12 @@ import { ActivatedRoute } from '@angular/router';
 import { ProcedureService } from './procedure.service';
 import { AuthService } from '../auth/auth.service';
 import { RequiredUpload } from './model/required-upload';
+import { FormField } from './model/form-field';
 import { Procedure } from './model/procedure';
 import { FieldService } from "../builder/field.service";
+
+import {FieldBase}          from "../builder/model/field-base";
+import {FieldTextBox}       from "../builder/model/field-textbox";
 
 @Component({
     selector: 'procedure-builder',
@@ -24,7 +28,8 @@ export class ProcedureBuilderComponent implements OnInit {
     private procedure: Procedure[];
     private procedureName: any;
     private req: RequiredUpload[];
-    private fields: any[];
+    private fieldProcedure: FormField[];
+    private fields: FieldBase<any>[] = [];
 
     public isAuth: boolean;
     public profile: string;
@@ -37,35 +42,28 @@ export class ProcedureBuilderComponent implements OnInit {
     ) {
 
         this.isAuth = authService.isAuth();
-
         if (this.isAuth) {
-
             this.profile = authService.getProfile();
         }
     }
-
     private getModelProcedure() {
         this.procedureService.getModelProcedure(this.procedureName).subscribe(
             (procedure) => {
                 this.procedure = procedure;
-                this.req=procedure[0].required;
+                this.req = procedure[0].required;
+                this.fields = procedure[0].fields;
             }
         )
     }
+    private setFields(fields: any) {
 
-    private getRequiredUpload() {
-        console.log(this.procedure);
-        console.log(this.req);
+        console.log(this.fields);
     }
-
     ngOnInit() {
         this.route.params.subscribe(params => {
             this.procedureName = params['procedure'];
             this.mayoralty = params['mayoralty'];
         });
         this.getModelProcedure();
-        this.getRequiredUpload();
-
-        this.fields = this.service.getFields();
     }
 }
