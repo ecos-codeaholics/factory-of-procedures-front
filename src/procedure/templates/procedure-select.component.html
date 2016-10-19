@@ -25,7 +25,7 @@
                     <option value="" disabled="disabled" selected="selected">Seleccione
                         una alcaldia
                     </option>
-                    <option *ngFor="let mayoralty of mayoralties" [ngValue]="mayoralty.name">
+                    <option *ngFor="let mayoralty of mayoralties" [ngValue]="mayoralty.slug">
                         {{mayoralty.name}}
                     </option>
                 </select>
@@ -37,7 +37,7 @@
                     <option value="" disabled="disabled" selected="selected">Seleccione
                         un trámite
                     </option>
-                    <option *ngFor="let procedure of procedures" [ngValue]="procedure.name">
+                    <option *ngFor="let procedure of procedures" [ngValue]="procedure.slug">
                         {{procedure.name}}
                     </option>
                 </select>

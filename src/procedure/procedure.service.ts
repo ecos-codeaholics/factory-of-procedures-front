@@ -70,6 +70,7 @@ export class ProcedureService {
                      })
                     )
                 }*/
+            console.log(response);
                 return response;
             })
             .catch((res) => {

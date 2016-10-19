@@ -9,6 +9,7 @@ export class Procedure {
     constructor(
         public id: string,
         public name: string,
+        public slug: string,
         public mayoralty: string,
         public activities: Array<Activity>,
         public required: Array<RequiredUpload>,
