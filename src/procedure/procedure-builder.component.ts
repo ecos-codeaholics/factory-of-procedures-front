@@ -51,7 +51,7 @@ export class ProcedureBuilderComponent implements OnInit {
             (procedure) => {
                 this.procedure = procedure;
                 this.req = procedure[0].required;
-                this.fields = procedure[0].fields;
+              //  this.fields = procedure[0].fields;
             }
         )
     }
@@ -65,5 +65,6 @@ export class ProcedureBuilderComponent implements OnInit {
             this.mayoralty = params['mayoralty'];
         });
         this.getModelProcedure();
+        this.fields=this.service.getFields();
     }
 }
