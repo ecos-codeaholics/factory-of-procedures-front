@@ -4,6 +4,8 @@ import { ProcedureData } from '../model/procedure-data';
 import { Activity } from '../model/activity';
 import { Status } from '../model/status';
 
+import { ProcedureHistory } from '../model/procedure-history';
+
 export const PROCEDURES_REQUEST: ProcedureRequest[] = [
     {
         id: 1,
@@ -57,6 +59,7 @@ export const PROCEDURES_REQUEST: ProcedureRequest[] = [
                 )
             )
         ],
+        histories:[],
         startDate: "ISODate('2016-07-21T05:00:00Z')",
         finishDate: "ISODate('2016-07-21T05:00:00Z')",
         status: "En proceso"
@@ -113,6 +116,7 @@ export const PROCEDURES_REQUEST: ProcedureRequest[] = [
                 )
             )
         ],
+        histories:[],
         startDate: "ISODate('2016-07-21T05:00:00Z')",
         finishDate: "ISODate('2016-07-21T05:00:00Z')",
         status: "Finalizado"

@@ -161,12 +161,12 @@ export class ProcedureService {
             });
     }
 
-    doStepApproval(status: string, fileNumber: number, step: number): Observable<any> {
+    doStepChange(status: string, fileNumber: number, step: number,comment:string): Observable<any> {
 
         var newStatus = new Status(status);
         let body = JSON.stringify(newStatus);
 
-        return this.http.put(this.apiUrl.FUNCTIONARIES() + "procedures/" + fileNumber + "/steps/edit/" + step + "/?email=" + this.authService.getUser(), body)
+        return this.http.put(this.apiUrl.FUNCTIONARIES() + "procedures/" + fileNumber + "/steps/edit/" + step + "/?email=" + this.authService.getUser()+"&comment="+comment, body)
             .map((res) => {
                 console.log(res);
                 return res.json()
