@@ -1,10 +1,14 @@
 <div>
     <form (ngSubmit)="onSubmit()" [formGroup]="form">
+
+        <div *ngIf="fields.length > 0">
+            <p>|{{fields.length}}|</p>
         <div *ngFor="let field of fields" class="form-row">
             <df-field [field]="field" [form]="form"></df-field>
         </div>
         <div class="form-row">
             <button type="submit" class="btn btn-raised btn-primary" [disabled]="!form.valid">Guardar</button>
+        </div>
         </div>
     </form>
     <div *ngIf="payLoad" class="form-row">

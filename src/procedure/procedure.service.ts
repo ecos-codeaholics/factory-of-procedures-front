@@ -35,7 +35,7 @@ export class ProcedureService {
 
     private extractData(res: Response) {
         let body = res.json();
-        console.log(body);
+        //console.log(body);
         this.proceduresRequest = body;
         return body || {};
     }
@@ -51,26 +51,27 @@ export class ProcedureService {
     }
 
     getModelProcedure(procedureName: string): Observable<Procedure[]> {
-        console.log(this.procedureSelected);
         return this.http.get(
             this.apiUrl.CITIZENS() + "procedure/?email=" + this.authService.getUser() + "&procedure=" + procedureName
         )
             //.map(this.extractData)
             .map((res) => {
                 let response= res.json();
-            /**ERASE ME
+            /**ERASE ME*/
                     let fields = response[0].fields;
                 let fieldsProcedure: FieldBase<any>[]=[];
                 for (let i in fields) {
                     fieldsProcedure.push(new FieldTextBox({
-                         name: 'firstName',
-                         label: 'Pirmer Nombre',
-                         value: 'Pepito',
+                         name: 'firstname',
+                         label: fields[i].description,
+                         value: fields[i].label,
                          required: true,
                      })
                     )
-                }*/
-            console.log(response);
+                    console.log(fields[i]);
+                }
+                response[0].fields=fieldsProcedure;
+            //console.log(response);
                 return response;
             })
             .catch((res) => {
@@ -167,6 +168,7 @@ export class ProcedureService {
 
         return this.http.put(this.apiUrl.FUNCTIONARIES() + "procedures/" + fileNumber + "/steps/edit/" + step + "/?email=" + this.authService.getUser(), body)
             .map((res) => {
+                console.log(res);
                 return res.json()
             })
             .catch((res) => {

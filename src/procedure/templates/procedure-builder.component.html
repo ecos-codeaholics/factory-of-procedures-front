@@ -11,6 +11,10 @@
 <div class="tab-content">
 	<div id="formulario" class="tab-pane fade in active">
 		<dynamic-form [fields]="fields"></dynamic-form>
+
+        <div *ngFor="let j of fields2">
+            {{j.description}}
+            </div>
 	</div>
 
 

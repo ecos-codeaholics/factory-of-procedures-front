@@ -1,6 +1,7 @@
 import { Citizen } from '../../citizen/citizen';
 import { ProcedureData } from './procedure-data';
 import { Activity } from './activity';
+import { ProcedureHistory } from './Procedure-history';
 
 export class ProcedureRequest {
 
@@ -17,6 +18,7 @@ export class ProcedureRequest {
         public activity: Array<Activity>,
         public startDate: string,
         public finishDate: string,
-        public status: string
+        public status: string,
+        public histories: Array<ProcedureHistory>
     ) { }
 }
