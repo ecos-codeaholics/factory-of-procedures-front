@@ -32,8 +32,8 @@ export class ProcedureListComponent implements OnInit {
     constructor(
         private authService: AuthService,
         private procedureService: ProcedureService
-    ) { 
-        
+    ) {
+
         this.isAuth = authService.isAuth();
 
         if (this.isAuth) {
@@ -93,11 +93,11 @@ export class ProcedureListComponent implements OnInit {
         this.status = this.getAuthStatus();
         this.profile = this.authService.getProfile();
         this.user = this.authService.getUser();
-        if ( this.profile === "citizen") {
+        if (this.profile === "citizen") {
             this.getProcedures();
         } else {
             console.log("procedure-list> functionary procedures");
             this.getFunctionaryProcedures();
-     }  
+        }
     }
 }

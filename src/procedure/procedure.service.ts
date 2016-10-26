@@ -1,21 +1,24 @@
-import {Injectable} from '@angular/core';
-import {Http, RequestOptions, Response} from '@angular/http';
-import {Observable} from 'rxjs/Rx';
-import {ProcedureAttachment} from './procedure-attachment';
+import { Injectable } from '@angular/core';
+import { Http, RequestOptions, Response } from '@angular/http';
+import { Observable } from 'rxjs/Rx';
+import { ProcedureAttachment } from './procedure-attachment';
 
 
-import {API_URL} from '../shared/constant/api-url';
-import {ErrorHandler} from '../shared/error-handler';
-import {AuthService} from '../auth/auth.service';
-import {PROCEDURES_REQUEST} from './mock/mock-procedures-request';
+import { API_URL } from '../shared/constant/api-url';
+import { ErrorHandler } from '../shared/error-handler';
+import { AuthService } from '../auth/auth.service';
+import { AuthHttp } from 'angular2-jwt';
+import { PROCEDURES_REQUEST } from './mock/mock-procedures-request';
+import { contentHeaders } from '../shared/constant/content-headers';
 
-import {ProcedureRequest} from './model/procedure-request';
-import {Mayoralty} from './mayoralty';
-import {Procedure} from './model/procedure';
-import {Status} from './model/status';
 
-import {FieldBase}          from "../builder/model/field-base";
-import {FieldTextBox}       from "../builder/model/field-textbox";
+import { ProcedureRequest } from './model/procedure-request';
+import { Mayoralty } from './mayoralty';
+import { Procedure } from './model/procedure';
+import { Status } from './model/status';
+
+import { FieldBase } from "../builder/model/field-base";
+import { FieldTextBox } from "../builder/model/field-textbox";
 
 @Injectable()
 export class ProcedureService {
@@ -26,12 +29,12 @@ export class ProcedureService {
     private procedureSelected: string;
     private procedureForm: Procedure;
 
-    constructor(public errorHandler: ErrorHandler,
-        public http: Http,
+    constructor(
+        public errorHandler: ErrorHandler,
         public apiUrl: API_URL,
-        public authService: AuthService) {
-    }
-
+        public authService: AuthService,
+        public authHttp: AuthHttp
+    ) { }
 
     private extractData(res: Response) {
         let body = res.json();
@@ -42,7 +45,9 @@ export class ProcedureService {
 
 
     getProcedures(): Observable<ProcedureRequest[]> {
-        return this.http.get(this.apiUrl.CITIZENS() + "procedures/?email=" + this.authService.getUser())
+
+        let options = new RequestOptions({ headers: contentHeaders });
+        return this.authHttp.get(this.apiUrl.CITIZENS() + "procedures/?email=" + this.authService.getUser(), options)
             .map(this.extractData)
             .catch((res) => {
                 console.log("ERROR: en  auth.service");
@@ -52,25 +57,13 @@ export class ProcedureService {
 
     getModelProcedure(procedureName: string): Observable<Procedure[]> {
         console.log(this.procedureSelected);
-        return this.http.get(
-            this.apiUrl.CITIZENS() + "procedure/?email=" + this.authService.getUser() + "&procedure=" + procedureName
-        )
-            //.map(this.extractData)
+        let options = new RequestOptions({ headers: contentHeaders });
+
+        return this.authHttp.get(
+            this.apiUrl.CITIZENS() + "procedure/?email=" + this.authService.getUser() + "&procedure=" + procedureName, options)
             .map((res) => {
-                let response= res.json();
-            /**ERASE ME
-                    let fields = response[0].fields;
-                let fieldsProcedure: FieldBase<any>[]=[];
-                for (let i in fields) {
-                    fieldsProcedure.push(new FieldTextBox({
-                         name: 'firstName',
-                         label: 'Pirmer Nombre',
-                         value: 'Pepito',
-                         required: true,
-                     })
-                    )
-                }*/
-            console.log(response);
+                let response = res.json();
+                console.log(response);
                 return response;
             })
             .catch((res) => {
@@ -80,8 +73,10 @@ export class ProcedureService {
     }
 
     getProcedureById(fileNumber: string): Observable<ProcedureRequest> {
-        console.log("procedures by Id console LOG " + this.authService.getUser());
-        return this.http.get(this.apiUrl.CITIZENS() + "procedures/edit/" + fileNumber + "/?email=" + this.authService.getUser())
+
+        let options = new RequestOptions({ headers: contentHeaders });
+
+        return this.authHttp.get(this.apiUrl.CITIZENS() + "procedures/edit/" + fileNumber + "/?email=" + this.authService.getUser(), options)
             .map((res) => {
                 return res.json()
             })
@@ -93,7 +88,9 @@ export class ProcedureService {
 
     getFunctionaryProcedureById(fileNumber: string): Observable<ProcedureRequest> {
 
-        return this.http.get(this.apiUrl.FUNCTIONARIES() + "procedures/edit/" + fileNumber + "/?email=" + this.authService.getUser())
+        let options = new RequestOptions({ headers: contentHeaders });
+
+        return this.authHttp.get(this.apiUrl.FUNCTIONARIES() + "procedures/edit/" + fileNumber + "/?email=" + this.authService.getUser(), options)
             .map((res) => {
                 return res.json()
             })
@@ -104,12 +101,14 @@ export class ProcedureService {
     }
 
     getdeliveryDocs() {
-        return this.proceduresRequest;//.deliveryDocs¡;
+        return this.proceduresRequest;
     }
 
     getProceduresByMayoralty(mayoraltyName: string): Observable<ProcedureRequest[]> {
 
-        return this.http.get(this.apiUrl.CITIZENS() + "procedures/" + mayoraltyName + "/?email=" + this.authService.getUser())
+        let options = new RequestOptions({ headers: contentHeaders });
+
+        return this.authHttp.get(this.apiUrl.CITIZENS() + "procedures/" + mayoraltyName + "/?email=" + this.authService.getUser(), options)
             .map((r: Response) => r.json() as ProcedureRequest[])
             .catch((res) => {
                 console.log("ERROR: en  auth.service");
@@ -119,7 +118,9 @@ export class ProcedureService {
 
     getMayoralties(): Observable<Mayoralty[]> {
 
-        return this.http.get(this.apiUrl.CITIZENS() + "mayoralties/?email=" + this.authService.getUser())
+        let options = new RequestOptions({ headers: contentHeaders });
+
+        return this.authHttp.get(this.apiUrl.CITIZENS() + "mayoralties/?email=" + this.authService.getUser(), options)
             .map((r: Response) => r.json() as Mayoralty[])
             .catch((res) => {
                 console.log("ERROR: en  auth.service");
@@ -128,7 +129,10 @@ export class ProcedureService {
     }
 
     getFunctionaryProcedures(): Observable<ProcedureRequest[]> {
-        return this.http.get(this.apiUrl.FUNCTIONARIES() + "procedures/?email=" + this.authService.getUser())
+
+        let options = new RequestOptions({ headers: contentHeaders });
+
+        return this.authHttp.get(this.apiUrl.FUNCTIONARIES() + "procedures/?email=" + this.authService.getUser(), options)
             .map(this.extractData)
             .catch((res) => {
                 console.log("ERROR: en  auth.service");
@@ -137,7 +141,10 @@ export class ProcedureService {
     }
 
     getAssignedProcedures(): Observable<ProcedureRequest[]> {
-        return this.http.get(this.apiUrl.FUNCTIONARIES() + "procedures/?email=" + this.authService.getUser())
+
+        let options = new RequestOptions({ headers: contentHeaders });
+
+        return this.authHttp.get(this.apiUrl.FUNCTIONARIES() + "procedures/?email=" + this.authService.getUser(), options)
             .map(
             (r: Response) => {
                 r.json() as ProcedureRequest[];
@@ -150,7 +157,10 @@ export class ProcedureService {
     }
 
     getIdProcedures(): Observable<ProcedureRequest[]> {
-        return this.http.get(this.apiUrl.FUNCTIONARIES() + "procedures/?email=" + this.authService.getUser())
+
+        let options = new RequestOptions({ headers: contentHeaders });
+
+        return this.authHttp.get(this.apiUrl.FUNCTIONARIES() + "procedures/?email=" + this.authService.getUser(), options)
             .map(
             (r: Response) => r.json() as ProcedureRequest[]
             )
@@ -164,8 +174,10 @@ export class ProcedureService {
 
         var newStatus = new Status(status);
         let body = JSON.stringify(newStatus);
+        let options = new RequestOptions({ headers: contentHeaders });
 
-        return this.http.put(this.apiUrl.FUNCTIONARIES() + "procedures/" + fileNumber + "/steps/edit/" + step + "/?email=" + this.authService.getUser(), body)
+
+        return this.authHttp.put(this.apiUrl.FUNCTIONARIES() + "procedures/" + fileNumber + "/steps/edit/" + step + "/?email=" + this.authService.getUser(), body, options)
             .map((res) => {
                 return res.json()
             })
@@ -176,18 +188,18 @@ export class ProcedureService {
     }
 
     setProcedureSelected(selected: string) {
-        console.log(selected);
+
         this.procedureSelected = selected;
     }
+
     getProcedureSelected() {
 
         return this.procedureSelected;
     }
 
     getProceduresMock(): ProcedureRequest[] {
+
         console.log("mock svc");
         return PROCEDURES_REQUEST;
     }
-
-
 }

@@ -1,11 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Headers, Http, RequestOptions, Request, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
-//import 'rxjs/add/operator/toPromise';
-//import 'rxjs/add/operator/catch';
 import 'rxjs/Rx';
 
 import { API_URL } from '../shared/constant/api-url';
+import { AuthHttp } from 'angular2-jwt';
 
 import { Citizen } from './citizen';
 import { CITIZENS } from './mock-citizen';
@@ -16,7 +15,8 @@ export class CitizenService {
 
     constructor(
         private http: Http,
-        private apiUrl: API_URL
+        private apiUrl: API_URL,
+        private authHttp: AuthHttp
     ) { }
 
     private citizensUrl = 'http://localhost:4567/citizens/';
@@ -47,7 +47,7 @@ export class CitizenService {
             url: this.apiUrl.CITIZENS()
         });
 
-        return this.http.request(req)
+        return this.authHttp.request(req)
             .map(res => res.json());
     }
 }

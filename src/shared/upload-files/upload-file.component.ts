@@ -7,7 +7,6 @@
 import { Component, Output, NgZone, OnInit, Input } from '@angular/core/';
 import { API_URL } from '../constant/api-url';
 
-
 @Component({
     selector: 'upload-file',
     templateUrl: 'src/shared/upload-files/templates/upload-file.component.html',
