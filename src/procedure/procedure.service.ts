@@ -47,7 +47,7 @@ export class ProcedureService {
     getProcedures(): Observable<ProcedureRequest[]> {
 
         let options = new RequestOptions({ headers: contentHeaders });
-        return this.authHttp.get(this.apiUrl.CITIZENS() + "procedures/?email=" + this.authService.getUser(), options)
+        return this.authHttp.get(this.apiUrl.CITIZENS(), options)
             .map(this.extractData)
             .catch((res) => {
                 console.log("ERROR: en  auth.service");
