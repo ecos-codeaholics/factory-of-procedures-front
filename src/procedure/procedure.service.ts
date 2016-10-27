@@ -13,6 +13,8 @@ import {ProcedureRequest} from './model/procedure-request';
 import {Mayoralty} from './mayoralty';
 import {Procedure} from './model/procedure';
 import {Status} from './model/status';
+import {FieldBase} from "../builder/model/field-base";
+import {FieldTextBox} from "../builder/model/field-textbox";
 
 @Injectable()
 export class ProcedureService {
