@@ -15,6 +15,7 @@ import {Procedure} from './model/procedure';
 import {Status} from './model/status';
 import {FieldBase} from "../builder/model/field-base";
 import {FieldTextBox} from "../builder/model/field-textbox";
+import {FieldAreaBox} from "../builder/model/field-textarea";
 
 @Injectable()
 export class ProcedureService {
@@ -57,16 +58,27 @@ export class ProcedureService {
             .map((res) => {
                 let response= res.json();
             /**ERASE ME*/
-                    let fields = response[0].fields;
+                let fields = response[0].fields;
                 let fieldsProcedure: FieldBase<any>[]=[];
                 for (let i in fields) {
-                    fieldsProcedure.push(new FieldTextBox({
-                         name: 'firstname',
-                         label: fields[i].description,
-                         value: fields[i].label,
-                         required: true,
-                     })
-                    )
+                    if(fields[i].type === "text"){
+                        fieldsProcedure.push(new FieldTextBox({
+                                name: 'firstname',
+                                label: fields[i].description,
+                                value: fields[i].label,
+                                required: true,
+                            })
+                        )
+                    }else{
+                        fieldsProcedure.push(new FieldAreaBox({
+                                name: 'firstname',
+                                label: fields[i].description,
+                                value: fields[i].label,
+                                required: true,
+                            })
+                        )
+                    }
+
                     console.log(fields[i]);
                 }
                 response[0].fields=fieldsProcedure;
