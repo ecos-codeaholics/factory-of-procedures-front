@@ -77,7 +77,8 @@ export class ProcedureListComponent implements OnInit {
                 this.isAuth = status;
             }
         );
-        console.log("procedure-list> getAuthStatus " + this.isAuth);
+        //console.log("procedure-list> getAuthStatus " + this.isAuth);
+        //console.log("procedure-list> getAuthStatus " + this.isAuth);
         return this.isAuth;
     }
 
@@ -96,7 +97,7 @@ export class ProcedureListComponent implements OnInit {
         if ( this.profile === "citizen") {
             this.getProcedures();
         } else {
-            console.log("procedure-list> functionary procedures");
+          //  console.log("procedure-list> functionary procedures");
             this.getFunctionaryProcedures();
      }  
     }

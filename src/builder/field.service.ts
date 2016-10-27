@@ -14,9 +14,9 @@ export class FieldService {
         let fields: FieldBase<any>[] = [
 
             new FieldTextBox({
-                name: 'firstName',
+                name: 'firstname',
                 label: 'Pirmer Nombre',
-                value: 'Pepito',
+                value: '',
                 required: true,
             }),
             new FieldTextBox({

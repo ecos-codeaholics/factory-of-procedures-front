@@ -5,6 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ProcedureService } from './procedure.service';
 
 import { ProcedureRequest } from "./model/procedure-request";
+import { ProcedureHistory } from "./model/procedure-history";
 
 import { AuthService } from '../auth/auth.service';
 
@@ -19,6 +20,8 @@ export class ProcedureFormComponent {
 
     procedures: ProcedureRequest[] = [];
     procedure: ProcedureRequest;
+
+    histories: ProcedureHistory[]=[]
 
     title = 'Detalle De Trámite';
     file = new ProcedureAttachment('');
@@ -36,7 +39,6 @@ export class ProcedureFormComponent {
         private authService: AuthService,
         private procedureService: ProcedureService) {
 
-        console.log("procedure-form> constructor");
         this.isAuth = authService.isAuth();
 
         if (this.isAuth) {
@@ -47,7 +49,10 @@ export class ProcedureFormComponent {
 
     getProcedureByID() {
         this.procedureService.getProcedureById(this.id).subscribe(
-            procedure => this.procedure = procedure,
+            (procedure) => {
+                this.procedure = procedure;
+                this.histories=procedure[0]["histories"];
+            },
             error => this.errorMessage = <any>error
         );
     }
@@ -56,34 +61,24 @@ export class ProcedureFormComponent {
         this.procedureService.getFunctionaryProcedureById(this.id).subscribe(
             (procedure) => {
                 this.procedure = procedure;
+                this.histories=procedure[0]["histories"];
+                console.log(procedure[0]["histories"]);
             }
         )
     }
-
-    getdeliveryDocs() {
-        // this.deliveryDocs = this.procedureService.getdeliveryDocs(this.id);
-        console.log(this.deliveryDocs);
-    }
-
     getAuthStatus() {
-
         this.authService.getAuthStatus().subscribe(
 
             (status: boolean) => {
                 this.isAuth = status;
             }
         );
-        console.log("procedure-list> getAuthStatus " + this.isAuth);
+       // console.log("procedure-list> getAuthStatus " + this.isAuth);
         return this.isAuth;
     }
 
     ngOnInit() {
-        //recibe parametro a travesd e routing del temaplate
         this.route.params.subscribe(params => this.id = +params['id']);
-        console.log("radicado: " + this.id);
-
-        //this.deliveryDocs = procedureService.getdeliveryDocs();
-
         if (this.profile === "citizen") {
             this.getProcedureByID();
         } else if (this.profile === "functionary") {
