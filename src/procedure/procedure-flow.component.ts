@@ -9,8 +9,6 @@ import {ProcedureRequest} from './model/procedure-request';
 import {Activity} from './model/activity';
 import {Status} from './model/status';
 
-import {AuthService} from '../auth/auth.service';
-
 declare var jQuery: any;
 
 @Component({
