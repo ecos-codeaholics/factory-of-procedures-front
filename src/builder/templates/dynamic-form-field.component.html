@@ -3,6 +3,11 @@
     <div [ngSwitch]="field.controlType">
         <input *ngSwitchCase="'text'" class="form-control" [formControlName]="field.name"
                [id]="field.name" [type]="field.type">
+
+        <textarea *ngSwitchCase="'textarea'" class="form-control" [formControlName]="field.name"
+                  [id]="field.name">
+        </textarea>
+
     </div>
     <div class="errorMessage" *ngIf="!isValid">{{field.label}} is required</div>
 </div>

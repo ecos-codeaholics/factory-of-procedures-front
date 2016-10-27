@@ -12,7 +12,6 @@ import { Procedure } from './model/procedure';
 import { FieldService } from "../builder/field.service";
 
 import {FieldBase}          from "../builder/model/field-base";
-import {FieldTextBox}       from "../builder/model/field-textbox";
 
 @Component({
     selector: 'procedure-builder',
