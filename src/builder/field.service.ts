@@ -1,9 +1,10 @@
 /**
  * Created by davidmars on 17/10/16.
  */
-import { Injectable }       from '@angular/core';
+import {Injectable}       from '@angular/core';
 import {FieldBase}          from "./model/field-base";
 import {FieldTextBox}       from "./model/field-textbox";
+import {FieldAreaBox}       from "./model/field-textarea";
 
 @Injectable()
 export class FieldService {
@@ -22,6 +23,12 @@ export class FieldService {
                 name: 'lastName',
                 label: 'Apellido',
                 value: 'Perez',
+                required: true,
+            }),
+            new FieldAreaBox({
+                name: 'letter',
+                label: 'Carta de Solicitud',
+                value: 'Por favor por favor hagame en el tramite, se los ruego',
                 required: true,
             })
         ];
