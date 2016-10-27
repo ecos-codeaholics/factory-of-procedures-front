@@ -24,6 +24,18 @@
         <h4>{{procedure[0]["class"]}}</h4>
         <h5><b>Radicado:</b> {{procedure[0]["fileNumber"]}}</h5>
     </div>
+    <div class="col-lg-12" *checkFunctionary="profile">
+        <div *ngIf="procedure[0]['status'] != 'Finalizado'">
+        <h4>Acción</h4>
+
+            <select [(ngModel)]="status" (ngModelChange)="openModalFlow2($event)">
+                <option value="Acción" disabled="disabled">Acción</option>
+                <option value="Aprobar">Aprobar</option>
+                <option value="Rechazar">Rechazar</option>
+                <option value="Anular">Anular</option>
+            </select>
+        </div>
+    </div>
 </div>
 <div class="row">
     <div class="col-lg-12">
@@ -35,7 +47,6 @@
                 <th>Aprobador</th>
                 <th>Dependencia</th>
                 <th>Estado</th>
-                <th *checkFunctionary="profile">Accion</th>
             </tr>
             </thead>
             <tbody>
@@ -45,16 +56,6 @@
                 <td>{{activity.functionary}}</td>
                 <td>{{activity.dependency}}</td>
                 <td>{{activity.status}}</td>
-                <td *checkFunctionary="profile">
-
-                    <select [(ngModel)]="status" (ngModelChange)="openModalFlow($event, activity)">
-                        <option value="Accion" disabled="disabled">Acción</option>
-                        <!--<option *ngFor="let p of status" [value]="p.status">{{p.status}}</option>-->
-                        <option value="Aprobar">Aprobar</option>
-                        <option value="Rechazar">Rechazar</option>
-                        <option value="Anular">Anular</option>
-                    </select>
-                </td>
             </tr>
             </tbody>
         </table>

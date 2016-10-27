@@ -62,7 +62,6 @@ export class ProcedureFormComponent {
             (procedure) => {
                 this.procedure = procedure;
                 this.histories=procedure[0]["histories"];
-                console.log(procedure[0]["histories"]);
             }
         )
     }

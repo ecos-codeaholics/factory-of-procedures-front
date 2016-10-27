@@ -1,10 +1,10 @@
-import { Component, OnInit, Input } from '@angular/core';
+import {Component, OnInit, Input} from '@angular/core';
 
-import { ProcedureService } from './procedure.service';
+import {ProcedureService} from './procedure.service';
 
-import { ProcedureRequest } from './model/procedure-request';
+import {ProcedureRequest} from './model/procedure-request';
 
-import { AuthService } from '../auth/auth.service';
+import {AuthService} from '../auth/auth.service';
 
 
 @Component({
@@ -29,15 +29,11 @@ export class ProcedureListComponent implements OnInit {
     error: any;
 
     errorMessage: string;
-    constructor(
-        private authService: AuthService,
-        private procedureService: ProcedureService
-    ) { 
-        
+
+    constructor(private authService: AuthService,
+                private procedureService: ProcedureService) {
         this.isAuth = authService.isAuth();
-
         if (this.isAuth) {
-
             this.profile = authService.getProfile();
         }
     }
@@ -46,7 +42,10 @@ export class ProcedureListComponent implements OnInit {
     // filter procedures as historic or ongoing
     getProcedures() {
         this.procedureService.getProcedures().subscribe(
-            procedures => this.procedures = procedures,
+            (procedures) => {
+                this.procedures = procedures;
+                console.log(procedures);
+            },
             error => this.errorMessage = <any>error
         );
     }
@@ -72,13 +71,10 @@ export class ProcedureListComponent implements OnInit {
     getAuthStatus() {
 
         this.authService.getAuthStatus().subscribe(
-
             (status: boolean) => {
                 this.isAuth = status;
             }
         );
-        //console.log("procedure-list> getAuthStatus " + this.isAuth);
-        //console.log("procedure-list> getAuthStatus " + this.isAuth);
         return this.isAuth;
     }
 
@@ -94,11 +90,10 @@ export class ProcedureListComponent implements OnInit {
         this.status = this.getAuthStatus();
         this.profile = this.authService.getProfile();
         this.user = this.authService.getUser();
-        if ( this.profile === "citizen") {
+        if (this.profile === "citizen") {
             this.getProcedures();
         } else {
-          //  console.log("procedure-list> functionary procedures");
             this.getFunctionaryProcedures();
-     }  
+        }
     }
 }
