@@ -57,31 +57,33 @@ export class ProcedureService {
             //.map(this.extractData)
             .map((res) => {
                 let response= res.json();
-            /**ERASE ME*/
-                let fields = response[0].fields;
-                let fieldsProcedure: FieldBase<any>[]=[];
-                for (let i in fields) {
-                    if(fields[i].type === "text"){
-                        fieldsProcedure.push(new FieldTextBox({
-                                name: 'firstname',
-                                label: fields[i].description,
-                                value: fields[i].label,
-                                required: true,
-                            })
-                        )
-                    }else{
-                        fieldsProcedure.push(new FieldAreaBox({
-                                name: 'firstname',
-                                label: fields[i].description,
-                                value: fields[i].label,
-                                required: true,
-                            })
-                        )
-                    }
-
-                    console.log(fields[i]);
-                }
-                response[0].fields=fieldsProcedure;
+            // /**ERASE ME*/
+            //     let fields = response[0].fields;
+            //     let fieldsProcedure: FieldBase<any>[]=[];
+            //     for (let i in fields) {
+            //         if(fields[i].type === "text"){
+            //             fieldsProcedure.push(new FieldTextBox({
+            //                     name: 'firstname',
+            //                     label: fields[i].description,
+            //                     value: fields[i].label,
+            //                     required: true,
+            //                 })
+            //             )
+            //         }else{
+            //             fieldsProcedure.push(new FieldAreaBox({
+            //                     name: 'firstname',
+            //                     label: fields[i].description,
+            //                     value: fields[i].label,
+            //                     required: true,
+            //                 })
+            //             )
+            //         }
+            //
+            //         console.log(fields[i]);
+            //     }
+            //     response[0].fields=fieldsProcedure;
+            //
+            //     /**ERASE ME until here*/
             //console.log(response);
                 return response;
             })

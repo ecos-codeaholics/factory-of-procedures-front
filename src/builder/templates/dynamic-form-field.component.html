@@ -1,13 +1,20 @@
-<div [formGroup]="form" class="form-group">
-    <label [attr.for]="field.name">{{field.label}}</label>
-    <div [ngSwitch]="field.controlType">
+<div [formGroup]="form" class="form-group label-floating">
+
+
+    <label class="control-label" [attr.for]="field.name">{{field.label}}</label>
+        <div [ngSwitch]="field.controlType">
+
+
         <input *ngSwitchCase="'text'" class="form-control" [formControlName]="field.name"
-               [id]="field.name" [type]="field.type">
+               [id]="field.name" [type]="field.subtype">
+
 
         <textarea *ngSwitchCase="'textarea'" class="form-control" [formControlName]="field.name"
                   [id]="field.name">
         </textarea>
 
+
     </div>
     <div class="errorMessage" *ngIf="!isValid">{{field.label}} is required</div>
+
 </div>

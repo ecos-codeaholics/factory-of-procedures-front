@@ -6,8 +6,8 @@ import {AuthService} from '../auth/auth.service';
 import {Subscription} from 'rxjs/Subscription';
 
 //enable production mode
-import { enableProdMode } from '@angular/core';
-enableProdMode();
+//import { enableProdMode } from '@angular/core';
+//enableProdMode();
 
 @Component({
     selector: 'app',
