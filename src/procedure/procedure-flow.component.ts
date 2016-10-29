@@ -1,13 +1,13 @@
-import {Component, OnInit, Input} from '@angular/core';
-import {Router} from '@angular/router';
+import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
 
-import {ProcedureService} from './procedure.service';
-import {AuthService} from '../auth/auth.service';
+import { ProcedureService } from './procedure.service';
+import { AuthService } from '../auth/auth.service';
 
-import {Procedure} from './model/procedure';
-import {ProcedureRequest} from './model/procedure-request';
-import {Activity} from './model/activity';
-import {Status} from './model/status';
+import { Procedure } from './model/procedure';
+import { ProcedureRequest } from './model/procedure-request';
+import { Activity } from './model/activity';
+import { Status } from './model/status';
 
 declare var jQuery: any;
 
@@ -31,10 +31,9 @@ export class ProcedureFlowComponent implements OnInit {
     @Input('procedure') procedure: ProcedureRequest;
 
     constructor(private procedureService: ProcedureService,
-                private router: Router,
-                public authService: AuthService) {
-        this.status = [new Status("Aprobar"), new Status("Rechazar"), new Status("Anular")]
-        //  this.status= ["Aprobar","Rechazar","Anular"];
+        private router: Router,
+        public authService: AuthService) {
+        this.status = [new Status("Aprobar", ""), new Status("Rechazar", ""), new Status("Anular", "")]
     }
 
     getSteps() {
@@ -57,19 +56,19 @@ export class ProcedureFlowComponent implements OnInit {
     }
 
     doStepChange() {
-       // console.log("Entre a doStepApproval"+this.activity+" "+ this.statusCheck+" "+jQuery('#commentProcedureReq').val())
+        // console.log("Entre a doStepApproval"+this.activity+" "+ this.statusCheck+" "+jQuery('#commentProcedureReq').val())
         jQuery('#modalFlow').modal('hide');
 
 
         this.procedureService.doStepChange(this.statusCheck, this.fileNumber, this.activity.step, jQuery('#commentProcedureReq').val())
             .subscribe(
-                (res) => {
-                    this.activity.status = res.responseMsg;
-                    this.changeCheckedStatus(this.activity.status);
-                },
-                () => {
-                    this.msg = "El registro ha sido actualizado";
-                })
+            (res) => {
+                this.activity.status = res.responseMsg;
+                this.changeCheckedStatus(this.activity.status);
+            },
+            () => {
+                this.msg = "El registro ha sido actualizado";
+            })
         this.router.navigate(['tramites']);
     }
 

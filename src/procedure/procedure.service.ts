@@ -11,13 +11,13 @@ import { AuthHttp } from 'angular2-jwt';
 import { PROCEDURES_REQUEST } from './mock/mock-procedures-request';
 import { contentHeaders } from '../shared/constant/content-headers';
 
-import {ProcedureRequest} from './model/procedure-request';
-import {Mayoralty} from './mayoralty';
-import {Procedure} from './model/procedure';
-import {Status} from './model/status';
-import {FieldBase} from "../builder/model/field-base";
-import {FieldTextBox} from "../builder/model/field-textbox";
-import {FieldAreaBox} from "../builder/model/field-textarea";
+import { ProcedureRequest } from './model/procedure-request';
+import { Mayoralty } from './mayoralty';
+import { Procedure } from './model/procedure';
+import { Status } from './model/status';
+import { FieldBase } from "../builder/model/field-base";
+import { FieldTextBox } from "../builder/model/field-textbox";
+import { FieldAreaBox } from "../builder/model/field-textarea";
 
 @Injectable()
 export class ProcedureService {
@@ -173,12 +173,15 @@ export class ProcedureService {
     }
 
 
-    doStepChange(status: string, fileNumber: number, step: number, comment:string): Observable<any> {
-        var newStatus = new Status(status);
+    doStepChange(status: string, fileNumber: number, step: number, comment: string): Observable<any> {
+        var newStatus = new Status(status, comment);
         let body = JSON.stringify(newStatus);
-        return this.http.put(this.apiUrl.FUNCTIONARIES() + "procedures/" + fileNumber + "/steps/edit/" + step + "/?email=" + this.authService.getUser()+"&comment="+comment, body)
+        let options = new RequestOptions({ headers: contentHeaders });
+
+        console.log(body);
+        return this.authHttp.put(this.apiUrl.FUNCTIONARIES() + "procedures/" + fileNumber + "/steps/edit/" + step + "/", body, options)
             .map((res) => {
-               // console.log(res);
+                // console.log(res);
                 return res.json()
             })
             .catch((res) => {
@@ -203,18 +206,18 @@ export class ProcedureService {
         return PROCEDURES_REQUEST;
     }
 
-    setProcedureStarted (value: any, mayoralty: any, procedureName:any) {
+    setProcedureStarted(value: any, mayoralty: any, procedureName: any) {
         console.log("procedureStarted");
         console.log(value);
         console.log(JSON.stringify(value));
-        console.log("mayoralty: "+ mayoralty);
-        console.log("procedureName: "+ procedureName);
+        console.log("mayoralty: " + mayoralty);
+        console.log("procedureName: " + procedureName);
 
 
         let body = JSON.stringify(value);
-        return this.http.post(this.apiUrl.CITIZENS() + "procedure/iniciar/" + mayoralty + "/" + procedureName + "/?email=" + this.authService.getUser(), body)
+        return this.authHttp.post(this.apiUrl.CITIZENS() + "procedure/iniciar/" + mayoralty + "/" + procedureName + "/?email=" + this.authService.getUser(), body)
             .map((res) => {
-                 console.log(res);
+                console.log(res);
                 return res.json()
             })
             .catch((res) => {

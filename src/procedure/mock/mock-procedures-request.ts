@@ -43,7 +43,8 @@ export const PROCEDURES_REQUEST: ProcedureRequest[] = [
                 "jose perez",
                 "",
                 new Status(
-                    "En Curso"
+                    "En Curso",
+                    "Comentario 1"
                 )
             ),
             new Activity(
@@ -55,11 +56,12 @@ export const PROCEDURES_REQUEST: ProcedureRequest[] = [
                 "jose perez",
                 "",
                 new Status(
-                    "Finalizado"
+                    "Finalizado",
+                    "Comentario 1"
                 )
             )
         ],
-        histories:[],
+        histories: [],
         startDate: "ISODate('2016-07-21T05:00:00Z')",
         finishDate: "ISODate('2016-07-21T05:00:00Z')",
         status: "En proceso"
@@ -100,7 +102,8 @@ export const PROCEDURES_REQUEST: ProcedureRequest[] = [
                 "jose perez",
                 "",
                 new Status(
-                    "En Curso"
+                    "En Curso",
+                    "Comentario 1"
                 )
             ),
             new Activity(
@@ -112,11 +115,12 @@ export const PROCEDURES_REQUEST: ProcedureRequest[] = [
                 "jose perez",
                 "",
                 new Status(
-                    "Finalizado"
+                    "Finalizado",
+                    "Comentario 1"
                 )
             )
         ],
-        histories:[],
+        histories: [],
         startDate: "ISODate('2016-07-21T05:00:00Z')",
         finishDate: "ISODate('2016-07-21T05:00:00Z')",
         status: "Finalizado"

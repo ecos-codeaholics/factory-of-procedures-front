@@ -1,7 +1,7 @@
 import { Citizen } from '../../citizen/citizen';
 import { ProcedureData } from './procedure-data';
 import { Activity } from './activity';
-import { ProcedureHistory } from './Procedure-history';
+import { ProcedureHistory } from './procedure-history';
 
 export class ProcedureRequest {
 
