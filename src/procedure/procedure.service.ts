@@ -38,7 +38,6 @@ export class ProcedureService {
 
     private extractData(res: Response) {
         let body = res.json();
-        console.log(body);
         this.proceduresRequest = body;
         return body || {};
     }
@@ -47,7 +46,7 @@ export class ProcedureService {
     getProcedures(): Observable<ProcedureRequest[]> {
 
         let options = new RequestOptions({ headers: contentHeaders });
-        return this.authHttp.get(this.apiUrl.CITIZENS(), options)
+        return this.authHttp.get(this.apiUrl.PROCEDURES(), options)
             .map(this.extractData)
             .catch((res) => {
                 console.log("ERROR: en  auth.service");
@@ -56,14 +55,12 @@ export class ProcedureService {
     }
 
     getModelProcedure(procedureName: string): Observable<Procedure[]> {
-        console.log(this.procedureSelected);
         let options = new RequestOptions({ headers: contentHeaders });
 
         return this.authHttp.get(
             this.apiUrl.CITIZENS() + "procedure/?email=" + this.authService.getUser() + "&procedure=" + procedureName, options)
             .map((res) => {
                 let response = res.json();
-                console.log(response);
                 return response;
             })
             .catch((res) => {
