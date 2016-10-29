@@ -174,7 +174,8 @@ export class ProcedureService {
             });
     }
 
-    doStepChange(status: string, fileNumber: number, step: number,comment:string): Observable<any> {
+
+    doStepChange(status: string, fileNumber: number, step: number, comment:string): Observable<any> {
         var newStatus = new Status(status);
         let body = JSON.stringify(newStatus);
         return this.http.put(this.apiUrl.FUNCTIONARIES() + "procedures/" + fileNumber + "/steps/edit/" + step + "/?email=" + this.authService.getUser()+"&comment="+comment, body)
@@ -202,5 +203,23 @@ export class ProcedureService {
         return PROCEDURES_REQUEST;
     }
 
+    setProcedureStarted (value: any, mayoralty: any, procedureName:any) {
+        console.log("procedureStarted");
+        console.log(value);
+        console.log(JSON.stringify(value));
+        console.log("mayoralty: "+ mayoralty);
+        console.log("procedureName: "+ procedureName);
 
+
+        let body = JSON.stringify(value);
+        return this.http.post(this.apiUrl.CITIZENS() + "procedure/iniciar/" + mayoralty + "/" + procedureName + "/?email=" + this.authService.getUser(), body)
+            .map((res) => {
+                 console.log(res);
+                return res.json()
+            })
+            .catch((res) => {
+                console.log("Error en el servicio de procedimientos");
+                return Observable.throw(this.errorHandler.check(res));
+            })
+    }
 }

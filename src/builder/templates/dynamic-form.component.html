@@ -1,9 +1,9 @@
 <div>
     <form (ngSubmit)="onSubmit()" [formGroup]="form">
 
-        <div *ngIf="fields.length > 0">
+        <div *ngIf="fields.length > 0" >
             <p>|{{fields.length}}|</p>
-        <div *ngFor="let field of fields" class="form-row">
+        <div *ngFor="let field of fields" class="panel panel-default">
             <df-field [field]="field" [form]="form"></df-field>
         </div>
         <div class="form-row">

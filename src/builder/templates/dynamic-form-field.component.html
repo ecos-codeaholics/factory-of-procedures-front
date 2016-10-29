@@ -1,20 +1,23 @@
 <div [formGroup]="form" class="form-group label-floating">
 
 
-    <label class="control-label" [attr.for]="field.name">{{field.label}}</label>
+    <label class="control-label" [attr.for]="field.name" >{{field.label}}</label>
         <div [ngSwitch]="field.controlType">
 
 
         <input *ngSwitchCase="'text'" class="form-control" [formControlName]="field.name"
-               [id]="field.name" [type]="field.subtype">
+               [id]="field.name" [type]="field.subtype" value=empty>
 
 
         <textarea *ngSwitchCase="'textarea'" class="form-control" [formControlName]="field.name"
-                  [id]="field.name">
+                  [id]="field.name" >
         </textarea>
 
 
+        <div class="help-block">{{field.description}}</div>
+
     </div>
-    <div class="errorMessage" *ngIf="!isValid">{{field.label}} is required</div>
+
+    <!-- <div class="errorMessage" *ngIf="!isValid">{{field.label}} is required</div> -->
 
 </div>

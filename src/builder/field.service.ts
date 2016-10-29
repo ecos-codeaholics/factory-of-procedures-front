@@ -19,7 +19,7 @@ export class FieldService {
                     fieldsProcedure.push(new FieldTextBox({
                             name: fields[i].name,
                             label: fields[i].label,
-                            value:null,
+                            value: '',
                             required: fields[i].required
                         })
                     )
@@ -27,7 +27,7 @@ export class FieldService {
                     fieldsProcedure.push(new FieldAreaBox({
                             name: fields[i].name,
                             label: fields[i].label,
-                            value:null,
+                            value: '',
                             required: fields[i].required
                         })
                     )
