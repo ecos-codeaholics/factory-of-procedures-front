@@ -221,5 +221,6 @@ export class ProcedureService {
                 console.log("Error en el servicio de procedimientos");
                 return Observable.throw(this.errorHandler.check(res));
             })
+
     }
 }
