@@ -134,7 +134,7 @@ export class ProcedureService {
 
         let options = new RequestOptions({ headers: contentHeaders });
 
-        return this.authHttp.get(this.apiUrl.FUNCTIONARIES() + "procedures/?email=" + this.authService.getUser(), options)
+        return this.authHttp.get(this.apiUrl.FUNCTIONARIES() + "procedures/", options)
             .map(this.extractData)
             .catch((res) => {
                 console.log("ERROR: en  auth.service");
