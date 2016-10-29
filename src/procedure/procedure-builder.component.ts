@@ -12,7 +12,6 @@ import { Procedure } from './model/procedure';
 import { FieldService } from "../builder/field.service";
 
 import {FieldBase}          from "../builder/model/field-base";
-import {FieldTextBox}       from "../builder/model/field-textbox";
 
 @Component({
     selector: 'procedure-builder',
@@ -30,6 +29,7 @@ export class ProcedureBuilderComponent implements OnInit {
     private req: RequiredUpload[];
     private fieldProcedure: FormField[];
     private fields: FieldBase<any>[] = [];
+    private fields2: FieldBase<any>[] = [];
 
     public isAuth: boolean;
     public profile: string;
@@ -49,9 +49,14 @@ export class ProcedureBuilderComponent implements OnInit {
     private getModelProcedure() {
         this.procedureService.getModelProcedure(this.procedureName).subscribe(
             (procedure) => {
+                console.log(procedure);
                 this.procedure = procedure;
                 this.req = procedure[0].required;
-              //  this.fields = procedure[0].fields;
+                this.fields = procedure[0].fields;
+                console.log(this.fields);
+
+                this.fields = this.service.getFields(this.fields);
+                console.log(this.fields);
             }
         )
     }
@@ -59,12 +64,21 @@ export class ProcedureBuilderComponent implements OnInit {
 
         console.log(this.fields);
     }
+    keys(object: {}) {
+        //checking undefined object from the request
+        if ((object === undefined) || (object === null)) {
+            return object;
+        }
+        //return key and values of the object
+        return Object.keys(object);
+    }
     ngOnInit() {
         this.route.params.subscribe(params => {
             this.procedureName = params['procedure'];
             this.mayoralty = params['mayoralty'];
         });
+        console.log("entre a onInit")
         this.getModelProcedure();
-        this.fields=this.service.getFields();
+        //this.fields=
     }
 }

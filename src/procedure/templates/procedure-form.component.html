@@ -18,6 +18,34 @@
     <procedure-flow *ngIf="procedure" [profile]="profile" [procedure]="procedure"></procedure-flow>
   </div>
   <div id="historial" class="tab-pane fade">
-    <h3>Aqui poner la historial y comentarios del flujo</h3>
+
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+          <tr>
+            <th>Step</th>
+            <th>Fecha</th>
+            <th>Usuario</th>
+            <th>Estado</th>
+            <th>Comentario</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let history of histories">
+            <td>{{history.step}}</td>
+            <td>{{history.date}}</td>
+            <td>{{history.user}}</td>
+            <td>{{history.status}}</td>
+            <td>{{history.description}}</td>
+          </tr>
+          <div class="inner-outlet">
+            <router-outlet></router-outlet>
+          </div>
+          </tbody>
+        </table>
+      </div>
+
   </div>
 </div>
+
+

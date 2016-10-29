@@ -1,10 +1,10 @@
-import { Component, OnInit, Input } from '@angular/core';
+import {Component, OnInit, Input} from '@angular/core';
 
-import { ProcedureService } from './procedure.service';
+import {ProcedureService} from './procedure.service';
 
-import { ProcedureRequest } from './model/procedure-request';
+import {ProcedureRequest} from './model/procedure-request';
 
-import { AuthService } from '../auth/auth.service';
+import {AuthService} from '../auth/auth.service';
 
 
 @Component({
@@ -46,12 +46,11 @@ export class ProcedureListComponent implements OnInit {
     // filter procedures as historic or ongoing
     getProcedures() {
         this.procedureService.getProcedures().subscribe(
-            procedures => this.procedures = procedures,
-            error => this.errorMessage = <any>error,
-            () => {
-                console.log("tramites");
-                console.log(this.procedures)
-            }
+            (procedures) => {
+                this.procedures = procedures;
+                console.log(procedures);
+            },
+            error => this.errorMessage = <any>error
         );
     }
 
@@ -81,7 +80,6 @@ export class ProcedureListComponent implements OnInit {
                 this.isAuth = status;
             }
         );
-        console.log("procedure-list> getAuthStatus " + this.isAuth);
         return this.isAuth;
     }
 
@@ -100,7 +98,6 @@ export class ProcedureListComponent implements OnInit {
         if (this.profile === "citizen") {
             this.getProcedures();
         } else {
-            console.log("procedure-list> functionary procedures");
             this.getFunctionaryProcedures();
         }
     }
