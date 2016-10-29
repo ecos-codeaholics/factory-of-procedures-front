@@ -54,11 +54,17 @@ export class ProcedureService {
             });
     }
 
+    /**
+     *
+     * Obtains model from request to initiate procedure
+     *
+     */
+
     getModelProcedure(procedureName: string): Observable<Procedure[]> {
         let options = new RequestOptions({ headers: contentHeaders });
 
         return this.authHttp.get(
-            this.apiUrl.CITIZENS() + "procedure/?email=" + this.authService.getUser() + "&procedure=" + procedureName, options)
+            this.apiUrl.PROCEDURES() + procedureName + "/", options)
             .map((res) => {
                 let response = res.json();
                 return response;
