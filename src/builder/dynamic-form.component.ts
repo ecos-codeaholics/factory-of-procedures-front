@@ -46,7 +46,6 @@ export class DynamicFormComponent implements OnInit, OnChanges {
     onSubmit() {
         this.payLoad = JSON.stringify(this.form.value);
         this.setProcedureStarted();
-
     }
 
     private setProcedureStarted() {
@@ -58,6 +57,12 @@ export class DynamicFormComponent implements OnInit, OnChanges {
 
             }
         )
+    }
+
+    siguiente(){
+        console.log("Entro a siguiente metodo");
+
+
     }
 
 }

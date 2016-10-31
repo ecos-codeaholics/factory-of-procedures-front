@@ -1,16 +1,19 @@
 <div class="well page">
-    <form (ngSubmit)="onSubmit()" [formGroup]="form">
+    <form (ngSubmit)="onSubmit()" [formGroup]="form" id="form2">
 
         <div *ngIf="fields.length > 0" >
-            <p>|{{fields.length}}|</p>
+            <p>Numero de lementos en el array |{{fields.length}}|</p>
         <div *ngFor="let field of fields" class="panel panel-default">
             <df-field [field]="field" [form]="form"></df-field>
         </div>
         <div class="form-row">
-            <button type="submit" class="btn btn-raised btn-primary" [disabled]="!form.valid">Guardar</button>
+           <!--  <button type="submit" class="btn btn-raised btn-primary" [disabled]="!form.valid">Guardar</button> -->
         </div>
         </div>
     </form>
+
+    <button type="button" class="btn btn-raised btn-primary" (click)="siguiente()">Siguiente</button>
+
     <div *ngIf="payLoad" class="form-row">
         <strong>Estos son los valores para guardar</strong><br>{{payLoad}}
     </div>
