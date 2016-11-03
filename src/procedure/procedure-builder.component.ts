@@ -11,6 +11,9 @@ import { RequiredUpload } from './model/required-upload';
 import { FormField } from './model/form-field';
 import { Procedure } from './model/procedure';
 import { FieldService } from "../builder/field.service";
+import { FormGroup } from '@angular/forms';
+
+
 
 import {FieldBase}          from "../builder/model/field-base";
 
@@ -22,6 +25,9 @@ declare var jQuery: any;
 })
 
 export class ProcedureBuilderComponent implements OnInit {
+
+    payLoad = '';
+    form: FormGroup;
 
     title = 'Iniciar Trámite';
 
@@ -108,6 +114,14 @@ export class ProcedureBuilderComponent implements OnInit {
             this.prevTab(); });
     }
 
+        enviar(): void{
+            console.log("enviar method");
+        }
 
 
+    onSubmit(form: any) {
+        this.payLoad = JSON.stringify(this.form);
+        console.log("I'm in the onSubmit Method in procedure builder");
+        console.log('you submitted value:');
+    }
 }

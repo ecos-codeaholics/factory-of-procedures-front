@@ -1,12 +1,13 @@
 /**
  * Created by davidmars on 17/10/16.
  */
-import {Component, Input, OnInit, OnChanges} from '@angular/core';
+import {Component, Input, OnInit, OnChanges, Inject, forwardRef} from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { FieldBase } from "./model/field-base";
 import { FieldControlService } from "./field-control.service";
-import { ProcedureService } from "../procedure/procedure.service"
-import { Router } from "@angular/router"
+import { ProcedureService } from "../procedure/procedure.service";
+import { Router } from "@angular/router";
+import { ProcedureBuilderComponent } from "../procedure/procedure-builder.component";
 
 
 @Component({
@@ -26,7 +27,9 @@ export class DynamicFormComponent implements OnInit, OnChanges {
 
     constructor(private fcs: FieldControlService,
                 private procedureService: ProcedureService,
-                private _router: Router )
+                private _router: Router,
+                @Inject(forwardRef(() => ProcedureBuilderComponent)) private procedureBuilder: ProcedureBuilderComponent
+    )
     {
         this.router = _router;
     }
@@ -43,10 +46,20 @@ export class DynamicFormComponent implements OnInit, OnChanges {
 
     }
 
-    onSubmit() {
+    onSubmit(form: any) {
         this.payLoad = JSON.stringify(this.form.value);
-        this.setProcedureStarted();
+        console.log("I'm in the onSubmit Method dynamic form" + this.form.value + this.mayoralty + this.procedureName );
+        //change next tab
+        this.procedureBuilder.nextTab();
+
+        console.log('you submitted value:', this.form.value);
+
+
+        //service to hit to the back
+        //this.setProcedureStarted();
     }
+
+
 
     private setProcedureStarted() {
         console.log("route: "+this.router.url);
@@ -61,8 +74,8 @@ export class DynamicFormComponent implements OnInit, OnChanges {
 
     siguiente(){
         console.log("Entro a siguiente metodo");
-
-
     }
+
+
 
 }

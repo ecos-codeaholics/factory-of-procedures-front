@@ -6,6 +6,9 @@
 
 import { Component, Output, NgZone, OnInit, Input } from '@angular/core/';
 import { API_URL } from '../constant/api-url';
+import { FormGroup } from '@angular/forms';
+import { ProcedureService } from "../../procedure/procedure.service";
+
 
 
 @Component({
@@ -21,6 +24,7 @@ export class UploadFileComponent implements OnInit {
     multiple: boolean;
     url: string;
 
+
     private responses: any = {};
     private progress: number = 0;
     private options: Object;
@@ -35,7 +39,9 @@ export class UploadFileComponent implements OnInit {
     private basicOptions: Object;
 
     constructor(
-        private apiUrl: API_URL
+        private apiUrl: API_URL,
+        private procedureService: ProcedureService
+
     ) { }
 
     ngOnInit() {
@@ -82,6 +88,8 @@ export class UploadFileComponent implements OnInit {
             });
         }
     }
+
+
 
 
 }

@@ -6,11 +6,11 @@
 
 
         <input *ngSwitchCase="'text'" class="form-control" [formControlName]="field.name"
-               [id]="field.name" [type]="field.subtype" value=empty>
+               [id]="field.name" [type]="field.subtype" value=empty [required]="field.required">
 
 
         <textarea *ngSwitchCase="'textarea'" class="form-control" [formControlName]="field.name"
-                  [id]="field.name" >
+                  [id]="field.name" [required]="field.required">
         </textarea>
 
 

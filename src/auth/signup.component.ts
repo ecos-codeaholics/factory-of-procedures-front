@@ -3,15 +3,19 @@ import { Router } from '@angular/router';
 
 import { AuthService } from './auth.service';
 import { ConfigService } from '../config/config.service';
+import { ProcedureService } from '../procedure/procedure.service';
 
 import { Citizen } from '../citizen/citizen';
 import { API_URL } from '../shared/constant/api-url';
+
+
 
 declare var jQuery: any;
 
 @Component({
     selector: 'signup-form',
     templateUrl: 'src/auth/templates/signup.component.html',
+    providers: [ProcedureService]
 })
 
 export class SignupComponent implements OnInit {
