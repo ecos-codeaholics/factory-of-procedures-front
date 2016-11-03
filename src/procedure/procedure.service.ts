@@ -110,7 +110,7 @@ export class ProcedureService {
 
         let options = new RequestOptions({ headers: contentHeaders });
 
-        return this.authHttp.get(this.apiUrl.CITIZENS() + "procedures/" + mayoraltyName + "/?email=" + this.authService.getUser(), options)
+        return this.authHttp.get(this.apiUrl.CITIZENS() + "procedures/" + mayoraltyName + "/", options)
             .map((r: Response) => r.json() as ProcedureRequest[])
             .catch((res) => {
                 console.log("ERROR: en  auth.service");
@@ -213,9 +213,10 @@ export class ProcedureService {
         console.log("mayoralty: " + mayoralty);
         console.log("procedureName: " + procedureName);
 
-
         let body = JSON.stringify(value);
-        return this.authHttp.post(this.apiUrl.CITIZENS() + "procedure/iniciar/" + mayoralty + "/" + procedureName + "/?email=" + this.authService.getUser(), body)
+        let options = new RequestOptions({ headers: contentHeaders });
+
+        return this.authHttp.post(this.apiUrl.CITIZENS() + "procedure/iniciar/" + mayoralty + "/" + procedureName + "/", body, options)
             .map((res) => {
                 console.log(res);
                 return res.json()
