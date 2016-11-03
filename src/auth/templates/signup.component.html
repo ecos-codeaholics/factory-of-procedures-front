@@ -1,50 +1,81 @@
 <div class="row">
-  <div class="col-md-6 col-md-offset-3">
-    <div class="well page">
-      {{diagnostic}}
-      <form #citizenForm="ngForm" (ngSubmit)="doSignup()">
-	<fieldset>
-	  <h3 class="header">{{title}}</h3>
-	  <div class="form-group">
-	    <label for="name">Nombre</label>
-	    <input id="name" class="form-control" [(ngModel)]="citizen.name" type="text" name="name" placeholder="Ingrese su primero y segundo nombre" required>
-	  </div>
-	  <div class="form-group">
-	    <label for="surname">Primer Apellido</label>
-	    <input id="surname" class="form-control" [(ngModel)]="citizen.lastName1" type="text" name="lastName1" placeholder="Ingrese su primer apellido" required>
-	  </div>
-	  <div class="form-group">
-	    <label for="surname2">Segundo Apellido</label>
-	    <input id="surname2" class="form-control" [(ngModel)]="citizen.lastName2" type="text" name="lastName2" placeholder="Ingrese su segundo apellido o de casada" required>
-	  </div>
-	  <div class="form-group">
-	    <label for="identification">Identificación</label>
-	    <input id="identification" class="form-control" [(ngModel)]="citizen.identification" type="number" name="identification" placeholder="No debe contener ni puntos ni espacios" required>
-	  </div>
-	  <div class="form-group">
-	    <label for="birthdate">Fecha de Nacimiento</label>
-	    <input id="birthdate" class="form-control" [(ngModel)]="citizen.birthDate" type="date" name="birthDate" required placeholder="DD/MM/AAAA">
-	  </div>
-	  <div class="form-group">
-	    <label for="email">Correo electrónico</label>
-	    <input id="email" class="form-control" [(ngModel)]="citizen.email" type="email" name="email" placeholder="correo@ejemplo.com" required>
-	  </div>
-	  <div class="form-group">
-	    <label for="password">Contraseña</label>
-	    <input id="password" class="form-control" [(ngModel)]="citizen.password" type="password" name="password" placeholder="Secreto" minlength="8" title="Contraseña es demasiado corta" required>
-	  </div>
-   	  <div class="form-group">
-		<label for="inputFile" class="control-label">Archivo Cedula</label>
-		<div>
-			<upload-file id="inputFile" [multiple]=false [url]="URL" class="form-control" placeholder="Examinar..."></upload-file>
-		</div>
-	  </div>
+    <div class="col-md-8 col-md-offset-2">
+        <div class="well page">
+            {{diagnostic}}
+            <form #citizenForm="ngForm" (ngSubmit)="doSignup()">
+                <fieldset>
+                    <div class="title">
+                        <h3 class="header" ALIGN="center">{{title}}</h3>
+                    </div>
+                    <br>
 
-	  <div class="form-group">
-	    <button type="submit" class="btn btn-raised btn-primary" [disabled]="!citizenForm.form.valid">Enviar</button>
-	  </div>
-	</fieldset>
-      </form>
+                    <div class="row page-header">
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label for="name">Nombre</label>
+                                <input tabindex="1" id="name" class="form-control" [(ngModel)]="citizen.name" type="text" name="name"
+                                       placeholder="Ingrese su primero y segundo nombre" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="surname2">Segundo Apellido</label>
+                                <input tabindex="3" id="surname2" class="form-control" [(ngModel)]="citizen.lastName2" type="text"
+                                       name="lastName2" placeholder="Ingrese su segundo apellido o de casada" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="birthdate">Fecha de Nacimiento</label>
+                                <input tabindex="5" id="birthdate" class="form-control" [(ngModel)]="citizen.birthDate" type="date"
+                                       name="birthDate" required placeholder="DD/MM/AAAA">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="password">Contraseña</label>
+                                <input tabindex="7" id="password" class="form-control" [(ngModel)]="citizen.password" type="password"
+                                       name="password" placeholder="Secreto" minlength="8" title="Contraseña es demasiado corta"
+                                       required>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label for="surname">Primer Apellido</label>
+                                <input tabindex="2" id="surname" class="form-control" [(ngModel)]="citizen.lastName1" type="text"
+                                       name="lastName1" placeholder="Ingrese su primer apellido" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="identification">Identificación</label>
+                                <input tabindex="4" id="identification" class="form-control" [(ngModel)]="citizen.identification"
+                                       type="number" name="identification" placeholder="No debe contener ni puntos ni espacios"
+                                       required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email">Correo electrónico</label>
+                                <input tabindex="6" id="email" class="form-control" [(ngModel)]="citizen.email" type="email" name="email"
+                                       placeholder="correo@ejemplo.com" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="inputFile" class="control-label">Archivo Cedula</label>
+                                <div>
+                                    <upload-file id="inputFile" [multiple]=false [url]="URL" class="form-control"
+                                                 placeholder="Examinar...">
+                                    </upload-file>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary btn-lg btn-block btn-raised"
+                                [disabled]="!citizenForm.form.valid">
+                            Enviar
+                        </button>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
     </div>
-  </div>
 </div>

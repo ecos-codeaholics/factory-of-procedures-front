@@ -1,41 +1,76 @@
-<div *ngIf="isAuth" class="row">
-  <div class="col-lg-12">
-    <p class="navbar-text navbar-right">Ha iniciado sesión como: <strong>{{user}}</strong> <a href="#" (click)="doLogout($event)" class="alert-link">Cerrar Sesión</a></p>
-    </div>
-</div>
-<div class="row page-header">
-  <div class="col-lg-3">
-    <img src="assets/image/logo-black.png" class="img-rounded" width="100"/>
-  </div>
-  <div class="col-lg-6">
-    <div class="title" style="text-align:center">
-      <h1 class="header">{{title}}</h1>
-    </div>
-  </div>
-  <div class="col-lg-3">
-    <div class="pull-right">
-      <img src="assets/image/escudo.png" class="img-rounded" width="100"/>
-    </div>
-  </div>
-</div>
-<main-menu></main-menu>
-<router-outlet></router-outlet>
+<div layout="column" layout-fill>
+    <header>
+        <md-toolbar class="panel-heading">
+            <div *ngIf="isAuth" class="row">
+                <div class="col-lg-12">
+                    <p class="navbar-text navbar-right">Ha iniciado sesión como: <strong>{{user}}</strong> <a href="#"
+                                                                                                              (click)="doLogout($event)"
+                                                                                                              class="alert-link">Cerrar
+                        Sesión</a></p>
+                </div>
+            </div>
+            <div class="row page-header">
+                <div class="col-lg-3">
+                    <img src="assets/image/logo-black.png" class="img-rounded" width="100"/>
+                </div>
+                <div class="col-lg-6">
+                    <div class="title" style="text-align:center">
+                        <h1 class="header">{{title}}</h1>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="pull-right">
+                        <img src="assets/image/escudo.png" class="img-rounded" width="100"/>
+                    </div>
+                </div>
+            </div>
+        </md-toolbar>
+    </header>
 
-<!-- Tags de mensajes que se les mostrara al usr y pantallas modales -->
-<div class="modal" tabindex="-1" role="dialog">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title">Error</h4>
-      </div>
-      <div class="modal-body">
-        <p>One fine body&hellip;</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
-      </div>
-    </div><!-- /.modal-content -->
-  </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
-<div id="alertMsg"></div>
+    <main flex>
+        <div class="panel-body">
+            <main-menu></main-menu>
+            <router-outlet></router-outlet>
+
+            <!-- Tags de mensajes que se les mostrara al usr y pantallas modales -->
+            <div class="modal" tabindex="-1" role="dialog">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                    aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title">Error</h4>
+                        </div>
+                        <div class="modal-body">
+                            <p>One fine body&hellip;</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+                        </div>
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+            </div><!-- /.modal -->
+            <div id="alertMsg"></div>
+        </div>
+    </main>
+
+    <footer>
+        <md-toolbar class="md-scroll-shrink">
+            <div class="panel-footer">
+                <div class="col-lg-3">
+                    <img src="assets/image/mintic.png" class="img-rounded" width="95%"/>
+                </div>
+                <div class="col-lg-7">
+
+                </div>
+                <div class="col-lg-2">
+
+                    <p>Copyright © 2016</p>
+                    <p>Codeaholics Team</p>
+                </div>
+            </div>
+        </md-toolbar>
+    </footer>
+</div>
+
+

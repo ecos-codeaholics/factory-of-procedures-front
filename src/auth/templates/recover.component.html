@@ -1,21 +1,50 @@
 <div class="row">
-  <div class="col-md-6 col-md-offset-3">
-    <div class="well page">
-      {{diagnostic}}
-      <form #loginForm="ngForm" (ngSubmit)="resetPassword()">
-	<fieldset>
-		<h3 class="header">{{title}}</h3>
-	  <div class="form-group">
-	    <label for="email">Correo Electrónico</label>
-	    <input id="email" class="form-control" [(ngModel)]="login.email" type="email" name="email" placeholder="correo@ejemplo.com" required>
-	  </div>
-	  <div class="form-group">
-	    <label for="identification">Identificación</label>
-	    <input id="identification" class="form-control" [(ngModel)]="login.identification" type="number" name="identification" placeholder="No debe contener puntos ni espacios" required>
-	  </div>
-	  <button type="submit" class="btn btn-raised btn-primary" [disabled]="!loginForm.form.valid">Enviar</button>
-	</fieldset>
-      </form>
+    <div class="col-md-6 col-md-offset-3">
+        <div class="well page">
+            {{diagnostic}}
+            <form #loginForm="ngForm" (ngSubmit)="resetPassword()">
+                <fieldset>
+                    <div class="title">
+                        <h3 class="header" ALIGN="center">{{title}}</h3>
+                    </div>
+                    <br>
+                    <div  class="row">
+                        <div class="col-lg-1">
+                        </div>
+                        <div class="col-lg-2">
+                            <br>
+                            <i class="material-icons" style="font-size:36px;">person</i>
+                        </div>
+                        <div class="col-lg-8">
+                            <div class="form-group label-floating">
+                                <label class="control-label" for="email">Correo Electrónico</label>
+                                <input class="form-control" id="email" [(ngModel)]="login.email" type="email" name="email" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div  class="row">
+                        <div class="col-lg-1">
+                        </div>
+                        <div class="col-lg-2">
+                            <br>
+                            <i class="material-icons" style="font-size:36px;">fingerprint</i>
+                        </div>
+                        <div class="col-lg-8">
+                            <div class="form-group label-floating">
+                                <label class="control-label" for="identification">Identificación</label>
+                                <input id="identification" class="form-control" [(ngModel)]="login.identification" type="number"
+                                       name="identification" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-lg btn-block btn-raised" [disabled]="!loginForm.form.valid">
+                        Enviar
+                    </button>
+
+                </fieldset>
+            </form>
+        </div>
     </div>
-  </div>
 </div>
