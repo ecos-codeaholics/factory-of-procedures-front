@@ -18,6 +18,7 @@
         <div *ngFor="let j of fields2">
             {{j.description}}
 		</div>
+		<a class="btn btn-primary btnNext">Siguiente</a>
 	</div>
 
 
@@ -36,6 +37,8 @@
 			</div>
 
 		</div>
+		<a class="btn btn-primary btnNext">Flujo</a>
+		<a class="btn btn-primary btnPrevious">Volver</a>
 
 		<br>
 		<div><button align="right" form="form2" type="submit" class="btn btn-raised btn-primary" > Enviar Tramite</button></div>
@@ -47,6 +50,7 @@
 	<div id="flujo" class="tab-pane fade">
 		<procedure-flow *ngIf="procedure" [profile]="profile"
 			[procedure]="procedure"></procedure-flow>
+		<a class="btn btn-primary btnPrevious">Volver</a>
 	</div>
 </div>
 

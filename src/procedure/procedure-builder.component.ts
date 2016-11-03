@@ -1,7 +1,8 @@
 /*
 * SCC
 */
-import { Component, OnInit, Input } from '@angular/core';
+import {bootstrap} from '@angular/platform-browser-dynamic';
+import { Component, OnInit, Input, ElementRef, AfterViewInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { ProcedureService } from './procedure.service';
@@ -12,6 +13,8 @@ import { Procedure } from './model/procedure';
 import { FieldService } from "../builder/field.service";
 
 import {FieldBase}          from "../builder/model/field-base";
+
+declare var jQuery: any;
 
 @Component({
     selector: 'procedure-builder',
@@ -38,7 +41,8 @@ export class ProcedureBuilderComponent implements OnInit {
         private route: ActivatedRoute,
         private authService: AuthService,
         private procedureService: ProcedureService,
-        private service: FieldService
+        private service: FieldService,
+        private _eleRef: ElementRef
     ) {
 
         this.isAuth = authService.isAuth();
@@ -81,4 +85,29 @@ export class ProcedureBuilderComponent implements OnInit {
         this.getModelProcedure();
         //this.fields=
     }
+
+    nextTab() : void {
+        alert('It works! NextTab');
+        //jQuery(this._eleRef.nativeElement).find(".nav-tabs > .active").next("li").find("a")[0].click();
+        jQuery(this._eleRef.nativeElement).find(".nav-pills > .active").next("li").find("a")[0].click();
+    }
+
+    prevTab() : void {
+        alert('It works! PrevTab');
+        jQuery(this._eleRef.nativeElement).find('.nav-pills > .active').prev('li').find('a')[0].click();
+    }
+
+    ngAfterViewInit() {
+        console.log('AfterInitLog');
+
+        jQuery(this._eleRef.nativeElement).find('.btnNext').on('click', () => {
+            this.nextTab(); });
+
+
+        jQuery(this._eleRef.nativeElement).find('.btnPrevious').on('click', () => {
+            this.prevTab(); });
+    }
+
+
+
 }
