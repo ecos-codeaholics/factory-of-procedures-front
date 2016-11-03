@@ -78,7 +78,7 @@ export class ProcedureService {
 
         let options = new RequestOptions({ headers: contentHeaders });
 
-        return this.authHttp.get(this.apiUrl.CITIZENS() + "procedures/edit/" + fileNumber + "/?email=" + this.authService.getUser(), options)
+        return this.authHttp.get(this.apiUrl.CITIZENS() + "procedures/edit/" + fileNumber + "/", options)
             .map((res) => {
                 return res.json()
             })
@@ -92,7 +92,7 @@ export class ProcedureService {
 
         let options = new RequestOptions({ headers: contentHeaders });
 
-        return this.authHttp.get(this.apiUrl.FUNCTIONARIES() + "procedures/edit/" + fileNumber + "/?email=" + this.authService.getUser(), options)
+        return this.authHttp.get(this.apiUrl.FUNCTIONARIES() + "procedures/edit/" + fileNumber + "/", options)
             .map((res) => {
                 return res.json()
             })
