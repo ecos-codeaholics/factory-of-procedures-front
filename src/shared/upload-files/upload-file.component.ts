@@ -10,7 +10,6 @@ import { FormGroup } from '@angular/forms';
 import { ProcedureService } from "../../procedure/procedure.service";
 
 
-
 @Component({
     selector: 'upload-file',
     templateUrl: 'src/shared/upload-files/templates/upload-file.component.html',

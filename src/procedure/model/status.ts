@@ -4,9 +4,11 @@
 export class Status {
 
     public status: string;
+    public comment: string;
 
-    constructor ( current : string ) {
+    constructor(current: string, comment: string) {
         this.status = current;
+        this.comment = comment;
     }
 
 }

@@ -29,11 +29,15 @@ export class ProcedureListComponent implements OnInit {
     error: any;
 
     errorMessage: string;
+    constructor(
+        private authService: AuthService,
+        private procedureService: ProcedureService
+    ) {
 
-    constructor(private authService: AuthService,
-                private procedureService: ProcedureService) {
         this.isAuth = authService.isAuth();
+
         if (this.isAuth) {
+
             this.profile = authService.getProfile();
         }
     }
@@ -71,6 +75,7 @@ export class ProcedureListComponent implements OnInit {
     getAuthStatus() {
 
         this.authService.getAuthStatus().subscribe(
+
             (status: boolean) => {
                 this.isAuth = status;
             }

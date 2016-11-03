@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http, RequestOptions, Response } from '@angular/http';
 import { Router } from '@angular/router';
-import { AuthHttp } from 'angular2-jwt';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/toPromise';
 import { Subject } from 'rxjs/Subject';
@@ -72,7 +71,7 @@ export class AuthService {
                 }
 
                 // Fixme: Change this ugly thing
-                let token = res.headers.values()[0][0]
+                let token = res.headers.values()[1][0]
 
                 if (token) {
 
@@ -103,7 +102,7 @@ export class AuthService {
                 }
 
                 // Fixme: Change this ugly thing
-                let token = res.headers.values()[0][0];
+                let token = res.headers.values()[1][0];
 
                 if (token) {
 

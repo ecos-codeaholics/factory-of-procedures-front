@@ -31,7 +31,8 @@ export class API_URL {
     CITIZENS() {
         return this.baseUrl + ':' + this.port + '/citizens/';
     }
+
     PROCEDURES() {
-        return '/src/procedure/procedures.json';
+        return this.baseUrl + ':' + this.port + '/citizens/procedures/';
     }
 }
