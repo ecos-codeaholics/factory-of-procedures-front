@@ -122,7 +122,7 @@ export class ProcedureService {
 
         let options = new RequestOptions({ headers: contentHeaders });
 
-        return this.authHttp.get(this.apiUrl.CITIZENS() + "mayoralties/?email=" + this.authService.getUser(), options)
+        return this.authHttp.get(this.apiUrl.CITIZENS() + "mayoralties/", options)
             .map((r: Response) => r.json() as Mayoralty[])
             .catch((res) => {
                 console.log("ERROR: en  auth.service");
@@ -135,21 +135,9 @@ export class ProcedureService {
         let options = new RequestOptions({ headers: contentHeaders });
 
         return this.authHttp.get(this.apiUrl.FUNCTIONARIES() + "procedures/", options)
-            .map(this.extractData)
-            .catch((res) => {
-                console.log("ERROR: en  auth.service");
-                return Observable.throw(this.errorHandler.check(res));
-            });
-    }
-
-    getAssignedProcedures(): Observable<ProcedureRequest[]> {
-
-        let options = new RequestOptions({ headers: contentHeaders });
-
-        return this.authHttp.get(this.apiUrl.FUNCTIONARIES() + "procedures/?email=" + this.authService.getUser(), options)
             .map(
             (r: Response) => {
-                r.json() as ProcedureRequest[];
+                return r.json();
             }
             )
             .catch((res) => {
@@ -157,21 +145,6 @@ export class ProcedureService {
                 return Observable.throw(this.errorHandler.check(res));
             });
     }
-
-    getIdProcedures(): Observable<ProcedureRequest[]> {
-
-        let options = new RequestOptions({ headers: contentHeaders });
-
-        return this.authHttp.get(this.apiUrl.FUNCTIONARIES() + "procedures/?email=" + this.authService.getUser(), options)
-            .map(
-            (r: Response) => r.json() as ProcedureRequest[]
-            )
-            .catch((res) => {
-                console.log("ERROR: en  auth.service");
-                return Observable.throw(this.errorHandler.check(res));
-            });
-    }
-
 
     doStepChange(status: string, fileNumber: number, step: number, comment: string): Observable<any> {
         var newStatus = new Status(status, comment);
@@ -225,6 +198,5 @@ export class ProcedureService {
                 console.log("Error en el servicio de procedimientos");
                 return Observable.throw(this.errorHandler.check(res));
             })
-
     }
 }
