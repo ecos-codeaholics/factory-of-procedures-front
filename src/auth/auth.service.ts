@@ -71,7 +71,7 @@ export class AuthService {
                 }
 
                 // Fixme: Change this ugly thing
-                let token = res.headers.values()[1][0]
+                let token = res.headers.values()[0][0]
 
                 if (token) {
 

@@ -61,10 +61,10 @@ export class ProcedureService {
 
     getModelProcedure(procedureName: string): Observable<Procedure[]> {
         let options = new RequestOptions({ headers: contentHeaders });
-
         return this.authHttp.get(
-            this.apiUrl.PROCEDURES() + procedureName + "/", options)
+            this.apiUrl.PROCEDURES() + "detail/" + procedureName + "/", options)
             .map((res) => {
+                console.log(res);
                 let response = res.json();
                 return response;
             })
