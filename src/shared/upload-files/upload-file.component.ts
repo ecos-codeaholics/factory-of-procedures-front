@@ -57,6 +57,7 @@ export class UploadFileComponent implements OnInit {
         };
     }
     handleUpload(data: any): void {
+
         this.uploadFile = data;
         this.zone.run(() => {
             this.uploadProgress = data.progress.percent;
@@ -65,6 +66,13 @@ export class UploadFileComponent implements OnInit {
         if (resp) {
             resp = JSON.parse(resp);
             this.uploadResponse = resp;
+            console.log(resp);
+
+            if(resp.responseMsg){
+                let responseMsg = JSON.parse(resp.responseMsg);
+                console.log(responseMsg);
+
+            }
         }
 
     }
