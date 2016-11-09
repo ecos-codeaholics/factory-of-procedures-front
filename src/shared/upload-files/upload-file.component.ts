@@ -13,7 +13,7 @@ import { ProcedureService } from "../../procedure/procedure.service";
 @Component({
     selector: 'upload-file',
     templateUrl: 'src/shared/upload-files/templates/upload-file.component.html',
-    inputs: ['legend', 'multiple', 'url']
+    inputs: ['legend', 'multiple', 'url','fileRequest']
 
 })
 
@@ -22,7 +22,7 @@ export class UploadFileComponent implements OnInit {
     legend: string;
     multiple: boolean;
     url: string;
-
+    fileRequest: string;
 
     private responses: any = {};
     private progress: number = 0;
@@ -47,6 +47,7 @@ export class UploadFileComponent implements OnInit {
         this.zone = new NgZone({ enableLongStackTrace: false });
         this.basicOptions = {
             url: this.apiUrl.DOCUMENT(),
+            customHeaders: {'citizen': 'Sebastian','fileRequest':this.fileRequest},
             calculateSpeed: false,
             filterExtensions: true,
             allowedExtensions: ['image/png', 'image/jpg'],
@@ -57,6 +58,7 @@ export class UploadFileComponent implements OnInit {
         };
     }
     handleUpload(data: any): void {
+
         this.uploadFile = data;
         this.zone.run(() => {
             this.uploadProgress = data.progress.percent;
@@ -65,6 +67,12 @@ export class UploadFileComponent implements OnInit {
         if (resp) {
             resp = JSON.parse(resp);
             this.uploadResponse = resp;
+
+            if(resp.responseMsg){
+                let responseMsg = JSON.parse(resp.responseMsg);
+                console.log(responseMsg);
+
+            }
         }
 
     }

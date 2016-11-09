@@ -6,12 +6,18 @@
 <div *ngIf="!multiple">
 	<div class="form-group">
 		<div >
-			<label for="file">{{ legend }}</label> <input type="file" id="file"
-				class="form-control" [ng-file-select]="basicOptions"
+			<label for="file">{{ legend }}</label>
+
+            <input type="file" id="file"
+				class="form-control"
+                   ngFileSelect
+                           [options]="basicOptions"
 				(onUpload)="handleUpload($event)" required="true">
 
+
+
 			<div class="input-group">
-				<input type="text" readonly="" class="form-control" placeholder="Adjunte el archivo (odf, jpg o png)">
+				<input type="text" readonly="" class="form-control" placeholder="Adjunte el archivo (pdf, jpg o png)">
 				<span class="input-group-btn input-group-sm">
         <button type="button" class="btn btn-fab btn-fab-mini">
           <i class="material-icons">attach_file</i>
