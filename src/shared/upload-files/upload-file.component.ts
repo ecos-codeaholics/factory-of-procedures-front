@@ -25,6 +25,7 @@ export class UploadFileComponent implements OnInit {
     fileRequest: string;
 
     private responses: any = {};
+    private previewData: any;
     private progress: number = 0;
     private options: Object;
 
@@ -51,6 +52,7 @@ export class UploadFileComponent implements OnInit {
             calculateSpeed: false,
             filterExtensions: true,
             allowedExtensions: ['image/png', 'image/jpg'],
+            previewUrl: true,
             autoUpload: true
         };
         this.options = {
@@ -61,6 +63,7 @@ export class UploadFileComponent implements OnInit {
 
         this.uploadFile = data;
         this.zone.run(() => {
+            this.response = data;
             this.uploadProgress = data.progress.percent;
         });
         let resp = data.response;
@@ -76,7 +79,9 @@ export class UploadFileComponent implements OnInit {
         }
 
     }
-
+    handlePreviewData(data: any): void {
+        this.previewData = data;
+    }
     handleMultipleUpload(data: any): void {
         let index = this.response.findIndex(x => x.id === data.id);
         if (index === -1) {

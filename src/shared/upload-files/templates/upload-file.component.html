@@ -11,10 +11,14 @@
             <input type="file" id="file"
 				class="form-control"
                    ngFileSelect
+                   (onPreviewData)="handlePreviewData($event)"
                            [options]="basicOptions"
 				(onUpload)="handleUpload($event)" required="true">
 
-
+            <p *ngIf="previewData ">
+                <!--<button class="button" (click)="startUpload()">Start Upload</button>-->
+                <img [src]="previewData" alt="Preview Data" class="preview-img">
+            </p>
 
 			<div class="input-group">
 				<input type="text" readonly="" class="form-control" placeholder="Adjunte el archivo (pdf, jpg o png)">
