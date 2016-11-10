@@ -4,41 +4,29 @@
 	el modulo que lo implemente.
  -->
 <div *ngIf="!multiple">
-	<div class="form-group">
-		<div >
-			<label for="file">{{ legend }}</label> <input type="file" id="file"
-				class="form-control" [ng-file-select]="basicOptions"
-				(onUpload)="handleUpload($event)" required="true">
+    <div class="form-group">
+        <div>
+            <label for="file">{{ legend }}</label>
+            <input type="file" id="file" class="form-control" [ng-file-select]="basicOptions"
+                      (onUpload)="handleUpload($event)" required="true">
 
-			<div class="input-group">
-				<input type="text" readonly="" class="form-control" placeholder="Adjunte el archivo (pdf, jpg o png)">
-				<span class="input-group-btn input-group-sm">
-        <button type="button" class="btn btn-fab btn-fab-mini">
-          <i class="material-icons">attach_file</i>
-        </button>
-      </span>
-			</div>
+            <div class="input-group">
+                <input type="text" readonly="" class="form-control" placeholder="Adjunte el archivo (pdf, jpg o png)">
+                <span class="input-group-btn input-group-sm">
+                    <button type="button" class="btn btn-fab btn-fab-mini">
+                      <i class="material-icons">attach_file</i>
+                    </button>
+                </span>
+            </div>
+        </div>
 
-
-		</div>
-		<div *ngIf="uploadFile">Progreso: {{ uploadProgress }}%</div>
-		<div *ngIf="uploadFile">
-			<div class="ui indicating olive progress">
-				<div class="progress-bar" role="progressbar"
-					[ngStyle]="{ 'width': uploadProgress + '%' }"></div>
-			</div>
-		</div>
-	</div>
+        <div *ngIf="uploadFile">Progreso: {{ uploadProgress }}%</div>
+        <div *ngIf="uploadFile">
+            <div class="ui indicating olive progress">
+                <div class="progress-bar" role="progressbar"
+                     [ngStyle]="{ 'width': uploadProgress + '%' }"></div>
+            </div>
+        </div>
+    </div>
 
 </div>
-<!-- 
-<div *ngIf="multiple">
-	<input type="file" multiple="true" ngFileSelect [options]="options"
-		(onUpload)="handleMultipleUpload($event)">
-
-	<p *ngIf="response.length">
-		<span>Progress{{ progress }}%</span> <span>{{ response }}</span>
-	</p>
-</div>
-
- -->
