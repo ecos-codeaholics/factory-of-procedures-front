@@ -3,10 +3,9 @@
         <md-toolbar class="panel-heading">
             <div *ngIf="isAuth" class="row">
                 <div class="col-lg-12">
-                    <p class="navbar-text navbar-right">Ha iniciado sesión como: <strong>{{user}}</strong> <a href="#"
-                                                                                                              (click)="doLogout($event)"
-                                                                                                              class="alert-link">Cerrar
-                        Sesión</a></p>
+                    <p class="navbar-text navbar-right">Ha iniciado sesión como: <strong>{{user}}</strong>
+                        <a href="#" (click)="doLogout($event)" class="alert-link">Cerrar Sesión</a>
+                    </p>
                 </div>
             </div>
             <div class="row page-header">
@@ -37,8 +36,9 @@
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                                    aria-hidden="true">&times;</span></button>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
                             <h4 class="modal-title">Error</h4>
                         </div>
                         <div class="modal-body">

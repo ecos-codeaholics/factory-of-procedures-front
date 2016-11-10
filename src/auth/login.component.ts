@@ -17,7 +17,7 @@ declare var jQuery: any;
 export class LoginComponent {
 
     title = 'Acceso de Usuario';
-    user = new Login('', '', NaN, 'citizen');
+    user: any;
     error: any;
 
     status: boolean;
@@ -33,6 +33,7 @@ export class LoginComponent {
 
         this.profile = authService.getProfile();
         this.env = config.getEnv();
+        this.user = new Login('', '', NaN, 'citizen');
 
     }
 
