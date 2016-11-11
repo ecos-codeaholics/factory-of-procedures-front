@@ -51,7 +51,7 @@ export class UploadFileComponent implements OnInit {
             customHeaders: {'citizen': 'Sebastian','fileRequest':this.fileRequest},
             calculateSpeed: false,
             filterExtensions: true,
-            allowedExtensions: ['image/png', 'image/jpg'],
+            allowedExtensions: ['image/png', 'image/jpeg','application/pdf'],
             previewUrl: true,
             autoUpload: true
         };
