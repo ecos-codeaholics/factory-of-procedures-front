@@ -31,6 +31,7 @@ export class ProcedureBuilderComponent implements OnInit {
 
     title = 'Iniciar Trámite';
 
+    private dataToSend: any;
     private state: any;
     private mayoralty: any;
     private procedure: Procedure[];
@@ -123,5 +124,29 @@ export class ProcedureBuilderComponent implements OnInit {
         this.payLoad = JSON.stringify(this.form);
         console.log("I'm in the onSubmit Method in procedure builder");
         console.log('you submitted value:');
+        console.log(this.dataToSend);
+    }
+
+    isfieldsComplete (fieldsValues: any) {
+        console.log('this is a event '+fieldsValues);
+        console.log(fieldsValues);
+        this.dataToSend = fieldsValues;
+        console.log(this.dataToSend);
+    }
+
+    newDocument ($event) {
+        //console.log('this is a document'+document);
+        //console.log(document);
+
+        //this.dataToSend[document.originalName]=document;
+        console.log($event.documentFile);
+        console.log($event.idDocument);
+
+        this.dataToSend[$event.idDocument]=$event.documentFile;
+        console.log(this.dataToSend);
+
+
+
+
     }
 }

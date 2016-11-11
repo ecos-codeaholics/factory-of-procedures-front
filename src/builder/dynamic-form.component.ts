@@ -1,13 +1,13 @@
 /**
  * Created by davidmars on 17/10/16.
  */
-import {Component, Input, OnInit, OnChanges, Inject, forwardRef} from '@angular/core';
+import {Component, Input, OnInit, OnChanges, Inject, forwardRef, Output, EventEmitter} from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { FieldBase } from "./model/field-base";
-import { FieldControlService } from "./field-control.service";
-import { ProcedureService } from "../procedure/procedure.service";
-import { Router } from "@angular/router";
-import { ProcedureBuilderComponent } from "../procedure/procedure-builder.component";
+import { FieldBase } from './model/field-base';
+import { FieldControlService } from './field-control.service';
+import { ProcedureService } from '../procedure/procedure.service';
+import { Router } from '@angular/router';
+import { ProcedureBuilderComponent } from '../procedure/procedure-builder.component';
 
 
 @Component({
@@ -17,6 +17,7 @@ import { ProcedureBuilderComponent } from "../procedure/procedure-builder.compon
 
 export class DynamicFormComponent implements OnInit, OnChanges {
 
+    @Output() fieldsComplete: EventEmitter<any> = new EventEmitter<any>();
     @Input() fields: FieldBase<any>[] = [];
     @Input() mayoralty: any;
     @Input() procedureName: any;
@@ -53,6 +54,9 @@ export class DynamicFormComponent implements OnInit, OnChanges {
         this.procedureBuilder.nextTab();
 
         console.log('you submitted value:', this.form.value);
+
+        //submit data to parent
+        this.fieldsComplete.emit(this.form.value);
 
 
         //service to hit to the back

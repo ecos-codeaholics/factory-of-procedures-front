@@ -4,7 +4,7 @@
  * multiple: Debe ser implementado para determinar si muestra la opcion multiple o simple
  */
 
-import { Component, Output, NgZone, OnInit, Input } from '@angular/core/';
+import { Component, Output, NgZone, OnInit, Input, EventEmitter } from '@angular/core/';
 import { API_URL } from '../constant/api-url';
 import { FormGroup } from '@angular/forms';
 import { ProcedureService } from "../../procedure/procedure.service";
@@ -13,13 +13,16 @@ import { ProcedureService } from "../../procedure/procedure.service";
 @Component({
     selector: 'upload-file',
     templateUrl: 'src/shared/upload-files/templates/upload-file.component.html',
-    inputs: ['legend', 'multiple', 'url','fileRequest']
+    inputs: ['legend', 'multiple', 'url','fileRequest', 'description']
 
 })
 
 export class UploadFileComponent implements OnInit {
 
+    @Output() documentUploaded: EventEmitter<any> = new EventEmitter<any>();
+
     legend: string;
+    description: string;
     multiple: boolean;
     url: string;
     fileRequest: string;
@@ -52,7 +55,7 @@ export class UploadFileComponent implements OnInit {
             calculateSpeed: false,
             filterExtensions: true,
             allowedExtensions: ['image/png', 'image/jpeg', 'application/pdf'],
-            previewUrl: true,
+            previewUrl: false,
             autoUpload: true
         };
         this.options = {
@@ -74,7 +77,9 @@ export class UploadFileComponent implements OnInit {
             if(resp.responseMsg){
                 let responseMsg = JSON.parse(resp.responseMsg);
                 console.log(responseMsg);
-
+                console.log('fileRequest '+this.fileRequest);
+                this.description = responseMsg.originalName;
+                this.documentUploaded.emit({documentFile:responseMsg, idDocument:this.fileRequest});
             }
         }
 
