@@ -13,7 +13,7 @@
 
 		<h4>Información requerida para iniciar tramite</h4>
 
-		<dynamic-form [fields]="fields" [mayoralty]="mayoralty" [procedureName]="procedureName"></dynamic-form>
+		<dynamic-form (fieldsComplete)="isfieldsComplete($event)" [fields]="fields" [mayoralty]="mayoralty" [procedureName]="procedureName"></dynamic-form>
 
         <div *ngFor="let j of fields2">
             {{j.description}}
@@ -39,7 +39,9 @@
 			<div class="panel-heading">{{i.label}}</div>
 			<div class="panel-body">
 				<!-- <p style='text-indent: 1em'>{{i.description}}</p> -->
-				<upload-file id="inputFile" [multiple]=false url="procedure-builder" legend="{{i.legend}}" fileRequest="{{i.name}}"
+				<upload-file (documentUploaded)="newDocument($event)" id="inputFile" [multiple]=false url="procedure-builder"
+							 description="{{i.description}}"
+							 legend="{{i.legend}}" fileRequest="{{i.name}}"
 					class="form-control" placeholder="Examinar..."></upload-file>
 				<div><br><br><br></div>
 			</div>
