@@ -9,6 +9,7 @@ import { StatusSelectorComponent } from './status-selector/status-selector.compo
 import { UploadFileComponent } from './upload-files/upload-file.component';
 import { CheckCitizenDirective } from './check-citizen.directive';
 import { CheckFunctionaryDirective } from './check-functionary.directive';
+import { CheckAdminDirective} from './check-admin.directive'
 
 @NgModule({
     imports: [CommonModule, RouterModule],
@@ -16,6 +17,7 @@ import { CheckFunctionaryDirective } from './check-functionary.directive';
         MainMenuComponent,
         CheckCitizenDirective,
         CheckFunctionaryDirective,
+        CheckAdminDirective,
         StatusSelectorComponent,
         UploadFileComponent,
         UPLOAD_DIRECTIVES
@@ -24,6 +26,7 @@ import { CheckFunctionaryDirective } from './check-functionary.directive';
         MainMenuComponent,
         CheckCitizenDirective,
         CheckFunctionaryDirective,
+        CheckAdminDirective,
         StatusSelectorComponent,
         CommonModule, FormsModule,
         UploadFileComponent
