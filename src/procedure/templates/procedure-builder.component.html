@@ -39,11 +39,13 @@
 			<div class="panel-heading">{{i.label}}</div>
 			<div class="panel-body">
 				<!-- <p style='text-indent: 1em'>{{i.description}}</p> -->
-				<upload-file (documentUploaded)="newDocument($event)" id="inputFile" [multiple]=false url="procedure-builder"
+				<upload-file style="display: table;" (documentUploaded)="newDocument($event)"
+							 id="inputFile"
+							 [multiple]=false url="procedure-builder"
 							 description="{{i.description}}"
 							 legend="{{i.legend}}" fileRequest="{{i.name}}"
 					class="form-control" placeholder="Examinar..."></upload-file>
-				<div><br><br><br></div>
+
 			</div>
 
 		</div>

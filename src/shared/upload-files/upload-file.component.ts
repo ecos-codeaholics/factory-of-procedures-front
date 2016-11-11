@@ -55,7 +55,7 @@ export class UploadFileComponent implements OnInit {
             calculateSpeed: false,
             filterExtensions: true,
             allowedExtensions: ['image/png', 'image/jpeg', 'application/pdf'],
-            previewUrl: false,
+            previewUrl: true,
             autoUpload: true
         };
         this.options = {
