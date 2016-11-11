@@ -6,19 +6,19 @@ import {
 } from '@angular/core';
 
 @Directive({
-    selector: '[checkFunctionary]'
+    selector: '[checkAdmin]'
 })
 
-export class CheckFunctionaryDirective {
+export class CheckAdminDirective {
 
 
     constructor(private templateRef: TemplateRef<any>,
                 private viewContainer: ViewContainerRef) {
     }
 
-    @Input() set checkFunctionary(profile: string) {
+    @Input() set checkAdmin(profile: string) {
         //console.log(profile);
-        if (profile == "functionary"  || profile == "admin" ) {
+        if (profile == "admin") {
             this.viewContainer.createEmbeddedView(this.templateRef);
         }else {
             this.viewContainer.clear();
