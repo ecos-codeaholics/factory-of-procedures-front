@@ -94,13 +94,13 @@ export class ProcedureBuilderComponent implements OnInit {
     }
 
     nextTab() : void {
-        alert('It works! NextTab');
+        //alert('It works! NextTab');
         //jQuery(this._eleRef.nativeElement).find(".nav-tabs > .active").next("li").find("a")[0].click();
         jQuery(this._eleRef.nativeElement).find(".nav-pills > .active").next("li").find("a")[0].click();
     }
 
     prevTab() : void {
-        alert('It works! PrevTab');
+        //alert('It works! PrevTab');
         jQuery(this._eleRef.nativeElement).find('.nav-pills > .active').prev('li').find('a')[0].click();
     }
 
@@ -144,9 +144,7 @@ export class ProcedureBuilderComponent implements OnInit {
 
         this.dataToSend[$event.idDocument]=$event.documentFile;
         console.log(this.dataToSend);
-
-
-
-
     }
+
+
 }

@@ -6,14 +6,14 @@
 <div *ngIf="!multiple">
 	<div class="form-group" id="form3">
 		<div >
-			<label for="file">{{ legend }}</label>
-
             <input type="file" id="file"
 				class="form-control"
                    ngFileSelect
+                   [options]="basicOptions"
+                   (onUpload)="handleUpload($event)"
                    (onPreviewData)="handlePreviewData($event)"
-                           [options]="basicOptions"
-				(onUpload)="handleUpload($event)" required="true">
+                   [attr.required]="required"
+                   >
 
 			<div class="input-group">
 				<input type="text" readonly="" class="form-control" placeholder="{{description}}">
@@ -23,8 +23,6 @@
                 </button>
                 </span>
             </div>
-
-
 		</div>
 
 
@@ -40,6 +38,7 @@
             <!--<button class="button" (click)="startUpload()">Start Upload</button>-->
             <img style="max-width: 30%;" [src]="previewData" alt="Preview Data" class="preview-img">
         </div>
+
 	</div>
 
 </div>

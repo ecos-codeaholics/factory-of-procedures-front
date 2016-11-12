@@ -13,7 +13,7 @@ import { ProcedureService } from "../../procedure/procedure.service";
 @Component({
     selector: 'upload-file',
     templateUrl: 'src/shared/upload-files/templates/upload-file.component.html',
-    inputs: ['legend', 'multiple', 'url','fileRequest', 'description']
+    inputs: ['multiple', 'url','fileRequest', 'description', 'required']
 
 })
 
@@ -21,7 +21,7 @@ export class UploadFileComponent implements OnInit {
 
     @Output() documentUploaded: EventEmitter<any> = new EventEmitter<any>();
 
-    legend: string;
+    required: boolean;
     description: string;
     multiple: boolean;
     url: string;
@@ -80,6 +80,8 @@ export class UploadFileComponent implements OnInit {
                 console.log('fileRequest '+this.fileRequest);
                 this.description = responseMsg.originalName;
                 this.documentUploaded.emit({documentFile:responseMsg, idDocument:this.fileRequest});
+                //the requirment to be upload is deactivated
+                this.required = null;
             }
         }
 
@@ -105,8 +107,6 @@ export class UploadFileComponent implements OnInit {
             });
         }
     }
-
-
 
 
 }

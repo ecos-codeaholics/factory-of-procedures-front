@@ -43,8 +43,10 @@
 							 id="inputFile"
 							 [multiple]=false url="procedure-builder"
 							 description="{{i.description}}"
-							 legend="{{i.legend}}" fileRequest="{{i.name}}"
-					class="form-control" placeholder="Examinar..."></upload-file>
+							 fileRequest="{{i.name}}"
+                             required="{{i.required}}"
+                             class="form-control"
+                             ></upload-file>
 
 			</div>
 
