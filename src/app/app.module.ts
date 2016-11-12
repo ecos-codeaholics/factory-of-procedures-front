@@ -14,6 +14,8 @@ import { ConfigService } from '../config/config.service';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from '../home/home.component';
+import { FactoryStatisticsComponent } from '../home/factory-statistics.component';
+
 
 @NgModule({
     imports: [
@@ -26,6 +28,7 @@ import { HomeComponent } from '../home/home.component';
     declarations: [
         AppComponent,
         HomeComponent,
+        FactoryStatisticsComponent
     ],
 
     providers: [

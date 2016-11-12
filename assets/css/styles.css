@@ -5,3 +5,31 @@ body {
 .page-header h1{
     font-size: 4em;
 }
+
+#main-menu .logo {
+    float: left;
+}
+
+#main-menu .logo img {
+    width: 58px;
+}
+
+#institutional-logos li {
+    margin-left: 20px
+}
+
+#institutional-logos img {
+    height: 50px;
+    width: auto;
+}
+
+#legal p {
+    text-align: center;
+}
+
+#statistics .stat-value,
+#statistics .stat-name {
+    text-align: center;
+}
+
+

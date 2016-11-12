@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 
 import { HomeComponent } from './home.component';
 import { ProcedureSelectComponent } from '../procedure/procedure-select.component';
+import { FactoryStatisticsComponent } from './factory-statistics.component';
+
 
 // Should import notifications component and needed services
 
@@ -10,9 +12,11 @@ import { ProcedureSelectComponent } from '../procedure/procedure-select.componen
     imports: [],
     declarations: [
         HomeComponent,
+        FactoryStatisticsComponent
     ],
     exports: [
-        HomeComponent
+        HomeComponent,
+        FactoryStatisticsComponent
     ],
     providers: []
 })

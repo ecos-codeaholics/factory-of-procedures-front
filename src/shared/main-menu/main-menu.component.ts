@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
 
@@ -17,6 +17,8 @@ export class MainMenuComponent {
     public user: string;
     public profile: string;
     public status: boolean;
+
+    @Input('title') brand;
 
     constructor(
 
