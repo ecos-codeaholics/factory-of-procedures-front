@@ -152,12 +152,19 @@ export class ProcedureBuilderComponent implements OnInit {
         console.log(this.dataToSend);
     }
 
+    private doAccept(){
+        jQuery('#modalBuild').modal('hide');
+        this.router.navigate(['tramites']);
+    }
     private setProcedureStarted() {
             console.log("route: "+this.router.url);
 
             this.procedureService.setProcedureStarted(this.dataToSend, this.mayoralty, this.procedureName).subscribe(
                 (response) => {
                     console.log(response);
+                    jQuery('#resBuild').html(response);
+                    jQuery('#modalBuild').modal('show');
+
 
                 }
         )
