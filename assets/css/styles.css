@@ -16,6 +16,19 @@ body {
     font-size: 4em;
 }
 
+.block h2 {
+    font-weight: bold;
+}
+
+.block {
+    color: #FFFFFF;
+}
+
+.block a {
+    color: #FFFFFF;
+    text-decoration: underline;
+}
+
 /** Specific styles by Component**/
 #top {
     background-color: #333333;
@@ -172,13 +185,21 @@ body {
     width: auto;
 }
 
-#legal p {
+#secondary-footer p {
     text-align: center;
 }
 
 #statistics .stat-value,
 #statistics .stat-name {
     text-align: center;
+}
+
+#primary-footer {
+    background-color: #333333;
+}
+
+#secondary-footer {
+    background-color: #c51110;
 }
 
 
