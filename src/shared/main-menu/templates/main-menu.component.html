@@ -1,11 +1,12 @@
-<nav class="navbar">
-  <div class="navbar-header">
-    <div class="logo">
-      <img src="assets/image/logo-black.png" class="img-rounded"/>
+<nav class="navbar row">
+  <div class="navbar-header col-lg-4">
+    <div class="navbar-brand">
+      <img src="assets/image/logo-black.png" class="brand-logo"/>
+      <h1 class="brand">{{brand}}
+      <span>CODEAHOLICS</span></h1>
     </div>
-    <a class="navbar-brand" hreh="#">{{brand}}</a>
   </div>
-  <div class="collapse navbar-collapse">
+  <div class="collapse navbar-collapse col-log-8">
     <ul class="nav navbar-nav">
       <li *ngIf="isAuth">
 	<div class="nav-item__icon">
@@ -27,7 +28,7 @@
 	<div class="nav-item__icon">
 	  <a class="public-item" href="#">
 	    <img src="http://placehold.it/54x64/FFFFFF" />
-	      ¿Quienes Somos?
+	    Equipo
 	  </a>
 	</div>
       </li>
@@ -35,7 +36,7 @@
 	<div class="nav-item__icon">
 	  <a class="public-item" href="#">
 	    <img src="http://placehold.it/54x64/FFFFFF" />
-	    ¿Qué es la FdT?
+	    Fábrica
 	  </a>
 	</div>
       </li>
@@ -43,7 +44,7 @@
 	<div class="nav-item__icon">
 	  <a class="public-item" href="#">
 	    <img src="http://placehold.it/54x64/FFFFFF" />
-	    Contáctenos
+	    Contacto
 	  </a>
 	</div>
       </li>

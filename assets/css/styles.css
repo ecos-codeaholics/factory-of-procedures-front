@@ -43,6 +43,43 @@ body {
     color: white;
 }
 
+#main-menu .navbar {
+    margin-bottom: 0;
+}
+
+#main-menu .navbar-header .brand-logo {
+    max-width: 58px;
+    max-height: 59px;
+}
+
+#main-menu .navbar-header img {
+    float:left;
+    margin-top: 20px;
+    margin-right: 15px;
+}
+
+#main-menu .navbar-header h1 {
+    color: #FFFFFF;
+    display: inline-block;
+    font-size: 1.6em;
+    padding: 24px 0;
+    margin: 0;
+    width: 280px;
+}
+
+#main-menu .navbar-header span {
+    font-size: 0.6em;
+} 
+
+#main-menu .navbar-header a {
+    padding-top: 20px;
+}
+
+#main-menu .navbar-brand {
+    padding: 0;
+    height: auto;
+}
+
 #main-menu .public-item {
     background-color: #D11312;
     border-left: 2px solid #C51110;
@@ -57,9 +94,14 @@ body {
     text-decoration: none;
 }
 
+#main-menu .navbar-nav > li a {
+    color: white;
+    line-height: 3em;
+    font-weight: bold;
+}
+
 #main-menu .navbar-nav > li a:hover {
     background-color: red;
-    color: white;
 }
 
 .nav-item__icon {
@@ -76,14 +118,6 @@ body {
     border: none;
     max-width: 27px;
     padding: 0;
-}
-
-#main-menu .logo {
-    float: left;
-}
-
-#main-menu .logo img {
-    width: 58px;
 }
 
 #institutional-logos li {
