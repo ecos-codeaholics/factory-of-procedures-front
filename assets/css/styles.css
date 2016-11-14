@@ -102,6 +102,11 @@ body {
     border-left: 2px solid #C51110;
 }
 
+#main-menu .private-item {
+    background-color: #a90f0e;
+    border-left: 2px solid #C51110;
+}
+
 #main-menu  a  {
     display: block;
     /**font-family: Lato*/;

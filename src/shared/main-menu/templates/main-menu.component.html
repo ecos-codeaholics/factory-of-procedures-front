@@ -11,7 +11,7 @@
       <li *ngIf="isAuth">
 	<div class="nav-item__icon">
           <a routerLink="/dashboard">
-	    <img src="http://placehold.it/54x64/FFFFFF" />
+	    <img src="assets/image/searching-file-interface-symbol.png" />
 	    Panel
           </a>
 	</div>
@@ -19,7 +19,7 @@
       <li *ngIf="!isAuth">
 	<div class="nav-item__icon">
           <a class="public-item" routerLink="/">
-	    <img src="http://placehold.it/54x64/FFFFFF" />
+	    <img src="assets/image/home.png" />
 	    Inicio
           </a>
 	</div>
@@ -27,7 +27,7 @@
       <li>
 	<div class="nav-item__icon">
 	  <a class="public-item" href="#">
-	    <img src="http://placehold.it/54x64/FFFFFF" />
+	    <img src="assets/image/success.png" />
 	    Equipo
 	  </a>
 	</div>
@@ -35,7 +35,7 @@
       <li>
 	<div class="nav-item__icon">
 	  <a class="public-item" href="#">
-	    <img src="http://placehold.it/54x64/FFFFFF" />
+	    <img src="assets/image/settings-gears.png" />
 	    Fábrica
 	  </a>
 	</div>
@@ -43,23 +43,23 @@
       <li>
 	<div class="nav-item__icon">
 	  <a class="public-item" href="#">
-	    <img src="http://placehold.it/54x64/FFFFFF" />
+	    <img src="assets/image/close-envelope.png" />
 	    Contacto
 	  </a>
 	</div>
       </li>
       <li *checkCitizen="profile">
 	<div class="nav-item__icon">
-          <a routerLink="/tramites">
-	    <img src="http://placehold.it/54x64/FFFFFF" />
+          <a class="private-item" routerLink="/tramites">
+	    <img src="assets/image/clipboard-and-notebook.png" />
 	    Trámites
 	  </a>
 	</div>
       </li>
       <li *checkFunctionary="profile">
 	<div class="nav-item__icon">
-          <a routerLink="/tramites" >
-	    <img src="http://placehold.it/54x64/FFFFFF" />
+          <a class="private-item" routerLink="/tramites" >
+	    <img src="assets/image/clipboard-and-notebook.png" />
 	    Trámites
 	  </a>
 	</div>
