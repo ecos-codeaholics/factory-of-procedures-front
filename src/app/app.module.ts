@@ -14,6 +14,8 @@ import { ConfigService } from '../config/config.service';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from '../home/home.component';
+import { DashboardComponent } from '../home/dashboard.component';
+
 import { FactoryStatisticsComponent } from '../home/factory-statistics.component';
 
 
@@ -28,6 +30,7 @@ import { FactoryStatisticsComponent } from '../home/factory-statistics.component
     declarations: [
         AppComponent,
         HomeComponent,
+        DashboardComponent,
         FactoryStatisticsComponent
     ],
 

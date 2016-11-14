@@ -1,6 +1,10 @@
 import { Routes, RouterModule } from '@angular/router';
 
 import { HomeComponent } from '../home/home.component';
+import { AppComponent } from './app.component';
+import { DashboardComponent } from '../home/dashboard.component';
+
+
 import { DynamicFormComponent } from '../builder/dynamic-form.component';
 import { LoginComponent } from '../auth/login.component';
 import { FunctionaryLoginComponent } from '../auth/functionaryLogin.component';
@@ -10,7 +14,17 @@ import { AuthGuardService } from '../auth/auth-guard.service';
 const routes: Routes = [
     {
         path: '',
-        component: HomeComponent, canActivate: [AuthGuardService],
+        redirectTo: '/home',
+        pathMatch: 'full'
+    },
+    {
+        path: 'home',
+        component: HomeComponent
+    },
+    {
+        path: 'dashboard',
+        component: DashboardComponent,
+        canActivate: [AuthGuardService]
     },
     {
         path: 'auth',

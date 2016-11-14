@@ -1,9 +1,16 @@
-import {Component, OnInit, AfterContentChecked, Input, HostListener} from '@angular/core';
-import {Router} from '@angular/router';
+import {
+    Component,
+    OnInit,
+    AfterContentChecked,
+    Input, HostListener
+} from '@angular/core';
+import {
+    Router,
+} from '@angular/router';
 
-import {AuthGuardService} from '../auth/auth-guard.service';
-import {AuthService} from '../auth/auth.service';
-import {Subscription} from 'rxjs/Subscription';
+import { AuthGuardService } from '../auth/auth-guard.service';
+import { AuthService } from '../auth/auth.service';
+import { Subscription } from 'rxjs/Subscription';
 
 //enable production mode
 //import { enableProdMode } from '@angular/core';
@@ -24,7 +31,7 @@ export class AppComponent implements AfterContentChecked {
     public status: boolean;
 
     constructor(private authService: AuthService,
-                private router: Router) {
+        private router: Router) {
 
         this.isAuth = authService.isAuth();
 
@@ -63,6 +70,8 @@ export class AppComponent implements AfterContentChecked {
         this.status = this.getAuthStatus();
         this.profile = this.authService.getProfile();
         this.user = this.authService.getUser();
+        this.isAuth = this.authService.isAuth();
+
     }
 
     @HostListener('window:unload', ['$event'])

@@ -51,12 +51,13 @@ export class FunctionaryLoginComponent {
                 if (!res.json().errorInd) {
 
                     this.setAuthStatus(res.json());
+
                 }
             },
             error => { },
             () => {
 
-                this.router.navigate(['/']);
+                this.router.navigate(['dashboard']);
             });
     }
 

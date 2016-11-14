@@ -57,7 +57,7 @@ export class LoginComponent {
             error => { },
             () => {
 
-                this.router.navigate(['/']);
+                this.router.navigate(['dashboard']);
             });
     }
 
