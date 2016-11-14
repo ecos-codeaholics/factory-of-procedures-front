@@ -124,6 +124,45 @@ body {
     padding: 0;
 }
 
+#home-top {
+    background-color: #DBDBDB;
+}
+
+#home-top .user-area {
+    background-color: #DCB87C;
+    padding: 30px;
+}
+
+#statistics {
+    background-color: #FFFFFF;
+}
+
+#statistics {
+    padding: 0 30px;
+}
+
+#statistics .stats-area {
+    padding: 30px;
+}
+
+#statistics .stat {
+    border: 10px solid #c51110;
+    border-radius: 50%;
+    margin: 0 auto;
+    width: 200px;
+    height: 200px;
+    padding: 50px 0;
+}
+
+#statistics .stat-value {
+    font-size: 2.5em;
+    font-weight: bold;
+}
+
+#statistics .stat-name {
+    font-size: 1em;
+}
+
 #institutional-logos li {
     margin-left: 20px
 }
