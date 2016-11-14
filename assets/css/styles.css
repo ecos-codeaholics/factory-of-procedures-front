@@ -1,9 +1,81 @@
+/** General Styles **/
+
 body {
-    padding: 1em 2em;
+
+}
+
+.container-fluid {
+    margin-right: auto;
+    margin-left: auto;
+    padding-right: 15px;
+    padding-left: 15px;
+    max-width: 1200px;
 }
 
 .page-header h1{
     font-size: 4em;
+}
+
+/** Specific styles by Component**/
+#top {
+    background-color: #333333;
+    width: 100%;
+}
+
+#top .navbar {
+    margin: 0;
+}
+
+#top .navbar-nav > li > a {
+    color: #DBDBDB;
+    line-height: 30px; /* Works with .navbar-link */
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-decoration: underline;
+}
+
+#top .navbar-nav > li > a:hover {
+    color: #FFFFFF;
+}
+
+#main-menu {
+    background-color: #c51110;
+    color: white;
+}
+
+#main-menu .public-item {
+    background-color: #D11312;
+    border-left: 2px solid #C51110;
+}
+
+#main-menu  a  {
+    display: block;
+    /**font-family: Lato*/;
+    font-weight: normal;
+    min-height: 100px;
+    padding: 20px 0 0;
+    text-decoration: none;
+}
+
+#main-menu .navbar-nav > li a:hover {
+    background-color: red;
+    color: white;
+}
+
+.nav-item__icon {
+    display: inline;
+    float: left;
+    text-align: center;
+    width: 110px;
+}
+
+#main-menu .nav-item__icon img {
+    clear: both;
+    margin: 0 auto;
+    display: block;
+    border: none;
+    max-width: 27px;
+    padding: 0;
 }
 
 #main-menu .logo {
@@ -31,5 +103,13 @@ body {
 #statistics .stat-name {
     text-align: center;
 }
+
+
+/** Overrides **/
+.navbar {
+    background-color: transparent;
+}
+
+
 
 

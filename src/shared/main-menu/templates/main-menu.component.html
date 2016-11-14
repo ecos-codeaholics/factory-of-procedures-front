@@ -8,29 +8,60 @@
   <div class="collapse navbar-collapse">
     <ul class="nav navbar-nav">
       <li *ngIf="isAuth">
-        <a routerLink="/dashboard">
-          <i class="material-icons" style="font-size:23px;">home</i>
-        </a>
+	<div class="nav-item__icon">
+          <a routerLink="/dashboard">
+	    <img src="http://placehold.it/54x64/FFFFFF" />
+	    Panel
+          </a>
+	</div>
       </li>
       <li *ngIf="!isAuth">
-        <a routerLink="/">
-          <i class="material-icons" style="font-size:23px;">home</i>
-        </a>
+	<div class="nav-item__icon">
+          <a class="public-item" routerLink="/">
+	    <img src="http://placehold.it/54x64/FFFFFF" />
+	    Inicio
+          </a>
+	</div>
       </li>
       <li>
-	<a href="#">¿Quienes Somos?</a>
+	<div class="nav-item__icon">
+	  <a class="public-item" href="#">
+	    <img src="http://placehold.it/54x64/FFFFFF" />
+	      ¿Quienes Somos?
+	  </a>
+	</div>
       </li>
       <li>
-	<a href="#">¿Qué es la FdT?</a>
+	<div class="nav-item__icon">
+	  <a class="public-item" href="#">
+	    <img src="http://placehold.it/54x64/FFFFFF" />
+	    ¿Qué es la FdT?
+	  </a>
+	</div>
       </li>
       <li>
-	<a href="#">Contáctenos</a>
+	<div class="nav-item__icon">
+	  <a class="public-item" href="#">
+	    <img src="http://placehold.it/54x64/FFFFFF" />
+	    Contáctenos
+	  </a>
+	</div>
       </li>
       <li *checkCitizen="profile">
-        <a routerLink="/tramites">Trámites</a>
+	<div class="nav-item__icon">
+          <a routerLink="/tramites">
+	    <img src="http://placehold.it/54x64/FFFFFF" />
+	    Trámites
+	  </a>
+	</div>
       </li>
       <li *checkFunctionary="profile">
-        <a routerLink="/tramites" >Trámites</a>
+	<div class="nav-item__icon">
+          <a routerLink="/tramites" >
+	    <img src="http://placehold.it/54x64/FFFFFF" />
+	    Trámites
+	  </a>
+	</div>
       </li>
     </ul>
   </div>

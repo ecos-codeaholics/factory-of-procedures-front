@@ -1,33 +1,36 @@
 <header>
-  <div class="row">
-    <div class="col-sm-12 col-lg-2">
-      <nav class="navbar">
-	<ul class="nav navbar-nav">
-	  <li>
-	    <a class="navbar-link" href="#">Normatividad</a>
-	  </li>
-	</ul>
-      </nav>
+  <div id="top">
+    <div class="container-fluid">
+      <div class="row">
+	<div class="col-sm-12 col-lg-2">
+	  <nav class="navbar">
+	    <ul class="nav navbar-nav">
+	      <li>
+		<a class="navbar-link" href="#">Normatividad</a>
+	      </li>
+	    </ul>
+	  </nav>
+	</div>
+	
+	<div class="col-sm-12 col-lg-2 col-lg-offset-8">
+	  <nav class="navbar">
+	    <ul class="nav navbar-nav navbar-right">
+	      <li>
+		<a class="navbar-link" href="#"><img src="http://placehold.it/30x30"/></a>
+	      </li>
+	      <li>
+		<a class="navbar-link" href="#"><img src="http://placehold.it/30x30"/></a>
+	      </li>
+	      <li>
+		<a class="navbar-link" href="#"><img src="http://placehold.it/30x30"/></a>
+	      </li>
+	    </ul>
+	  </nav>
+	</div>
+	
+      </div>
     </div>
-    
-    <div class="col-sm-12 col-lg-2 col-lg-offset-8">
-      <nav class="navbar">
-	<ul class="nav navbar-nav navbar-right">
-	  <li>
-	    <a class="navbar-link" href="#"><img src="http://placehold.it/30x30"/></a>
-	  </li>
-	  <li>
-	    <a class="navbar-link" href="#"><img src="http://placehold.it/30x30"/></a>
-	  </li>
-	  <li>
-	    <a class="navbar-link" href="#"><img src="http://placehold.it/30x30"/></a>
-	  </li>
-	</ul>
-      </nav>
-    </div>
-    
   </div>
-  
   <div *ngIf="isAuth" class="row">
     <div class="col-lg-12">
       <p class="navbar-text navbar-right">Ha iniciado sesión como: <strong>{{user}}</strong>
@@ -35,9 +38,14 @@
       </p>
     </div>
   </div>
-  <div id="main-menu" class="row">
-    <div class="col-lg-12">
-      <main-menu [title]="title"></main-menu>
+  
+  <div id="main-menu">
+    <div class="container-fluid">
+      <div class="row">
+	<div class="col-lg-12">
+	  <main-menu [title]="title"></main-menu>
+	</div>
+      </div>
     </div>
   </div>
 </header>
