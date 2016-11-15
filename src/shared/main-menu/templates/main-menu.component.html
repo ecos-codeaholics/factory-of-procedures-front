@@ -6,64 +6,66 @@
       <span>CODEAHOLICS</span></h1>
     </div>
   </div>
-  <div class="collapse navbar-collapse col-log-8">
-    <ul class="nav navbar-nav">
-      <li *ngIf="isAuth">
-	<div class="nav-item__icon">
-          <a routerLink="/dashboard">
-	    <img src="assets/image/searching-file-interface-symbol.png" />
-	    Panel
-          </a>
-	</div>
-      </li>
-      <li *ngIf="!isAuth">
-	<div class="nav-item__icon">
-          <a class="public-item" routerLink="/">
-	    <img src="assets/image/home.png" />
-	    Inicio
-          </a>
-	</div>
-      </li>
-      <li>
-	<div class="nav-item__icon">
-	  <a class="public-item" href="#">
-	    <img src="assets/image/success.png" />
-	    Equipo
-	  </a>
-	</div>
-      </li>
-      <li>
-	<div class="nav-item__icon">
-	  <a class="public-item" href="#">
-	    <img src="assets/image/settings-gears.png" />
-	    Fábrica
-	  </a>
-	</div>
-      </li>
-      <li>
-	<div class="nav-item__icon">
-	  <a class="public-item" href="#">
-	    <img src="assets/image/close-envelope.png" />
-	    Contacto
-	  </a>
-	</div>
-      </li>
-      <li *checkCitizen="profile">
-	<div class="nav-item__icon">
-          <a class="private-item" routerLink="/tramites">
-	    <img src="assets/image/clipboard-and-notebook.png" />
-	    Trámites
-	  </a>
-	</div>
-      </li>
-      <li *checkFunctionary="profile">
-	<div class="nav-item__icon">
-          <a class="private-item" routerLink="/tramites" >
-	    <img src="assets/image/clipboard-and-notebook.png" />
-	    Trámites
-	  </a>
-	</div>
-      </li>
-    </ul>
+  <div class="col-lg-8">
+    <div class="row">
+      <ul class="nav navbar-nav col-lg-12">
+	<li *ngIf="isAuth">
+	  <div class="nav-item__icon">
+            <a routerLink="/dashboard">
+	      <img src="assets/image/searching-file-interface-symbol.png" />
+	      Panel
+            </a>
+	  </div>
+	</li>
+	<li *ngIf="!isAuth">
+	  <div class="nav-item__icon">
+            <a class="public-item" routerLink="/">
+	      <img src="assets/image/home.png" />
+	      Inicio
+            </a>
+	  </div>
+	</li>
+	<li *ngIf="!isAuth">
+	  <div class="nav-item__icon">
+	    <a class="public-item" href="#">
+	      <img src="assets/image/success.png" />
+	      Equipo
+	    </a>
+	  </div>
+	</li>
+	<li>
+	  <div class="nav-item__icon">
+	    <a class="public-item" href="#">
+	      <img src="assets/image/settings-gears.png" />
+	      Fábrica
+	    </a>
+	  </div>
+	</li>
+	<li>
+	  <div class="nav-item__icon">
+	    <a class="public-item" href="#">
+	      <img src="assets/image/close-envelope.png" />
+	      Contacto
+	    </a>
+	  </div>
+	</li>
+	<li *checkCitizen="profile">
+	  <div class="nav-item__icon">
+            <a class="private-item" routerLink="/tramites">
+	      <img src="assets/image/clipboard-and-notebook.png" />
+	      Trámites
+	    </a>
+	  </div>
+	</li>
+	<li *checkFunctionary="profile">
+	  <div class="nav-item__icon">
+            <a class="private-item" routerLink="/tramites" >
+	      <img src="assets/image/clipboard-and-notebook.png" />
+	      Trámites
+	    </a>
+	  </div>
+	</li>
+      </ul>
+    </div>
   </div>
 </nav>

@@ -60,8 +60,10 @@ body {
     color: white;
 }
 
-#main-menu .navbar {
+#main-menu .navbar,
+#main-menu .navbar-nav {
     margin-bottom: 0;
+    padding: 0;
 }
 
 #main-menu .navbar-header .brand-logo {
@@ -126,11 +128,13 @@ body {
     background-color: red;
 }
 
+#main-menu .navbar-nav li {
+    width: 25%;
+}
+
 .nav-item__icon {
     display: inline;
-    float: left;
     text-align: center;
-    width: 110px;
 }
 
 #main-menu .nav-item__icon img {
@@ -142,12 +146,17 @@ body {
     padding: 0;
 }
 
+#main-menu .navbar-collapse {
+    padding-right: 0;
+    padding-left: 0;
+}
+
 #home-top {
     background-color: #DBDBDB;
 }
 
 #home-top .user-area {
-    background-color: #DCB87C;
+    background: transparent url('../image/factory-background.jpg') no-repeat;
     padding: 30px;
 }
 
@@ -213,6 +222,6 @@ body {
     background-color: transparent;
 }
 
-
-
-
+.well {
+    background-color: rgba(230,230,230,0.89) !important;
+}
