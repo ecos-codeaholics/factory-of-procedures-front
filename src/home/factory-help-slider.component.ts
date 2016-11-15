@@ -20,31 +20,31 @@ export class FactoryHelpSliderComponent implements OnInit {
 
         this.slides.push({
             step: 1,
-            icon: 'http://placehold.it/555x290',
+            icon: 'assets/image/slide-create.png',
             text: 'Crea una cuenta de usuario',
         });
 
         this.slides.push({
             step: 2,
-            icon: 'http://placehold.it/555x290/c3c3c9',
+            icon: 'assets/image/slide-login.png',
             text: 'Ingresa a la plataforma'
         });
 
         this.slides.push({
             step: 3,
-            icon: 'http://placehold.it/555x290/f5c349',
+            icon: 'assets/image/slide-select.png',
             text: 'Selecciona el trámite de tu alcaldía'
         });
 
         this.slides.push({
             step: 4,
-            icon: 'http://placehold.it/555x290/c3f5d2',
+            icon: 'assets/image/slide-fill.png',
             text: 'Diligencia el formulario'
         });
 
         this.slides.push({
             step: 5,
-            icon: 'http://placehold.it/555x290/c3f5d2',
+            icon: 'assets/image/slide-upload.png',
             text: 'Sube la documentacion requerida'
         })
     }

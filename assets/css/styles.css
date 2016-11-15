@@ -225,3 +225,58 @@ body {
 .well {
     background-color: rgba(230,230,230,0.89) !important;
 }
+
+.carousel h4 {
+    font-size: 3em;
+    font-weight: bold;
+    color: #21242c;
+}
+
+.carousel-caption {
+    right: 0;
+    top: 0;
+    left: unset;
+    padding-top: 0;
+    padding-bottom: 0;
+    text-align: left;
+    width: 200px;
+    text-shadow: unset;
+    font-size: 2em;
+    color: #21242c;
+}
+
+.carousel-control.left,
+.carousel-control.right {
+    background: none;
+}
+
+.carousel-control .glyphicon-chevron-left,
+.carousel-control .glyphicon-chevron-right,
+.carousel-control .icon-next,
+.carousel-control .icon-prev {
+    top: 40%;
+    font-size: 40px;
+}
+
+.carousel-control .glyphicon-chevron-left,
+.carousel-control .icon-prev {
+    left: 0;
+}
+
+.carousel-control .glyphicon-chevron-right,
+.carousel-control .icon-next {
+    right: 0;
+    margin-right: 0;
+}
+
+.carousel-indicators {
+    bottom: 0;
+}
+
+@media screen and (min-width: 768px) {
+    .carousel-caption {
+	right: 0;
+	left: uset;
+	padding-bottom: 0;
+    }
+}
