@@ -18,6 +18,7 @@ import { Router } from '@angular/router';
 
 import {FieldBase}          from "../builder/model/field-base";
 
+
 declare var jQuery: any;
 
 @Component({
@@ -42,6 +43,7 @@ export class ProcedureBuilderComponent implements OnInit {
     private fieldProcedure: FormField[];
     private fields: FieldBase<any>[] = [];
     private fields2: FieldBase<any>[] = [];
+    private msgResponse: any = {};
 
     public isAuth: boolean;
     public profile: string;
@@ -153,6 +155,7 @@ export class ProcedureBuilderComponent implements OnInit {
     }
 
     private doAccept(){
+        jQuery('#resBuild').html(' ');
         jQuery('#modalBuild').modal('hide');
         this.router.navigate(['tramites']);
     }
@@ -162,10 +165,15 @@ export class ProcedureBuilderComponent implements OnInit {
             this.procedureService.setProcedureStarted(this.dataToSend, this.mayoralty, this.procedureName).subscribe(
                 (response) => {
                     console.log(response);
+                    console.log(response.body);
+
+                    this.msgResponse = response;
+
+                    console.log(this.msgResponse);
+
+
                     jQuery('#resBuild').html(response);
                     jQuery('#modalBuild').modal('show');
-
-
                 }
         )
     }
