@@ -221,6 +221,12 @@ body {
     background-color: #c51110;
 }
 
+#dashboard-top .private-area {
+    background: transparent url('../image/factory-background-2.jpg') no-repeat;
+    padding: 40px 30px 20px 30px;
+    min-height: 465px;
+}
+
 
 /** Overrides **/
 .navbar {
@@ -284,4 +290,28 @@ body {
 	left: uset;
 	padding-bottom: 0;
     }
+}
+
+/* Material Overrides */
+
+.form-group .checkbox label,
+.form-group .radio label,
+.form-group label {
+    color: #333333;
+}
+
+.btn-group-vertical.disabled,
+.btn-group-vertical:disabled,
+.btn-group-vertical[disabled][disabled],
+.btn-group.disabled, .btn-group:disabled,
+.btn-group[disabled][disabled], .btn.disabled,
+.btn:disabled, .btn[disabled][disabled],
+.input-group-btn .btn.disabled,
+.input-group-btn .btn:disabled,
+.input-group-btn .btn[disabled][disabled],
+fieldset[disabled][disabled] .btn,
+fieldset[disabled][disabled] .btn-group,
+fieldset[disabled][disabled] .btn-group-vertical,
+fieldset[disabled][disabled] .input-group-btn .btn {
+    color: #333333;
 }
