@@ -221,6 +221,10 @@ body {
     background-color: #c51110;
 }
 
+#dashboard-top {
+    background-color: #DBDBDB;
+}
+
 #dashboard-top .private-area {
     background: transparent url('../image/factory-background-2.jpg') no-repeat;
     padding: 40px 30px 20px 30px;
