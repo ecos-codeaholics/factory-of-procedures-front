@@ -7,5 +7,5 @@ import { Component, Input } from '@angular/core';
 
 export class FactoryStatisticsComponent {
 
-    title = 'Actuamlente la Fábrica de Trámites cuenta con'
+    title = 'Actualmente la Fábrica de Trámites cuenta con:'
 }

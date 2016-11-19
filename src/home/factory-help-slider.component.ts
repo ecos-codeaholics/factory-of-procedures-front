@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 
 export class FactoryHelpSliderComponent implements OnInit {
 
-    title = 'Crea tu trámite en 5 pasos';
+    title = 'Crea tu trámite en 5 pasos:';
 
     public interval: number = 5000;
     public noWrapSlides: boolean = false;
@@ -45,7 +45,7 @@ export class FactoryHelpSliderComponent implements OnInit {
         this.slides.push({
             step: 5,
             icon: 'assets/image/slide-upload.png',
-            text: 'Sube la documentacion requerida'
+            text: 'Sube la documentación requerida'
         })
     }
 
