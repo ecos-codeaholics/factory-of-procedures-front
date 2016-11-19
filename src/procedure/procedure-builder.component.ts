@@ -64,7 +64,7 @@ export class ProcedureBuilderComponent implements OnInit {
                 this.procedure = procedure;
                 this.req = procedure[0].required;
                 this.fields = procedure[0].fields;
-                console.log(this.fields);
+                console.log(procedure);
 
                 this.fields = this.service.getFields(this.fields);
                 console.log(this.fields);
