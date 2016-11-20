@@ -1,17 +1,71 @@
-<nav class="navbar navbar-default">
-    <div class="collapse navbar-collapse">
-        <ul class="nav navbar-nav">
-            <li>
-                <a routerLink="/">
-                    <i class="material-icons" style="font-size:23px;">home</i>
-                </a>
-            </li>
-            <li *checkCitizen="profile">
-                <a routerLink="/tramites">Trámites</a>
-            </li>
-            <li *checkFunctionary="profile">
-                <a routerLink="/tramites" >Trámites</a>
-            </li>
-        </ul>
+<nav class="navbar row">
+  <div class="navbar-header col-lg-4">
+    <div class="navbar-brand">
+      <img src="assets/image/logo-white.png" class="brand-logo"/>
+      <h1 class="brand">{{brand}}
+      <span>CODEAHOLICS</span></h1>
     </div>
+  </div>
+  <div class="col-lg-8">
+    <div class="row">
+      <ul class="nav navbar-nav col-lg-12">
+	<li *ngIf="isAuth">
+	  <div class="nav-item__icon">
+            <a routerLink="/dashboard">
+	      <img src="assets/image/searching-file-interface-symbol.png" />
+	      Panel
+            </a>
+	  </div>
+	</li>
+	<li *ngIf="!isAuth">
+	  <div class="nav-item__icon">
+            <a class="public-item" routerLink="/">
+	      <img src="assets/image/home.png" />
+	      Inicio
+            </a>
+	  </div>
+	</li>
+	<li *ngIf="!isAuth">
+	  <div class="nav-item__icon">
+	    <a class="public-item" routerLink="/equipo">
+	      <img src="assets/image/success.png" />
+	      Equipo
+	    </a>
+	  </div>
+	</li>
+	<li>
+	  <div class="nav-item__icon">
+	    <a class="public-item" routerLink="/fábrica">
+	      <img src="assets/image/settings-gears.png" />
+	      Fábrica
+	    </a>
+	  </div>
+	</li>
+	<li>
+	  <div class="nav-item__icon">
+	    <a class="public-item" routerLink="/contacto">
+	      <img src="assets/image/close-envelope.png" />
+	      Contacto
+	    </a>
+	  </div>
+	</li>
+	<li *checkCitizen="profile">
+	  <div class="nav-item__icon">
+            <a class="private-item" routerLink="/tramites">
+	      <img src="assets/image/clipboard-and-notebook.png" />
+	      Trámites
+	    </a>
+	  </div>
+	</li>
+	<li *checkFunctionary="profile">
+	  <div class="nav-item__icon">
+            <a class="private-item" routerLink="/tramites" >
+	      <img src="assets/image/clipboard-and-notebook.png" />
+	      Trámites
+	    </a>
+	  </div>
+	</li>
+      </ul>
+    </div>
+  </div>
 </nav>

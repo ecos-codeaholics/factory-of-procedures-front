@@ -13,13 +13,16 @@ import { ProcedureService } from "../../procedure/procedure.service";
 @Component({
     selector: 'upload-file',
     templateUrl: 'src/shared/upload-files/templates/upload-file.component.html',
-    inputs: ['multiple', 'url','fileRequest', 'description', 'required']
+    inputs: ['multiple', 'url', 'fileRequest', 'description', 'required']
 
 })
 
 export class UploadFileComponent implements OnInit {
 
     @Output() documentUploaded: EventEmitter<any> = new EventEmitter<any>();
+
+    @Input() label: string;
+    @Input() count: string;
 
     required: boolean;
     description: string;
@@ -51,7 +54,7 @@ export class UploadFileComponent implements OnInit {
         this.zone = new NgZone({ enableLongStackTrace: false });
         this.basicOptions = {
             url: this.apiUrl.DOCUMENT(),
-            customHeaders: {'citizen': 'Sebastian','fileRequest':this.fileRequest},
+            customHeaders: { 'citizen': 'Sebastian', 'fileRequest': this.fileRequest },
             calculateSpeed: false,
             filterExtensions: true,
             allowedExtensions: ['image/png', 'image/jpeg', 'application/pdf'],
@@ -74,12 +77,12 @@ export class UploadFileComponent implements OnInit {
             resp = JSON.parse(resp);
             this.uploadResponse = resp;
 
-            if(resp.responseMsg){
+            if (resp.responseMsg) {
                 let responseMsg = JSON.parse(resp.responseMsg);
                 console.log(responseMsg);
-                console.log('fileRequest '+this.fileRequest);
+                console.log('fileRequest ' + this.fileRequest);
                 this.description = responseMsg.originalName;
-                this.documentUploaded.emit({documentFile:responseMsg, idDocument:this.fileRequest});
+                this.documentUploaded.emit({ documentFile: responseMsg, idDocument: this.fileRequest });
                 //the requirment to be upload is deactivated
                 this.required = null;
             }

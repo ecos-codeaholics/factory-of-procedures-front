@@ -1,95 +1,82 @@
 <!-- SCC -->
+<div id="factory-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-12">
+	<div class="jumbotron">
+	  <h3>{{title}}</h3>
+	  <ul class="nav nav-pills" >
+	    <li class="active"><a data-toggle="tab" href="#formulario">Formulario</a></li>
+	    <li ><a data-toggle="tab" href="#documentos">Documentos</a></li>
+	    <li ><a data-toggle="tab" href="#flujo">Flujo del Trámite</a></li>
+	  </ul>
+	  <div class="tab-content">
+	    <div id="formulario" class="tab-pane fade in active">
+	      <h4>Información requerida para iniciar trámite</h4>
+	      <dynamic-form (fieldsComplete)="isfieldsComplete($event)" [fields]="fields" [mayoralty]="mayoralty" [procedureName]="procedureName"></dynamic-form>
+              <div *ngFor="let j of fields2">
+		{{j.description}}
+	      </div>
+	      <div>
+		<button align="right" form="form2" type="reset" class="btn btn-raised btn-primary" > Restaurar <i class="material-icons">autorenew</i></button>
+		<button align="right" form="form2" class="btn btn-raised btn-primary" >Siguiente <i class="material-icons">navigate_next</i></button>
+	      </div>
+	    </div>
+	    <!--      DOCUMENTOS	 -->
+	    <div id="documentos" class="tab-pane fade">
+	      <div class="row">
+		<div class="col-lg-12">
+		  <h4>Documentos requeridos para iniciar trámite</h4>
+		  <form (ngSubmit)="onSubmit()" id="form3">
+		    <div *ngFor="let i of req; let c = index" class="form-group">
+		      <upload-file (documentUploaded)="newDocument($event)"
+				   [count]="c"
+				   [multiple]=false url="procedure-builder"
+				   [label]="i.label" 
+				   description="{{i.description}}"
+				   fileRequest="{{i.name}}"
+				   required="{{i.required}}"
+				   ></upload-file>
+		    </div>
+		  </form>
+		  <a class="btn btn-primary btnPrevious"><i class="material-icons">navigate_before</i> Volver</a>
+		  <a class="btn btn-primary btnNext">Flujo del trámite <i class="material-icons">timeline</i></a>
+		  <div>
+		    <button align="right" form="form3" class="btn btn-raised btn-primary" >Enviar <i class="material-icons">send</i></button>
 
-<h3>{{title}}</h3>
-<ul class="nav nav-pills" >
-	<li class="active"><a data-toggle="tab" href="#formulario">Formulario</a></li>
-	<li ><a data-toggle="tab" href="#documentos">Documentos</a></li>
-	<li ><a data-toggle="tab" href="#flujo">Flujo del Tramite</a></li>
-</ul>
-
-
-<div class="tab-content">
-	<div id="formulario" class="tab-pane fade in active">
-
-		<h4>Información requerida para iniciar tramite</h4>
-
-		<dynamic-form (fieldsComplete)="isfieldsComplete($event)" [fields]="fields" [mayoralty]="mayoralty" [procedureName]="procedureName"></dynamic-form>
-
-        <div *ngFor="let j of fields2">
-            {{j.description}}
+		    <button align="right" form="form3" type="reset" class="btn btn-raised btn-primary" > Restaurar <i class="material-icons">autorenew</i></button>
+		  </div>
 		</div>
-
-		<!-- <a class="btn btn-primary btnNext" ><span class="glyphicon glyphicon-arrow-right"></span>Siguiente</a> -->
-		<!--<div><button align="right" form="form2" type="submit" class="btn btn-raised btn-primary" > Enviar Tramite</button></div>-->
-
-		<div><button align="right" form="form2" class="btn btn-raised btn-primary" >Siguiente <i class="material-icons">navigate_next</i></button></div>
-		<div><button align="right" form="form2" type="reset" class="btn btn-raised btn-primary" > Restaurar <i class="material-icons">autorenew</i></button></div>
-
+	      </div>
+	    </div>
+	    <!--      FLUJO  -->
+	    <div id="flujo" class="tab-pane fade">
+	      <procedure-flow *ngIf="procedure" [profile]="profile"
+			      [procedure]="procedure"></procedure-flow>
+	      <a class="btn btn-primary btnPrevious"><i class="material-icons">navigate_before</i> Volver</a>
+	    </div>
+	  </div>
 	</div>
-
-
-	<!--      DOCUMENTOS	 -->
-	<div id="documentos" class="tab-pane fade">
-
-
-		<h4>Documentos requeridos para iniciar tramite</h4>
-
-		<form (ngSubmit)="onSubmit()" id="form3">
-		<div *ngFor="let i of req" class="panel panel-default">
-			<div class="panel-heading">{{i.label}}</div>
-			<div class="panel-body">
-				<!-- <p style='text-indent: 1em'>{{i.description}}</p> -->
-				<upload-file style="display: table;" (documentUploaded)="newDocument($event)"
-							 id="inputFile"
-							 [multiple]=false url="procedure-builder"
-							 description="{{i.description}}"
-							 fileRequest="{{i.name}}"
-                             required="{{i.required}}"
-                             class="form-control"
-                             ></upload-file>
-
-			</div>
-
-		</div>
-			</form>
-		<a class="btn btn-primary btnPrevious"><i class="material-icons">navigate_before</i> Volver</a>
-		<a class="btn btn-primary btnNext">Flujo del Tramite <i class="material-icons">timeline</i></a>
-
-
-		<br>
-
-		<div><button align="right" form="form3" class="btn btn-raised btn-primary" >Enviar <i class="material-icons">send</i></button></div>
-		<div><button align="right" form="form3" type="reset" class="btn btn-raised btn-primary" > Restaurar <i class="material-icons">autorenew</i></button></div>
-		<!--(click)="enviar()"-->
-	</div>
-
-
-
-	<!--      FLUJO  -->
-	<div id="flujo" class="tab-pane fade">
-		<procedure-flow *ngIf="procedure" [profile]="profile"
-			[procedure]="procedure"></procedure-flow>
-		<a class="btn btn-primary btnPrevious"><i class="material-icons">navigate_before</i> Volver</a>
-	</div>
+      </div>
+    </div>
+  </div>
 </div>
 
-
 <div class="modal" id="modalBuild" tabindex="-1" role="dialog">
-	<div class="modal-dialog" role="document">
-		<div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-						aria-hidden="true">&times;</span></button>
-				<h4 class="modal-title">Creación de trámite</h4>
-			</div>
-			<div class="modal-body">
-				<p>{{msgResponse?.responseMsg}}</p>
-				<div id="resBuild"></div>
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-primary" (click)="doAccept()">Aceptar</button>
-			</div>
-		</div><!-- /.modal-content -->
-	</div><!-- /.modal-dialog -->
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+	<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	  <span aria-hidden="true">&times;</span></button>
+	<h4 class="modal-title">Creación de trámite</h4>
+      </div>
+      <div class="modal-body">
+	<p>{{msgResponse?.responseMsg}}</p>
+	<div id="resBuild"></div>
+      </div>
+      <div class="modal-footer">
+	<button type="button" class="btn btn-primary" (click)="doAccept()">Aceptar</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
-

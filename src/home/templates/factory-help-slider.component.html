@@ -1,0 +1,16 @@
+<div class="well">
+  <div class="title">
+    <h3>{{title}}</h3>
+  </div>
+      
+  <carousel [interval] = "interval" [noWrap] = "noWrapSlides">
+    <slide *ngFor="let slide of slides; let index = index"
+	   [active]="slide.active" class="slide">
+      <img [src]="slide.icon" style="margin:auto">
+      <div class="carousel-caption">
+	<h4>{{slide.step}}</h4>
+	<p>{{slide.text}}</p>
+      </div>
+    </slide>
+  </carousel>
+</div>
