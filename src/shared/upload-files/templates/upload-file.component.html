@@ -3,53 +3,36 @@
 	Se implementa la opcion simple y la opcion de multiples archivos, deacuerdo a un flag de control enviada por
 	el modulo que lo implemente.
  -->
-<div *ngIf="!multiple">
-	<div class="form-group" id="form3">
-		<div >
-            <input type="file" id="file"
-				class="form-control"
-                   ngFileSelect
-                   [options]="basicOptions"
-                   (onUpload)="handleUpload($event)"
-                   (onPreviewData)="handlePreviewData($event)"
-                   [attr.required]="required"
-                   >
 
-			<div class="input-group">
-				<input type="text" readonly="" class="form-control" placeholder="{{description}}">
-				<span class="input-group-btn input-group-sm">
-                    <button type="button" class="btn btn-fab btn-fab-mini">
-                        <i class="material-icons">attach_file</i>
-                </button>
-                </span>
-            </div>
-		</div>
-
-
-		<div *ngIf="uploadFile">Progreso: {{ uploadProgress }}%</div>
-		<div *ngIf="uploadFile">
-			<div class="ui indicating olive progress">
-				<div class="progress-bar" role="progressbar"
-					[ngStyle]="{ 'width': uploadProgress + '%' }"></div>
-			</div>
-		</div>
-
-        <div  style="text-align: center" *ngIf="previewData ">
-            <!--<button class="button" (click)="startUpload()">Start Upload</button>-->
-            <img style="max-width: 30%;" [src]="previewData" alt="Preview Data" class="preview-img">
-        </div>
-
-	</div>
-
-</div>
-<!-- 
-<div *ngIf="multiple">
-	<input type="file" multiple="true" ngFileSelect [options]="options"
-		(onUpload)="handleMultipleUpload($event)">
-
-	<p *ngIf="response.length">
-		<span>Progress{{ progress }}%</span> <span>{{ response }}</span>
-	</p>
+<div *ngIf="!multiple" id="file-input-{{count}}">
+  <label class="control-label" htmlFor="file-input-{{count}}" >{{label}}</label>
+  <input type="file" id="file-input-{{count}}"
+         ngFileSelect
+         [options]="basicOptions"
+         (onUpload)="handleUpload($event)"
+         (onPreviewData)="handlePreviewData($event)"
+         [attr.required]="required"
+         >
+  <div class="input-group">
+    <input id="file-input-{{count}}" type="text" readonly="" class="form-control" placeholder="{{description}}">
+    <span class="input-group-btn input-group-sm">
+      <button type="button" class="btn btn-fab btn-fab-mini">
+          <i class="material-icons">attach_file</i>
+      </button>
+    </span>
+  </div>
 </div>
 
- -->
+<div *ngIf="uploadFile">Progreso: {{ uploadProgress }}%</div>
+<div *ngIf="uploadFile">
+  <div class="ui indicating olive progress">
+    <div class="progress-bar" role="progressbar"
+	 [ngStyle]="{ 'width': uploadProgress + '%' }"></div>
+  </div>
+</div>
+
+<div  style="text-align: center" *ngIf="previewData ">
+  <!--<button class="button" (click)="startUpload()">Start Upload</button>-->
+  <img style="max-width: 30%;" [src]="previewData" alt="Preview Data" class="preview-img">
+</div>
+
