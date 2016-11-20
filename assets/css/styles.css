@@ -30,6 +30,10 @@ body {
     text-decoration: underline;
 }
 
+.table > tbody > tr > td {
+    vertical-align: middle;
+}
+
 /** Specific styles by Component**/
 #top {
     background-color: #333333;

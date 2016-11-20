@@ -1,17 +1,16 @@
-<h4>Documentos del formulario</h4>
-
-<div *ngFor="let i of keys(procedure[0])">
-
-  <div  class="panel panel-default" *ngIf="i === 'deliveryDocs'">
-    <div class="panel-heading">Documentos Anexos</div>
-
-      <div *ngFor="let i of keys(procedure[0]?.deliveryDocs)">
-        <div class="panel-heading">{{i}}</div>
-        <div class="panel-body">
-          <p style='text-indent: 1em'>{{procedure[0]?.deliveryDocs[i]}}</p>
-        </div>
-
-      </div>
-  </div>
-</div>
-
+<table class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Nombre de archivo</th>
+      <th>Descarga</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="info" *ngFor="let i of keys(procedure[0]['deliveryDocs']); let c = index">
+      <td>{{c + 1}}</td>
+      <td>{{i}}</td>
+      <td><a class="btn btn-raised btn-default" href="{{procedure[0]['deliveryDocs'][i]}}" title="Descargar">Descargar</a></td>
+    <tr>
+  </tbody>
+</table>
