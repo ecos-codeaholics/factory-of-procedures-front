@@ -1,77 +1,40 @@
-<div *checkCitizen="profile">
-  
-  <div *ngFor="let i of keys(procedure[0])">
-    
-    <div  class="panel panel-default" *ngIf="i === 'mayoralty'">
-      <div class="panel-heading">Alcaldia</div>
-      <div class="panel-body">{{procedure[0][i]}}</div>
-    </div>
-    
-    <div  class="panel panel-default" *ngIf="i === 'class'">
-      <div class="panel-heading">Nombre del Tramite</div>
-      <div class="panel-body">{{procedure[0][i]}}</div>
-    </div>
-    
-    <div  class="panel panel-default" *ngIf="i === 'status'">
-      <div class="panel-heading">Estado</div>
-      <div class="panel-body">{{procedure[0][i]}}</div>
-    </div>
-    
-    <div  class="panel panel-default" *ngIf="i === 'fileNumber'">
-      <div class="panel-heading">Numero de Radicado</div>
-      <div class="panel-body">{{procedure[0][i]}}</div>
-    </div>
-    
-    <div  class="panel panel-default" *ngIf="i === 'citizen'">
-      <div class="panel-heading">Informacion del ciudadano</div>
-      <div  class="panel-body" *ngFor="let i of keys(procedure[0]?.citizen)">
-        <p style='text-indent: 1em'>{{i + ' : ' + procedure[0]?.citizen[i]}}</p>
-      </div>
-    </div>
-    
-    <div  class="panel panel-default" *ngIf="i === 'procedureData'">
-      <div class="panel-heading">Informacion del procedimiento</div>
-      <div  class="panel-body" *ngFor="let i of keys(procedure[0]?.procedureData)">
-        <p style='text-indent: 1em'>{{i + ' : ' + procedure[0]?.procedureData[i]}}</p>
-      </div>
-    </div>
-    
-  </div>
-</div>
-
-<div *checkFunctionary="profile" class="row">
-  {{citizen}}
+<div class="row">
   <div class="col-lg-12">
-    <h4>{{procedure[0]["className"]}}</h4>
-    <h5><b>Radicado:</b> {{procedure[0]["fileNumber"]}}</h5>
-  </div>
-  <div class="row">
-    <div class="col-lg-6">
-      <div class="panel panel-default">
-	<div class="panel-heading">
-	  <h4 class="panel-title">Información del Usuario</h4>
+    <div class="list-group">
+      <div class="list-group-item" *ngFor="let i of keys(procedure[0])">
+	
+	<div  class="row-content" *ngIf="i === 'mayoralty'">
+	  <h4>Alcaldía</h4>
+	  <p>{{procedure[0][i]}}</p>
 	</div>
-	<div class="panel-body">
-	  <div><b>Identificación</b> {{procedure[0]["citizen"]["identificacion"]}}</div>
-	  <div><b>Nombre:</b>{{procedure[0]["citizen"]["name"]}}</div>
-	  <div><b>Apellido:</b>{{procedure[0]["citizen"]["lastName1"]}}</div>
-	  <div><b>Correo electrónico:</b>{{procedure[0]["citizen"]["email"]}}</div>
+	
+	<div  class="row-content" *ngIf="i === 'className'">
+	  <h4>Nombre del Trámite</h4>
+	  <p>{{procedure[0][i]}}</p>
 	</div>
-      </div>
-    </div>
-    <div class="col-lg-6">
-      <div class="panel panel-default">
-	<div class="panel-heading">
-	  <h4 class="panel-title">Datos del trámite</h4>
+	
+	<div  class="row-content" *ngIf="i === 'status'">
+	  <h4>Estado</h4>
+	  <p>{{procedure[0][i]}}</p>
 	</div>
-	<div class="panel-body">
-	  <div><b>Carta de solicitud:</b>
-	    <p>{{procedure[0]["procedureData"]["carta de Solicitud"]}}</p>
+	
+	<div  class="row-content" *ngIf="i === 'fileNumber'">
+	  <h4>Número de Radicado</h4>
+	  <p>{{procedure[0][i]}}</p>
+	</div>
+	
+	<div  class="row-content" *ngIf="i === 'citizen'">
+	  <h4>Información del ciudadano</h4>
+	  <div  *ngFor="let i of keys(procedure[0]?.citizen)">
+	    <p style='text-indent: 1em'>{{i + ' : ' + procedure[0]?.citizen[i]}}</p>
 	  </div>
-	  <div><b>Dirección residencia</b>{{procedure[0]["procedureData"]["direccion"]}}</div>
-	  <div><b>Barrop</b>{{procedure[0]["procedureData"]["barrio"]}}</div>
-	  <div><b>Teléfono:</b>
-	    {{procedure[0]["procedureData"]["telefono"]}}
+	  
+	</div>
+	
+	<div  class="row-content" *ngIf="i === 'procedureData'">
+	  <h4>Información del trámite radicado</h4>
+	  <div  *ngFor="let i of keys(procedure[0]?.procedureData)">
+	    <p style='text-indent: 1em'>{{i + ' : ' + procedure[0]?.procedureData[i]}}</p>
 	  </div>
 	</div>
       </div>

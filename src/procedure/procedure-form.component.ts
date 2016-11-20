@@ -21,9 +21,9 @@ export class ProcedureFormComponent {
     procedures: ProcedureRequest[] = [];
     procedure: ProcedureRequest;
 
-    histories: ProcedureHistory[]=[]
+    histories: ProcedureHistory[] = []
 
-    title = 'Detalle De Trámite';
+    title = 'Detalle del Trámite';
     file = new ProcedureAttachment('');
 
     public isAuth: boolean;
@@ -51,7 +51,7 @@ export class ProcedureFormComponent {
         this.procedureService.getProcedureById(this.id).subscribe(
             (procedure) => {
                 this.procedure = procedure;
-                this.histories=procedure[0]["histories"];
+                this.histories = procedure[0]["histories"];
             },
             error => this.errorMessage = <any>error
         );
@@ -61,7 +61,7 @@ export class ProcedureFormComponent {
         this.procedureService.getFunctionaryProcedureById(this.id).subscribe(
             (procedure) => {
                 this.procedure = procedure;
-                this.histories=procedure[0]["histories"];
+                this.histories = procedure[0]["histories"];
             }
         )
     }
@@ -72,7 +72,7 @@ export class ProcedureFormComponent {
                 this.isAuth = status;
             }
         );
-       // console.log("procedure-list> getAuthStatus " + this.isAuth);
+        // console.log("procedure-list> getAuthStatus " + this.isAuth);
         return this.isAuth;
     }
 

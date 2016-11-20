@@ -161,6 +161,11 @@ body {
     padding: 40px 30px 20px 30px;
 }
 
+
+#home-top .user-area .well {
+    background-color: rgba(230,230,230,0.89) !important;
+}
+
 #statistics {
     background-color: #FFFFFF;
 }
@@ -231,14 +236,17 @@ body {
     min-height: 465px;
 }
 
+#dashboard-top .private-area .well {
+    background-color: rgba(230,230,230,0.89) !important;
+}
+
+.tab-pane {
+    margin-top:30px;
+}
 
 /** Overrides **/
 .navbar {
     background-color: transparent;
-}
-
-.well {
-    background-color: rgba(230,230,230,0.89) !important;
 }
 
 .carousel h4 {
