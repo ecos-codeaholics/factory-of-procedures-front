@@ -1,38 +1,25 @@
 import { Injectable } from '@angular/core';
-import { Headers, Http, RequestOptions, Request, Response } from '@angular/http';
+import { Http, RequestOptions, Request, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/Rx';
 
 import { API_URL } from '../shared/constant/api-url';
 import { AuthHttp } from 'angular2-jwt';
-
 import { Citizen } from './citizen';
-import { CITIZENS } from './mock-citizen';
+import { contentHeaders } from '../shared/constant/content-headers';
+import { ErrorHandler } from '../shared/error-handler';
 
 
 @Injectable()
 export class CitizenService {
 
     constructor(
-        private http: Http,
-        private apiUrl: API_URL,
-        private authHttp: AuthHttp
+        public errorHandler: ErrorHandler,
+        public http: Http,
+        public apiUrl: API_URL,
+        public authHttp: AuthHttp
     ) { }
 
-    private citizensUrl = 'http://localhost:4567/citizens/';
-
-    private handleError(error: any) {
-
-        let errMsg = (error.message) ? error.message :
-            error.status ? `${error.status} - ${error.statusText}` : 'Server error';
-        console.error(errMsg); // log to console instead
-        return Observable.throw(errMsg);
-    }
-
-    private extractData(res: Response) {
-        let body = res.json();
-        return body.data || {};
-    }
 
     getCitizen(id: number) {
         return this.getCitizens()
@@ -49,5 +36,17 @@ export class CitizenService {
 
         return this.authHttp.request(req)
             .map(res => res.json());
+    }
+
+    getCitizenslist(): Observable<Citizen[]> {
+
+        let options = new RequestOptions({ headers: contentHeaders });
+
+        return this.authHttp.get(this.apiUrl.CITIZENS(), options)
+            .map((r: Response) => r.json() as Citizen[])
+            .catch((res) => {
+                console.log("ERROR: en  citizen.service");
+                return Observable.throw(this.errorHandler.check(res));
+            });
     }
 }
