@@ -1,0 +1,34 @@
+{{selectedElement}}
+<form>
+    <fieldset>
+        <h3 class="header">{{title}}</h3>
+
+        <div class="sample">
+
+            <div class="form-group">
+                <label for="state">Funcionario</label>
+                <select id="state" class="form-control" [(ngModel)]="citizen" name="citizen" required>
+                    <option value="" disabled="disabled" selected="selected">
+                        Seleccione un ciudadano
+                    </option>
+                    <option *ngFor="let citizen of citizens" [ngValue]="citizen.name">
+                        {{citizen.name}}
+                    </option>
+                </select>
+            </div>
+
+            <div *ngIf="procedures[0] != null" class="form-group">
+                <button class="btn btn-raised btn-primary" type="submit"
+                        [routerLink]="['/',citizen]">
+                    Iniciar
+                </button>
+            </div>
+
+            <div *ngIf="procedures[0] == null" class="form-group">
+                <button type="button" class="btn btn-lg btn-primary" disabled="disabled">Iniciar</button>
+                <p>En este momento la alcaldia no tiene tramites para iniciar.</p>
+            </div>
+
+        </div>
+    </fieldset>
+</form>
