@@ -1,65 +1,62 @@
-<h3>{{title}}</h3>
+<div id="content-list">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-12">
+	<div class="jumbotron">
+	  <h3>{{title}}</h3>
 
-<BR />
-
-<div class="row">
-    <div class="col-lg-12">
-        <status-selector (select)="status = $event"></status-selector>
+          <status-selector (select)="status = $event"></status-selector>
+	  
+	  <div class="table-responsive" *checkCitizen="profile">
+            <table class="table">
+	      <thead>
+		<tr>
+                  <th>Radicado</th>
+                  <th>Nombre del Trámite</th>
+                  <th>Ciudad/Municipio</th>
+                  <th>Detalle</th>
+		</tr>
+	      </thead>
+	      <tbody>
+		<tr *ngFor="let procedure of procedures | ongoingFilter: [status]">
+                  <td>{{procedure.fileNumber}}</td>
+                  <td>{{procedure.className}}</td>
+                  <td>{{procedure.mayoralty}}</td>
+                  <td><a [routerLink]="['/tramites/edit', procedure.fileNumber]">Detalle</a></td>
+		</tr>
+		<div class="inner-outlet">
+                  <router-outlet></router-outlet>
+		</div>
+	      </tbody>
+            </table>
+	  </div>
+	</div>
+	
+	<div class="table-responsive" *checkFunctionary="profile">
+	  <table class="table">
+	    <thead>
+	      <tr>
+		<th>Fecha</th>
+		<th>Radicado</th>
+		<th>Cedula</th>
+		<th>Nombre</th>
+		<th>Estado</th>
+		<th>Detalle</th>
+	      </tr>
+	    </thead>
+	    <tbody>
+	      <tr *ngFor="let procedure of procedures | ongoingFilter: [status]">
+		<td>{{procedure.startDate}}</td>
+		<td>{{procedure.fileNumber}}</td>
+		<td>{{procedure.citizen["identification"]}}</td>
+		<td>{{procedure.className}}</td>
+		<td>{{procedure.status}}</td>
+		<td><a [routerLink]="['/tramites/edit', procedure.fileNumber]">Detalle</a></td>
+	      </tr>
+	    </tbody>
+	  </table>
+	</div>
+      </div>
     </div>
-</div>
-
-
-<div class="row" *checkCitizen="profile">
-    <div class="table-responsive">
-        <table class="table">
-            <thead>
-            <tr>
-                <th>Radicado</th>
-                <th>Nombre del Trámite</th>
-                <th>Ciudad/Municipio</th>
-                <th>Detalle</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr *ngFor="let procedure of procedures | ongoingFilter: [status]">
-                <td>{{procedure.fileNumber}}</td>
-                <td>{{procedure.className}}</td>
-                <td>{{procedure.mayoralty}}</td>
-                <td><a [routerLink]="['/tramites/edit', procedure.fileNumber]">Detalle</a></td>
-            </tr>
-            <div class="inner-outlet">
-                <router-outlet></router-outlet>
-            </div>
-            </tbody>
-        </table>
-    </div>
-</div>
-
-
-<div class="row" *checkFunctionary="profile">
-    <div class="table-responsive">
-    <table class="table">
-      <thead>
-        <tr>
-          <th>Fecha</th>
-          <th>Radicado</th>
-          <th>Cedula</th>
-          <th>Nombre</th>
-	      <th>Estado</th>
-          <th>Detalle</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let procedure of procedures | ongoingFilter: [status]">
-          <td>{{procedure.startDate}}</td>
-          <td>{{procedure.fileNumber}}</td>
-          <td>{{procedure.citizen["identification"]}}</td>
-          <td>{{procedure.className}}</td>
-	      <td>{{procedure.status}}</td>
-          <td><a [routerLink]="['/tramites/edit', procedure.fileNumber]">Detalle</a></td>
-        </tr>
-      </tbody>
-    </table>
   </div>
 </div>
-
