@@ -64,7 +64,7 @@ export class ProcedureBuilderComponent implements OnInit {
         this.router = _router;
     }
     private getModelProcedure() {
-        this.procedureService.getModelProcedure(this.procedureName).subscribe(
+        this.procedureService.getModelProcedure(this.mayoralty, this.procedureName).subscribe(
             (procedure) => {
                 console.log(procedure);
                 this.procedure = procedure;
