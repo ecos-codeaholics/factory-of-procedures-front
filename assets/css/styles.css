@@ -248,7 +248,48 @@ body {
     margin-top:30px;
 }
 
+#contact {
+    width: 300px;
+    margin: 40px auto;
+}
+
+#contact p {
+    margin: 0;
+}
+
+#contact .contact-title {
+    padding: 15px 30px;
+    background: #00aa9a;
+    text-align: center;
+    color: #DBDBDB;
+    margin-bottom: 0;
+}
+
+.contact-title-bot {
+    width: 0;
+    height: 0;
+    border-style: inset;
+    border-width: 10px 150px 0 150px;
+    border-color: #00fffb transparent transparent transparent;
+    -webkit-transform:rotate(360deg);
+    margin-bottom: 10px;
+}
+
+#contact .contact-text {
+    padding: 10px;
+    background-color: #bdbdbd;
+    border-bottom: 1px solid #ffffff;
+}
+
+
+
 /** Overrides **/
+
+.list-group .list-group-item .row-picture img {
+    width: 70px;
+    height: 70px;
+}
+
 .navbar {
     background-color: transparent;
 }
