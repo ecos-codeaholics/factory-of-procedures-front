@@ -33,7 +33,7 @@ export class FieldService {
                     )
                 }
 
-                console.log(fields[i]);
+               // console.log(fields[i]);
             }
 
             /**ERASE ME */

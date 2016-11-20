@@ -38,6 +38,7 @@ export class ProcedureService {
     private extractData(res: Response) {
         let body = res.json();
         this.proceduresRequest = body;
+
         return body || {};
     }
 
@@ -137,6 +138,7 @@ export class ProcedureService {
         return this.authHttp.get(this.apiUrl.FUNCTIONARIES() + "procedures/", options)
             .map(
             (r: Response) => {
+                console.log(r.json());
                 return r.json();
             }
             )
@@ -189,7 +191,7 @@ export class ProcedureService {
         let body = JSON.stringify(value);
         let options = new RequestOptions({ headers: contentHeaders });
 
-        return this.authHttp.post(this.apiUrl.CITIZENS() + "procedure/iniciar/" + mayoralty + "/" + procedureName + "/", body, options)
+        return this.authHttp.post(this.apiUrl.CITIZENS() + "procedures/iniciar/" + mayoralty + "/" + procedureName + "/", body, options)
             .map((res) => {
                 console.log(res);
                 return res.json()

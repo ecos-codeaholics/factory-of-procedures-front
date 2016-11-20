@@ -12,10 +12,12 @@ import { FormField } from './model/form-field';
 import { Procedure } from './model/procedure';
 import { FieldService } from "../builder/field.service";
 import { FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 
 
 
 import {FieldBase}          from "../builder/model/field-base";
+
 
 declare var jQuery: any;
 
@@ -28,10 +30,11 @@ export class ProcedureBuilderComponent implements OnInit {
 
     payLoad = '';
     form: FormGroup;
+    router: any;
 
     title = 'Iniciar Trámite';
 
-    private dataToSend: any;
+    private dataToSend: any = {'dataForm':{},'docs':{}};
     private state: any;
     private mayoralty: any;
     private procedure: Procedure[];
@@ -40,6 +43,7 @@ export class ProcedureBuilderComponent implements OnInit {
     private fieldProcedure: FormField[];
     private fields: FieldBase<any>[] = [];
     private fields2: FieldBase<any>[] = [];
+    private msgResponse: any = {};
 
     public isAuth: boolean;
     public profile: string;
@@ -49,13 +53,15 @@ export class ProcedureBuilderComponent implements OnInit {
         private authService: AuthService,
         private procedureService: ProcedureService,
         private service: FieldService,
-        private _eleRef: ElementRef
+        private _eleRef: ElementRef,
+        private _router: Router
     ) {
 
         this.isAuth = authService.isAuth();
         if (this.isAuth) {
             this.profile = authService.getProfile();
         }
+        this.router = _router;
     }
     private getModelProcedure() {
         this.procedureService.getModelProcedure(this.procedureName).subscribe(
@@ -64,7 +70,7 @@ export class ProcedureBuilderComponent implements OnInit {
                 this.procedure = procedure;
                 this.req = procedure[0].required;
                 this.fields = procedure[0].fields;
-                console.log(this.fields);
+                console.log(procedure);
 
                 this.fields = this.service.getFields(this.fields);
                 console.log(this.fields);
@@ -125,12 +131,14 @@ export class ProcedureBuilderComponent implements OnInit {
         console.log("I'm in the onSubmit Method in procedure builder");
         console.log('you submitted value:');
         console.log(this.dataToSend);
+        this.setProcedureStarted();
     }
+
 
     isfieldsComplete (fieldsValues: any) {
         console.log('this is a event '+fieldsValues);
         console.log(fieldsValues);
-        this.dataToSend = fieldsValues;
+        this.dataToSend['dataForm']=fieldsValues;
         console.log(this.dataToSend);
     }
 
@@ -141,10 +149,33 @@ export class ProcedureBuilderComponent implements OnInit {
         //this.dataToSend[document.originalName]=document;
         console.log($event.documentFile);
         console.log($event.idDocument);
-
-        this.dataToSend[$event.idDocument]=$event.documentFile;
+        this.dataToSend['docs'][$event.idDocument]=$event.documentFile;
+        //this.dataToSend=$event.documentFile;
         console.log(this.dataToSend);
     }
 
+    private doAccept(){
+        jQuery('#resBuild').html(' ');
+        jQuery('#modalBuild').modal('hide');
+        this.router.navigate(['tramites']);
+    }
+    private setProcedureStarted() {
+            console.log("route: "+this.router.url);
+
+            this.procedureService.setProcedureStarted(this.dataToSend, this.mayoralty, this.procedureName).subscribe(
+                (response) => {
+                    console.log(response);
+                    console.log(response.body);
+
+                    this.msgResponse = response;
+
+                    console.log(this.msgResponse);
+
+
+                    jQuery('#resBuild').html(response);
+                    jQuery('#modalBuild').modal('show');
+                }
+        )
+    }
 
 }

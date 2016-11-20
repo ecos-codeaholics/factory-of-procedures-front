@@ -5,12 +5,12 @@
         <div [ngSwitch]="field.controlType">
 
 
-        <input *ngSwitchCase="'text'" class="form-control" [formControlName]="field.name"
-               [id]="field.name" [type]="field.subtype" value=empty [required]="field.required">
+        <input *ngSwitchCase="'text'" class="form-control" [formControlName]="field.label"
+               [id]="field.label" [type]="field.subtype" value=empty [required]="field.required">
 
 
-        <textarea *ngSwitchCase="'textarea'" class="form-control" [formControlName]="field.name"
-                  [id]="field.name" [required]="field.required">
+        <textarea *ngSwitchCase="'textarea'" class="form-control" [formControlName]="field.label"
+                  [id]="field.label" [required]="field.required">
         </textarea>
 
 

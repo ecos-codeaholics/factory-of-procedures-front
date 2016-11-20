@@ -14,7 +14,7 @@ export class FieldControlService{
         let group: any = {};
 
         fields.forEach(field => {
-            group[field.name] = field.required ? new FormControl(field.value || '', Validators.required)
+            group[field.label] = field.required ? new FormControl(field.value || '', Validators.required)
                 : new FormControl(field.value || '');
         });
         return new FormGroup(group);
