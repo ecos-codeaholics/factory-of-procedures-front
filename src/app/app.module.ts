@@ -12,14 +12,13 @@ import { AUTH_PROVIDERS, JwtHelper } from 'angular2-jwt';
 import { appRoutingProviders, routing } from './app.routes';
 import { AuthService } from '../auth/auth.service';
 import { ConfigService } from '../config/config.service';
+import { HomeService } from '../home/home.service';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from '../home/home.component';
 import { DashboardComponent } from '../home/dashboard.component';
 import { FactoryStatisticsComponent } from '../home/factory-statistics.component';
 import { FactoryHelpSliderComponent } from '../home/factory-help-slider.component';
-
-
 
 @NgModule({
     imports: [
@@ -45,6 +44,7 @@ import { FactoryHelpSliderComponent } from '../home/factory-help-slider.componen
             deps: [ConfigService, Http],
             multi: true
         },
+        HomeService,
         APP_PROVIDERS,
         AuthService,
         JwtHelper,

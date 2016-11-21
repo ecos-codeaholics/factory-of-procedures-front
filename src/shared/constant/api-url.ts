@@ -35,4 +35,8 @@ export class API_URL {
     PROCEDURES() {
         return this.baseUrl + ':' + this.port + '/citizens/procedures/';
     }
+
+    STATS() {
+        return this.baseUrl + ':' + this.port + '/stats/';
+    }
 }
