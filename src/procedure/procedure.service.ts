@@ -1,16 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Http, RequestOptions, Response } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
-import { ProcedureAttachment } from './procedure-attachment';
-
-
 import { API_URL } from '../shared/constant/api-url';
 import { ErrorHandler } from '../shared/error-handler';
 import { AuthService } from '../auth/auth.service';
 import { AuthHttp } from 'angular2-jwt';
 import { PROCEDURES_REQUEST } from './mock/mock-procedures-request';
 import { contentHeaders } from '../shared/constant/content-headers';
-
 import { ProcedureRequest } from './model/procedure-request';
 import { Mayoralty } from './mayoralty';
 import { Procedure } from './model/procedure';

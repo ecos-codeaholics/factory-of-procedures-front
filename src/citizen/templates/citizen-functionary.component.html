@@ -1,5 +1,5 @@
 {{selectedElement}}
-<form>
+<form #loginForm="ngForm" (ngSubmit)="insertFunctionary()">
     <fieldset>
         <h3 class="header">{{title}}</h3>
 
@@ -17,16 +17,16 @@
                 </select>
             </div>
 
-            <div *ngIf="procedures[0] != null" class="form-group">
+            <div class="form-group">
                 <button class="btn btn-raised btn-primary" type="submit"
                         [routerLink]="['/',citizen]">
                     Iniciar
                 </button>
             </div>
 
-            <div *ngIf="procedures[0] == null" class="form-group">
+            <div class="form-group">
                 <button type="button" class="btn btn-lg btn-primary" disabled="disabled">Iniciar</button>
-                <p>En este momento la alcaldia no tiene tramites para iniciar.</p>
+                <p>Es necesario seleccionar un ciudadano.</p>
             </div>
 
         </div>
