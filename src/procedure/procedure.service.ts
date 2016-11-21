@@ -69,12 +69,10 @@ export class ProcedureService {
     }
 
     getProcedureById(fileNumber: string): Observable<ProcedureRequest> {
-
         let options = new RequestOptions({ headers: contentHeaders });
-
         return this.authHttp.get(this.apiUrl.CITIZENS() + "procedures/edit/" + fileNumber + "/", options)
             .map((res) => {
-                return res.json()
+                return res.json();
             })
             .catch((res) => {
                 console.log("ERROR: en  auth.service");

@@ -15,7 +15,7 @@ import { AuthService } from '../auth/auth.service';
 })
 
 export class ProcedureFormComponent {
-    id: any;
+    id: string;
     deliveryDocs: string[];
 
     procedures: ProcedureRequest[] = [];
@@ -77,7 +77,7 @@ export class ProcedureFormComponent {
     }
 
     ngOnInit() {
-        this.route.params.subscribe(params => this.id = +params['id']);
+        this.route.params.subscribe(params => this.id = params['id']);
         if (this.profile === "citizen") {
             this.getProcedureByID();
         } else if (this.profile === "functionary") {
