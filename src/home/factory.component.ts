@@ -4,14 +4,15 @@
 
 import { Component } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { NgModule }             from '@angular/core';
-import { BrowserModule }        from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
 
 @Component({
     selector: 'factory-tab',
-    templateUrl:  'src/home/templates/factory.component.html'
+    templateUrl: 'src/home/templates/factory.component.html'
 })
 
 export class FactoryComponent {
 
+    title = "La Fábrica de Trámites";
 }
