@@ -21,7 +21,7 @@ declare var jQuery: any;
 export class SignupComponent implements OnInit {
 
     title = 'Registro de Ciudadano';
-    citizen = new Citizen('', NaN, '', '', '', '', '', '');
+    citizen = new Citizen('', NaN, '', '', '', '', '', '', '');
 
     response: any;
     error: any;

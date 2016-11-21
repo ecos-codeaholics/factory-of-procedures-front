@@ -21,7 +21,6 @@ export class ProcedurePendingComponent implements OnInit {
 
     getProcedures() {
         this.procedures = this.procedureService.getProceduresMock();
-
     }
 
     ngOnInit() {

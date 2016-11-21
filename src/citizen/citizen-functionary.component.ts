@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-
 import {CitizenService} from './citizen.service';
 import {Citizen} from './citizen';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -18,13 +18,28 @@ export class CitizenFunctionaryComponent implements OnInit {
     error: any;
     errorMessage: string;
 
-    constructor(private citizenService: CitizenService) {
+    constructor(private citizenService: CitizenService,
+                private router: Router) {
     }
 
     getCities() {
         this.citizenService.getCitizenslist().subscribe(
             citizens => this.citizens = citizens,
             error => this.errorMessage = <any>error
+        );
+    }
+
+    insertFunctionary() {
+        this.citizenService.createFunctionary(this.citizen).subscribe(
+        (res) => {
+            if (!res.json().errorInd) {
+                //this.setAuthStatus(res.json());
+            }
+        },
+        error => { },
+        () => {
+            this.router.navigate(['dashboard']);
+            }
         );
     }
 

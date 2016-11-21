@@ -1,5 +1,5 @@
 {{selectedElement}}
-<form>
+<form #loginForm="ngForm" (ngSubmit)="insertFunctionary()">
     <fieldset>
         <h3 class="header">{{title}}</h3>
 
@@ -11,24 +11,18 @@
                     <option value="" disabled="disabled" selected="selected">
                         Seleccione un ciudadano
                     </option>
-                    <option *ngFor="let citizen of citizens" [ngValue]="citizen.name">
-                        {{citizen.name}}
+                    <option *ngFor="let citizen of citizens" [ngValue]="citizen">
+                        {{citizen.fullName}}
                     </option>
                 </select>
             </div>
-
-            <div *ngIf="procedures[0] != null" class="form-group">
-                <button class="btn btn-raised btn-primary" type="submit"
-                        [routerLink]="['/',citizen]">
-                    Iniciar
-                </button>
-            </div>
-
-            <div *ngIf="procedures[0] == null" class="form-group">
-                <button type="button" class="btn btn-lg btn-primary" disabled="disabled">Iniciar</button>
-                <p>En este momento la alcaldia no tiene tramites para iniciar.</p>
-            </div>
-
         </div>
+
+
+        <button type="submit" class="btn btn-primary btn-lg btn-block btn-raised" [disabled]="!loginForm.form.valid">
+                Registrar
+        </button>
+
+
     </fieldset>
 </form>

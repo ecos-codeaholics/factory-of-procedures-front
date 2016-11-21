@@ -17,6 +17,7 @@ export const PROCEDURES_REQUEST: ProcedureRequest[] = [
             "pedro",
             "perez",
             "gomez",
+            "",
             "1983/01/11",
             "pedro@perez.net",
             null
@@ -76,6 +77,7 @@ export const PROCEDURES_REQUEST: ProcedureRequest[] = [
             "pedro",
             "perez",
             "gomez",
+            "",
             "1983/01/11",
             "pedro@perez.net",
             null

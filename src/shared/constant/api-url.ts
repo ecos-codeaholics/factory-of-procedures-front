@@ -32,6 +32,10 @@ export class API_URL {
         return this.baseUrl + ':' + this.port + '/citizens/';
     }
 
+    ADMIN() {
+        return this.baseUrl + ':' + this.port + '/admin/';
+    }
+
     PROCEDURES() {
         return this.baseUrl + ':' + this.port + '/citizens/procedures/';
     }

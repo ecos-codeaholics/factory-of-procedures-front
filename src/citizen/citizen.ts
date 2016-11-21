@@ -6,6 +6,7 @@ export class Citizen {
         public name: string,
         public lastName1: string,
         public lastName2: string,
+        public fullName : string,
         public birthDate: string,
         public email: string,
         public password: string
