@@ -10,7 +10,10 @@
     <tr class="info" *ngFor="let i of keys(procedure[0]['deliveryDocs']); let c = index">
       <td>{{c + 1}}</td>
       <td>{{i}}</td>
-      <td><a class="btn btn-raised btn-default" href="{{procedure[0]['deliveryDocs'][i]}}" title="Descargar">Descargar</a></td>
+      <td>
+        <button class="btn btn-raised btn-default" (click)='downloadDocs(i)'>Descargar</button>
+       <!-- <a class="btn btn-raised btn-default" href="{{procedure[0]['deliveryDocs'][i]}}" title="Descargar">Descargar</a> -->
+      </td>
     <tr>
   </tbody>
 </table>

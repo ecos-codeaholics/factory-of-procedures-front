@@ -16,15 +16,22 @@ export class ProcedureDocsComponent implements OnInit {
 
     @Input('procedure') procedure: ProcedureRequest[];
 
-
-    constructor() {
+    constructor(
+        private procedureService: ProcedureService
+    ) {
 
     }
 
     ngOnInit() {
-
+        console.log(this.procedure);
     }
 
+    downloadDocs(doc:string){
+        console.log(doc);
+        this.procedureService.getDocumentProcedureRequest(doc,this.procedure[0].fileNumber).subscribe(
+
+        );
+    }
 
     keys(object: {}) {
         //checking undefined object from the request

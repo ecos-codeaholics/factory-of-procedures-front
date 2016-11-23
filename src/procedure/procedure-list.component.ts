@@ -48,7 +48,6 @@ export class ProcedureListComponent implements OnInit {
         this.procedureService.getProcedures().subscribe(
             (procedures) => {
                 this.procedures = procedures;
-                console.log(procedures);
             },
             error => this.errorMessage = <any>error
         );

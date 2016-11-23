@@ -10,7 +10,7 @@ export const PROCEDURES_REQUEST: ProcedureRequest[] = [
     {
         id: 1,
         className: "Tramite Lipsum",
-        fileNumber: 123456789,
+        fileNumber: "123456789",
         citizen: new Citizen(
             "1",
             808080,
@@ -70,7 +70,7 @@ export const PROCEDURES_REQUEST: ProcedureRequest[] = [
     {
         id: 2,
         className: "Tramite Lipsum",
-        fileNumber: 123456789,
+        fileNumber: "123456789",
         citizen: new Citizen(
             "1",
             808080,

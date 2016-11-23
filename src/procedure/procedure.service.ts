@@ -47,6 +47,25 @@ export class ProcedureService {
             });
     }
 
+    /*
+     *
+     *
+     */
+    getDocumentProcedureRequest(doc:string, procedureID:any): Observable<ProcedureRequest[]>{
+        let options = new RequestOptions({ headers: contentHeaders });
+        let body = JSON.stringify(procedureID);
+        return this.authHttp.get(this.apiUrl.PROCEDURES()+"documents/"+doc+"/"+procedureID+"/", options)
+            .map((res) => {
+                console.log(res);
+                let response = res.json();
+                return response;
+            })
+            .catch((res) => {
+                console.log("ERROR: en  auth.service");
+                return Observable.throw(this.errorHandler.check(res));
+            });
+    }
+
     /**
      *
      * Obtains model from request to initiate procedure

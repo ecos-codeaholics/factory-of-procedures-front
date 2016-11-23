@@ -8,7 +8,7 @@ export class ProcedureRequest {
     constructor(
         public id: number,
         public className: string,
-        public fileNumber: number,
+        public fileNumber: string,
         public citizen: Citizen,
         public mayoralty: string,
         public procedureData: ProcedureData,
