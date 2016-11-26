@@ -43,7 +43,7 @@ export class RecoverComponent {
                 jQuery('.modal-body').html("Una nueva contraseña ha sido enviada a su e-mail registrado.");
                 jQuery('.modal').modal('show');
                 console.log(res.json());
-                this.router.navigate(['acceder']);
+                this.router.navigate(['home']);
             },
             (error) => {
 

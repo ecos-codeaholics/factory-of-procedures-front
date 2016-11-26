@@ -6,13 +6,25 @@
         <div class="sample">
 
             <div class="form-group">
-                <label for="state">Funcionario</label>
-                <select id="state" class="form-control" [(ngModel)]="citizen" name="citizen" required>
+                <label for="citizen">Funcionario</label>
+                <select id="citizen" class="form-control" [(ngModel)]="citizen" name="citizen" required>
                     <option value="" disabled="disabled" selected="selected">
                         Seleccione un ciudadano
                     </option>
                     <option *ngFor="let citizen of citizens" [ngValue]="citizen">
                         {{citizen.fullName}}
+                    </option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="dependency">Dependencia</label>
+                <select id="dependency" class="form-control" [(ngModel)]="dependency" name="dependency" required>
+                    <option value="" disabled="disabled" selected="selected">
+                        Seleccione una dependencia
+                    </option>
+                    <option *ngFor="let dependency of dependencies" [ngValue]="dependency">
+                        {{dependency.name}}
                     </option>
                 </select>
             </div>
@@ -26,3 +38,22 @@
 
     </fieldset>
 </form>
+
+<div class="modal" id="modalBuild" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Creación de funcionario</h4>
+            </div>
+            <div class="modal-body">
+                <p>{{msgResponse?.responseMsg}}</p>
+                <div id="resBuild"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" (click)="doAccept()">Aceptar</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
