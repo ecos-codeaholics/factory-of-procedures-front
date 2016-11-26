@@ -58,7 +58,7 @@ export class AppComponent implements AfterContentChecked {
         this.authService.setAuthStatus(false);
         this.authService.doLogout();
         if (this.profile == 'citizen') {
-            this.router.navigate(['acceder']);
+            this.router.navigate(['home']);
         } else {
             this.router.navigate(['funcionarios']);
         }

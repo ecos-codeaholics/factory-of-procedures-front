@@ -55,7 +55,7 @@ export class SignupComponent implements OnInit {
                 jQuery('.modal').modal('show');
                 this.response = res.json();
                 console.log(this.response);
-                this.router.navigate(['acceder']);
+                this.router.navigate(['home']);
 
             },
             (error) => {
