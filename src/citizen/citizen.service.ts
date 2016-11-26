@@ -69,15 +69,13 @@ export class CitizenService {
 
         return this.http.post(this.apiUrl.ADMIN(), body, options)
             .map((res) => {
-                if (res["_body"] == "null") {
-                    Observable.throw(this.errorHandler.check(res));
-                }
-
-                return res;
-            }).catch((res) => {
-
-                console.log("ERROR: en  auth.service");
-                return Observable.throw(this.errorHandler.check(res));
+                console.log(res);
+                let response = res.json();
+                return response;
             })
+            .catch((res) => {
+                console.log("ERROR: en  procedure.service");
+                return Observable.throw(this.errorHandler.check(res));
+            });
     }
 }

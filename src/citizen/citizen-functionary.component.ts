@@ -49,14 +49,15 @@ export class CitizenFunctionaryComponent implements OnInit {
         console.log(this.functionary);
         this.citizenService.createFunctionary(this.functionary).subscribe(
             (response) => {
+
                 console.log(response);
                 console.log(response.body);
 
                 this.errorMessage = response;
 
-                console.log(this.msgResponse);
+                console.log(response.responseMsg);
 
-                jQuery('#resBuild').html(response);
+                jQuery('#resBuild').html(response.responseMsg);
                 jQuery('#modalBuild').modal('show');
             } )
     }
@@ -64,7 +65,8 @@ export class CitizenFunctionaryComponent implements OnInit {
     private doAccept(){
         jQuery('#resBuild').html(' ');
         jQuery('#modalBuild').modal('hide');
-        this.router.navigate(['dashboard']);
+        this.getCitizens();
+        this.getDependencies();
     }
 
     ngOnInit() {
