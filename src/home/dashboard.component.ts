@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, AfterContentChecked } from '@angular/core';
 import { Router } from '@angular/router';
 import { ProcedureSelectComponent } from '../procedure/procedure-select.component';
 import { CitizenFunctionaryComponent } from "../citizen/citizen-functionary.component";
@@ -16,11 +16,14 @@ import { AuthService } from '../auth/auth.service';
     directives: [ProcedureSelectComponent, CitizenFunctionaryComponent]
 })
 
-export class DashboardComponent {
+export class DashboardComponent implements AfterContentChecked {
 
-    title = 'Dashboard';
+    title = 'Panel de usuario';
     public profile: string;
     decodedJwt: string;
+    userData: any = { 'name': ''; 'lastName': '' };
+
+
 
     constructor(
 
@@ -35,6 +38,11 @@ export class DashboardComponent {
     ngAfterContentChecked() {
 
         this.profile = this.authService.getProfile();
+        this.userData = this.authService.getUserDetail());
+    }
+
+    ngOnInit() {
+
     }
 
 

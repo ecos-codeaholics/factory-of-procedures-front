@@ -21,6 +21,8 @@ export class AuthService {
 
     private profile: string;
     private user: string;
+    private userDetail: string;
+    private userData: any = { 'name': ''; 'lastName': '' };
 
     private authStatus: Subject<boolean> = new Subject<boolean>();
     private status: boolean;
@@ -44,7 +46,21 @@ export class AuthService {
     }
 
     getUser() {
+        ;
         return this.user;
+    }
+
+    getUserDetail() {
+
+        let decodedJwt = this.jwtHelperService.tokenDecode();
+        let userDetail = this.decodedJwt['sub'].toString();
+
+        this.userData['name'] = userDetail.split(',')[0];
+        this.userData['lastName'] = userDetail.split(',')[1];
+
+        console.log(this.userData);
+
+        return this.userData;
     }
 
     setAuthStatus(status: boolean): void {
@@ -156,6 +172,7 @@ export class AuthService {
         this.decodedJwt = this.jwtHelperService.tokenDecode();
         this.profile = this.decodedJwt['aud'];
         this.user = this.decodedJwt['jti'];
+
     }
 
     doLogout(): void {

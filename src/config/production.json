@@ -1,5 +1,5 @@
 {
-    "baseUrl": "http://127.0.0.1",
+    "baseUrl": "http://157.253.221.100",
     "port": "4567",
     "debugging": "false"
 }
