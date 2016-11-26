@@ -43,4 +43,9 @@ export class API_URL {
     STATS() {
         return this.baseUrl + ':' + this.port + '/stats/';
     }
+    DOCUMENTS():string{
+        return this.baseUrl+ ':' + this.port + '/docs/';
+
+    }
+
 }
