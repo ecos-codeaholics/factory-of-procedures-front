@@ -3,10 +3,10 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from '../home/home.component';
 import { AppComponent } from './app.component';
 import { DashboardComponent } from '../home/dashboard.component';
-import { TeamComponent }  from '../home/team.component';
-import { ContactComponent }  from '../home/contact.component';
-import { FactoryComponent }  from '../home/factory.component';
-
+import { TeamComponent } from '../home/team.component';
+import { ContactComponent } from '../home/contact.component';
+import { FactoryComponent } from '../home/factory.component';
+import { FactoryTermsComponent } from '../home/factory-terms.component';
 
 import { DynamicFormComponent } from '../builder/dynamic-form.component';
 import { LoginComponent } from '../auth/login.component';
@@ -41,6 +41,10 @@ const routes: Routes = [
     {
         path: 'fábrica',
         component: FactoryComponent
+    },
+    {
+        path: 'términos-y-condiciones',
+        component: FactoryTermsComponent
     },
     {
         path: 'auth',
