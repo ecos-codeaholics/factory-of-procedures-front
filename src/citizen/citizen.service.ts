@@ -5,6 +5,7 @@ import 'rxjs/Rx';
 import { API_URL } from '../shared/constant/api-url';
 import { AuthHttp } from 'angular2-jwt';
 import { Citizen } from './citizen';
+import { Dependency } from './dependency';
 import { contentHeaders } from '../shared/constant/content-headers';
 import { ErrorHandler } from '../shared/error-handler';
 
@@ -49,9 +50,21 @@ export class CitizenService {
             });
     }
 
-    createFunctionary(citizen: Citizen) {
+    getDependencieslist(): Observable<Dependency[]> {
 
-        let body = JSON.stringify(citizen);
+        let options = new RequestOptions({ headers: contentHeaders });
+
+        return this.authHttp.get(this.apiUrl.ADMIN()+ "dependencies/", options)
+            .map((r: Response) => r.json() as Dependency[])
+            .catch((res) => {
+                console.log("ERROR: en  citizen.service");
+                return Observable.throw(this.errorHandler.check(res));
+            });
+    }
+
+    createFunctionary(functionary: any) {
+
+        let body = JSON.stringify(functionary);
         let options = new RequestOptions({ headers: contentHeaders });
 
         return this.http.post(this.apiUrl.ADMIN(), body, options)
