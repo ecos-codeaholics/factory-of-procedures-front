@@ -11,6 +11,7 @@ import { ProcedureRequest } from './model/procedure-request';
 import { Mayoralty } from './mayoralty';
 import { Procedure } from './model/procedure';
 import { Status } from './model/status';
+import { Headers } from '@angular/http';
 
 @Injectable()
 export class ProcedureService {
@@ -52,19 +53,25 @@ export class ProcedureService {
      *
      */
     getDocumentProcedureRequest(doc:string, procedureID:any): Observable<ProcedureRequest[]>{
-        let options = new RequestOptions({ headers: contentHeaders });
+        let header  = new Headers();
+
+       header.append('Accept-Encoding', 'gzip,deflate');
+      //  header.append('Content-Type', 'image/png');
+
         let body = JSON.stringify(procedureID);
-        return this.authHttp.get(this.apiUrl.PROCEDURES()+"documents/"+doc+"/"+procedureID+"/", options)
-            .map((res) => {
-                console.log(res);
-                let response = res.json();
-                return response;
-            })
+        return this.authHttp.get(this.apiUrl.PROCEDURES()+"documents/"+doc+"/"+procedureID+"/")
             .catch((res) => {
-                console.log("ERROR: en  auth.service");
+                console.log("ERROR: en  auth.service" );
+                console.log(res)
                 return Observable.throw(this.errorHandler.check(res));
             });
     }
+
+
+    getUrlDocuments():any{
+        return this.apiUrl.DOCUMENTS;
+    }
+
 
     /**
      *

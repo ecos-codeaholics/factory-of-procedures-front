@@ -1,5 +1,5 @@
 {
-    "baseUrl": "http://157.253.221.100",
+    "baseUrl": "http://localhost",
     "port": "4567",
     "debugging": "false"
 }

@@ -37,7 +37,7 @@
 		<tr>
 		  <th>Fecha</th>
 		  <th>Radicado</th>
-		  <th>Cedula</th>
+		  <th>Cédula</th>
 		  <th>Nombre</th>
 		  <th>Estado</th>
 		  <th>Detalle</th>
@@ -47,7 +47,7 @@
 		<tr *ngFor="let procedure of procedures | ongoingFilter: [status]">
 		  <td>{{procedure.startDate}}</td>
 		  <td>{{procedure.fileNumber}}</td>
-		  <td>{{procedure.citizen["identification"]}}</td>
+		  <td>{{procedure.citizen["Identificación"]}}</td>
 		  <td>{{procedure.className}}</td>
 		  <td>{{procedure.status}}</td>
 		  <td><a [routerLink]="['/tramites/edit', procedure.fileNumber]">Detalle</a></td>
