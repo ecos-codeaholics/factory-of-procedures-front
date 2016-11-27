@@ -22,7 +22,7 @@ export class AuthService {
     private profile: string;
     private user: string;
     private userDetail: string;
-    private userData: any = { 'name': ''; 'lastName': '' };
+    private userData: any = { 'name': '', 'lastName': '' };
 
     private authStatus: Subject<boolean> = new Subject<boolean>();
     private status: boolean;
@@ -46,7 +46,7 @@ export class AuthService {
     }
 
     getUser() {
-        ;
+
         return this.user;
     }
 
