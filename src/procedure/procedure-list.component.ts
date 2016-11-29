@@ -1,4 +1,4 @@
-import {Component, OnInit, Input} from '@angular/core';
+import {Component, OnInit, Input, OnChanges} from '@angular/core';
 
 import {ProcedureService} from './procedure.service';
 
@@ -99,5 +99,19 @@ export class ProcedureListComponent implements OnInit {
         } else {
             this.getFunctionaryProcedures();
         }
+    }
+
+    ngOnChanges(){
+        this.status = this.getAuthStatus();
+        this.profile = this.authService.getProfile();
+        this.user = this.authService.getUser();
+        if (this.profile === "citizen") {
+            this.getProcedures();
+        } else {
+            this.getFunctionaryProcedures();
+        }
+
+
+
     }
 }

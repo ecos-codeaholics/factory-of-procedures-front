@@ -43,7 +43,7 @@ export class ProcedureBuilderComponent implements OnInit {
     private fieldProcedure: FormField[];
     private fields: FieldBase<any>[] = [];
     private fields2: FieldBase<any>[] = [];
-    private msgResponse: any = {};
+    private msgResponse : any = {};
 
     public isAuth: boolean;
     public profile: string;
