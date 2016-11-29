@@ -21,15 +21,15 @@ export class DashboardComponent implements AfterContentChecked {
     title = 'Panel de usuario';
     public profile: string;
     decodedJwt: string;
-    userData: any = { 'name': ''; 'lastName': '' };
+    userData: any = { 'name': '', 'lastName': '' };
 
 
 
     constructor(
 
-        public router: Router,
-        public jwtHelperService: JwtHelperService,
-        private authService: AuthService
+        public router:Router,
+        public jwtHelperService:JwtHelperService,
+        private authService:AuthService
     ) {
 
         this.decodedJwt = jwtHelperService.tokenDecode();
@@ -38,7 +38,7 @@ export class DashboardComponent implements AfterContentChecked {
     ngAfterContentChecked() {
 
         this.profile = this.authService.getProfile();
-        this.userData = this.authService.getUserDetail());
+        this.userData = this.authService.getUserDetail();
     }
 
     ngOnInit() {
