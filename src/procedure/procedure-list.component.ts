@@ -1,10 +1,12 @@
-import {Component, OnInit, Input, OnChanges} from '@angular/core';
+import { Component, OnInit, Input, OnChanges } from '@angular/core';
 
-import {ProcedureService} from './procedure.service';
+import { Router } from '@angular/router';
 
-import {ProcedureRequest} from './model/procedure-request';
+import { ProcedureService } from './procedure.service';
 
-import {AuthService} from '../auth/auth.service';
+import { ProcedureRequest } from './model/procedure-request';
+
+import { AuthService } from '../auth/auth.service';
 
 
 @Component({
@@ -31,7 +33,8 @@ export class ProcedureListComponent implements OnInit {
     errorMessage: string;
     constructor(
         private authService: AuthService,
-        private procedureService: ProcedureService
+        private procedureService: ProcedureService,
+        private router: Router
     ) {
 
         this.isAuth = authService.isAuth();
@@ -64,6 +67,7 @@ export class ProcedureListComponent implements OnInit {
         event.preventDefault();
         console.log("procedure-list> Getting historic procedures");
         console.log(this.procedures);
+        this.router.navigate(['/tramites']);
     }
 
     filterOngoing(event) {
@@ -101,7 +105,7 @@ export class ProcedureListComponent implements OnInit {
         }
     }
 
-    ngOnChanges(){
+    ngOnChanges() {
         this.status = this.getAuthStatus();
         this.profile = this.authService.getProfile();
         this.user = this.authService.getUser();
