@@ -27,9 +27,9 @@ export class DashboardComponent implements AfterContentChecked {
 
     constructor(
 
-        public router: Router,
-        public jwtHelperService: JwtHelperService,
-        private authService: AuthService
+        public router:Router,
+        public jwtHelperService:JwtHelperService,
+        private authService:AuthService
     ) {
 
         this.decodedJwt = jwtHelperService.tokenDecode();
