@@ -4,7 +4,7 @@
   "scripts": {
     "start": "tsc && concurrently 'npm run tsc:w' 'npm run lite'",
     "start-prod": "tsc && concurrently 'npm run tsc' 'npm run lite'",
-    "startJheison": "concurrent \"npm run tsc:w\" \"npm run lite\" ",
+    "startWindows": "concurrent \"npm run tsc:w\" \"npm run lite\" ",
     "lite": "lite-server",
     "postinstall": "typings install",
     "tsc": "tsc",
