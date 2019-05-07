@@ -36,7 +36,7 @@
     "bootstrap": "^3.3.6",
     "bootstrap-material-design": "0.5.10",
     "core-js": "^2.4.0",
-    "jquery": "3.1.0",
+    "jquery": ">=3.4.0",
     "ng2-bootstrap": "1.1.0",
     "ng2-uploader": "1.4.1",
     "node-hook": "^0.4.0",
